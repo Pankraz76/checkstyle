@@ -475,10 +475,9 @@ public class PropertyCacheFileTest extends AbstractPathTestSupport {
                     .thenThrow(NoSuchAlgorithmException.class);
 
             final ReflectiveOperationException ex =
-                getExpectedThrowable(ReflectiveOperationException.class, () -> {
-                    TestUtil.invokeStaticMethod(PropertyCacheFile.class,
-                            "getHashCodeBasedOnObjectContent", config);
-                });
+                    getExpectedThrowable(ReflectiveOperationException.class,
+                            () -> TestUtil.invokeStaticMethod(PropertyCacheFile.class,
+                            "getHashCodeBasedOnObjectContent", config));
             assertWithMessage("Invalid exception cause")
                 .that(ex)
                     .hasCauseThat()

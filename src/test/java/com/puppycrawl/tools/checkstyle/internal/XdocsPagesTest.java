@@ -253,6 +253,9 @@ public class XdocsPagesTest {
         "report_issue.xml"
     );
 
+    private static final String NAMES_MUST_BE_IN_ALPHABETICAL_ORDER =
+        " Names must be in alphabetical order: ";
+
     @TempDir
     private static File temporaryFolder;
 
@@ -274,10 +277,8 @@ public class XdocsPagesTest {
 
         CheckUtil.getSimpleNames(CheckUtil.getCheckstyleChecks())
             .stream()
-            .filter(checkName -> {
-                return !"JavadocMetadataScraper".equals(checkName)
-                    && !"ClassAndPropertiesSettersJavadocScraper".equals(checkName);
-            })
+                .filter(checkName -> !"JavadocMetadataScraper".equals(checkName)
+                        && !"ClassAndPropertiesSettersJavadocScraper".equals(checkName))
             .forEach(checkName -> {
                 if (!isPresent(availableChecks, checkName)) {
                     assertWithMessage(
@@ -403,7 +404,7 @@ public class XdocsPagesTest {
                         .sorted()
                         .collect(Collectors.toUnmodifiableList());
 
-                assertWithMessage("Group names must be in alphabetical order.")
+                assertWithMessage("Group" + NAMES_MUST_BE_IN_ALPHABETICAL_ORDER + SITE_PATH)
                         .that(groupNames)
                         .containsExactlyElementsIn(groupNamesSorted)
                         .inOrder();
@@ -417,7 +418,7 @@ public class XdocsPagesTest {
                         final List<String> checkNamesSorted = checkNames.stream()
                                 .sorted()
                                 .collect(Collectors.toUnmodifiableList());
-                        assertWithMessage("Check Names must be in alphabetical Order.")
+                        assertWithMessage("Check" + NAMES_MUST_BE_IN_ALPHABETICAL_ORDER)
                                 .that(checkNames)
                                 .containsExactlyElementsIn(checkNamesSorted)
                                 .inOrder();
@@ -431,7 +432,7 @@ public class XdocsPagesTest {
                 final List<String> filterNamesSorted = filterNames.stream()
                         .sorted()
                         .collect(Collectors.toUnmodifiableList());
-                assertWithMessage("Filter Names must be in alphabetical order.")
+                assertWithMessage("Filter" + NAMES_MUST_BE_IN_ALPHABETICAL_ORDER + SITE_PATH)
                         .that(filterNames)
                         .containsExactlyElementsIn(filterNamesSorted)
                         .inOrder();
@@ -441,7 +442,7 @@ public class XdocsPagesTest {
                 final List<String> fileFilterNamesSorted = fileFilterNames.stream()
                         .sorted()
                         .collect(Collectors.toUnmodifiableList());
-                assertWithMessage("File Filter Names must be in alphabetical order.")
+                assertWithMessage("File Filter" + NAMES_MUST_BE_IN_ALPHABETICAL_ORDER + SITE_PATH)
                         .that(fileFilterNames)
                         .containsExactlyElementsIn(fileFilterNamesSorted)
                         .inOrder();
@@ -478,9 +479,9 @@ public class XdocsPagesTest {
             final List<String> names = getNamesFromIndexPage(current);
             final List<String> namesSorted = names.stream()
                     .sorted()
-                    .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.<String>toUnmodifiableList());
 
-            assertWithMessage(name + " Names must be in alphabetical order.")
+            assertWithMessage(name + NAMES_MUST_BE_IN_ALPHABETICAL_ORDER + path)
                     .that(names)
                     .containsExactlyElementsIn(namesSorted)
                     .inOrder();

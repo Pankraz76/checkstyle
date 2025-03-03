@@ -160,11 +160,9 @@ public class UnusedLambdaParameterShouldBeUnnamedCheck extends AbstractCheck {
                             .filter(parameter -> !parameter.isUsed())
                             .filter(parameter -> !"_".equals(parameter.getName()));
 
-            unusedLambdaParameter.ifPresent(parameter -> {
-                log(parameter.getIdentifierAst(),
-                        MSG_UNUSED_LAMBDA_PARAMETER,
-                        parameter.getName());
-            });
+            unusedLambdaParameter.ifPresent(parameter -> log(parameter.getIdentifierAst(),
+                    MSG_UNUSED_LAMBDA_PARAMETER,
+                    parameter.getName()));
             lambdaParameters.pop();
         }
     }

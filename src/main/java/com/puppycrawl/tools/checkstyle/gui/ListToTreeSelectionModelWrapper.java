@@ -46,9 +46,7 @@ final class ListToTreeSelectionModelWrapper extends DefaultTreeSelectionModel {
      */
     /* package */ ListToTreeSelectionModelWrapper(TreeTable jTreeTable) {
         treeTable = jTreeTable;
-        getListSelectionModel().addListSelectionListener(event -> {
-            updateSelectedPathsFromSelectedRows();
-        });
+        getListSelectionModel().addListSelectionListener(event -> updateSelectedPathsFromSelectedRows());
     }
 
     /**

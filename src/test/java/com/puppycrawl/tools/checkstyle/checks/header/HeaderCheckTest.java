@@ -302,9 +302,8 @@ public class HeaderCheckTest extends AbstractModuleTestSupport {
     public void testIoExceptionWhenLoadingHeader() {
         final HeaderCheck check = new HeaderCheck();
         try (MockedConstruction<LineNumberReader> mocked = mockConstruction(
-                LineNumberReader.class, (mock, context) -> {
-                    when(mock.readLine()).thenThrow(IOException.class);
-                })) {
+                LineNumberReader.class,
+                (mock, context) -> when(mock.readLine()).thenThrow(IOException.class))) {
             final IllegalArgumentException ex =
                     getExpectedThrowable(IllegalArgumentException.class,
                             () -> check.setHeader("header"));
