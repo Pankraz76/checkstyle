@@ -236,7 +236,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
     /**
      * Notify all listeners about the audit start.
-     * @param event
+     * @param event to be used.
      */
     private void fireAuditStarted(AuditEvent event) {
         for (final AuditListener listener : listeners) {
@@ -246,7 +246,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
     /**
      * Notify all listeners about the audit end.
-     * @param event
+     * @param event to be used.
      */
     private void fireAuditFinished(AuditEvent event) {
         for (final AuditListener listener : listeners) {
