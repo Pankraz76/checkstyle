@@ -19,43 +19,19 @@
 
 package com.puppycrawl.tools.checkstyle;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import com.puppycrawl.tools.checkstyle.api.*;
+import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.puppycrawl.tools.checkstyle.api.AuditEvent;
-import com.puppycrawl.tools.checkstyle.api.AuditListener;
-import com.puppycrawl.tools.checkstyle.api.BeforeExecutionFileFilter;
-import com.puppycrawl.tools.checkstyle.api.BeforeExecutionFileFilterSet;
-import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
-import com.puppycrawl.tools.checkstyle.api.Configuration;
-import com.puppycrawl.tools.checkstyle.api.Context;
-import com.puppycrawl.tools.checkstyle.api.ExternalResourceHolder;
-import com.puppycrawl.tools.checkstyle.api.FileSetCheck;
-import com.puppycrawl.tools.checkstyle.api.FileText;
-import com.puppycrawl.tools.checkstyle.api.Filter;
-import com.puppycrawl.tools.checkstyle.api.FilterSet;
-import com.puppycrawl.tools.checkstyle.api.MessageDispatcher;
-import com.puppycrawl.tools.checkstyle.api.RootModule;
-import com.puppycrawl.tools.checkstyle.api.SeverityLevel;
-import com.puppycrawl.tools.checkstyle.api.SeverityLevelCounter;
-import com.puppycrawl.tools.checkstyle.api.Violation;
-import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static com.puppycrawl.tools.checkstyle.Checker.Companion.getLocalizedMessage;
 
 /**
  * This class provides the functionality to check a set of files.
@@ -274,32 +250,40 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @noinspectionreason ProhibitedExceptionThrown - There is no other way to
      *      deliver filename that was under processing.
      */
+    // -@cs[CyclomaticComplexity] no easy way to split this logic of processing the file
     private void processFiles(List<File> files) throws CheckstyleException {
         for (final File file : files) {
             String fileName = null;
             try {
                 fileName = file.getAbsolutePath();
                 final long timestamp = file.lastModified();
-                if ((cacheFile == null || !cacheFile.isInCache(fileName, timestamp))
-                    && acceptFileStarted(fileName)) {
-                    if (cacheFile != null) {
-                        cacheFile.put(fileName, timestamp);
-                    }
-                    fireFileStarted(fileName);
-                    fireErrors(fileName, processFile(file));
-                    fireFileFinished(fileName);
+                if (cacheFile != null && cacheFile.isInCache(fileName, timestamp)
+                        || !acceptFileStarted(fileName)) {
+                    continue;
                 }
+                if (cacheFile != null) {
+                    cacheFile.put(fileName, timestamp);
+                }
+                fireFileStarted(fileName);
+                fireErrors(fileName, processFile(file));
+                fireFileFinished(fileName);
             }
             // -@cs[IllegalCatch] There is no other way to deliver filename that was under
             // processing. See https://github.com/checkstyle/checkstyle/issues/2285
-            catch (Error | Exception error) {
+            catch (Exception ex) {
                 if (fileName != null && cacheFile != null) {
                     cacheFile.remove(fileName);
                 }
-                if (error instanceof Exception) {
-                    throw new CheckstyleException(
-                        getLocalizedMessage("Checker.processFilesException", file), error);
+
+                // We need to catch all exceptions to put a reason failure (file name) in exception
+                throw new CheckstyleException(
+                        getLocalizedMessage("Checker.processFilesException", getClass(), file), ex);
+            } catch (Error error) {
+                if (fileName != null && cacheFile != null) {
+                    cacheFile.remove(fileName);
                 }
+
+                // We need to catch all errors to put a reason failure (file name) in error
                 throw new Error("Error was thrown while processing " + file, error);
             }
         }
@@ -326,8 +310,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         catch (final IOException ioe) {
             log.debug("IOException occurred.", ioe);
             fileMessages.add(new Violation(1,
-                Definitions.CHECKSTYLE_BUNDLE, EXCEPTION_MSG,
-                new String[] {ioe.getMessage()}, null, getClass(), null));
+                    Definitions.CHECKSTYLE_BUNDLE, EXCEPTION_MSG,
+                    new String[]{ioe.getMessage()}, null, getClass(), null));
         }
         // -@cs[IllegalCatch] There is no other way to obey haltOnException field
         catch (Exception ex) {
@@ -340,9 +324,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             final StringWriter sw = new StringWriter();
             ex.printStackTrace(new PrintWriter(sw, true));
             fileMessages.add(new Violation(1,
-                Definitions.CHECKSTYLE_BUNDLE, EXCEPTION_MSG,
-                new String[] {sw.getBuffer().toString()},
-                null, getClass(), null));
+                    Definitions.CHECKSTYLE_BUNDLE, EXCEPTION_MSG,
+                    new String[]{sw.getBuffer().toString()},
+                    null, getClass(), null));
         }
         return fileMessages;
     }
@@ -416,7 +400,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
         if (moduleFactory == null) {
             if (moduleClassLoader == null) {
-                throw new CheckstyleException(getLocalizedMessage("Checker.finishLocalSetup"));
+                throw new CheckstyleException(getLocalizedMessage("Checker.finishLocalSetup", getClass()));
             }
             moduleFactory = new PackageObjectFactory(
                 PackageNamesLoader.getPackageNames(moduleClassLoader),
@@ -462,7 +446,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
         catch (final CheckstyleException ex) {
             throw new CheckstyleException(
-                getLocalizedMessage("Checker.setupChildModule", name, ex.getMessage()), ex);
+                    getLocalizedMessage("Checker.setupChildModule", getClass(), name, ex.getMessage()), ex);
         }
 
         // throw new CheckstyleException
@@ -482,7 +466,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
         else {
             throw new CheckstyleException(
-                getLocalizedMessage("Checker.setupChildNotAllowed", name));
+                    getLocalizedMessage("Checker.setupChildNotAllowed", getClass(), name));
         }
     }
 
@@ -591,10 +575,11 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @param charset the name of a charset
      * @throws UnsupportedEncodingException if charset is unsupported.
      */
-    public void setCharset(String charset) throws UnsupportedEncodingException {
+    public void setCharset(String charset)
+            throws UnsupportedEncodingException {
         if (!Charset.isSupported(charset)) {
             throw new UnsupportedEncodingException(
-                getLocalizedMessage("Checker.setCharset", charset));
+                    getLocalizedMessage("Checker.setCharset", getClass(), charset));
         }
         this.charset = charset;
     }
@@ -626,16 +611,19 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
     }
 
-    /**
-     * Extracts localized messages from properties files.
-     *
-     * @param messageKey the key pointing to localized message in respective properties file.
-     * @param args the arguments of message in respective properties file.
-     * @return a string containing extracted localized message
-     */
-    private String getLocalizedMessage(String messageKey, Object... args) {
-        return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, getClass(), messageKey, args)
-            .getMessage();
-    }
+    static class Companion {
 
+        /**
+         * Extracts localized messages from properties files.
+         *
+         * @param messageKey the key pointing to localized message in respective properties file.
+         * @param aClass
+         * @param args       the arguments of message in respective properties file.
+         * @return a string containing extracted localized message
+         */
+        static String getLocalizedMessage(String messageKey, Class<? extends Checker> aClass, Object... args) {
+            return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, aClass, messageKey, args)
+                    .getMessage();
+        }
+    }
 }
