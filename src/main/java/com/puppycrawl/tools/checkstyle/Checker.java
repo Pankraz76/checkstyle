@@ -236,7 +236,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * checks and filters.
      *
      * @return a set of external configuration resource locations which are used by all file set
-     * checks and filters.
+     *         checks and filters.
      */
     private Set<String> getExternalResourceLocations() {
         return Stream.concat(fileSetChecks.stream(), filters.getFilters().stream())
@@ -591,8 +591,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @param charset the name of a charset
      * @throws UnsupportedEncodingException if charset is unsupported.
      */
-    public void setCharset(String charset)
-        throws UnsupportedEncodingException {
+    public void setCharset(String charset) throws UnsupportedEncodingException {
         if (!Charset.isSupported(charset)) {
             throw new UnsupportedEncodingException(
                 getLocalizedMessage("Checker.setCharset", charset));
@@ -635,8 +634,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @return a string containing extracted localized message
      */
     private String getLocalizedMessage(String messageKey, Object... args) {
-        return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, getClass(), messageKey
-            , args)
+        return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, getClass(), messageKey, args)
             .getMessage();
     }
 
