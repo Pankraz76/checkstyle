@@ -288,16 +288,14 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
                     fireFileFinished(fileName);
                 }
             }
-            catch (Exception ex) {
+            catch (Error | Exception error) {
                 if (fileName != null && cacheFile != null) {
                     cacheFile.remove(fileName);
                 }
-                throw new CheckstyleException(
-                    getLocalizedMessage("Checker.processFilesException", file), ex);
-            }
-            catch (Error error) {
-                if (fileName != null && cacheFile != null) {
-                    cacheFile.remove(fileName);
+                if (error instanceof Exception) {
+                    throw new CheckstyleException(
+                        getLocalizedMessage("Checker.processFilesException", file)
+                        , error);
                 }
                 throw new Error("Error was thrown while processing " + file, error);
             }
