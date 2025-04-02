@@ -88,6 +88,7 @@ import com.puppycrawl.tools.checkstyle.internal.testmodules.TestFileSetCheck;
 import com.puppycrawl.tools.checkstyle.internal.utils.CloseAndFlushTestByteArrayOutputStream;
 import com.puppycrawl.tools.checkstyle.internal.utils.TestUtil;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
+
 import de.thetaphi.forbiddenapis.SuppressForbidden;
 
 /**
@@ -115,14 +116,16 @@ public class CheckerTest extends AbstractModuleTestSupport {
 
     private static Method getFireAuditFinished() throws NoSuchMethodException {
         final Class<Checker> checkerClass = Checker.class;
-        final Method fireAuditFinished = checkerClass.getDeclaredMethod("fireAuditFinished");
+        final Method fireAuditFinished = checkerClass.getDeclaredMethod("fireAuditFinished",
+            AuditEvent.class);
         fireAuditFinished.setAccessible(true);
         return fireAuditFinished;
     }
 
     private static Method getFireAuditStartedMethod() throws NoSuchMethodException {
         final Class<Checker> checkerClass = Checker.class;
-        final Method fireAuditStarted = checkerClass.getDeclaredMethod("fireAuditStarted");
+        final Method fireAuditStarted = checkerClass.getDeclaredMethod("fireAuditStarted",
+            AuditEvent.class);
         fireAuditStarted.setAccessible(true);
         return fireAuditStarted;
     }
@@ -175,7 +178,7 @@ public class CheckerTest extends AbstractModuleTestSupport {
         checker.addListener(auditAdapter);
 
         // Let's try fire some events
-        getFireAuditStartedMethod().invoke(checker);
+        getFireAuditStartedMethod().invoke(checker, new AuditEvent(checker));
         assertWithMessage("Checker.fireAuditStarted() doesn't call listener")
                 .that(auditAdapter.wasCalled())
                 .isTrue();
@@ -184,7 +187,7 @@ public class CheckerTest extends AbstractModuleTestSupport {
                 .isTrue();
 
         auditAdapter.resetListener();
-        getFireAuditFinished().invoke(checker);
+        getFireAuditFinished().invoke(checker, new AuditEvent(checker));
         assertWithMessage("Checker.fireAuditFinished() doesn't call listener")
                 .that(auditAdapter.wasCalled())
                 .isTrue();
@@ -233,7 +236,7 @@ public class CheckerTest extends AbstractModuleTestSupport {
         checker.removeListener(auditAdapter);
 
         // Let's try fire some events
-        getFireAuditStartedMethod().invoke(checker);
+        getFireAuditStartedMethod().invoke(checker, new AuditEvent(checker));
         assertWithMessage("Checker.fireAuditStarted() doesn't call listener")
                 .that(aa2.wasCalled())
                 .isTrue();
@@ -242,7 +245,7 @@ public class CheckerTest extends AbstractModuleTestSupport {
                 .isFalse();
 
         aa2.resetListener();
-        getFireAuditFinished().invoke(checker);
+        getFireAuditFinished().invoke(checker, new AuditEvent(checker));
         assertWithMessage("Checker.fireAuditFinished() doesn't call listener")
                 .that(aa2.wasCalled())
                 .isTrue();
