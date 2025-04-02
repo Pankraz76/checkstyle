@@ -272,32 +272,26 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @noinspectionreason ProhibitedExceptionThrown - There is no other way to
      *      deliver filename that was under processing.
      */
-    // -@cs[CyclomaticComplexity] no easy way to split this logic of processing the file
     private void processFiles(List<File> files) throws CheckstyleException {
         for (final File file : files) {
             String fileName = null;
             try {
                 fileName = file.getAbsolutePath();
                 final long timestamp = file.lastModified();
-                if (cacheFile != null && cacheFile.isInCache(fileName, timestamp)
-                        || !acceptFileStarted(fileName)) {
-                    continue;
+                if ((cacheFile == null || !cacheFile.isInCache(fileName, timestamp))
+                    && acceptFileStarted(fileName)) {
+                    if (cacheFile != null) {
+                        cacheFile.put(fileName, timestamp);
+                    }
+                    fireFileStarted(fileName);
+                    fireErrors(fileName, processFile(file));
+                    fireFileFinished(fileName);
                 }
-                if (cacheFile != null) {
-                    cacheFile.put(fileName, timestamp);
-                }
-                fireFileStarted(fileName);
-                fireErrors(fileName, processFile(file));
-                fireFileFinished(fileName);
             }
-            // -@cs[IllegalCatch] There is no other way to deliver filename that was under
-            // processing. See https://github.com/checkstyle/checkstyle/issues/2285
             catch (Exception ex) {
                 if (fileName != null && cacheFile != null) {
                     cacheFile.remove(fileName);
                 }
-
-                // We need to catch all exceptions to put a reason failure (file name) in exception
                 throw new CheckstyleException(
                     getLocalizedMessage("Checker.processFilesException", file), ex);
             }
@@ -305,8 +299,6 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
                 if (fileName != null && cacheFile != null) {
                     cacheFile.remove(fileName);
                 }
-
-                // We need to catch all errors to put a reason failure (file name) in error
                 throw new Error("Error was thrown while processing " + file, error);
             }
         }
