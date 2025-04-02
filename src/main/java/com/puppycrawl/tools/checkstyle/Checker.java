@@ -19,19 +19,45 @@
 
 package com.puppycrawl.tools.checkstyle;
 
-import com.puppycrawl.tools.checkstyle.api.*;
-import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import static com.puppycrawl.tools.checkstyle.Checker.Companion.getLocalizedMessage;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.puppycrawl.tools.checkstyle.Checker.Companion.getLocalizedMessage;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import com.puppycrawl.tools.checkstyle.api.AuditEvent;
+import com.puppycrawl.tools.checkstyle.api.AuditListener;
+import com.puppycrawl.tools.checkstyle.api.BeforeExecutionFileFilter;
+import com.puppycrawl.tools.checkstyle.api.BeforeExecutionFileFilterSet;
+import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
+import com.puppycrawl.tools.checkstyle.api.Configuration;
+import com.puppycrawl.tools.checkstyle.api.Context;
+import com.puppycrawl.tools.checkstyle.api.ExternalResourceHolder;
+import com.puppycrawl.tools.checkstyle.api.FileSetCheck;
+import com.puppycrawl.tools.checkstyle.api.FileText;
+import com.puppycrawl.tools.checkstyle.api.Filter;
+import com.puppycrawl.tools.checkstyle.api.FilterSet;
+import com.puppycrawl.tools.checkstyle.api.MessageDispatcher;
+import com.puppycrawl.tools.checkstyle.api.RootModule;
+import com.puppycrawl.tools.checkstyle.api.SeverityLevel;
+import com.puppycrawl.tools.checkstyle.api.SeverityLevelCounter;
+import com.puppycrawl.tools.checkstyle.api.Violation;
+import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 /**
  * This class provides the functionality to check a set of files.
@@ -560,8 +586,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @param charset the name of a charset
      * @throws UnsupportedEncodingException if charset is unsupported.
      */
-    public void setCharset(String charset)
-            throws UnsupportedEncodingException {
+    public void setCharset(String charset) throws UnsupportedEncodingException {
         if (!Charset.isSupported(charset)) {
             throw new UnsupportedEncodingException(
                     getLocalizedMessage("Checker.setCharset", getClass(), charset));
@@ -606,9 +631,11 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
          * @param args       the arguments of message in respective properties file.
          * @return a string containing extracted localized message
          */
-        static String getLocalizedMessage(String messageKey, Class<? extends Checker> aClass, Object... args) {
+        static String getLocalizedMessage(String messageKey,
+                                          Class<? extends Checker> aClass,
+                                          Object... args) {
             return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, aClass, messageKey, args)
-                    .getMessage();
+                .getMessage();
         }
 
         /**
@@ -620,12 +647,13 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
          * @return a set of external configuration resource locations which are used by all file set
          * checks and filters.
          */
-        static Set<String> getExternalResourceLocations(List<FileSetCheck> fileSetChecks, FilterSet filters) {
+        static Set<String> getExternalResourceLocations(List<FileSetCheck> fileSetChecks,
+                                                        FilterSet filters) {
             return Stream.concat(fileSetChecks.stream(), filters.getFilters().stream())
-                    .filter(ExternalResourceHolder.class::isInstance)
-                    .flatMap(resource
-                            -> ((ExternalResourceHolder) resource).getExternalResourceLocations().stream())
-                    .collect(Collectors.toUnmodifiableSet());
+                .filter(ExternalResourceHolder.class::isInstance)
+                .flatMap(resource
+                    -> ((ExternalResourceHolder) resource).getExternalResourceLocations().stream())
+                .collect(Collectors.toUnmodifiableSet());
         }
     }
 }
