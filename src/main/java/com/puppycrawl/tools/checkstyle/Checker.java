@@ -31,9 +31,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.puppycrawl.tools.checkstyle.Checker.Companion.fireAuditFinished;
-import static com.puppycrawl.tools.checkstyle.Checker.Companion.fireAuditStarted;
-import static com.puppycrawl.tools.checkstyle.Checker.Companion.getExternalResourceLocations;
 import static com.puppycrawl.tools.checkstyle.Checker.Companion.getLocalizedMessage;
 
 /**
@@ -190,10 +187,10 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     @Override
     public int process(List<File> files) throws CheckstyleException {
         if (cacheFile != null) {
-            cacheFile.putExternalResources(getExternalResourceLocations(fileSetChecks, filters));
+            cacheFile.putExternalResources(Companion.getExternalResourceLocations(fileSetChecks, filters));
         }
         // prepare
-        fireAuditStarted(listeners, new AuditEvent(this));
+        fireAuditStarted();
         for (final FileSetCheck fsc : fileSetChecks) {
             fsc.beginProcessing(charset);
         }
@@ -206,8 +203,28 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         // complete - it may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
         fileSetChecks.forEach(FileSetCheck::destroy);
-        fireAuditFinished(listeners, new AuditEvent(this));
+        fireAuditFinished();
         return counter.getCount();
+    }
+
+    /**
+     * Notify all listeners about the audit start.
+     */
+    private void fireAuditStarted() {
+        final AuditEvent event = new AuditEvent(this);
+        for (final AuditListener listener : listeners) {
+            listener.auditStarted(event);
+        }
+    }
+
+    /**
+     * Notify all listeners about the audit end.
+     */
+    private void fireAuditFinished() {
+        final AuditEvent event = new AuditEvent(this);
+        for (final AuditListener listener : listeners) {
+            listener.auditFinished(event);
+        }
     }
 
     /**
@@ -595,40 +612,16 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
 
         /**
-         * Notify all listeners about the audit start.
-         *
-         * @param listeners1
-         * @param event
-         */
-        static void fireAuditStarted(List<AuditListener> listeners1, AuditEvent event) {
-            for (final AuditListener listener : listeners1) {
-                listener.auditStarted(event);
-            }
-        }
-
-        /**
-         * Notify all listeners about the audit end.
-         *
-         * @param listeners1
-         * @param event
-         */
-        static void fireAuditFinished(List<AuditListener> listeners1, AuditEvent event) {
-            for (final AuditListener listener : listeners1) {
-                listener.auditFinished(event);
-            }
-        }
-
-        /**
          * Returns a set of external configuration resource locations which are used by all file set
          * checks and filters.
          *
-         * @param fileSetChecks1
-         * @param filters1
+         * @param fileSetChecks
+         * @param filters
          * @return a set of external configuration resource locations which are used by all file set
          * checks and filters.
          */
-        static Set<String> getExternalResourceLocations(List<FileSetCheck> fileSetChecks1, FilterSet filters1) {
-            return Stream.concat(fileSetChecks1.stream(), filters1.getFilters().stream())
+        static Set<String> getExternalResourceLocations(List<FileSetCheck> fileSetChecks, FilterSet filters) {
+            return Stream.concat(fileSetChecks.stream(), filters.getFilters().stream())
                     .filter(ExternalResourceHolder.class::isInstance)
                     .flatMap(resource
                             -> ((ExternalResourceHolder) resource).getExternalResourceLocations().stream())
