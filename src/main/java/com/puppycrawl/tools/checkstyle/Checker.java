@@ -19,6 +19,7 @@
 
 package com.puppycrawl.tools.checkstyle;
 
+import static com.puppycrawl.tools.checkstyle.Checker.Companion.getExternalResourceLocations;
 import static com.puppycrawl.tools.checkstyle.Checker.Companion.getLocalizedMessage;
 
 import java.io.File;
@@ -213,10 +214,10 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     @Override
     public int process(List<File> files) throws CheckstyleException {
         if (cacheFile != null) {
-            cacheFile.putExternalResources(Companion.getExternalResourceLocations(fileSetChecks, filters));
+            cacheFile.putExternalResources(getExternalResourceLocations(fileSetChecks, filters));
         }
         // prepare
-        fireAuditStarted();
+        fireAuditStarted(new AuditEvent(this));
         for (final FileSetCheck fsc : fileSetChecks) {
             fsc.beginProcessing(charset);
         }
@@ -229,15 +230,15 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         // complete - it may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
         fileSetChecks.forEach(FileSetCheck::destroy);
-        fireAuditFinished();
+        fireAuditFinished(new AuditEvent(this));
         return counter.getCount();
     }
 
     /**
      * Notify all listeners about the audit start.
+     * @param event
      */
-    private void fireAuditStarted() {
-        final AuditEvent event = new AuditEvent(this);
+    private void fireAuditStarted(AuditEvent event) {
         for (final AuditListener listener : listeners) {
             listener.auditStarted(event);
         }
@@ -245,9 +246,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
     /**
      * Notify all listeners about the audit end.
+     * @param event
      */
-    private void fireAuditFinished() {
-        final AuditEvent event = new AuditEvent(this);
+    private void fireAuditFinished(AuditEvent event) {
         for (final AuditListener listener : listeners) {
             listener.auditFinished(event);
         }
@@ -457,7 +458,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
         catch (final CheckstyleException ex) {
             throw new CheckstyleException(
-                    getLocalizedMessage("Checker.setupChildModule", getClass(), name, ex.getMessage()), ex);
+                getLocalizedMessage("Checker.setupChildModule", getClass(), name,
+                    ex.getMessage()), ex);
         }
 
         // throw new CheckstyleException
@@ -627,23 +629,28 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
          * Extracts localized messages from properties files.
          *
          * @param messageKey the key pointing to localized message in respective properties file.
-         * @param aClass
-         * @param args       the arguments of message in respective properties file.
+         * @param sourceClass the Checker class that is the source of the message, used to determine
+         *                    the appropriate resource bundle.
+         * @param args the arguments of message in respective properties file.
          * @return a string containing extracted localized message
          */
         static String getLocalizedMessage(String messageKey,
-                                          Class<? extends Checker> aClass,
+                                          Class<? extends Checker> sourceClass,
                                           Object... args) {
-            return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, aClass, messageKey, args)
-                .getMessage();
+            return new LocalizedMessage(
+                Definitions.CHECKSTYLE_BUNDLE,
+                sourceClass,
+                messageKey,
+                args
+            ).getMessage();
         }
 
         /**
          * Returns a set of external configuration resource locations which are used by all file set
          * checks and filters.
          *
-         * @param fileSetChecks
-         * @param filters
+         * @param fileSetChecks the list of file set checks to process for external resources
+         * @param filters the filter set to process for external resources
          * @return a set of external configuration resource locations which are used by all file set
          * checks and filters.
          */
