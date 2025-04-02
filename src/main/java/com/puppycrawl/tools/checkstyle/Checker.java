@@ -31,6 +31,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.puppycrawl.tools.checkstyle.Checker.Companion.fireAuditFinished;
+import static com.puppycrawl.tools.checkstyle.Checker.Companion.fireAuditStarted;
+import static com.puppycrawl.tools.checkstyle.Checker.Companion.getExternalResourceLocations;
 import static com.puppycrawl.tools.checkstyle.Checker.Companion.getLocalizedMessage;
 
 /**
@@ -187,10 +190,10 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     @Override
     public int process(List<File> files) throws CheckstyleException {
         if (cacheFile != null) {
-            cacheFile.putExternalResources(getExternalResourceLocations());
+            cacheFile.putExternalResources(getExternalResourceLocations(fileSetChecks, filters));
         }
         // prepare
-        fireAuditStarted();
+        fireAuditStarted(listeners, new AuditEvent(this));
         for (final FileSetCheck fsc : fileSetChecks) {
             fsc.beginProcessing(charset);
         }
@@ -203,41 +206,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         // complete - it may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
         fileSetChecks.forEach(FileSetCheck::destroy);
-        fireAuditFinished();
+        fireAuditFinished(listeners, new AuditEvent(this));
         return counter.getCount();
-    }
-
-    /**
-     * Returns a set of external configuration resource locations which are used by all file set
-     * checks and filters.
-     *
-     * @return a set of external configuration resource locations which are used by all file set
-     *         checks and filters.
-     */
-    private Set<String> getExternalResourceLocations() {
-        return Stream.concat(fileSetChecks.stream(), filters.getFilters().stream())
-            .filter(ExternalResourceHolder.class::isInstance)
-            .flatMap(resource
-                -> ((ExternalResourceHolder) resource).getExternalResourceLocations().stream())
-            .collect(Collectors.toUnmodifiableSet());
-    }
-
-    /** Notify all listeners about the audit start. */
-    private void fireAuditStarted() {
-        final AuditEvent event = new AuditEvent(this);
-        for (final AuditListener listener : listeners) {
-            listener.auditStarted(event);
-        }
-    }
-
-    /**
-     * Notify all listeners about the audit end.
-     */
-    private void fireAuditFinished() {
-        final AuditEvent event = new AuditEvent(this);
-        for (final AuditListener listener : listeners) {
-            listener.auditFinished(event);
-        }
     }
 
     /**
@@ -624,6 +594,47 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         static String getLocalizedMessage(String messageKey, Class<? extends Checker> aClass, Object... args) {
             return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, aClass, messageKey, args)
                     .getMessage();
+        }
+
+        /**
+         * Notify all listeners about the audit start.
+         *
+         * @param listeners1
+         * @param event
+         */
+        static void fireAuditStarted(List<AuditListener> listeners1, AuditEvent event) {
+            for (final AuditListener listener : listeners1) {
+                listener.auditStarted(event);
+            }
+        }
+
+        /**
+         * Notify all listeners about the audit end.
+         *
+         * @param listeners1
+         * @param event
+         */
+        static void fireAuditFinished(List<AuditListener> listeners1, AuditEvent event) {
+            for (final AuditListener listener : listeners1) {
+                listener.auditFinished(event);
+            }
+        }
+
+        /**
+         * Returns a set of external configuration resource locations which are used by all file set
+         * checks and filters.
+         *
+         * @param fileSetChecks1
+         * @param filters1
+         * @return a set of external configuration resource locations which are used by all file set
+         * checks and filters.
+         */
+        static Set<String> getExternalResourceLocations(List<FileSetCheck> fileSetChecks1, FilterSet filters1) {
+            return Stream.concat(fileSetChecks1.stream(), filters1.getFilters().stream())
+                    .filter(ExternalResourceHolder.class::isInstance)
+                    .flatMap(resource
+                            -> ((ExternalResourceHolder) resource).getExternalResourceLocations().stream())
+                    .collect(Collectors.toUnmodifiableSet());
         }
     }
 }
