@@ -241,21 +241,21 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             // -@cs[IllegalCatch] There is no other way to deliver filename that was under
             // processing. See https://github.com/checkstyle/checkstyle/issues/2285
             catch (Exception ex) {
-                if (fileName != null && cacheFile != null) {
-                    cacheFile.remove(fileName);
-                }
-
+                extracted(fileName != null, fileName);
                 // We need to catch all exceptions to put a reason failure (file name) in exception
                 throw new CheckstyleException(
                         getLocalizedMessage("Checker.processFilesException", getClass(), file), ex);
             } catch (Error error) {
-                if (fileName != null && cacheFile != null) {
-                    cacheFile.remove(fileName);
-                }
-
+                extracted(fileName != null, fileName);
                 // We need to catch all errors to put a reason failure (file name) in error
                 throw new Error("Error was thrown while processing " + file, error);
             }
+        }
+    }
+
+    private void extracted(boolean fileName, String fileName1) {
+        if (fileName && cacheFile != null) {
+            cacheFile.remove(fileName1);
         }
     }
 
@@ -345,9 +345,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
                 }
             }
         }
-        if (hasNonFilteredViolations && cacheFile != null) {
-            cacheFile.remove(fileName);
-        }
+        extracted(hasNonFilteredViolations, fileName);
     }
 
     /**
