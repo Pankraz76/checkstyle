@@ -236,7 +236,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * checks and filters.
      *
      * @return a set of external configuration resource locations which are used by all file set
-     *         checks and filters.
+     * checks and filters.
      */
     private Set<String> getExternalResourceLocations() {
         return Stream.concat(fileSetChecks.stream(), filters.getFilters().stream())
@@ -254,7 +254,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
     }
 
-    /** Notify all listeners about the audit end. */
+    /**
+     * Notify all listeners about the audit end.
+     */
     private void fireAuditFinished() {
         final AuditEvent event = new AuditEvent(this);
         for (final AuditListener listener : listeners) {
@@ -288,14 +290,15 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
                     fireFileFinished(fileName);
                 }
             }
+            // -@cs[IllegalCatch] There is no other way to deliver filename that was under
+            // processing. See https://github.com/checkstyle/checkstyle/issues/2285
             catch (Error | Exception error) {
                 if (fileName != null && cacheFile != null) {
                     cacheFile.remove(fileName);
                 }
                 if (error instanceof Exception) {
                     throw new CheckstyleException(
-                        getLocalizedMessage("Checker.processFilesException", file)
-                        , error);
+                        getLocalizedMessage("Checker.processFilesException", file), error);
                 }
                 throw new Error("Error was thrown while processing " + file, error);
             }
@@ -323,8 +326,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         catch (final IOException ioe) {
             log.debug("IOException occurred.", ioe);
             fileMessages.add(new Violation(1,
-                    Definitions.CHECKSTYLE_BUNDLE, EXCEPTION_MSG,
-                    new String[] {ioe.getMessage()}, null, getClass(), null));
+                Definitions.CHECKSTYLE_BUNDLE, EXCEPTION_MSG,
+                new String[] {ioe.getMessage()}, null, getClass(), null));
         }
         // -@cs[IllegalCatch] There is no other way to obey haltOnException field
         catch (Exception ex) {
@@ -337,9 +340,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             final StringWriter sw = new StringWriter();
             ex.printStackTrace(new PrintWriter(sw, true));
             fileMessages.add(new Violation(1,
-                    Definitions.CHECKSTYLE_BUNDLE, EXCEPTION_MSG,
-                    new String[] {sw.getBuffer().toString()},
-                    null, getClass(), null));
+                Definitions.CHECKSTYLE_BUNDLE, EXCEPTION_MSG,
+                new String[] {sw.getBuffer().toString()},
+                null, getClass(), null));
         }
         return fileMessages;
     }
@@ -479,7 +482,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
         else {
             throw new CheckstyleException(
-                    getLocalizedMessage("Checker.setupChildNotAllowed", name));
+                getLocalizedMessage("Checker.setupChildNotAllowed", name));
         }
     }
 
@@ -589,10 +592,10 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @throws UnsupportedEncodingException if charset is unsupported.
      */
     public void setCharset(String charset)
-            throws UnsupportedEncodingException {
+        throws UnsupportedEncodingException {
         if (!Charset.isSupported(charset)) {
             throw new UnsupportedEncodingException(
-                    getLocalizedMessage("Checker.setCharset", charset));
+                getLocalizedMessage("Checker.setCharset", charset));
         }
         this.charset = charset;
     }
@@ -632,7 +635,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @return a string containing extracted localized message
      */
     private String getLocalizedMessage(String messageKey, Object... args) {
-        return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, getClass(), messageKey, args)
+        return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, getClass(), messageKey
+            , args)
             .getMessage();
     }
 
