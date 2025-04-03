@@ -432,6 +432,28 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         setupChild(childConf, childConf.getName());
     }
 
+    /**
+     * Configures and initializes a child module based on the given configuration.
+     *
+     * <p>This method performs the following operations:
+     * <ol>
+     *   <li>Creates a module instance using the module factory</li>
+     *   <li>Configures the module if it's an {@link AbstractAutomaticBean}</li>
+     *   <li>Initializes and registers the module based on its type:
+     *     <ul>
+     *       <li>{@link FileSetCheck} - initializes and adds to file set checks</li>
+     *       <li>{@link BeforeExecutionFileFilter} - adds to before execution filters</li>
+     *       <li>{@link Filter} - adds to general filters</li>
+     *       <li>{@link AuditListener} - adds to audit listeners</li>
+     *     </ul>
+     *   </li>
+     * </ol>
+     *
+     * @param childConf the configuration object for the child module
+     * @param name      the name of the module to create and configure
+     * @throws CheckstyleException if an error occurs during module creation, configuration,
+     *                             or if the module type is not supported
+     */
     private void setupChild(Configuration childConf, String name) throws CheckstyleException {
         final Object child;
         // rethrow CheckstyleException
