@@ -226,9 +226,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * Notify all listeners about the audit start.
      */
     private void fireAuditStarted() {
-        final AuditEvent event = new AuditEvent(this);
         for (final AuditListener listener : listeners) {
-            listener.auditStarted(event);
+            listener.auditStarted(new AuditEvent(this));
         }
     }
 
@@ -236,9 +235,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * Notify all listeners about the audit end.
      */
     private void fireAuditFinished() {
-        final AuditEvent event = new AuditEvent(this);
         for (final AuditListener listener : listeners) {
-            listener.auditFinished(event);
+            listener.auditFinished(new AuditEvent(this));
         }
     }
 
@@ -263,8 +261,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         try {
             fileName = file.getAbsolutePath();
             final long timestamp = file.lastModified();
-            if (cacheFile == null
-                    || cacheFile.isInCache(fileName, timestamp)
+            if (cacheFile != null
+                && cacheFile.isInCache(fileName, timestamp)
                     || !acceptFileStarted(fileName)) {
                 return;
             }
