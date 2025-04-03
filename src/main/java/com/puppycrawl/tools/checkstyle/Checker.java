@@ -19,43 +19,19 @@
 
 package com.puppycrawl.tools.checkstyle;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import com.puppycrawl.tools.checkstyle.api.*;
+import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.puppycrawl.tools.checkstyle.api.AuditEvent;
-import com.puppycrawl.tools.checkstyle.api.AuditListener;
-import com.puppycrawl.tools.checkstyle.api.BeforeExecutionFileFilter;
-import com.puppycrawl.tools.checkstyle.api.BeforeExecutionFileFilterSet;
-import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
-import com.puppycrawl.tools.checkstyle.api.Configuration;
-import com.puppycrawl.tools.checkstyle.api.Context;
-import com.puppycrawl.tools.checkstyle.api.ExternalResourceHolder;
-import com.puppycrawl.tools.checkstyle.api.FileSetCheck;
-import com.puppycrawl.tools.checkstyle.api.FileText;
-import com.puppycrawl.tools.checkstyle.api.Filter;
-import com.puppycrawl.tools.checkstyle.api.FilterSet;
-import com.puppycrawl.tools.checkstyle.api.MessageDispatcher;
-import com.puppycrawl.tools.checkstyle.api.RootModule;
-import com.puppycrawl.tools.checkstyle.api.SeverityLevel;
-import com.puppycrawl.tools.checkstyle.api.SeverityLevelCounter;
-import com.puppycrawl.tools.checkstyle.api.Violation;
-import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static com.puppycrawl.tools.checkstyle.CheckerUtil.getLocalizedMessage;
 
 /**
  * This class provides the functionality to check a set of files.
@@ -214,7 +190,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             cacheFile.putExternalResources(getExternalResourceLocations());
         }
         // prepare
-        fireAuditStarted(new AuditEvent(this));
+        fireAuditStarted();
         for (final FileSetCheck fsc : fileSetChecks) {
             fsc.beginProcessing(charset);
         }
@@ -227,7 +203,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         // complete - it may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
         fileSetChecks.forEach(FileSetCheck::destroy);
-        fireAuditFinished(new AuditEvent(this));
+        fireAuditFinished();
         return counter.getCount();
     }
 
@@ -248,10 +224,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
     /**
      * Notify all listeners about the audit start.
-     *
-     * @param event to be used.
      */
-    private void fireAuditStarted(AuditEvent event) {
+    private void fireAuditStarted() {
+        final AuditEvent event = new AuditEvent(this);
         for (final AuditListener listener : listeners) {
             listener.auditStarted(event);
         }
@@ -259,10 +234,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
     /**
      * Notify all listeners about the audit end.
-     *
-     * @param event to be used.
      */
-    private void fireAuditFinished(AuditEvent event) {
+    private void fireAuditFinished() {
+        final AuditEvent event = new AuditEvent(this);
         for (final AuditListener listener : listeners) {
             listener.auditFinished(event);
         }
@@ -305,8 +279,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
                 // We need to catch all exceptions to put a reason failure (file name) in exception
                 throw new CheckstyleException(
-                    CheckerUtil.getLocalizedMessage("Checker.processFilesException", getClass(),
-                        file), ex);
+                        getLocalizedMessage("Checker.processFilesException", getClass(), file), ex);
             }
             catch (Error error) {
                 if (fileName != null && cacheFile != null) {
@@ -332,9 +305,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     private SortedSet<Violation> processFile(File file) throws CheckstyleException {
         final SortedSet<Violation> fileMessages = new TreeSet<>();
         try {
+            final FileText theText = new FileText(file.getAbsoluteFile(), charset);
             for (final FileSetCheck fsc : fileSetChecks) {
-                fileMessages.addAll(
-                    fsc.process(file, new FileText(file.getAbsoluteFile(), charset)));
+                fileMessages.addAll(fsc.process(file, theText));
             }
         }
         catch (final IOException ioe) {
@@ -396,28 +369,18 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     public void fireErrors(String fileName, SortedSet<Violation> errors) {
         boolean hasNonFilteredViolations = false;
         for (final Violation element : errors) {
-            hasNonFilteredViolations = addErrorToListeners(
-                new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName), element),
-                hasNonFilteredViolations);
+            final AuditEvent event =
+                    new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName), element);
+            if (filters.accept(event)) {
+                hasNonFilteredViolations = true;
+                for (final AuditListener listener : listeners) {
+                    listener.addError(event);
+                }
+            }
         }
         if (hasNonFilteredViolations && cacheFile != null) {
             cacheFile.remove(fileName);
         }
-    }
-
-    /**
-     * @param event
-     * @param hasNonFilteredViolations
-     * @return
-     */
-    private boolean addErrorToListeners(AuditEvent event, boolean hasNonFilteredViolations) {
-        if (filters.accept(event)) {
-            hasNonFilteredViolations = true;
-            for (final AuditListener listener : listeners) {
-                listener.addError(event);
-            }
-        }
-        return hasNonFilteredViolations;
     }
 
     /**
@@ -430,10 +393,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     public void fireFileFinished(String fileName) {
         for (final AuditListener listener : listeners) {
             listener.fileFinished(
-                new AuditEvent(
-                    this,
-                    CommonUtil.relativizePath(basedir, fileName))
-            );
+                    new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName)));
         }
     }
 
@@ -443,8 +403,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
         if (moduleFactory == null) {
             if (moduleClassLoader == null) {
-                throw new CheckstyleException(
-                    CheckerUtil.getLocalizedMessage("Checker.finishLocalSetup", getClass()));
+                throw new CheckstyleException(getLocalizedMessage("Checker.finishLocalSetup", getClass()));
             }
             moduleFactory = new PackageObjectFactory(
                 PackageNamesLoader.getPackageNames(moduleClassLoader),
@@ -476,11 +435,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      */
     @Override
     protected void setupChild(Configuration childConf) throws CheckstyleException {
-        setupChild(childConf, childConf.getName());
-    }
-
-    private void setupChild(Configuration childConf, String name) throws CheckstyleException {
+        final String name = childConf.getName();
         final Object child;
+
         // rethrow CheckstyleException
         try {
             child = moduleFactory.createModule(name);
@@ -492,12 +449,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
         catch (final CheckstyleException ex) {
             throw new CheckstyleException(
-                CheckerUtil.getLocalizedMessage(
-                    "Checker.setupChildModule",
-                    getClass(),
-                    name,
-                    ex.getMessage()),
-                ex);
+                    getLocalizedMessage("Checker.setupChildModule", getClass(), name, ex.getMessage()), ex);
         }
 
         // throw new CheckstyleException
@@ -517,7 +469,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
         else {
             throw new CheckstyleException(
-                CheckerUtil.getLocalizedMessage("Checker.setupChildNotAllowed", getClass(), name));
+                    getLocalizedMessage("Checker.setupChildNotAllowed", getClass(), name));
         }
     }
 
@@ -630,7 +582,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             throws UnsupportedEncodingException {
         if (!Charset.isSupported(charset)) {
             throw new UnsupportedEncodingException(
-                CheckerUtil.getLocalizedMessage("Checker.setCharset", getClass(), charset));
+                    getLocalizedMessage("Checker.setCharset", getClass(), charset));
         }
         this.charset = charset;
     }
