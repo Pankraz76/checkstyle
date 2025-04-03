@@ -199,7 +199,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             files
                 .stream()
                 .filter(file -> CommonUtil.matchesFileExtension(file, fileExtensions))
-                    .collect(Collectors.toUnmodifiableList()), this, cacheFile);
+                    .collect(Collectors.toUnmodifiableList()));
         // complete - it may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
         fileSetChecks.forEach(FileSetCheck::destroy);
@@ -246,50 +246,48 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * Processes a list of files with all FileSetChecks.
      *
      * @param files a list of files to process.
-     * @param checker
-     * @param cacheFile1
      * @throws CheckstyleException if error condition within Checkstyle occurs.
      * @throws Error wraps any java.lang.Error happened during execution
      * @noinspection ProhibitedExceptionThrown
      * @noinspectionreason ProhibitedExceptionThrown - There is no other way to
      *      deliver filename that was under processing.
      */
-    // -@cs[CyclomaticComplexity] no easy way to split this logic of processing the file
-    private void processFiles(List<File> files, Checker checker, PropertyCacheFile cacheFile1) throws CheckstyleException {
+    private void processFiles(List<File> files) throws CheckstyleException {
         for (final File file : files) {
-            processFile(checker, cacheFile1, file);
+            processFile(file);
         }
     }
 
-    private void processFile(Checker checker, PropertyCacheFile cacheFile1, File file) throws CheckstyleException {
+    private void processFile(File file) throws CheckstyleException {
         String fileName = null;
         try {
             fileName = file.getAbsolutePath();
             final long timestamp = file.lastModified();
-            if (cacheFile1 != null && cacheFile1.isInCache(fileName, timestamp)
+            if (cacheFile == null
+                    || cacheFile.isInCache(fileName, timestamp)
                     || !acceptFileStarted(fileName)) {
                 return;
             }
-            if (cacheFile1 != null) {
-                cacheFile1.put(fileName, timestamp);
+            if (cacheFile != null) {
+                cacheFile.put(fileName, timestamp);
             }
-            checker.fireFileStarted(fileName);
-            checker.fireErrors(fileName, processFile(file));
-            checker.fireFileFinished(fileName);
+            fireFileStarted(fileName);
+            fireErrors(fileName, addViolations(file));
+            fireFileFinished(fileName);
         }
         // -@cs[IllegalCatch] There is no other way to deliver filename that was under
         // processing. See https://github.com/checkstyle/checkstyle/issues/2285
         catch (Exception ex) {
-            if (fileName != null && cacheFile1 != null) {
-                cacheFile1.remove(fileName);
+            if (fileName != null && cacheFile != null) {
+                cacheFile.remove(fileName);
             }
 
             // We need to catch all exceptions to put a reason failure (file name) in exception
             throw new CheckstyleException(
                     getLocalizedMessage("Checker.processFilesException", getClass(), file), ex);
         } catch (Error error) {
-            if (fileName != null && cacheFile1 != null) {
-                cacheFile1.remove(fileName);
+            if (fileName != null && cacheFile != null) {
+                cacheFile.remove(fileName);
             }
 
             // We need to catch all errors to put a reason failure (file name) in error
@@ -307,7 +305,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @noinspectionreason ProhibitedExceptionThrown - there is no other way to obey
      *      haltOnException field
      */
-    private SortedSet<Violation> processFile(File file) throws CheckstyleException {
+    private SortedSet<Violation> addViolations(File file) throws CheckstyleException {
         final SortedSet<Violation> fileMessages = new TreeSet<>();
         try {
             final FileText theText = new FileText(file.getAbsoluteFile(), charset);
