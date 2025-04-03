@@ -70,24 +70,23 @@ class CheckerUtil {
     }
 
     /**
-     * asdads
+     * Adds an error to all listeners if the event passes through the filters.
      *
-     * @param event
-     * @param hasNonFilteredViolations
-     * @param filters1
-     * @param listeners1
-     * @return
+     * @param event the audit event to process
+     * @param hasNonFilteredViolations flag indicating if non-filtered violations exist
+     * @param filters the set of filters to check against
+     * @param listeners the list of listeners to notify
+     * @return true if the event was accepted by the filters and added to listeners,
+     *         false otherwise
      */
     static boolean addErrorToListeners(AuditEvent event, boolean hasNonFilteredViolations,
-                                       FilterSet filters1, List<AuditListener> listeners1) {
-        if (filters1.accept(event)) {
+                                       FilterSet filters, List<AuditListener> listeners) {
+        if (filters.accept(event)) {
             hasNonFilteredViolations = true;
-            for (final AuditListener listener : listeners1) {
+            for (final AuditListener listener : listeners) {
                 listener.addError(event);
             }
         }
         return hasNonFilteredViolations;
     }
-
-
 }
