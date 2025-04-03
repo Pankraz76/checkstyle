@@ -215,8 +215,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         if (cacheFile != null) {
             cacheFile.putExternalResources(getExternalResourceLocations());
         }
-        // prepare
-        CheckerUtil.fireAuditStarted(listeners, this);
+
+        // Prepare to start
+        fireAuditStarted();
         for (final FileSetCheck fsc : fileSetChecks) {
             fsc.beginProcessing(charset);
         }
@@ -229,7 +230,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         // complete - it may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
         fileSetChecks.forEach(FileSetCheck::destroy);
-        CheckerUtil.fireAuditFinished(listeners, this);
+        fireAuditFinished();
         return counter.getCount();
     }
 
@@ -246,6 +247,26 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             .flatMap(resource
                 -> ((ExternalResourceHolder) resource).getExternalResourceLocations().stream())
             .collect(Collectors.toUnmodifiableSet());
+    }
+
+    /**
+     * Notify all listeners about the audit start.
+     */
+    private void fireAuditStarted() {
+        final AuditEvent event = new AuditEvent(this);
+        for (final AuditListener listener : listeners) {
+            listener.auditStarted(event);
+        }
+    }
+
+    /**
+     * Notify all listeners about the audit end.
+     */
+    private void fireAuditFinished() {
+        final AuditEvent event = new AuditEvent(this);
+        for (final AuditListener listener : listeners) {
+            listener.auditFinished(event);
+        }
     }
 
     /**
@@ -365,9 +386,14 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     public void fireErrors(String fileName, SortedSet<Violation> errors) {
         boolean hasNonFilteredViolations = false;
         for (final Violation element : errors) {
-            hasNonFilteredViolations = CheckerUtil.addErrorToListeners(
-                new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName), element),
-                hasNonFilteredViolations, filters, listeners);
+            final AuditEvent event =
+                new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName), element);
+            if (filters.accept(event)) {
+                hasNonFilteredViolations = true;
+                for (final AuditListener listener : listeners) {
+                    listener.addError(event);
+                }
+            }
         }
         if (hasNonFilteredViolations && cacheFile != null) {
             cacheFile.remove(fileName);

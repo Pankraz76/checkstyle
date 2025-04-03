@@ -26,17 +26,13 @@ import com.puppycrawl.tools.checkstyle.api.AuditListener;
 import com.puppycrawl.tools.checkstyle.api.FilterSet;
 
 /**
- * Utility class for {@link Checker} that handles common operations and helper methods.
- * <p>
- * This class was created to reduce code complexity in {@link Checker}, which was approaching
- * its method count limit (34 out of 35 allowed methods). It serves as a companion to Checker,
- * containing implementation details to keep the main Checker class focused on its core
- * responsibilities.
- * </p>
- * <p>
- * All methods in this class are static and the class cannot be instantiated.
- * </p>
+ * Companion class to {@link Checker} containing utility methods for common operations.
+ * Provides static helper methods extracted from {@link Checker} to maintain clean code
+ * organization.
  *
+ * @apiNote This class was created when {@link Checker} approached its method count limit
+ *          (34 out of 35 allowed methods) to alleviate code pressure and maintain
+ *          single responsibility principle. The class cannot be instantiated.
  * @see Checker
  */
 final class CheckerUtil {
@@ -88,10 +84,8 @@ final class CheckerUtil {
 
     /**
      * Processes an audit event through filters and notifies listeners if accepted.
-     * <p>
      * The method checks if the event passes through the given filters. If it does,
      * the event is forwarded to all listeners and the violation flag is set to true.
-     * </p>
      *
      * @param event the audit event to process
      * @param hasNonFilteredViolations current state of the violation flag
@@ -101,12 +95,13 @@ final class CheckerUtil {
      */
     static boolean addErrorToListeners(AuditEvent event, boolean hasNonFilteredViolations,
                                        FilterSet filters, List<AuditListener> listeners) {
+        boolean _hasNonFilteredViolations = false;
         if (filters.accept(event)) {
-            hasNonFilteredViolations = true;
+            _hasNonFilteredViolations = true;
             for (final AuditListener listener : listeners) {
                 listener.addError(event);
             }
         }
-        return hasNonFilteredViolations;
+        return hasNonFilteredViolations && _hasNonFilteredViolations;
     }
 }
