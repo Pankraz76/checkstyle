@@ -373,6 +373,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             cacheFile.remove(fileName);
         }
     }
+
     /**
      * Notify all listeners about the end of a file audit.
      *
