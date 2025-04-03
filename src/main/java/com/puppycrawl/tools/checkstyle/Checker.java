@@ -214,7 +214,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             cacheFile.putExternalResources(getExternalResourceLocations());
         }
         // prepare
-        fireAuditStarted();
+        fireAuditStarted(new AuditEvent(this));
         for (final FileSetCheck fsc : fileSetChecks) {
             fsc.beginProcessing(charset);
         }
@@ -227,7 +227,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         // complete - it may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
         fileSetChecks.forEach(FileSetCheck::destroy);
-        fireAuditFinished();
+        fireAuditFinished(new AuditEvent(this));
         return counter.getCount();
     }
 
@@ -246,17 +246,23 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             .collect(Collectors.toUnmodifiableSet());
     }
 
-    /** Notify all listeners about the audit start. */
-    private void fireAuditStarted() {
-        final AuditEvent event = new AuditEvent(this);
+    /**
+     * Notify all listeners about the audit start.
+     *
+     * @param event to be used.
+     */
+    private void fireAuditStarted(AuditEvent event) {
         for (final AuditListener listener : listeners) {
             listener.auditStarted(event);
         }
     }
 
-    /** Notify all listeners about the audit end. */
-    private void fireAuditFinished() {
-        final AuditEvent event = new AuditEvent(this);
+    /**
+     * Notify all listeners about the audit end.
+     *
+     * @param event to be used.
+     */
+    private void fireAuditFinished(AuditEvent event) {
         for (final AuditListener listener : listeners) {
             listener.auditFinished(event);
         }
@@ -299,7 +305,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
                 // We need to catch all exceptions to put a reason failure (file name) in exception
                 throw new CheckstyleException(
-                    getLocalizedMessage("Checker.processFilesException", file), ex);
+                    CheckerUtil.getLocalizedMessage("Checker.processFilesException", getClass(),
+                        file), ex);
             }
             catch (Error error) {
                 if (fileName != null && cacheFile != null) {
@@ -325,9 +332,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     private SortedSet<Violation> processFile(File file) throws CheckstyleException {
         final SortedSet<Violation> fileMessages = new TreeSet<>();
         try {
-            final FileText theText = new FileText(file.getAbsoluteFile(), charset);
             for (final FileSetCheck fsc : fileSetChecks) {
-                fileMessages.addAll(fsc.process(file, theText));
+                fileMessages.addAll(
+                    fsc.process(file, new FileText(file.getAbsoluteFile(), charset)));
             }
         }
         catch (final IOException ioe) {
@@ -389,18 +396,28 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     public void fireErrors(String fileName, SortedSet<Violation> errors) {
         boolean hasNonFilteredViolations = false;
         for (final Violation element : errors) {
-            final AuditEvent event =
-                new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName), element);
-            if (filters.accept(event)) {
-                hasNonFilteredViolations = true;
-                for (final AuditListener listener : listeners) {
-                    listener.addError(event);
-                }
-            }
+            hasNonFilteredViolations = addErrorToListeners(
+                new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName), element),
+                hasNonFilteredViolations);
         }
         if (hasNonFilteredViolations && cacheFile != null) {
             cacheFile.remove(fileName);
         }
+    }
+
+    /**
+     * @param event
+     * @param hasNonFilteredViolations
+     * @return
+     */
+    private boolean addErrorToListeners(AuditEvent event, boolean hasNonFilteredViolations) {
+        if (filters.accept(event)) {
+            hasNonFilteredViolations = true;
+            for (final AuditListener listener : listeners) {
+                listener.addError(event);
+            }
+        }
+        return hasNonFilteredViolations;
     }
 
     /**
@@ -413,7 +430,10 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     public void fireFileFinished(String fileName) {
         for (final AuditListener listener : listeners) {
             listener.fileFinished(
-                new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName)));
+                new AuditEvent(
+                    this,
+                    CommonUtil.relativizePath(basedir, fileName))
+            );
         }
     }
 
@@ -423,7 +443,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
         if (moduleFactory == null) {
             if (moduleClassLoader == null) {
-                throw new CheckstyleException(getLocalizedMessage("Checker.finishLocalSetup"));
+                throw new CheckstyleException(
+                    CheckerUtil.getLocalizedMessage("Checker.finishLocalSetup", getClass()));
             }
             moduleFactory = new PackageObjectFactory(
                 PackageNamesLoader.getPackageNames(moduleClassLoader),
@@ -455,9 +476,11 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      */
     @Override
     protected void setupChild(Configuration childConf) throws CheckstyleException {
-        final String name = childConf.getName();
-        final Object child;
+        setupChild(childConf, childConf.getName());
+    }
 
+    private void setupChild(Configuration childConf, String name) throws CheckstyleException {
+        final Object child;
         // rethrow CheckstyleException
         try {
             child = moduleFactory.createModule(name);
@@ -469,7 +492,12 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
         catch (final CheckstyleException ex) {
             throw new CheckstyleException(
-                getLocalizedMessage("Checker.setupChildModule", name, ex.getMessage()), ex);
+                CheckerUtil.getLocalizedMessage(
+                    "Checker.setupChildModule",
+                    getClass(),
+                    name,
+                    ex.getMessage()),
+                ex);
         }
 
         // throw new CheckstyleException
@@ -489,7 +517,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
         else {
             throw new CheckstyleException(
-                    getLocalizedMessage("Checker.setupChildNotAllowed", name));
+                CheckerUtil.getLocalizedMessage("Checker.setupChildNotAllowed", getClass(), name));
         }
     }
 
@@ -602,7 +630,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             throws UnsupportedEncodingException {
         if (!Charset.isSupported(charset)) {
             throw new UnsupportedEncodingException(
-                    getLocalizedMessage("Checker.setCharset", charset));
+                CheckerUtil.getLocalizedMessage("Checker.setCharset", getClass(), charset));
         }
         this.charset = charset;
     }
@@ -632,18 +660,6 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         if (cacheFile != null) {
             cacheFile.reset();
         }
-    }
-
-    /**
-     * Extracts localized messages from properties files.
-     *
-     * @param messageKey the key pointing to localized message in respective properties file.
-     * @param args the arguments of message in respective properties file.
-     * @return a string containing extracted localized message
-     */
-    private String getLocalizedMessage(String messageKey, Object... args) {
-        return new LocalizedMessage(Definitions.CHECKSTYLE_BUNDLE, getClass(), messageKey, args)
-            .getMessage();
     }
 
 }
