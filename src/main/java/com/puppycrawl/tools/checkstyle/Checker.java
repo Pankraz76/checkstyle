@@ -81,9 +81,11 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     /** Vector of fileset checks. */
     private final List<FileSetCheck> fileSetChecks = new ArrayList<>();
 
-    /** The audit event before execution file filters. */
-    private final BeforeExecutionFileFilterSet beforeExecutionFileFilters =
-            new BeforeExecutionFileFilterSet();
+    /**
+     * Pre execution audit event file filters.
+     */
+    private final BeforeExecutionFileFilterSet preExecutionFileFilters =
+        new BeforeExecutionFileFilterSet();
 
     /** The audit event filters. */
     private final FilterSet filters = new FilterSet();
@@ -162,7 +164,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @param filter before execution file filter to remove.
      */
     public void removeBeforeExecutionFileFilter(BeforeExecutionFileFilter filter) {
-        beforeExecutionFileFilters.removeBeforeExecutionFileFilter(filter);
+        preExecutionFileFilters.removeBeforeExecutionFileFilter(filter);
     }
 
     /**
@@ -178,7 +180,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     public void destroy() {
         listeners.clear();
         fileSetChecks.clear();
-        beforeExecutionFileFilters.clear();
+        preExecutionFileFilters.clear();
         filters.clear();
         if (cacheFile != null) {
             try {
@@ -214,7 +216,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             cacheFile.putExternalResources(getExternalResourceLocations());
         }
         // prepare
-        fireAuditStarted(new AuditEvent(this));
+        CheckerUtil.fireAuditStarted(listeners, this);
         for (final FileSetCheck fsc : fileSetChecks) {
             fsc.beginProcessing(charset);
         }
@@ -227,7 +229,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         // complete - it may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
         fileSetChecks.forEach(FileSetCheck::destroy);
-        fireAuditFinished(new AuditEvent(this));
+        CheckerUtil.fireAuditFinished(listeners, this);
         return counter.getCount();
     }
 
@@ -247,28 +249,6 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     }
 
     /**
-     * Notify all listeners about the audit start.
-     *
-     * @param event to be used.
-     */
-    private void fireAuditStarted(AuditEvent event) {
-        for (final AuditListener listener : listeners) {
-            listener.auditStarted(event);
-        }
-    }
-
-    /**
-     * Notify all listeners about the audit end.
-     *
-     * @param event to be used.
-     */
-    private void fireAuditFinished(AuditEvent event) {
-        for (final AuditListener listener : listeners) {
-            listener.auditFinished(event);
-        }
-    }
-
-    /**
      * Processes a list of files with all FileSetChecks.
      *
      * @param files a list of files to process.
@@ -281,26 +261,28 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     // -@cs[CyclomaticComplexity] no easy way to split this logic of processing the file
     private void processFiles(List<File> files) throws CheckstyleException {
         for (final File file : files) {
-            String fileName = null;
+            String path = null;
             try {
-                fileName = file.getAbsolutePath();
+                path = file.getAbsolutePath();
                 final long timestamp = file.lastModified();
-                if (cacheFile != null && cacheFile.isInCache(fileName, timestamp)
-                        || !acceptFileStarted(fileName)) {
+                if (cacheFile == null
+                    || cacheFile.isInCache(path, timestamp)
+                    || !preExecutionFileFilters
+                    .accept(CommonUtil.relativizePath(basedir, path))) {
                     continue;
                 }
                 if (cacheFile != null) {
-                    cacheFile.put(fileName, timestamp);
+                    cacheFile.put(path, timestamp);
                 }
-                fireFileStarted(fileName);
-                fireErrors(fileName, processFile(file));
-                fireFileFinished(fileName);
+                fireFileStarted(path);
+                fireErrors(path, processFile(file));
+                fireFileFinished(path);
             }
             // -@cs[IllegalCatch] There is no other way to deliver filename that was under
             // processing. See https://github.com/checkstyle/checkstyle/issues/2285
             catch (Exception ex) {
-                if (fileName != null && cacheFile != null) {
-                    cacheFile.remove(fileName);
+                if (path != null && cacheFile != null) {
+                    cacheFile.remove(path);
                 }
 
                 // We need to catch all exceptions to put a reason failure (file name) in exception
@@ -309,8 +291,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
                         file), ex);
             }
             catch (Error error) {
-                if (fileName != null && cacheFile != null) {
-                    cacheFile.remove(fileName);
+                if (path != null && cacheFile != null) {
+                    cacheFile.remove(path);
                 }
 
                 // We need to catch all errors to put a reason failure (file name) in error
@@ -332,9 +314,9 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     private SortedSet<Violation> processFile(File file) throws CheckstyleException {
         final SortedSet<Violation> fileMessages = new TreeSet<>();
         try {
-            for (final FileSetCheck fsc : fileSetChecks) {
+            for (final FileSetCheck fileSetCheck : fileSetChecks) {
                 fileMessages.addAll(
-                    fsc.process(file, new FileText(file.getAbsoluteFile(), charset)));
+                    fileSetCheck.process(file, new FileText(file.getAbsoluteFile(), charset)));
             }
         }
         catch (final IOException ioe) {
@@ -345,12 +327,10 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
         // -@cs[IllegalCatch] There is no other way to obey haltOnException field
         catch (Exception ex) {
+            log.debug("Exception occurred.", ex);
             if (haltOnException) {
                 throw ex;
             }
-
-            log.debug("Exception occurred.", ex);
-
             final StringWriter sw = new StringWriter();
             ex.printStackTrace(new PrintWriter(sw, true));
             fileMessages.add(new Violation(1,
@@ -359,17 +339,6 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
                     null, getClass(), null));
         }
         return fileMessages;
-    }
-
-    /**
-     * Check if all before execution file filters accept starting the file.
-     *
-     * @param fileName
-     *            the file to be audited
-     * @return {@code true} if the file is accepted.
-     */
-    private boolean acceptFileStarted(String fileName) {
-        return beforeExecutionFileFilters.accept(CommonUtil.relativizePath(basedir, fileName));
     }
 
     /**
@@ -396,30 +365,14 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     public void fireErrors(String fileName, SortedSet<Violation> errors) {
         boolean hasNonFilteredViolations = false;
         for (final Violation element : errors) {
-            hasNonFilteredViolations = addErrorToListeners(
+            hasNonFilteredViolations = CheckerUtil.addErrorToListeners(
                 new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName), element),
-                hasNonFilteredViolations);
+                hasNonFilteredViolations, filters, listeners);
         }
         if (hasNonFilteredViolations && cacheFile != null) {
             cacheFile.remove(fileName);
         }
     }
-
-    /**
-     * @param event
-     * @param hasNonFilteredViolations
-     * @return
-     */
-    private boolean addErrorToListeners(AuditEvent event, boolean hasNonFilteredViolations) {
-        if (filters.accept(event)) {
-            hasNonFilteredViolations = true;
-            for (final AuditListener listener : listeners) {
-                listener.addError(event);
-            }
-        }
-        return hasNonFilteredViolations;
-    }
-
     /**
      * Notify all listeners about the end of a file audit.
      *
@@ -538,7 +491,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * @param filter the additional filter
      */
     public void addBeforeExecutionFileFilter(BeforeExecutionFileFilter filter) {
-        beforeExecutionFileFilters.addBeforeExecutionFileFilter(filter);
+        preExecutionFileFilters.addBeforeExecutionFileFilter(filter);
     }
 
     /**
