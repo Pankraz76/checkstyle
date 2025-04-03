@@ -19,17 +19,43 @@
 
 package com.puppycrawl.tools.checkstyle;
 
-import com.puppycrawl.tools.checkstyle.api.*;
-import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.puppycrawl.tools.checkstyle.api.AuditEvent;
+import com.puppycrawl.tools.checkstyle.api.AuditListener;
+import com.puppycrawl.tools.checkstyle.api.BeforeExecutionFileFilter;
+import com.puppycrawl.tools.checkstyle.api.BeforeExecutionFileFilterSet;
+import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
+import com.puppycrawl.tools.checkstyle.api.Configuration;
+import com.puppycrawl.tools.checkstyle.api.Context;
+import com.puppycrawl.tools.checkstyle.api.ExternalResourceHolder;
+import com.puppycrawl.tools.checkstyle.api.FileSetCheck;
+import com.puppycrawl.tools.checkstyle.api.FileText;
+import com.puppycrawl.tools.checkstyle.api.Filter;
+import com.puppycrawl.tools.checkstyle.api.FilterSet;
+import com.puppycrawl.tools.checkstyle.api.MessageDispatcher;
+import com.puppycrawl.tools.checkstyle.api.RootModule;
+import com.puppycrawl.tools.checkstyle.api.SeverityLevel;
+import com.puppycrawl.tools.checkstyle.api.SeverityLevelCounter;
+import com.puppycrawl.tools.checkstyle.api.Violation;
+import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 /**
  * This class provides the functionality to check a set of files.
@@ -369,18 +395,23 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     public void fireErrors(String fileName, SortedSet<Violation> errors) {
         boolean hasNonFilteredViolations = false;
         for (final Violation element : errors) {
-            final AuditEvent event =
-                new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName), element);
-            if (filters.accept(event)) {
-                hasNonFilteredViolations = true;
-                for (final AuditListener listener : listeners) {
-                    listener.addError(event);
-                }
-            }
+            hasNonFilteredViolations = addError(
+                new AuditEvent(this, CommonUtil.relativizePath(basedir, fileName), element),
+                hasNonFilteredViolations);
         }
         if (hasNonFilteredViolations && cacheFile != null) {
             cacheFile.remove(fileName);
         }
+    }
+
+    private boolean addError(AuditEvent event, boolean hasNonFilteredViolations) {
+        if (filters.accept(event)) {
+            hasNonFilteredViolations = true;
+            for (final AuditListener listener : listeners) {
+                listener.addError(event);
+            }
+        }
+        return hasNonFilteredViolations;
     }
 
     /**
@@ -435,9 +466,11 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      */
     @Override
     protected void setupChild(Configuration childConf) throws CheckstyleException {
-        final String name = childConf.getName();
-        final Object child;
+        setupChild(childConf, childConf.getName());
+    }
 
+    private void setupChild(Configuration childConf, String name) throws CheckstyleException {
+        final Object child;
         // rethrow CheckstyleException
         try {
             child = moduleFactory.createModule(name);
