@@ -199,7 +199,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             files
                 .stream()
                 .filter(file -> CommonUtil.matchesFileExtension(file, fileExtensions))
-                .collect(Collectors.toUnmodifiableList()));
+                    .collect(Collectors.toUnmodifiableList()), this, cacheFile);
         // complete - it may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
         fileSetChecks.forEach(FileSetCheck::destroy);
@@ -246,6 +246,8 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      * Processes a list of files with all FileSetChecks.
      *
      * @param files a list of files to process.
+     * @param checker
+     * @param cacheFile1
      * @throws CheckstyleException if error condition within Checkstyle occurs.
      * @throws Error wraps any java.lang.Error happened during execution
      * @noinspection ProhibitedExceptionThrown
@@ -253,42 +255,45 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
      *      deliver filename that was under processing.
      */
     // -@cs[CyclomaticComplexity] no easy way to split this logic of processing the file
-    private void processFiles(List<File> files) throws CheckstyleException {
+    private void processFiles(List<File> files, Checker checker, PropertyCacheFile cacheFile1) throws CheckstyleException {
         for (final File file : files) {
-            String fileName = null;
-            try {
-                fileName = file.getAbsolutePath();
-                final long timestamp = file.lastModified();
-                if (cacheFile != null && cacheFile.isInCache(fileName, timestamp)
-                        || !acceptFileStarted(fileName)) {
-                    continue;
-                }
-                if (cacheFile != null) {
-                    cacheFile.put(fileName, timestamp);
-                }
-                fireFileStarted(fileName);
-                fireErrors(fileName, processFile(file));
-                fireFileFinished(fileName);
-            }
-            // -@cs[IllegalCatch] There is no other way to deliver filename that was under
-            // processing. See https://github.com/checkstyle/checkstyle/issues/2285
-            catch (Exception ex) {
-                if (fileName != null && cacheFile != null) {
-                    cacheFile.remove(fileName);
-                }
+            processFile(checker, cacheFile1, file);
+        }
+    }
 
-                // We need to catch all exceptions to put a reason failure (file name) in exception
-                throw new CheckstyleException(
-                        getLocalizedMessage("Checker.processFilesException", getClass(), file), ex);
+    private void processFile(Checker checker, PropertyCacheFile cacheFile1, File file) throws CheckstyleException {
+        String fileName = null;
+        try {
+            fileName = file.getAbsolutePath();
+            final long timestamp = file.lastModified();
+            if (cacheFile1 != null && cacheFile1.isInCache(fileName, timestamp)
+                    || !acceptFileStarted(fileName)) {
+                return;
             }
-            catch (Error error) {
-                if (fileName != null && cacheFile != null) {
-                    cacheFile.remove(fileName);
-                }
+            if (cacheFile1 != null) {
+                cacheFile1.put(fileName, timestamp);
+            }
+            checker.fireFileStarted(fileName);
+            checker.fireErrors(fileName, processFile(file));
+            checker.fireFileFinished(fileName);
+        }
+        // -@cs[IllegalCatch] There is no other way to deliver filename that was under
+        // processing. See https://github.com/checkstyle/checkstyle/issues/2285
+        catch (Exception ex) {
+            if (fileName != null && cacheFile1 != null) {
+                cacheFile1.remove(fileName);
+            }
 
-                // We need to catch all errors to put a reason failure (file name) in error
-                throw new Error("Error was thrown while processing " + file, error);
+            // We need to catch all exceptions to put a reason failure (file name) in exception
+            throw new CheckstyleException(
+                    getLocalizedMessage("Checker.processFilesException", getClass(), file), ex);
+        } catch (Error error) {
+            if (fileName != null && cacheFile1 != null) {
+                cacheFile1.remove(fileName);
             }
+
+            // We need to catch all errors to put a reason failure (file name) in error
+            throw new Error("Error was thrown while processing " + file, error);
         }
     }
 
