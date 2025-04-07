@@ -95,8 +95,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  * @since 4.2
  */
 @StatelessCheck
-public class WriteTagCheck
-    extends AbstractCheck {
+public class WriteTagCheck extends AbstractCheck {
 
     /**
      * A key is pointing to the warning message text in "messages.properties"

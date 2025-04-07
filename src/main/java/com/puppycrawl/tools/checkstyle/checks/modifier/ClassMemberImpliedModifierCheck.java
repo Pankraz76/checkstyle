@@ -95,8 +95,7 @@ import com.puppycrawl.tools.checkstyle.utils.ScopeUtil;
  * @since 8.16
  */
 @StatelessCheck
-public class ClassMemberImpliedModifierCheck
-    extends AbstractCheck {
+public class ClassMemberImpliedModifierCheck extends AbstractCheck {
 
     /**
      * A key is pointing to the warning message text in "messages.properties" file.

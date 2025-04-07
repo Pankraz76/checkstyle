@@ -34,8 +34,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  * </div>
  */
 @StatelessCheck
-public abstract class AbstractParenPadCheck
-    extends AbstractCheck {
+public abstract class AbstractParenPadCheck extends AbstractCheck {
 
     /**
      * A key is pointing to the warning message text in "messages.properties"

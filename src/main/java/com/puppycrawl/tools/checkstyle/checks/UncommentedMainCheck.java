@@ -66,8 +66,7 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
  * @since 3.2
  */
 @FileStatefulCheck
-public class UncommentedMainCheck
-    extends AbstractCheck {
+public class UncommentedMainCheck extends AbstractCheck {
 
     /**
      * A key is pointing to the warning message text in "messages.properties"

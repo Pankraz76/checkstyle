@@ -81,8 +81,7 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
  * @since 3.0
  */
 @StatelessCheck
-public class AvoidStarImportCheck
-    extends AbstractCheck {
+public class AvoidStarImportCheck extends AbstractCheck {
 
     /**
      * A key is pointing to the warning message text in "messages.properties"

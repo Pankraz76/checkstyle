@@ -32,8 +32,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  *
  */
 @StatelessCheck
-public abstract class AbstractNameCheck
-    extends AbstractCheck {
+public abstract class AbstractNameCheck extends AbstractCheck {
 
     /**
      * Message key for invalid pattern violation.

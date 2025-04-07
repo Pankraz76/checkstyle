@@ -82,8 +82,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  * @since 3.0
  */
 @FileStatefulCheck
-public class IllegalInstantiationCheck
-    extends AbstractCheck {
+public class IllegalInstantiationCheck extends AbstractCheck {
 
     /**
      * A key is pointing to the warning message text in "messages.properties"

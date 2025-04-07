@@ -185,8 +185,7 @@ import com.puppycrawl.tools.checkstyle.utils.ScopeUtil;
  * @since 3.2
  */
 @StatelessCheck
-public class JavadocStyleCheck
-    extends AbstractCheck {
+public class JavadocStyleCheck extends AbstractCheck {
 
     /** Message property key for the Empty Javadoc message. */
     public static final String MSG_EMPTY = "javadoc.empty";

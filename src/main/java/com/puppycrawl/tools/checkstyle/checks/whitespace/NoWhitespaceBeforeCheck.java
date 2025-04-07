@@ -78,8 +78,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  * @since 3.0
  */
 @StatelessCheck
-public class NoWhitespaceBeforeCheck
-    extends AbstractCheck {
+public class NoWhitespaceBeforeCheck extends AbstractCheck {
 
     /**
      * A key is pointing to the warning message text in "messages.properties"

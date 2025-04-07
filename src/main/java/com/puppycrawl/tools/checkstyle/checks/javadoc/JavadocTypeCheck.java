@@ -151,8 +151,7 @@ import com.puppycrawl.tools.checkstyle.utils.TokenUtil;
  *
  */
 @StatelessCheck
-public class JavadocTypeCheck
-    extends AbstractCheck {
+public class JavadocTypeCheck extends AbstractCheck {
 
     /**
      * A key is pointing to the warning message text in "messages.properties"
