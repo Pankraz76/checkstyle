@@ -212,17 +212,17 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
 
     @Override
     public int process(List<File> files) throws CheckstyleException {
-        return processFilesInternal(files);
+        return process(files.stream()
+                .map(File::toPath)
+                .collect(Collectors.toList()));
     }
 
     @Override
     public int process(Collection<Path> paths) throws CheckstyleException {
-        return processFilesInternal(paths.stream()
-                .map(Path::toFile)
-                .collect(Collectors.toUnmodifiableList()));
+        return processPaths(paths);
     }
 
-    private int processFilesInternal(List<File> files) throws CheckstyleException {
+    private int processPaths(Collection<Path> files) throws CheckstyleException {
         if (cacheFile != null) {
             cacheFile.putExternalResources(getExternalResourceLocations());
         }
@@ -234,6 +234,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
 
         processFiles(files.stream()
+                .map(Path::toFile)
                 .filter(file -> CommonUtil.matchesFileExtension(file, fileExtensions))
                 .collect(Collectors.toUnmodifiableList()));
 
