@@ -211,7 +211,18 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
     }
 
     @Override
-    public int processs(List<File> files) throws CheckstyleException {
+    public int process(List<File> files) throws CheckstyleException {
+        return processFilesInternal(files);
+    }
+
+    @Override
+    public int process(Collection<Path> paths) throws CheckstyleException {
+        return process(paths.stream()
+                .map(Path::toFile)
+                .collect(Collectors.toUnmodifiableList()));
+    }
+
+    private int processFilesInternal(List<File> files) throws CheckstyleException {
         if (cacheFile != null) {
             cacheFile.putExternalResources(getExternalResourceLocations());
         }
@@ -239,12 +250,6 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         return errorCount;
     }
 
-    @Override
-    public int process(Collection<Path> paths) throws CheckstyleException {
-        return process(paths.stream()
-                .map(Path::toFile)
-                .collect(Collectors.toUnmodifiableList()));
-    }
 
     /**
      * Returns a set of external configuration resource locations which are used by all file set
