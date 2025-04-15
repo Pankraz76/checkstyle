@@ -233,21 +233,16 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
             fsc.beginProcessing(charset);
         }
 
-        final List<File> targetFiles = files.stream()
+        processFiles(files.stream()
                 .filter(file -> CommonUtil.matchesFileExtension(file, fileExtensions))
-                .collect(Collectors.toUnmodifiableList());
-        processFiles(targetFiles);
+                .collect(Collectors.toUnmodifiableList()));
 
         // Finish up
         // It may also log!!!
         fileSetChecks.forEach(FileSetCheck::finishProcessing);
-
-        // It may also log!!!
         fileSetChecks.forEach(FileSetCheck::destroy);
-
-        final int errorCount = counter.getCount();
         fireAuditFinished();
-        return errorCount;
+        return counter.getCount();
     }
 
 
