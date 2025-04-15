@@ -222,7 +222,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
                 .collect(Collectors.toUnmodifiableList()));
     }
 
-    private int processFilesInternal(List<File> files) throws CheckstyleException {
+    private int processFilesInternal(List<Path> files) throws CheckstyleException {
         if (cacheFile != null) {
             cacheFile.putExternalResources(getExternalResourceLocations());
         }
@@ -234,6 +234,7 @@ public class Checker extends AbstractAutomaticBean implements MessageDispatcher,
         }
 
         processFiles(files.stream()
+                .map(Path::toFile)
                 .filter(file -> CommonUtil.matchesFileExtension(file, fileExtensions))
                 .collect(Collectors.toUnmodifiableList()));
 
