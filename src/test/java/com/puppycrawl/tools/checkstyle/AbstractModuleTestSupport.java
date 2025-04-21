@@ -676,7 +676,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
      */
     private List<String> processChecker(Checker checker, String file) throws Exception {
         return getActualViolations(
-                checker.process(Collections.singletonList(Path.of(file)))
+                checker.process(Collections.singletonList(new File(file)))
         ).getOrDefault(file, Collections.emptyList())
                 .stream().peek(ignored -> checker.destroy())
                 .collect(Collectors.toUnmodifiableList());
