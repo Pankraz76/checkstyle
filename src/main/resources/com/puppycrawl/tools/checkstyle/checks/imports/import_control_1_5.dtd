@@ -19,6 +19,7 @@ Contains a hierarchy of allow/disallow/forbid rules and subpackage/file definiti
 
 <!--
 Attributes for import-control:
+@Deprecated(since = "10.23.1")
 - pkg:        [Required] Root package to validate (e.g., "com.puppycrawl")
 - package:    [Optional] Root package to validate (e.g., "com.puppycrawl")
 - regex:      [Optional] Treat root package name as regex pattern
@@ -69,8 +70,10 @@ Attributes for file:
 
 <!-- ==================== IMPORT RULE ATTRIBUTES ==================== -->
 <!--
-Shared attributes for allow/disallow/forbid rules:
+Shared attributes for allow/disallow/forbid rules
+@Deprecated(since = "10.23.1")
 - pkg:        Package to allow/disallow (mutually exclusive with 'class')
+- package:    Package to allow/disallow (mutually exclusive with 'class')
 - class:      Specific class to allow/disallow (mutually exclusive with 'pkg')
 - exact-match: [For 'pkg' only] Requires exact package match (no subpackages)
 - local-only:  Restricts rule to current package (no subpackages)
