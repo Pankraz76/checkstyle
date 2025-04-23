@@ -194,7 +194,7 @@ public final class ImportControlLoader extends XmlLoader {
                              Attributes attributes)
             throws SAXException {
         if ("import-control".equals(qName)) {
-            final String pkg = safeGet(attributes, PKG_ATTRIBUTE_NAME);
+            final String pkg = safeGet(attributes, PACKAGE_ATTRIBUTE_NAME);
             final MismatchStrategy strategyOnMismatch = getStrategyForImportControl(attributes);
             final boolean regex = containsRegexAttribute(attributes);
             stack.push(new PkgImportControl(pkg, regex, strategyOnMismatch));
@@ -240,7 +240,8 @@ public final class ImportControlLoader extends XmlLoader {
         // May have "local-only"
         final boolean isAllow = ALLOW_ELEMENT_NAME.equals(qName);
         final boolean isLocalOnly = attributes.getValue("local-only") != null;
-        final String pkg = attributes.getValue(PKG_ATTRIBUTE_NAME);
+        final String pkg = attributes.getValue(PACKAGE_ATTRIBUTE_NAME);
+        final String pkg2 = attributes.getValue(PKG_ATTRIBUTE_NAME);
         final boolean regex = containsRegexAttribute(attributes);
         final AbstractImportRule rule;
         if (pkg == null) {
