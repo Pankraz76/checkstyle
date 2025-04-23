@@ -3,7 +3,7 @@
     "-//Checkstyle//DTD ImportControl Configuration 1.UT//EN"
         "src/test/resources/com/puppycrawl/tools/checkstyle/checks/imports/importcontrolloader/InputImportControlLoaderDtd_MODIFIED_FOR_UT.dtd">
 
-<import-control package="com">
+<import-control pkg="com" package="com">
   <allow class="some.class"/>
   <new-test-element-for-UT package="some.pkg"/>
   <disallow class="another.class" local-only="true"/>

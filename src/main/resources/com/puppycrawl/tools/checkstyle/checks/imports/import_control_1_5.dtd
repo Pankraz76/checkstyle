@@ -20,11 +20,13 @@ Contains a hierarchy of allow/disallow/forbid rules and subpackage/file definiti
 <!--
 Attributes for import-control:
 - pkg:        [Required] Root package to validate (e.g., "com.puppycrawl")
+- package:    [Optional] Root package to validate (e.g., "com.puppycrawl")
 - regex:      [Optional] Treat root package name as regex pattern
 - strategyOnMismatch: [Optional] Default action when no rule matches
               Values: allowed | disallowed | forbidden (default: forbidden)
 -->
 <!ATTLIST import-control
+    <!-- Deprecate: use package -->
     pkg CDATA #REQUIRED
     package CDATA #IMPLIED
     strategyOnMismatch (allowed|disallowed|forbidden) #IMPLIED

@@ -4,7 +4,8 @@
     "https://checkstyle.org/dtds/import_control_1_5.dtd">
 
 <!-- keep strategyOnMismatch="disallowed" to ensure test coverage and downwards compatibility -->
-<import-control package="com.puppycrawl.tools.checkstyle.checks.imports"
+<import-control pkg="com.puppycrawl.tools.checkstyle.checks.imports"
+                package="com.puppycrawl.tools.checkstyle.checks.imports"
                 strategyOnMismatch="disallowed">
   <allow class="java\.awt\.Image" regex="true"/>
   <allow class="java\..*\.File" local-only="true" regex="true"/>

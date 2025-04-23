@@ -136,7 +136,7 @@
         </p>
 
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle"&gt;
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle" package="com.puppycrawl.tools.checkstyle"&gt;
   &lt;disallow package="sun"/&gt;
   &lt;allow package="com.puppycrawl.tools.checkstyle.api"/&gt;
   &lt;allow package="com.puppycrawl.tools.checkstyle.checks"/&gt;
@@ -166,7 +166,7 @@
         </p>
 
         <source>
-&lt;import-control package="(de.olddomain|de.newdomain)\..*" regex="true"&gt;
+&lt;import-control pkg="(de.olddomain|de.newdomain)\..*" regex="true"&gt;
   &lt;subpackage package="[^.]+\.dao" regex="true"&gt;
     &lt;disallow package=".*\.ui" regex="true"/&gt;
     &lt;disallow package=".*\.(awt|swing).\.*" regex="true"/&gt;
@@ -210,7 +210,7 @@
           <code>java.awt.Image</code> and <code>java.io.File</code> classes.
         </p>
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle.checks"
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle.checks"
   strategyOnMismatch="allowed"&gt;
   &lt;disallow class="java.awt.Image"/&gt;
   &lt;disallow class="java.io.File"/&gt;
@@ -225,7 +225,7 @@
           <code>com.puppycrawl.tools.checkstyle.checks.imports</code> package.
         </p>
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle.checks"
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle.checks"
   strategyOnMismatch="allowed"&gt;
   &lt;subpackage name="imports" strategyOnMismatch="forbidden"&gt;
     &lt;allow package="javax.swing"/&gt;
@@ -245,7 +245,7 @@
           default.
         </p>
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle.checks"&gt;
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle.checks"&gt;
   &lt;allow class="java\.awt\.Image" regex="true"/&gt;
   &lt;allow class="java\..*\.File" local-only="true" regex="true"/&gt;
   &lt;subpackage name="imports" strategyOnMismatch="allowed"&gt;
@@ -267,7 +267,7 @@
           All other imports in the package are allowed.
         </p>
         <source>
-&lt;import-control package="com.mycompany.billing"&gt;
+&lt;import-control pkg="com.mycompany.billing"&gt;
   &lt;subpackage name="gui" strategyOnMismatch="allowed"&gt;
     &lt;file name=".*(Panel|View|Dialog)" regex="true"&gt;
       &lt;disallow package="com.mycompany.dao"/&gt;
@@ -299,7 +299,7 @@
           <code>com.puppycrawl.tools.checkstyle.filters</code>.
         </p>
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle"&gt;
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle" package="com.puppycrawl.tools.checkstyle"&gt;
   &lt;allow package="java.util"/&gt;
   &lt;subpackage name="filters" &gt;
     &lt;disallow class="java.util.Map"/&gt;
@@ -314,7 +314,7 @@
           from <code>java.util.stream</code> is allowed except described ones.
         </p>
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle.checks"&gt;
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle.checks"&gt;
   &lt;allow package="java.util.stream"/&gt;
   &lt;subpackage name="imports"&gt;
     &lt;disallow class="java.util.stream.Stream"/&gt;
@@ -335,7 +335,7 @@ import java.util.stream.IntStream;
           <code>java.util.Date</code>, <code>java.util.List</code> and package <code>sun</code>.
         </p>
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle.checks"&gt;
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle.checks"&gt;
   &lt;allow package=".*" regex="true"/&gt;
   &lt;subpackage name="imports"&gt;
     &lt;disallow class="java.util.Date"/&gt;
@@ -349,7 +349,7 @@ import java.util.stream.IntStream;
           except the <code>java.util.Date</code> class.
         </p>
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle.checks"&gt;
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle.checks"&gt;
   &lt;disallow class="java.util.Date"/&gt;
 
   &lt;allow package="java.util"/&gt;
@@ -412,14 +412,14 @@ import java.util.stream.IntStream;
           <code>java.util.Map.Entry</code> use the following configuration:
         </p>
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle"&gt;
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle" package="com.puppycrawl.tools.checkstyle"&gt;
   &lt;allow class="java.util.Map"/&gt;
   &lt;allow class="java.util.Map.Entry"/&gt;
 &lt;/import-control&gt;
         </source>
         <p>It is also possible to use a regex with a wildcard:</p>
         <source>
-&lt;import-control package="com.puppycrawl.tools.checkstyle"&gt;
+&lt;import-control pkg="com.puppycrawl.tools.checkstyle" package="com.puppycrawl.tools.checkstyle"&gt;
   &lt;allow class="java.util.Map"/&gt;
   &lt;allow class="java.util.Map.*" regex="true" /&gt;
 &lt;/import-control&gt;
