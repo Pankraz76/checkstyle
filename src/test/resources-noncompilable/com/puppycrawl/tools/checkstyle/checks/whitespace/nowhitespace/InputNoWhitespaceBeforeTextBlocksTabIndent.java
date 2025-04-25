@@ -7,7 +7,7 @@ NoWhitespace
 //non-compiled with javac: Compilable with Java17
 package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespace;
 
-public class InputNoWhitespaceBeforeTextBlocksTabIndent {
+public class InputNoWhitespaceTextBlocksTabIndent {
 
     public static void main(String[] args) {}
 
