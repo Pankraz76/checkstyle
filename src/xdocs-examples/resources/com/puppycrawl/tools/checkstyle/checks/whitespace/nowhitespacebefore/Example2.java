@@ -1,10 +1,6 @@
 /*xml
 <module name="Checker">
-  <module name="TreeWalker">
-    <module name="NoWhitespaceBefore">
-      <property name="allowLineBreaks" value="true"/>
-    </module>
-  </module>
+  <module name="NoWhitespaceBefore"/>
 </module>
 
 

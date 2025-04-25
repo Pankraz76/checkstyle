@@ -1,11 +1,6 @@
 /*xml
 <module name="Checker">
-  <module name="TreeWalker">
-    <module name="NoWhitespaceBefore">
-      <property name="tokens" value="METHOD_REF, DOT"/>
-      <property name="allowLineBreaks" value="true"/>
-    </module>
-  </module>
+  <module name="NoWhitespaceBefore"/>
 </module>
 
 

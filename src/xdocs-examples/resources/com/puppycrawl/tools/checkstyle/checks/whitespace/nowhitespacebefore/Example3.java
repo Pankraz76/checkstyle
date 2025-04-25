@@ -1,10 +1,6 @@
 /*xml
 <module name="Checker">
-  <module name="TreeWalker">
-    <module name="NoWhitespaceBefore">
-      <property name="tokens" value="METHOD_REF, DOT"/>
-    </module>
-  </module>
+  <module name="NoWhitespaceBefore"/>
 </module>
 
 
