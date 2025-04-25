@@ -292,7 +292,7 @@ public final class InlineConfigParser {
             "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck",
             "com.puppycrawl.tools.checkstyle.checks.whitespace."
                     + "NoWhitespaceBeforeCaseDefaultColonCheck",
-            "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck",
+            "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceCheck",
             "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck",
             "com.puppycrawl.tools.checkstyle.checks.whitespace.SingleSpaceSeparatorCheck",
             "com.puppycrawl.tools.checkstyle.meta.JavadocMetadataScraper",

@@ -23,7 +23,7 @@
         <div class="wrapper">
           <macro name="properties">
             <param name="modulePath"
-                   value="src/main/java/com/puppycrawl/tools/checkstyle/checks/whitespace/NoWhitespaceBeforeCheck.java"/>
+                   value="src/main/java/com/puppycrawl/tools/checkstyle/checks/whitespace/NoWhitespaceCheck.java"/>
           </macro>
         </div>
       </subsection>

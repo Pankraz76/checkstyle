@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle-metadata>
    <module>
-      <check fully-qualified-name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
+      <check fully-qualified-name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceCheck"
              name="NoWhitespace"
              parent="com.puppycrawl.tools.checkstyle.Checker">
          <description>&lt;div&gt;

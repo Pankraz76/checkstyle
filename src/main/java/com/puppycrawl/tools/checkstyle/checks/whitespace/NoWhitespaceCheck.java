@@ -31,7 +31,7 @@ import java.util.List;
  * Checks that there is no whitespace before specific tokens.
  */
 @StatelessCheck
-public class NoWhitespaceBeforeCheck extends AbstractFileSetCheck {
+public class NoWhitespaceCheck extends AbstractFileSetCheck {
 
     /**
      * A key is pointing to the warning message text in "messages.properties" file.

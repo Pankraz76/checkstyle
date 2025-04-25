@@ -36,7 +36,7 @@ class InputJavadocTypeWhitespace // violation 'missing @author tag.'
         };
     }
 
-    /** bug 806243 (NoWhitespaceBeforeCheck violation for anonymous inner class) */
+    /** bug 806243 (NoWhitespaceCheck violation for anonymous inner class) */
     void bug806243()
     {
         Object o = new InputJavadocTypeWhitespace() {
@@ -46,7 +46,7 @@ class InputJavadocTypeWhitespace // violation 'missing @author tag.'
 }
 
 /**
- * Bug 806242 (NoWhitespaceBeforeCheck violation with an interface).
+ * Bug 806242 (NoWhitespaceCheck violation with an interface).
  * @author o_sukhodolsky
  * @version 1.0
  */

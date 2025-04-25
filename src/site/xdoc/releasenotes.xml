@@ -8969,7 +8969,7 @@ Azure.
             <a href="https://github.com/checkstyle/checkstyle/issues/8889">#8889</a>
           </li>
           <li>
-            NoWhitespaceBeforeCheck: String index out of range (with Java 15 Text Block)
+            NoWhitespaceCheck: String index out of range (with Java 15 Text Block)
             when tabs are used.
             Author: Nick Mancuso
             <a href="https://github.com/checkstyle/checkstyle/issues/8849">#8849</a>

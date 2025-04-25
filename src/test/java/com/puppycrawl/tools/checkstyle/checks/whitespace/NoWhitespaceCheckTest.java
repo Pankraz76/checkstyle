@@ -19,7 +19,7 @@
 
 package com.puppycrawl.tools.checkstyle.checks.whitespace;
 
-import static com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck.MSG_KEY;
+import static com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceCheck.MSG_KEY;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ import org.junit.jupiter.api.Test;
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
-public class NoWhitespaceBeforeCheckTest extends AbstractModuleTestSupport {
+public class NoWhitespaceCheckTest extends AbstractModuleTestSupport {
 
     @Override
     protected String getPackageLocation() {

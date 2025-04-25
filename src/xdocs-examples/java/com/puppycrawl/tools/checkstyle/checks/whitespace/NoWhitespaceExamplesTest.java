@@ -19,13 +19,13 @@
 
 package com.puppycrawl.tools.checkstyle.checks.whitespace;
 
-import static com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck.MSG_KEY;
+import static com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceCheck.MSG_KEY;
 
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.AbstractExamplesModuleTestSupport;
 
-public class NoWhitespaceBeforeExamplesTest extends AbstractExamplesModuleTestSupport {
+public class NoWhitespaceExamplesTest extends AbstractExamplesModuleTestSupport {
     @Override
     protected String getPackageLocation() {
         return "com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace";
