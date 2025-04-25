@@ -1,5 +1,5 @@
 /*
-NoWhitespaceBefore
+NoWhitespace
 allowLineBreaks = yes
 tokens = METHOD_REF
 
@@ -7,7 +7,7 @@ tokens = METHOD_REF
 */
 
 package com.puppycrawl.tools.checkstyle.checks.whitespace
-.nowhitespacebefore;
+.nowhitespace;
 
 import java.util.function.Supplier;
 

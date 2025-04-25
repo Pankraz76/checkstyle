@@ -1,10 +1,10 @@
 /*
-NoWhitespaceBefore
+NoWhitespace
 
 
 */
 
-package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespacebefore;
+package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespace;
 
 /**
  * Class for testing whitespace issues.

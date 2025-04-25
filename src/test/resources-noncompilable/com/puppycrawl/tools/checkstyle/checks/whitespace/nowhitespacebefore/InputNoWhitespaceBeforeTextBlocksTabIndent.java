@@ -1,11 +1,11 @@
 /*
-NoWhitespaceBefore
+NoWhitespace
 
 
 */
 
 //non-compiled with javac: Compilable with Java17
-package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespacebefore;
+package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespace;
 
 public class InputNoWhitespaceBeforeTextBlocksTabIndent {
 

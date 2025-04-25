@@ -945,7 +945,7 @@ notjava
 NOTNULL
 nowarn
 nowhitespaceafter
-nowhitespacebefore
+nowhitespace
 nowhitespacebeforecasedefaultcolon
 nowildcard
 nowrap

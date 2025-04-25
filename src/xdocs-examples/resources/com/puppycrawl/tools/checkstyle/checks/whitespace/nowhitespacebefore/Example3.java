@@ -1,12 +1,12 @@
 /*xml
 <module name="Checker">
-  <module name="NoWhitespaceBefore"/>
+  <module name="NoWhitespace"/>
 </module>
 
 
 */
 
-package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespacebefore;
+package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespace;
 
 import com.google.common.collect.Lists;
 

@@ -938,8 +938,8 @@
           </tr>
           <tr>
             <td>
-              <a href="checks/whitespace/nowhitespacebefore.html#NoWhitespaceBefore">
-                NoWhitespaceBefore
+              <a href="checks/whitespace/nowhitespace.html#NoWhitespace">
+                NoWhitespace
               </a>
             </td>
             <td>

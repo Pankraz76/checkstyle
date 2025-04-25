@@ -3,10 +3,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
   <head>
-    <title>NoWhitespaceBefore</title>
+    <title>NoWhitespace</title>
   </head>
   <body>
-    <section name="NoWhitespaceBefore">
+    <section name="NoWhitespace">
       <p>Since Checkstyle 3.0</p>
       <subsection name="Description" id="Description">
         <div>
@@ -34,13 +34,13 @@
         </p>
         <macro name="example">
           <param name="path"
-                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespacebefore/Example1.java"/>
+                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace/Example1.java"/>
           <param name="type" value="config"/>
         </macro>
         <p id="Example1-code">Example:</p>
         <macro name="example">
           <param name="path"
-                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespacebefore/Example1.java"/>
+                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace/Example1.java"/>
           <param name="type" value="code"/>
         </macro><hr class="example-separator"/>
         <p id="Example2-config">
@@ -48,13 +48,13 @@
         </p>
         <macro name="example">
           <param name="path"
-                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespacebefore/Example2.java"/>
+                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace/Example2.java"/>
           <param name="type" value="config"/>
         </macro>
         <p id="Example2-code">Example:</p>
         <macro name="example">
           <param name="path"
-                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespacebefore/Example2.java"/>
+                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace/Example2.java"/>
           <param name="type" value="code"/>
         </macro><hr class="example-separator"/>
         <p id="Example3-config">
@@ -62,13 +62,13 @@
         </p>
         <macro name="example">
           <param name="path"
-                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespacebefore/Example3.java"/>
+                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace/Example3.java"/>
           <param name="type" value="config"/>
         </macro>
         <p id="Example3-code">Example:</p>
         <macro name="example">
           <param name="path"
-                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespacebefore/Example3.java"/>
+                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace/Example3.java"/>
           <param name="type" value="code"/>
         </macro><hr class="example-separator"/>
         <p id="Example4-config">
@@ -76,13 +76,13 @@
         </p>
         <macro name="example">
           <param name="path"
-                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespacebefore/Example4.java"/>
+                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace/Example4.java"/>
           <param name="type" value="config"/>
         </macro>
         <p id="Example4-code">Example:</p>
         <macro name="example">
           <param name="path"
-                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespacebefore/Example4.java"/>
+                 value="resources/com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace/Example4.java"/>
           <param name="type" value="code"/>
         </macro>
       </subsection>
@@ -90,15 +90,15 @@
       <subsection name="Example of Usage" id="Example_of_Usage">
         <ul>
           <li>
-            <a href="https://github.com/search?q=path%3Asrc%2Fmain%2Fresources%20path%3A**%2Fgoogle_checks.xml+repo%3Acheckstyle%2Fcheckstyle+NoWhitespaceBefore">
+            <a href="https://github.com/search?q=path%3Asrc%2Fmain%2Fresources%20path%3A**%2Fgoogle_checks.xml+repo%3Acheckstyle%2Fcheckstyle+NoWhitespace">
             Google Style</a>
           </li>
           <li>
-            <a href="https://github.com/search?q=path%3Asrc%2Fmain%2Fresources%20path%3A**%2Fsun_checks.xml+repo%3Acheckstyle%2Fcheckstyle+NoWhitespaceBefore">
+            <a href="https://github.com/search?q=path%3Asrc%2Fmain%2Fresources%20path%3A**%2Fsun_checks.xml+repo%3Acheckstyle%2Fcheckstyle+NoWhitespace">
             Sun Style</a>
           </li>
           <li>
-            <a href="https://github.com/search?q=path%3Aconfig%20path%3A**%2Fcheckstyle-checks.xml+repo%3Acheckstyle%2Fcheckstyle+NoWhitespaceBefore">
+            <a href="https://github.com/search?q=path%3Aconfig%20path%3A**%2Fcheckstyle-checks.xml+repo%3Acheckstyle%2Fcheckstyle+NoWhitespace">
             Checkstyle Style</a>
           </li>
         </ul>
@@ -106,7 +106,7 @@
 
       <subsection name="Violation Messages" id="Violation_Messages">
         <macro name="violation-messages">
-          <param name="checkName" value="NoWhitespaceBefore"/>
+          <param name="checkName" value="NoWhitespace"/>
         </macro>
         <p>
           All messages can be customized if the default message doesn't suit you.
@@ -123,7 +123,7 @@
 
       <subsection name="Parent Module" id="Parent_Module">
         <macro name="parent-module">
-          <param name="moduleName" value="NoWhitespaceBefore"/>
+          <param name="moduleName" value="NoWhitespace"/>
         </macro>
       </subsection>
     </section>

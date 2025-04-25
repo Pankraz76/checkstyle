@@ -1,10 +1,10 @@
 /*
-NoWhitespaceBefore
+NoWhitespace
 
 
 */
 
-package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespacebefore;
+package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespace;
 
 public class InputNoWhitespaceBeforeWithEmoji {
     private String[] _mVar0 = {

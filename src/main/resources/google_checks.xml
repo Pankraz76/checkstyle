@@ -44,7 +44,7 @@
   <module name="FileTabCharacter">
     <property name="eachLine" value="true"/>
   </module>
-  <module name="NoWhitespaceBefore"/>
+  <module name="NoWhitespace"/>
   <module name="LineLength">
     <property name="fileExtensions" value="java"/>
     <property name="max" value="100"/>

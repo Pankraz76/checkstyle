@@ -202,7 +202,7 @@ public class XdocsPagesTest {
             "NeedBraces",
             "NewlineAtEndOfFile",
             "NoWhitespaceAfter",
-            "NoWhitespaceBefore",
+            "NoWhitespace",
             "OperatorWrap",
             "PackageName",
             "ParameterName",

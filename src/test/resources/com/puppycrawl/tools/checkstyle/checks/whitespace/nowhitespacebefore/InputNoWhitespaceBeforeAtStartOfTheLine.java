@@ -1,5 +1,5 @@
 /*
-NoWhitespaceBefore
+NoWhitespace
 allowLineBreaks = (default)false
 tokens = DOT
 
@@ -7,7 +7,7 @@ tokens = DOT
 */
 
 package com.puppycrawl.tools.checkstyle.checks.whitespace
-.nowhitespacebefore; // violation
+.nowhitespace; // violation
 
 import java.util.function.Supplier;
 

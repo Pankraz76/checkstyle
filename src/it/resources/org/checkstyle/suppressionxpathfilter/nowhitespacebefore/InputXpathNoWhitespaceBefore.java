@@ -1,4 +1,4 @@
-package org.checkstyle.suppressionxpathfilter.nowhitespacebefore;
+package org.checkstyle.suppressionxpathfilter.nowhitespace;
 
 public class InputXpathNoWhitespaceBefore {
     int bad ;//warn

@@ -31,7 +31,7 @@ public class NoWhitespaceBeforeCheckTest extends AbstractModuleTestSupport {
 
     @Override
     protected String getPackageLocation() {
-        return "com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespacebefore";
+        return "com/puppycrawl/tools/checkstyle/checks/whitespace/nowhitespace";
     }
 
     @Test

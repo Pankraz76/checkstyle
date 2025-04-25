@@ -477,11 +477,11 @@
   <suppress checks="FileLength"
     files="[\\/]test[\\/]resources[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]checks[\\/]whitespace[\\/]parenpad[\\/]InputParenPadLeftRightAndNoSpace1\.java"/>
   <suppress checks="FileLength"
-    files="[\\/]test[\\/]resources[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]checks[\\/]whitespace[\\/]nowhitespacebefore[\\/]InputNoWhitespaceBeforeDotAllowLineBreaks\.java"/>
+    files="[\\/]test[\\/]resources[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]checks[\\/]whitespace[\\/]nowhitespace[\\/]InputNoWhitespaceBeforeDotAllowLineBreaks\.java"/>
   <suppress checks="FileLength"
-    files="[\\/]test[\\/]resources[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]checks[\\/]whitespace[\\/]nowhitespacebefore[\\/]InputNoWhitespaceBeforeDefault\.java"/>
+    files="[\\/]test[\\/]resources[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]checks[\\/]whitespace[\\/]nowhitespace[\\/]InputNoWhitespaceBeforeDefault\.java"/>
   <suppress checks="FileLength"
-    files="[\\/]test[\\/]resources[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]checks[\\/]whitespace[\\/]nowhitespacebefore[\\/]InputNoWhitespaceBeforeDot\.java"/>
+    files="[\\/]test[\\/]resources[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]checks[\\/]whitespace[\\/]nowhitespace[\\/]InputNoWhitespaceBeforeDot\.java"/>
   <suppress checks="FileLength"
     files="[\\/]test[\\/]resources[\\/]com[\\/]puppycrawl[\\/]tools[\\/]checkstyle[\\/]checks[\\/]whitespace[\\/]filetabcharacter[\\/]InputFileTabCharacterSimple\.java"/>
   <suppress checks="FileLength"

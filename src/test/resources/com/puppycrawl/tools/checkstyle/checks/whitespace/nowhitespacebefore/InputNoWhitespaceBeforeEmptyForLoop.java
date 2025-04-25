@@ -1,12 +1,12 @@
 /*
-NoWhitespaceBefore
+NoWhitespace
 allowLineBreaks = yes
 tokens = SEMI
 
 
 */
 
-package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespacebefore;
+package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespace;
 
 public class InputNoWhitespaceBeforeEmptyForLoop {
 

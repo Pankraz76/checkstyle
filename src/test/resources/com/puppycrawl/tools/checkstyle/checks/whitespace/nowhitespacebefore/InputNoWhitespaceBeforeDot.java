@@ -1,5 +1,5 @@
 /*
-NoWhitespaceBefore
+NoWhitespace
 allowLineBreaks = (default)false
 tokens = DOT
 
@@ -8,7 +8,7 @@ tokens = DOT
 
 package com . puppycrawl // violation
     .tools. // violation
-    checkstyle.checks.whitespace.nowhitespacebefore;
+    checkstyle.checks.whitespace.nowhitespace;
 
 /**
  * Class for testing whitespace issues.

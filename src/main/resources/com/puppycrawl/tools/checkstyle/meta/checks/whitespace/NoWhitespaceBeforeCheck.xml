@@ -2,7 +2,7 @@
 <checkstyle-metadata>
    <module>
       <check fully-qualified-name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"
-             name="NoWhitespaceBefore"
+             name="NoWhitespace"
              parent="com.puppycrawl.tools.checkstyle.Checker">
          <description>&lt;div&gt;
  Checks that there is no whitespace before a token.

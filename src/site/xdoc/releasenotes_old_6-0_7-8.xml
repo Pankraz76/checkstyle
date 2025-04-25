@@ -224,7 +224,7 @@
                 <a href="https://github.com/checkstyle/checkstyle/issues/3951">#3951</a>
           </li>
           <li>
-            NoWhitespaceBefore: add support for method reference operator. Author: Dmytro Kytsmen
+            NoWhitespace: add support for method reference operator. Author: Dmytro Kytsmen
                 <a href="https://github.com/checkstyle/checkstyle/issues/3949">#3949</a>
           </li>
           <li>
@@ -422,7 +422,7 @@
                 <a href="https://github.com/checkstyle/checkstyle/issues/4144">#4144</a>
           </li>
           <li>
-            Split and Organize Checkstyle inputs by Test for NoWhitespaceBefore. Author: Subbu Dantu
+            Split and Organize Checkstyle inputs by Test for NoWhitespace. Author: Subbu Dantu
                 <a href="https://github.com/checkstyle/checkstyle/issues/3930">#3930</a>
           </li>
           <li>
@@ -673,7 +673,7 @@
             add allowEmptyCatches parameter to WhitespaceAroundCheck. Author: liscju<a href="https://github.com/checkstyle/checkstyle/issues/3841"> #3841</a>
           </li>
           <li>
-            NoWhitespaceBefore: Add support for varargs. Author: Robert Painsi<a href="https://github.com/checkstyle/checkstyle/issues/3718"> #3718</a>
+            NoWhitespace: Add support for varargs. Author: Robert Painsi<a href="https://github.com/checkstyle/checkstyle/issues/3718"> #3718</a>
           </li>
           <li>
             Google style: allow single character variables. Author: Andrei Selkin<a href="https://github.com/checkstyle/checkstyle/issues/3702"> #3702</a>
@@ -2418,7 +2418,7 @@
           Fixed NPE in FinalLocalVariableCheck. Author: rnveach <a href="https://github.com/checkstyle/checkstyle/issues/1257">#1257</a>
         </li>
         <li>
-          NoWhitespaceAfter, NoWhitespaceBefore and WhitespaceAround don't support GENERIC_START nor GENERIC_END tokens. Author: Roman Ivanov <a href="https://github.com/checkstyle/checkstyle/issues/2219">#2219</a>
+          NoWhitespaceAfter, NoWhitespace and WhitespaceAround don't support GENERIC_START nor GENERIC_END tokens. Author: Roman Ivanov <a href="https://github.com/checkstyle/checkstyle/issues/2219">#2219</a>
         </li>
         <li>
           Add support of lambdas which parameter types are omitted for HiddenFieldCheck. Author: Andrei Selkin <a href="https://github.com/checkstyle/checkstyle/issues/2175">#2175</a>

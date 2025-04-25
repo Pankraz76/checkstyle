@@ -240,7 +240,7 @@
               value="^( *\* *([^ ]+|\{@code .*|&lt;a href=&quot;[^&quot;]+&quot;&gt;)|(package|import) .*)$"/>
   </module>
   <!-- Whitespace -->
-  <module name="NoWhitespaceBefore"/>
+  <module name="NoWhitespace"/>
   <module name="FileTabCharacter">
     <property name="eachLine" value="false"/>
   </module>

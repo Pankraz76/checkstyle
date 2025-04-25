@@ -323,7 +323,7 @@
           <item name="MethodParamPad" href="checks/whitespace/methodparampad.html"/>
           <item name="NoLineWrap" href="checks/whitespace/nolinewrap.html"/>
           <item name="NoWhitespaceAfter" href="checks/whitespace/nowhitespaceafter.html"/>
-          <item name="NoWhitespaceBefore" href="checks/whitespace/nowhitespacebefore.html"/>
+          <item name="NoWhitespace" href="checks/whitespace/nowhitespace.html"/>
           <item name="NoWhitespaceBeforeCaseDefaultColon"
                 href="checks/whitespace/nowhitespacebeforecasedefaultcolon.html"/>
           <item name="OperatorWrap" href="checks/whitespace/operatorwrap.html"/>
