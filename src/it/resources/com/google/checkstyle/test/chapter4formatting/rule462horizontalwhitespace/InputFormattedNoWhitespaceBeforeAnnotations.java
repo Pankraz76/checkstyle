@@ -9,7 +9,7 @@ public class InputFormattedNoWhitespaceBeforeAnnotations {
   @Target(ElementType.TYPE_USE)
   @interface NonNull {}
 
-  @NonNull int @NonNull [] @NonNull [] fiel1; // ok until #8205
+  @NonNull int @NonNull [] @NonNull [] field1; // ok until #8205
   @NonNull int @NonNull [] @NonNull [] field2;
 
   /** some javadoc. */
