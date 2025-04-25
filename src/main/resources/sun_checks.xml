@@ -94,7 +94,7 @@
   <!--   <property name="headerFile" value="${checkstyle.header.file}"/> -->
   <!--   <property name="fileExtensions" value="java"/> -->
   <!-- </module> -->
-
+  <module name="NoWhitespaceBefore"/>
   <module name="TreeWalker">
 
     <!-- Checks for Javadoc comments.                     -->
