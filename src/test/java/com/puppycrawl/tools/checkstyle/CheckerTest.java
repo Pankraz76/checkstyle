@@ -1395,24 +1395,6 @@ public class CheckerTest extends AbstractModuleTestSupport {
         }
     }
 
-    private static File getFileMock() {
-        return new File("testFile") {
-            private static final long serialVersionUID = 1L;
-
-            /**
-             * Test is checking catch clause when exception is thrown.
-             *
-             * @noinspection ProhibitedExceptionThrown
-             * @noinspectionreason ProhibitedExceptionThrown - we require mocked file to
-             *      throw exception as part of test
-             */
-            @Override
-            public String getAbsolutePath() {
-                throw new SecurityException("Security Exception");
-            }
-        };
-    }
-
     @Test
     public void testHaltOnExceptionOff() throws Exception {
         final String filePath = getPath("InputChecker.java");
