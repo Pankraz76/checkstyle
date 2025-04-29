@@ -140,7 +140,7 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final String charset = StandardCharsets.UTF_8.name();
         final TranslationCheck check = new TranslationCheck();
         check.beginProcessing(charset);
-        check.processFiltered(fileToProcess, new FileText(fileToProcess, charset));
+        check.processFiltered(fileToProcess.toFile(), new FileText(fileToProcess.toFile(), charset));
         check.beginProcessing(charset);
         final Field field = check.getClass().getDeclaredField("filesToProcess");
         field.setAccessible(true);

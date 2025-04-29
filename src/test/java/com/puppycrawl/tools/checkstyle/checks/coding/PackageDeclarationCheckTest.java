@@ -24,6 +24,7 @@ import static com.puppycrawl.tools.checkstyle.checks.coding.PackageDeclarationCh
 import static com.puppycrawl.tools.checkstyle.checks.coding.PackageDeclarationCheck.MSG_KEY_MISSING;
 
 import java.io.File;
+import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
 
@@ -177,9 +178,9 @@ public class PackageDeclarationCheckTest extends AbstractModuleTestSupport {
         final Checker checker = createChecker(checkConfig);
         final String fileName1 = getPath("InputPackageDeclarationPlain.java");
         final String fileName2 = getPath("InputPackageDeclarationNoPackage.java");
-        final File[] files = {
-            new File(fileName1),
-            new File(fileName2),
+        final Path[] files = {
+            Path.of(fileName1),
+            Path.of(fileName2),
         };
         verify(checker, files, fileName2, expected);
     }

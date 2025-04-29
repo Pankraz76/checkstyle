@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -283,12 +284,12 @@ public class WriteTagCheckTest extends AbstractModuleTestSupport {
 
     @Override
     protected void verify(Checker checker,
-                          File[] processedFiles,
+                          Path[] processedFiles,
                           String messageFileName,
                           String... expected)
             throws Exception {
         getStream().flush();
-        final List<File> theFiles = new ArrayList<>();
+        final List<Path> theFiles = new ArrayList<>();
         Collections.addAll(theFiles, processedFiles);
         final int errs = checker.process(theFiles);
 
