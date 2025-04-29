@@ -405,18 +405,16 @@ public abstract class AbstractItModuleTestSupport extends AbstractPathTestSuppor
      * @throws Exception if exception occurs during verification process.
      */
     protected final void verify(Checker checker,
-            File[] processedFiles,
+                                Path[] processedFiles,
             String messageFileName,
             String[] expected,
             Integer... warnsExpected)
             throws Exception {
         stream.flush();
         stream.reset();
-        final List<File> theFiles = new ArrayList<>();
-        Collections.addAll(theFiles, processedFiles);
         final List<Integer> theWarnings = new ArrayList<>();
         Collections.addAll(theWarnings, warnsExpected);
-        final int errs = checker.process(theFiles);
+        final int errs = checker.process(List.of(processedFiles));
 
         // process each of the lines
         try (ByteArrayInputStream inputStream =
