@@ -368,8 +368,8 @@ public abstract class AbstractItModuleTestSupport extends AbstractPathTestSuppor
      * @throws IOException if I/O exception occurs while forming the path.
      */
     protected final String getNonCompilablePath(String filename) throws IOException {
-        return new File("src/" + getResourceLocation() + "/resources-noncompilable/"
-                + getPackageLocation() + "/" + filename).getCanonicalPath();
+        return Path.of("src/" + getResourceLocation() + "/resources-noncompilable/"
+                + getPackageLocation() + "/" + filename).toFile().getCanonicalPath();
     }
 
     /**
@@ -389,7 +389,7 @@ public abstract class AbstractItModuleTestSupport extends AbstractPathTestSuppor
     protected final void verify(Configuration config, String fileName, String[] expected,
             Integer... warnsExpected) throws Exception {
         verify(createChecker(config),
-                new File[] {new File(fileName)},
+                new Path[] {Path.of(fileName)},
                 fileName, expected, warnsExpected);
     }
 
@@ -481,7 +481,7 @@ public abstract class AbstractItModuleTestSupport extends AbstractPathTestSuppor
           String file) throws Exception {
         stream.flush();
         stream.reset();
-        final List<File> files = Collections.singletonList(new File(file));
+        final List<Path> files = Collections.singletonList(Path.of(file));
         final Checker checker = createChecker(config);
         final Map<String, List<String>> actualViolations =
                 getActualViolations(checker.process(files));
