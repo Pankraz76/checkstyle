@@ -377,7 +377,7 @@ public abstract class AbstractItModuleTestSupport extends AbstractPathTestSuppor
      * Expected messages are represented by the array of strings, warning line numbers are
      * represented by the array of integers.
      * This implementation uses overloaded
-     * {@link AbstractItModuleTestSupport#verify(Checker, File[], String, String[], Integer...)}
+     * {@link AbstractItModuleTestSupport#verify(Checker, Path[], String, String[], Integer...)}
      * method inside.
      *
      * @param config configuration.

@@ -1730,13 +1730,12 @@ public class CheckerTest extends AbstractModuleTestSupport {
             "1: " + violationMessage,
         };
 
-        final File tempFile = createTempFile("InputCheckerTestExcludeRelativizedFile", ".java")
-                .toFile();
+        final Path tempFile = createTempFile("InputCheckerTestExcludeRelativizedFile", ".java");
 
-        final File[] processedFiles = {tempFile};
+        final Path[] processedFiles = {tempFile};
 
         verify(createChecker(checkerConfig), processedFiles,
-                tempFile.getName(), expected);
+                tempFile.getFileName().toString(), expected);
     }
 
     public static class DefaultLoggerWithCounter extends DefaultLogger {

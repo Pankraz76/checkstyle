@@ -23,6 +23,7 @@ import static com.puppycrawl.tools.checkstyle.checks.TranslationCheck.MSG_KEY;
 import static com.puppycrawl.tools.checkstyle.checks.TranslationCheck.MSG_KEY_MISSING_TRANSLATION_FILE;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,10 +46,10 @@ public class TranslationCheckExamplesTest extends AbstractExamplesModuleTestSupp
         final String messages = getPath("Example1/messages.properties");
         final String messagesFr = getPath("Example1/messages_fr.properties");
         final String messagesEs = getPath("Example1/messages_es.properties");
-        final File[] propertyFiles = {
-            new File(messages),
-            new File(messagesFr),
-            new File(messagesEs),
+        final Path[] propertyFiles = {
+            Path.of(messages),
+            Path.of(messagesFr),
+            Path.of(messagesEs),
         };
         final Map<String, List<String>> expected = new HashMap<>();
         expected.put(messagesFr,
@@ -75,9 +76,9 @@ public class TranslationCheckExamplesTest extends AbstractExamplesModuleTestSupp
     public void testExample2() throws Exception {
         final String buttonLabels = getPath("ButtonLabels.properties");
         final String buttonLabelsFr = getPath("ButtonLabels_fr.properties");
-        final File[] propertyFiles = {
-            new File(buttonLabels),
-            new File(buttonLabelsFr),
+        final Path[] propertyFiles = {
+            Path.of(buttonLabels),
+            Path.of(buttonLabelsFr),
         };
         final Map<String, List<String>> expected = new HashMap<>();
         expected.put(buttonLabelsFr,
@@ -94,9 +95,9 @@ public class TranslationCheckExamplesTest extends AbstractExamplesModuleTestSupp
 
     @Test
     public void testExample3() throws Exception {
-        final File[] propertyFiles = {
-            new File(getPath("messages_home.properties")),
-            new File(getPath("messages_home.translations")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("messages_home.properties")),
+            Path.of(getPath("messages_home.translations")),
         };
         final String[] expectedMessages = {
             "1: " + getCheckMessage(MSG_KEY_MISSING_TRANSLATION_FILE,

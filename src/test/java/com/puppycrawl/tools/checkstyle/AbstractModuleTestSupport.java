@@ -175,9 +175,9 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
      * @throws IOException if I/O exception occurs while forming the path.
      */
     protected final String getNonCompilablePath(String filename) throws IOException {
-        return new File("src/" + getResourceLocation()
+        return Path.of("src/" + getResourceLocation()
                 + "/resources-noncompilable/" + getPackageLocation() + "/"
-                + filename).getCanonicalPath();
+                + filename).toFile().getCanonicalPath();
     }
 
     /**
@@ -188,7 +188,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
      * @return URI-representation of the path for the file with the given file name.
      */
     protected final String getUriString(String filename) {
-        return new File("src/test/resources/" + getPackageLocation() + "/" + filename).toURI()
+        return Path.of("src/test/resources/" + getPackageLocation() + "/" + filename).toFile().toURI()
                 .toString();
     }
 
@@ -287,7 +287,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
         verifyViolations(parsedConfig, filePath1, testInputConfiguration1.getViolations());
         verifyViolations(parsedConfig, filePath2, testInputConfiguration2.getViolations());
         verify(createChecker(parsedConfig),
-                new File[] {new File(filePath1), new File(filePath2)},
+                new Path[] {Path.of(filePath1), Path.of(filePath2)},
                 filePath1,
                 expected);
     }
@@ -314,7 +314,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
         final DefaultConfiguration parsedConfig = testInputConfiguration.createConfiguration();
         final TestInputConfiguration testInputConfiguration2 = InlineConfigParser.parse(filePath2);
         final DefaultConfiguration parsedConfig2 = testInputConfiguration.createConfiguration();
-        final File[] inputs = {new File(filePath1), new File(filePath2)};
+        final Path[] inputs = {Path.of(filePath1), Path.of(filePath2)};
         verifyViolations(parsedConfig, filePath1, testInputConfiguration.getViolations());
         verifyViolations(parsedConfig2, filePath2, testInputConfiguration2.getViolations());
         verify(createChecker(parsedConfig), inputs, ImmutableMap.of(
@@ -389,7 +389,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
                 InlineConfigParser.parse(inputFile);
         final DefaultConfiguration parsedConfig =
                 testInputConfiguration.createConfiguration();
-        final List<File> filesToCheck = Collections.singletonList(new File(inputFile));
+        final List<Path> filesToCheck = Collections.singletonList(Path.of(inputFile));
         final String basePath = Path.of("").toAbsolutePath().toString();
 
         final Checker checker = createChecker(parsedConfig);
@@ -404,7 +404,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
      * Performs verification of the file with the given file name. Uses specified configuration.
      * Expected messages are represented by the array of strings.
      * This implementation uses overloaded
-     * {@link AbstractModuleTestSupport#verify(Checker, File[], String, String...)} method inside.
+     * {@link AbstractModuleTestSupport#verify(Checker, Path[], String, String...)} method inside.
      *
      * @param config configuration.
      * @param fileName file name to verify.
@@ -438,7 +438,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
      * Uses provided {@link Checker} instance.
      * Expected messages are represented by the array of strings.
      * This implementation uses overloaded
-     * {@link AbstractModuleTestSupport#verify(Checker, File[], String, String...)} method inside.
+     * {@link AbstractModuleTestSupport#verify(Checker, Path[], String, String...)} method inside.
      *
      * @param checker {@link Checker} instance.
      * @param processedFilename file name to verify.
@@ -452,7 +452,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
                           String... expected)
             throws Exception {
         verify(checker,
-                new File[] {new File(processedFilename)},
+                new Path[] {Path.of(processedFilename)},
                 messageFileName, expected);
     }
 
@@ -467,7 +467,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
      *  @throws Exception if exception occurs during verification process.
      */
     protected void verify(Checker checker,
-                          File[] processedFiles,
+                          Path[] processedFiles,
                           String messageFileName,
                           String... expected)
             throws Exception {
@@ -485,7 +485,7 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
      * @throws Exception if exception occurs during verification process.
      */
     protected final void verify(Checker checker,
-                          File[] processedFiles,
+                          Path[] processedFiles,
                           Map<String, List<String>> expectedViolations)
             throws Exception {
         stream.flush();
@@ -493,7 +493,6 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
         final int errs = checker.process(
             Arrays
                 .stream(processedFiles)
-                .map(File::toPath)
                 .collect(Collectors.toUnmodifiableList()));
 
         // process each of the lines

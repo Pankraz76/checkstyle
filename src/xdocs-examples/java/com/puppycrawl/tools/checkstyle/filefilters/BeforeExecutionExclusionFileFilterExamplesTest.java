@@ -119,11 +119,10 @@ public class BeforeExecutionExclusionFileFilterExamplesTest
         verify(createChecker(parsedConfig), getFilesInFolder(path), expected);
     }
 
-    private static File[] getFilesInFolder(Path path) throws IOException {
+    private static Path[] getFilesInFolder(Path path) throws IOException {
         try (Stream<Path> stream = Files.walk(path.toAbsolutePath())) {
             return stream.filter(Files::isRegularFile)
-                    .map(Path::toFile)
-                    .toArray(File[]::new);
+                    .toArray(Path[]::new);
         }
     }
 

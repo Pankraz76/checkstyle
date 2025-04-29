@@ -29,6 +29,7 @@ import static com.puppycrawl.tools.checkstyle.checks.imports.CustomImportOrderCh
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
 
@@ -374,9 +375,9 @@ public class CustomImportOrderCheckTest extends AbstractModuleTestSupport {
         final Checker checker = createChecker(checkConfig);
         final String fileName1 = getPath("InputCustomImportOrderImportsContainingJava.java");
         final String fileName2 = getPath("InputCustomImportOrderNoValid.java");
-        final File[] files = {
-            new File(fileName1),
-            new File(fileName2),
+        final Path[] files = {
+            Path.of(fileName1),
+            Path.of(fileName2),
         };
         verify(checker, files, fileName1, expected);
     }

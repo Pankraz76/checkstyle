@@ -61,7 +61,6 @@ public class TestRootModuleChecker implements RootModule {
     @Override
     public int process(Collection<Path> files) {
         return process(files.stream()
-                .map(Path::toFile)
                 .collect(Collectors.toUnmodifiableList()));
     }
 
