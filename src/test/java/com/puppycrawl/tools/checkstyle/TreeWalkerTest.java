@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -661,8 +662,8 @@ public class TreeWalkerTest extends AbstractModuleTestSupport {
         treeWalkerConfig.addChild(configuration2);
         treeWalkerConfig.addChild(configuration1);
 
-        final List<File> files =
-                Collections.singletonList(new File(getPath("InputTreeWalker2.java")));
+        final List<Path> files =
+                Collections.singletonList(Path.of(getPath("InputTreeWalker2.java")));
         final Checker checker = createChecker(treeWalkerConfig);
 
         try {
@@ -683,10 +684,10 @@ public class TreeWalkerTest extends AbstractModuleTestSupport {
         config.addProperty("javaParseExceptionSeverity", "ignore");
         config.addChild(createModuleConfig(ConstantNameCheck.class));
 
-        final File[] files = {
-            new File(getNonCompilablePath("InputTreeWalkerSkipParsingException.java")),
-            new File(getPath("InputTreeWalkerProperFileExtension.java")),
-            new File(getNonCompilablePath("InputTreeWalkerSkipParsingException2.java")),
+        final Path[] files = {
+            Path.of(getNonCompilablePath("InputTreeWalkerSkipParsingException.java")),
+            Path.of(getPath("InputTreeWalkerProperFileExtension.java")),
+            Path.of(getNonCompilablePath("InputTreeWalkerSkipParsingException2.java")),
         };
 
         final Checker checker = createChecker(config);
@@ -756,10 +757,10 @@ public class TreeWalkerTest extends AbstractModuleTestSupport {
 
         final Checker checker = createChecker(config);
 
-        final File[] files = {
-            new File(getNonCompilablePath("InputTreeWalkerSkipParsingException.java")),
-            new File(getPath("InputTreeWalkerProperFileExtension.java")),
-            new File(getNonCompilablePath("InputTreeWalkerSkipParsingException2.java")),
+        final Path[] files = {
+            Path.of(getNonCompilablePath("InputTreeWalkerSkipParsingException.java")),
+            Path.of(getPath("InputTreeWalkerProperFileExtension.java")),
+            Path.of(getNonCompilablePath("InputTreeWalkerSkipParsingException2.java")),
         };
         final Map<String, List<String>> expectedViolation = new HashMap<>();
         expectedViolation.put(getPath("InputTreeWalkerProperFileExtension.java"),
@@ -776,9 +777,9 @@ public class TreeWalkerTest extends AbstractModuleTestSupport {
 
         final Checker checker = createChecker(config);
 
-        final File[] files = {
-            new File(getNonCompilablePath("InputTreeWalkerSkipParsingException.java")),
-            new File(getPath("InputTreeWalkerProperFileExtension.java")),
+        final Path[] files = {
+            Path.of(getNonCompilablePath("InputTreeWalkerSkipParsingException.java")),
+            Path.of(getPath("InputTreeWalkerProperFileExtension.java")),
         };
 
         final Map<String, List<String>> expectedViolation = new HashMap<>();
