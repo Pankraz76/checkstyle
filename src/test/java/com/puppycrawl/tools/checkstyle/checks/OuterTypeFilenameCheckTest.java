@@ -23,6 +23,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static com.puppycrawl.tools.checkstyle.checks.OuterTypeFilenameCheck.MSG_KEY;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -179,7 +180,7 @@ public class OuterTypeFilenameCheckTest extends AbstractModuleTestSupport {
                 "InputOuterTypeFilenameBeginTree2.java");
         final List<String> expectedFirstInput = List.of(CommonUtil.EMPTY_STRING_ARRAY);
         final List<String> expectedSecondInput = List.of(CommonUtil.EMPTY_STRING_ARRAY);
-        final File[] inputs = {new File(file1), new File(file2)};
+        final Path[] inputs = {Path.of(file1), Path.of(file2)};
 
         verify(createChecker(checkConfig), inputs, ImmutableMap.of(
             file1, expectedFirstInput,
@@ -197,7 +198,7 @@ public class OuterTypeFilenameCheckTest extends AbstractModuleTestSupport {
         final List<String> expectedSecondInput = List.of(
                 "9:1: " + getCheckMessage(MSG_KEY)
         );
-        final File[] inputs = {new File(file1), new File(file2)};
+        final Path[] inputs = {Path.of(file1), Path.of(file2)};
 
         verify(createChecker(checkConfig), inputs, ImmutableMap.of(
             file1, expectedFirstInput,

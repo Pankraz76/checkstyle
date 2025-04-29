@@ -25,6 +25,7 @@ import static com.puppycrawl.tools.checkstyle.checks.imports.RedundantImportChec
 import static com.puppycrawl.tools.checkstyle.checks.imports.RedundantImportCheck.MSG_SAME;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
@@ -68,7 +69,7 @@ public class RedundantImportCheckTest
             "13:1: " + getCheckMessage(MSG_DUPLICATE, 12, "java.util.List")
         );
         final List<String> expectedSecondInput = Arrays.asList(CommonUtil.EMPTY_STRING_ARRAY);
-        final File[] inputs = {new File(inputWithWarnings), new File(inputWithoutWarnings)};
+        final Path[] inputs = {Path.of(inputWithWarnings), Path.of(inputWithoutWarnings)};
 
         verify(createChecker(checkConfig), inputs, ImmutableMap.of(
             inputWithWarnings, expectedFirstInput,

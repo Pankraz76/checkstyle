@@ -86,7 +86,7 @@ public class EqualsHashCodeCheckTest
         final String secondInput = getPath("InputEqualsHashCodeSemanticTwo.java");
         final String thirdInput = getPath("InputEqualsHashCode.java");
 
-        final File[] inputs = {
+        final Path[] inputs = {
             new File(firstInput),
             new File(secondInput),
             new File(thirdInput),

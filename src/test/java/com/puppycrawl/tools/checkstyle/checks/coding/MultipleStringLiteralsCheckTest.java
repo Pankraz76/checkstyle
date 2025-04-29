@@ -23,6 +23,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static com.puppycrawl.tools.checkstyle.checks.coding.MultipleStringLiteralsCheck.MSG_KEY;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
@@ -76,7 +77,7 @@ public class MultipleStringLiteralsCheckTest extends AbstractModuleTestSupport {
         final String firstInput = getPath("InputMultipleStringLiterals3.java");
         final String secondInput = getPath("InputMultipleStringLiteralsNoWarnings.java");
 
-        final File[] inputs = {new File(firstInput), new File(secondInput)};
+        final Path[] inputs = {Path.of(firstInput), Path.of(secondInput)};
 
         final List<String> expectedFirstInput = Arrays.asList(
             "14:16: " + getCheckMessage(MSG_KEY, "\"StringContents\"", 3),

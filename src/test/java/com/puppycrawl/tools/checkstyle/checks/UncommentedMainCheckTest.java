@@ -23,6 +23,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheck.MSG_KEY;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.List;
 
 import org.antlr.v4.runtime.CommonToken;
@@ -160,7 +161,7 @@ public class UncommentedMainCheckTest
         final List<String> expectedSecondInput = List.of(
                 "13:13: " + getCheckMessage(MSG_KEY)
         );
-        final File[] inputs = {new File(file1), new File(file2)};
+        final Path[] inputs = {Path.of(file1), Path.of(file2)};
 
         verify(createChecker(checkConfig), inputs, ImmutableMap.of(
             file1, expectedFirstInput,
@@ -181,7 +182,7 @@ public class UncommentedMainCheckTest
                 "3:5: " + getCheckMessage(MSG_KEY),
                 "12:5: " + getCheckMessage(MSG_KEY)
         );
-        final File[] inputs = {new File(file1), new File(file2)};
+        final Path[] inputs = {Path.of(file1), Path.of(file2)};
 
         verify(createChecker(checkConfig), inputs, ImmutableMap.of(
             file1, expectedFirstInput,

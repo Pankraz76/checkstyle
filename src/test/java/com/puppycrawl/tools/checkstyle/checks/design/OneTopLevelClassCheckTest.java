@@ -23,6 +23,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static com.puppycrawl.tools.checkstyle.checks.design.OneTopLevelClassCheck.MSG_KEY;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,9 +58,9 @@ public class OneTopLevelClassCheckTest extends AbstractModuleTestSupport {
         final String firstInputFilePath = getPath("InputOneTopLevelClassDeclarationOrder.java");
         final String secondInputFilePath = getPath("InputOneTopLevelClassInterface2.java");
 
-        final File[] inputs = {
-            new File(firstInputFilePath),
-            new File(secondInputFilePath),
+        final Path[] inputs = {
+            Path.of(firstInputFilePath),
+            Path.of(secondInputFilePath),
         };
 
         final List<String> expectedFirstInput = Arrays.asList(

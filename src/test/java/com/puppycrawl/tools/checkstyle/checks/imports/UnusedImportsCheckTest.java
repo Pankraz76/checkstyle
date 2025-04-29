@@ -23,6 +23,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck.MSG_KEY;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,10 +53,10 @@ public class UnusedImportsCheckTest extends AbstractModuleTestSupport {
                 "11:8: " + getCheckMessage(MSG_KEY, "java.util.List"),
                 "12:8: " + getCheckMessage(MSG_KEY, "java.util.Set")
         );
-        final File[] inputsWithWarningsFirst =
-            {new File(inputWithWarnings), new File(inputWithoutWarnings)};
-        final File[] inputsWithoutWarningFirst =
-            {new File(inputWithoutWarnings), new File(inputWithWarnings)};
+        final Path[] inputsWithWarningsFirst =
+            {Path.of(inputWithWarnings), Path.of(inputWithoutWarnings)};
+        final Path[] inputsWithoutWarningFirst =
+            {Path.of(inputWithoutWarnings), Path.of(inputWithWarnings)};
 
         verify(createChecker(checkConfig), inputsWithWarningsFirst, ImmutableMap.of(
                 inputWithoutWarnings, expectedFirstInput,

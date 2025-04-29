@@ -23,6 +23,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static com.puppycrawl.tools.checkstyle.checks.design.MutableExceptionCheck.MSG_KEY;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
@@ -80,7 +81,7 @@ public class MutableExceptionCheckTest extends AbstractModuleTestSupport {
             "14:9: " + getCheckMessage(MSG_KEY, "errorCode"),
             "18:9: " + getCheckMessage(MSG_KEY, "errorCode"));
 
-        final File[] inputs = {new File(filePath1), new File(filePath2)};
+        final Path[] inputs = {Path.of(filePath1), Path.of(filePath2)};
 
         verify(createChecker(checkConfig), inputs,
                 ImmutableMap.of(filePath1, expected1, filePath2, expected2));
