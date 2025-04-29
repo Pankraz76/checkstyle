@@ -24,6 +24,7 @@ import static com.puppycrawl.tools.checkstyle.checks.coding.EqualsHashCodeCheck.
 import static com.puppycrawl.tools.checkstyle.checks.coding.EqualsHashCodeCheck.MSG_KEY_HASHCODE;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -87,9 +88,9 @@ public class EqualsHashCodeCheckTest
         final String thirdInput = getPath("InputEqualsHashCode.java");
 
         final Path[] inputs = {
-            new File(firstInput),
-            new File(secondInput),
-            new File(thirdInput),
+            Path.of(firstInput),
+            Path.of(secondInput),
+            Path.of(thirdInput),
         };
 
         verify(createChecker(checkConfig), inputs, ImmutableMap.of(

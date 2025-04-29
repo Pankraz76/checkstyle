@@ -23,6 +23,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 import static com.puppycrawl.tools.checkstyle.checks.design.InnerTypeLastCheck.MSG_KEY;
 
 import java.io.File;
+import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
 
@@ -83,9 +84,9 @@ public class InnerTypeLastCheckTest extends AbstractModuleTestSupport {
         final DefaultConfiguration checkConfig =
             createModuleConfig(InnerTypeLastCheck.class);
         final String[] expected = CommonUtil.EMPTY_STRING_ARRAY;
-        verify(createChecker(checkConfig), new File[] {
-            new File(getPath("InputInnerTypeLastClassRootClass.java")),
-            new File(getPath("InputInnerTypeLastClassRootClass.java")),
+        verify(createChecker(checkConfig), new Path[] {
+            Path.of(getPath("InputInnerTypeLastClassRootClass.java")),
+            Path.of(getPath("InputInnerTypeLastClassRootClass.java")),
         }, "InputInnerTypeLastClassRootClass.java", expected);
     }
 

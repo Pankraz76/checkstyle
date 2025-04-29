@@ -259,7 +259,7 @@ public class RegexpOnFilenameCheckTest extends AbstractModuleTestSupport {
         final String path = getPath("package-info.java");
         final File fileWithoutParent = new MockFile(path);
         final String[] expected = CommonUtil.EMPTY_STRING_ARRAY;
-        verify(createChecker(moduleConfig), new File[] {fileWithoutParent}, path, expected);
+        verify(createChecker(moduleConfig), new Path[] {fileWithoutParent}, path, expected);
     }
 
     private static final class MockFile extends File {

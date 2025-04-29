@@ -24,6 +24,7 @@ import static com.puppycrawl.tools.checkstyle.checks.coding.IllegalTypeCheck.MSG
 import static com.puppycrawl.tools.checkstyle.internal.utils.TestUtil.getExpectedThrowable;
 
 import java.io.File;
+import java.nio.file.Path;
 
 import org.junit.jupiter.api.Test;
 
@@ -290,9 +291,9 @@ public class IllegalTypeCheckTest extends AbstractModuleTestSupport {
             "23:13: " + getCheckMessage(MSG_KEY, "TreeSet"),
         };
 
-        verify(createChecker(checkConfig), new File[] {
-            new File(violationFile),
-            new File(getPath("InputIllegalTypeSimilarClassName.java")),
+        verify(createChecker(checkConfig), new Path[] {
+            Path.of(violationFile),
+            Path.of(getPath("InputIllegalTypeSimilarClassName.java")),
         }, violationFile, expected);
     }
 
