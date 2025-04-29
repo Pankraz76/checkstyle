@@ -30,6 +30,7 @@ import java.io.Writer;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Set;
 import java.util.SortedSet;
@@ -70,9 +71,9 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final String[] expected = {
             "1: " + getCheckMessage(MSG_KEY, "only.english"),
         };
-        final File[] propertyFiles = {
-            new File(getPath("messages_test_de.properties")),
-            new File(getPath("messages_test.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("messages_test_de.properties")),
+            Path.of(getPath("messages_test.properties")),
         };
         verify(
             createChecker(checkConfig),
@@ -87,11 +88,11 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final String[] expected = {
             "1: " + getCheckMessage(MSG_KEY, "only.english"),
         };
-        final File[] propertyFiles = {
-            new File(getPath("messages_test_de.properties")),
-            new File(getPath("messages_test.properties")),
-            new File(getPath("messages_translation.properties")),
-            new File(getPath("messages_translation_de.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("messages_test_de.properties")),
+            Path.of(getPath("messages_test.properties")),
+            Path.of(getPath("messages_translation.properties")),
+            Path.of(getPath("messages_translation_de.properties")),
         };
         verify(
             createChecker(checkConfig),
@@ -102,8 +103,8 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
 
     @Test
     public void testDifferentPaths() throws Exception {
-        final File file = new File(temporaryFolder, "messages_test_de.properties");
-        try (Writer writer = Files.newBufferedWriter(file.toPath(), StandardCharsets.UTF_8)) {
+        final Path file = new File(temporaryFolder, "messages_test_de.properties").toPath();
+        try (Writer writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
             final String content = "hello=Hello\ncancel=Cancel";
             writer.write(content);
         }
@@ -112,14 +113,14 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
             "1: " + getCheckMessage(MSG_KEY_MISSING_TRANSLATION_FILE,
                     "messages_test.properties"),
         };
-        final File[] propertyFiles = {
+        final Path[] propertyFiles = {
             file,
-            new File(getPath("messages_test.properties")),
+            Path.of(getPath("messages_test.properties")),
         };
         verify(
             createChecker(checkConfig),
             propertyFiles,
-            file.getParent(),
+            file.toFile().getParent(),
             expected);
     }
 
@@ -133,7 +134,7 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
      */
     @Test
     public void testStateIsCleared() throws Exception {
-        final File fileToProcess = new File(
+        final Path fileToProcess = Path.of(
                 getPath("InputTranslationCheckFireErrors_de.properties")
         );
         final String charset = StandardCharsets.UTF_8.name();
@@ -154,8 +155,8 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final DefaultConfiguration checkConfig = createModuleConfig(TranslationCheck.class);
         checkConfig.addProperty("baseName", "^InputTranslation.*$");
         final String[] expected = CommonUtil.EMPTY_STRING_ARRAY;
-        final File[] propertyFiles = {
-            new File(getPath("InputTranslation_de.txt")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("InputTranslation_de.txt")),
         };
         verify(createChecker(checkConfig),
             propertyFiles,
@@ -177,9 +178,9 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final String defaultProps = getPath("InputTranslationCheckFireErrors.properties");
         final String translationProps = getPath("InputTranslationCheckFireErrors_de.properties");
 
-        final File[] propertyFiles = {
-            new File(defaultProps),
-            new File(translationProps),
+        final Path[] propertyFiles = {
+            Path.of(defaultProps),
+            Path.of(translationProps),
         };
 
         final String line = "1: ";
@@ -201,8 +202,8 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
     public void testOnePropertyFileSet() throws Exception {
         final DefaultConfiguration checkConfig = createModuleConfig(TranslationCheck.class);
         final String[] expected = CommonUtil.EMPTY_STRING_ARRAY;
-        final File[] propertyFiles = {
-            new File(getPath("app-dev.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("app-dev.properties")),
         };
         verify(
             createChecker(checkConfig),
@@ -223,7 +224,7 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         check.setMessageDispatcher(dispatcher);
 
         final Set<String> keys = TestUtil.invokeMethod(check, "getTranslationKeys",
-                new File(".no.such.file"));
+                Path.of(".no.such.file"));
         assertWithMessage("Translation keys should be empty when File is not found")
                 .that(keys)
                 .isEmpty();
@@ -252,7 +253,7 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         check.setId("ID1");
 
         final Exception exception = new IOException("test exception");
-        TestUtil.invokeMethod(check, "logException", exception, new File(""));
+        TestUtil.invokeMethod(check, "logException", exception, Path.of(""));
 
         assertWithMessage("expected number of errors to fire")
             .that(dispatcher.savedErrors.size())
@@ -274,9 +275,9 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
                     "Malformed \\uxxxx encoding."),
             "1: " + getCheckMessage(MSG_KEY, "test"),
         };
-        final File[] propertyFiles = {
-            new File(getPath("bad.properties")),
-            new File(getPath("bad_es.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("bad.properties")),
+            Path.of(getPath("bad_es.properties")),
         };
         verify(
             createChecker(checkConfig),
@@ -290,9 +291,9 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final DefaultConfiguration checkConfig = createModuleConfig(TranslationCheck.class);
         checkConfig.addProperty("requiredTranslations", "ja,,, de, ja");
 
-        final File[] propertyFiles = {
-            new File(getPath("messages_translation_de.properties")),
-            new File(getPath("messages_translation_ja.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("messages_translation_de.properties")),
+            Path.of(getPath("messages_translation_ja.properties")),
         };
 
         final String[] expected = {
@@ -311,9 +312,9 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final DefaultConfiguration checkConfig = createModuleConfig(TranslationCheck.class);
         checkConfig.addProperty("requiredTranslations", "ja, de");
 
-        final File[] propertyFiles = {
-            new File(getPath("messages_translation.properties")),
-            new File(getPath("messages_translation_ja.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("messages_translation.properties")),
+            Path.of(getPath("messages_translation_ja.properties")),
         };
 
         final String[] expected = {
@@ -332,8 +333,8 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final DefaultConfiguration checkConfig = createModuleConfig(TranslationCheck.class);
         checkConfig.addProperty("requiredTranslations", "fr");
 
-        final File[] propertyFiles = {
-            new File(getPath("messages-translation_fr.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("messages-translation_fr.properties")),
         };
 
         final String[] expected = {
@@ -352,9 +353,9 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final DefaultConfiguration checkConfig = createModuleConfig(TranslationCheck.class);
         checkConfig.addProperty("requiredTranslations", "fr, tr");
 
-        final File[] propertyFiles = {
-            new File(getPath("messages-translation.properties")),
-            new File(getPath("messages-translation_fr.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("messages-translation.properties")),
+            Path.of(getPath("messages-translation_fr.properties")),
         };
 
         final String[] expected = {
@@ -373,9 +374,9 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final DefaultConfiguration checkConfig = createModuleConfig(TranslationCheck.class);
         checkConfig.addProperty("requiredTranslations", "de");
 
-        final File[] propertyFiles = {
-            new File(getPath("app-dev.properties")),
-            new File(getPath("app-stage.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("app-dev.properties")),
+            Path.of(getPath("app-stage.properties")),
         };
 
         final String[] expected = CommonUtil.EMPTY_STRING_ARRAY;
@@ -391,10 +392,10 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final DefaultConfiguration checkConfig = createModuleConfig(TranslationCheck.class);
         checkConfig.addProperty("requiredTranslations", "es, de");
 
-        final File[] propertyFiles = {
-            new File(getPath("messages_home.properties")),
-            new File(getPath("messages_home_es_US.properties")),
-            new File(getPath("messages_home_fr_CA_UNIX.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("messages_home.properties")),
+            Path.of(getPath("messages_home_es_US.properties")),
+            Path.of(getPath("messages_home_fr_CA_UNIX.properties")),
             };
 
         final String[] expected = {
@@ -413,10 +414,10 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         final DefaultConfiguration checkConfig = createModuleConfig(TranslationCheck.class);
         checkConfig.addProperty("requiredTranslations", "es, fr");
 
-        final File[] propertyFiles = {
-            new File(getPath("messages_home.properties")),
-            new File(getPath("messages_home_es_US.properties")),
-            new File(getPath("messages_home_fr_CA_UNIX.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("messages_home.properties")),
+            Path.of(getPath("messages_home_es_US.properties")),
+            Path.of(getPath("messages_home_fr_CA_UNIX.properties")),
             };
 
         final String[] expected = CommonUtil.EMPTY_STRING_ARRAY;
@@ -433,14 +434,14 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         checkConfig.addProperty("requiredTranslations", "de, es, fr, ja");
         checkConfig.addProperty("baseName", "^.*Labels$");
 
-        final File[] propertyFiles = {
-            new File(getPath("ButtonLabels.properties")),
-            new File(getPath("ButtonLabels_de.properties")),
-            new File(getPath("ButtonLabels_es.properties")),
-            new File(getPath("ButtonLabels_fr_CA_UNIX.properties")),
-            new File(getPath("messages_home.properties")),
-            new File(getPath("messages_home_es_US.properties")),
-            new File(getPath("messages_home_fr_CA_UNIX.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("ButtonLabels.properties")),
+            Path.of(getPath("ButtonLabels_de.properties")),
+            Path.of(getPath("ButtonLabels_es.properties")),
+            Path.of(getPath("ButtonLabels_fr_CA_UNIX.properties")),
+            Path.of(getPath("messages_home.properties")),
+            Path.of(getPath("messages_home_es_US.properties")),
+            Path.of(getPath("messages_home_fr_CA_UNIX.properties")),
         };
 
         final String[] expected = {
@@ -461,16 +462,16 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         checkConfig.addProperty("fileExtensions", "properties,translation");
         checkConfig.addProperty("baseName", "^.*(Titles|Labels)$");
 
-        final File[] propertyFiles = {
-            new File(getPath("ButtonLabels.properties")),
-            new File(getPath("ButtonLabels_de.properties")),
-            new File(getPath("ButtonLabels_es.properties")),
-            new File(getPath("ButtonLabels_fr_CA_UNIX.properties")),
-            new File(getPath("PageTitles.translation")),
-            new File(getPath("PageTitles_de.translation")),
-            new File(getPath("PageTitles_es.translation")),
-            new File(getPath("PageTitles_fr.translation")),
-            new File(getPath("PageTitles_ja.translation")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("ButtonLabels.properties")),
+            Path.of(getPath("ButtonLabels_de.properties")),
+            Path.of(getPath("ButtonLabels_es.properties")),
+            Path.of(getPath("ButtonLabels_fr_CA_UNIX.properties")),
+            Path.of(getPath("PageTitles.translation")),
+            Path.of(getPath("PageTitles_de.translation")),
+            Path.of(getPath("PageTitles_es.translation")),
+            Path.of(getPath("PageTitles_fr.translation")),
+            Path.of(getPath("PageTitles_ja.translation")),
         };
 
         final String[] expected = {
@@ -492,16 +493,16 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         checkConfig.addProperty("fileExtensions", "properties,translations");
         checkConfig.addProperty("baseName", "^.*Labels$");
 
-        final File[] propertyFiles = {
-            new File(getPath("ButtonLabels.properties")),
-            new File(getPath("ButtonLabels_de.properties")),
-            new File(getPath("ButtonLabels_es.properties")),
-            new File(getPath("ButtonLabels_fr_CA_UNIX.properties")),
-            new File(getPath("ButtonLabels.translations")),
-            new File(getPath("ButtonLabels_ja.translations")),
-            new File(getPath("ButtonLabels_es.translations")),
-            new File(getPath("ButtonLabels_fr_CA_UNIX.translations")),
-            new File(getPath("ButtonLabels_de.translations")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("ButtonLabels.properties")),
+            Path.of(getPath("ButtonLabels_de.properties")),
+            Path.of(getPath("ButtonLabels_es.properties")),
+            Path.of(getPath("ButtonLabels_fr_CA_UNIX.properties")),
+            Path.of(getPath("ButtonLabels.translations")),
+            Path.of(getPath("ButtonLabels_ja.translations")),
+            Path.of(getPath("ButtonLabels_es.translations")),
+            Path.of(getPath("ButtonLabels_fr_CA_UNIX.translations")),
+            Path.of(getPath("ButtonLabels_de.translations")),
         };
 
         final String[] expected = {
@@ -523,11 +524,11 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         checkConfig.addProperty("fileExtensions", "properties, translations");
         checkConfig.addProperty("baseName", "^.*Labels$");
 
-        final File[] propertyFiles = {
-            new File(getPath("ButtonLabels.properties")),
-            new File(getPath("ButtonLabels_de.properties")),
-            new File(getPath("ButtonLabels_es.properties")),
-            new File(getPath("ButtonLabels_ja.translations")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("ButtonLabels.properties")),
+            Path.of(getPath("ButtonLabels_de.properties")),
+            Path.of(getPath("ButtonLabels_es.properties")),
+            Path.of(getPath("ButtonLabels_ja.translations")),
         };
 
         final String[] expected = {
@@ -553,10 +554,10 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         checkConfig.addProperty("fileExtensions", "properties,translations");
         checkConfig.addProperty("baseName", "^.*Labels.*");
 
-        final File[] propertyFiles = {
-            new File(getPath("MyLabelsI18.properties")),
-            new File(getPath("MyLabelsI18_de.properties")),
-            new File(getPath("MyLabelsI18_es.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("MyLabelsI18.properties")),
+            Path.of(getPath("MyLabelsI18_de.properties")),
+            Path.of(getPath("MyLabelsI18_es.properties")),
         };
 
         final String[] expected = {
@@ -578,11 +579,11 @@ public class TranslationCheckTest extends AbstractXmlTestSupport {
         checkConfig.addProperty("fileExtensions", "properties");
         checkConfig.addProperty("baseName", "^.*Labels.*");
 
-        final File[] propertyFiles = {
-            new File(getPath("MyLabelsI18.properties")),
-            new File(getPath("MyLabelsI18_de.properties")),
-            new File(getNonCompilablePath("MyLabelsI18.properties")),
-            new File(getNonCompilablePath("MyLabelsI18_de.properties")),
+        final Path[] propertyFiles = {
+            Path.of(getPath("MyLabelsI18.properties")),
+            Path.of(getPath("MyLabelsI18_de.properties")),
+            Path.of(getNonCompilablePath("MyLabelsI18.properties")),
+            Path.of(getNonCompilablePath("MyLabelsI18_de.properties")),
         };
 
         final String[] expected = CommonUtil.EMPTY_STRING_ARRAY;
