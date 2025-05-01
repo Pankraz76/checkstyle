@@ -53,6 +53,11 @@ public class WhitespaceCheck extends AbstractFileSetCheck {
             " [",
             "[ ",
             "] ",
+            " < ", // test generics
+            " <",
+            "< ",
+            " >",
+            "> ",
             " ]",
             " )",
             " )",
