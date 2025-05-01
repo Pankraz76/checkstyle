@@ -17,6 +17,7 @@ Aconfig
 actionlint
 addons
 adr
+AFBR
 AFilter
 aggregators
 allchecks
@@ -467,6 +468,7 @@ forbiddenapis
 Foreach
 Fpuppycrawl
 fq
+frameset
 freemarker
 Fregexp
 Fresources

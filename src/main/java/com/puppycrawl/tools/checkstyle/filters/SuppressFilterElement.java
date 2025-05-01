@@ -110,15 +110,15 @@ public class SuppressFilterElement
      * @param lines   lines CSV values and ranges for line number filtering.
      * @param columns columns CSV values and ranges for column number filtering.
      */
-    public SuppressFilterElement(String files, String checks, String message,
-                                 String modId, String lines, String columns) {
+    public SuppressFilterElement(String files, String checks,
+                                 String message, String modId, String lines, String columns) {
         this(toPattern(files), toPattern(checks), toPattern(message),
                 modId, lines, columns);
     }
 
     /**
-     * Converts a string into a compiled {@code Pattern}, or returns {@code null}
-     * if the input is {@code null}.
+     * Converts a string into a compiled {@code Pattern}, or return {@code null}
+     * if input is {@code null}.
      *
      * @param regex the regular expression as a string, may be {@code null}.
      * @return the compiled {@code Pattern}, or {@code null} if input is {@code null}.

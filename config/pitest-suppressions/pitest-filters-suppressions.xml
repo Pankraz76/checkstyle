@@ -8,6 +8,7 @@
     <description>Removed assignment to member variable columnFilter</description>
     <lineContent>columnFilter = null;</lineContent>
   </mutation>
+
   <mutation unstable="false">
     <sourceFile>SuppressFilterElement.java</sourceFile>
     <mutatedClass>com.puppycrawl.tools.checkstyle.filters.SuppressFilterElement</mutatedClass>
@@ -63,6 +64,15 @@
   </mutation>
 
   <mutation unstable="false">
+    <sourceFile>SuppressWithNearbyCommentFilter.java</sourceFile>
+    <mutatedClass>com.puppycrawl.tools.checkstyle.filters.SuppressWithNearbyCommentFilter$Tag</mutatedClass>
+    <mutatedMethod>toString</mutatedMethod>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NonVoidMethodCallMutator</mutator>
+    <description>removed call to java/lang/String::valueOf</description>
+    <lineContent>return &quot;Tag[text=&apos;&quot; + text + &apos;\&apos;&apos;</lineContent>
+  </mutation>
+
+  <mutation unstable="false">
     <sourceFile>SuppressWithPlainTextCommentFilter.java</sourceFile>
     <mutatedClass>com.puppycrawl.tools.checkstyle.filters.SuppressWithPlainTextCommentFilter$Suppression</mutatedClass>
     <mutatedMethod>&lt;init&gt;</mutatedMethod>
@@ -96,6 +106,15 @@
     <mutator>org.pitest.mutationtest.engine.gregor.mutators.experimental.MemberVariableMutator</mutator>
     <description>Removed assignment to member variable tagMessageRegexp</description>
     <lineContent>tagMessageRegexp = null;</lineContent>
+  </mutation>
+
+  <mutation unstable="false">
+    <sourceFile>SuppressionCommentFilter.java</sourceFile>
+    <mutatedClass>com.puppycrawl.tools.checkstyle.filters.SuppressionCommentFilter$Tag</mutatedClass>
+    <mutatedMethod>toString</mutatedMethod>
+    <mutator>org.pitest.mutationtest.engine.gregor.mutators.NonVoidMethodCallMutator</mutator>
+    <description>removed call to java/lang/String::valueOf</description>
+    <lineContent>return &quot;Tag[text=&apos;&quot; + text + &apos;\&apos;&apos;</lineContent>
   </mutation>
 
   <mutation unstable="false">
