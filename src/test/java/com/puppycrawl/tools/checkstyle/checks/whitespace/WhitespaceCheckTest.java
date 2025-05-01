@@ -36,7 +36,7 @@ public class WhitespaceCheckTest extends AbstractModuleTestSupport {
     public void testDefaultCheck() throws Exception {
         verifyWithInlineConfigParser(
                 getPath("InputWhitespaceDefault.java"), new String[] {
-                        "25:16: " + getCheckMessage(MSG_KEY, ":"),
+                        "23:16: " + getCheckMessage(MSG_KEY, ":"),
                         "26:16: " + getCheckMessage(MSG_KEY, ":"),
                         "27:16: " + getCheckMessage(MSG_KEY, ":"),
                         "28:16: " + getCheckMessage(MSG_KEY, ":"),

@@ -20,21 +20,21 @@ class InputWhitespaceDefault
 
         // Violations
         "".equals("");
-        "".equals(""  + ""); // violation
-        "".equals("" +  ""); // violation
-         System.out.println(""); // violation
-        System .out.println(""); // violation
-        System. out.println(""); // violation
-        System.out .println(""); // violation
-        System.out. println(""); // violation
-        System.out. println(""); // violation
-        System.out.println (""); // violation
-        "" .equals(""); // violation
-        "". equals(""); // violation
-        "".equals (""); // violation
-        "".equals( ""); // violation
-        "".equals("" ); // violation
-        "".equals("") ; // violation
+        "".equals(""  + ""); // violation contains invalid whitespace.
+        "".equals("" +  ""); // violation contains invalid whitespace.
+         System.out.println(""); // violation contains invalid whitespace.
+        System .out.println(""); // violation contains invalid whitespace.
+        System. out.println(""); // violation contains invalid whitespace.
+        System.out .println(""); // violation contains invalid whitespace.
+        System.out. println(""); // violation contains invalid whitespace.
+        System.out. println(""); // violation contains invalid whitespace.
+        System.out.println (""); // violation contains invalid whitespace.
+        "" .equals(""); // violation contains invalid whitespace.
+        "". equals(""); // violation contains invalid whitespace.
+        "".equals (""); // violation contains invalid whitespace.
+        "".equals( ""); // violation contains invalid whitespace.
+        "".equals("" ); // violation contains invalid whitespace.
+        "".equals("") ; // violation contains invalid whitespace.
     }
 
     /** Test variable assignment violations */
@@ -44,9 +44,9 @@ class InputWhitespaceDefault
         boolean eq2 = "".equals("");
 
         // Violations
-        eq2 = "".equals(""); // violation
-        eq2  = "".equals(""); // violation
-        eq2 =  "".equals(""); // violation
+        eq2 = "".equals(""); // violation contains invalid whitespace.
+        eq2  = "".equals(""); // violation contains invalid whitespace.
+        eq2 =  "".equals(""); // violation contains invalid whitespace.
     }
 
     /** Test variable declaration violations */
@@ -57,12 +57,12 @@ class InputWhitespaceDefault
         e3 = "".equals("");
 
         // Violations
-        boolean e4 = "".equals(""); // violation
-        boolean e1  = "".equals(""); // violation
-        boolean  e2 = "".equals(""); // violation
-        e3 = "".equals(""); // violation
-        e3  = "".equals(""); // violation
-        e3 =  "".equals(""); // violation
+        boolean e4 = "".equals(""); // violation contains invalid whitespace.
+        boolean e1  = "".equals(""); // violation contains invalid whitespace.
+        boolean  e2 = "".equals(""); // violation contains invalid whitespace.
+        e3 = "".equals(""); // violation contains invalid whitespace.
+        e3  = "".equals(""); // violation contains invalid whitespace.
+        e3 =  "".equals(""); // violation contains invalid whitespace.
     }
 
     /** Test array access violations */
@@ -73,9 +73,9 @@ class InputWhitespaceDefault
         int a = arr[0];
 
         // Violations
-        int x = arr [0]; // violation
-        int y = arr[ 0]; // violation
-        int z = arr[0]; // violation
+        int x = arr [0]; // violation contains invalid whitespace.
+        int y = arr[ 0]; // violation contains invalid whitespace.
+        int z = arr[0]; // violation contains invalid whitespace.
     }
 
     /** Test generics violations */
@@ -86,8 +86,8 @@ class InputWhitespaceDefault
         list.add("test");
 
         // Violations
-        list .add("test"); // violation
-        list. add("test"); // violation
+        list .add("test"); // violation contains invalid whitespace.
+        list. add("test"); // violation contains invalid whitespace.
     }
 
     /** Test lambda violations */
@@ -96,7 +96,7 @@ class InputWhitespaceDefault
         Runnable r = () -> System.out.println();
 
         // Violation
-        Runnable r2 = () -> System.out .println(); // violation
+        Runnable r2 = () -> System.out .println(); // violation contains invalid whitespace.
     }
 
     /** Test method reference violations */
@@ -105,7 +105,7 @@ class InputWhitespaceDefault
         java.util.function.Function<String, String> f1 = String::valueOf;
 
         // Violation
-        java.util.function.Function<String, String> f2 = String ::valueOf; // violation
+        java.util.function.Function<String, String> f2 = String ::valueOf; // violation contains invalid whitespace.
     }
 
     /** Test nested calls violations */
@@ -117,8 +117,8 @@ class InputWhitespaceDefault
         s.substring(1).trim();
 
         // Violations
-        s.substring(1). trim(); // violation
-        s.substring(1 ).trim(); // violation
+        s.substring(1). trim(); // violation contains invalid whitespace.
+        s.substring(1 ).trim(); // violation contains invalid whitespace.
     }
 
     /** Test multiple dots violations */
@@ -129,8 +129,8 @@ class InputWhitespaceDefault
         s.substring(1).substring(1).substring(1);
 
         // Violations
-        s.substring(1).substring(1). substring(1); // violation
-        s.substring(1) .substring(1).substring(1); // violation
+        s.substring(1).substring(1). substring(1); // violation contains invalid whitespace.
+        s.substring(1) .substring(1).substring(1); // violation contains invalid whitespace.
     }
 
     /** Test with other operators */
@@ -140,7 +140,7 @@ class InputWhitespaceDefault
         int x = 1 + 2 * 3;
 
         // Violation
-        String s2 = "a" + "b". toString(); // violation
+        String s2 = "a" + "b". toString(); // violation contains invalid whitespace.
     }
 
     /** Test in control structures */
@@ -151,7 +151,7 @@ class InputWhitespaceDefault
         }
 
         // Violations
-        if ("test". equals("test")) { // violation
+        if ("test". equals("test")) { // violation contains invalid whitespace.
             System.out.println();
         }
 
@@ -172,7 +172,7 @@ class InputWhitespaceDefault
         // Violation
         try {
             // do something
-        } catch (Exception e ) { // violation
+        } catch (Exception e ) { // violation contains invalid whitespace.
             // handle
         }
     }
@@ -184,7 +184,7 @@ class InputWhitespaceDefault
         Object o1 = new Object();
 
         // Violation
-        @SuppressWarnings ("unchecked") // violation
+        @SuppressWarnings ("unchecked") // violation contains invalid whitespace.
         Object o2 = new Object();
     }
 
@@ -196,7 +196,7 @@ class InputWhitespaceDefault
         String s1 = (String) o;
 
         // Violation
-        String s2 = (String ) o; // violation
+        String s2 = (String ) o; // violation contains invalid whitespace.
     }
 
     /** Test in switch */
@@ -208,7 +208,7 @@ class InputWhitespaceDefault
         }
 
         // Violation
-        switch (1 ) { // violation
+        switch (1 ) { // violation contains invalid whitespace.
             case 1:
                 break;
         }
@@ -222,7 +222,7 @@ class InputWhitespaceDefault
         }
 
         // Violation
-        synchronized (this ) { // violation
+        synchronized (this ) { // violation contains invalid whitespace.
             // do something
         }
     }
@@ -233,7 +233,7 @@ class InputWhitespaceDefault
         assert true : "message";
 
         // Violation
-        assert true : "message" ; // violation
+        assert true : "message" ; // violation contains invalid whitespace.
     }
 
     /** Test in return */
@@ -244,7 +244,7 @@ class InputWhitespaceDefault
 
     public void testInReturn2() {
         // Violation
-        return ; // violation
+        return ; // violation contains invalid whitespace.
     }
 
     /** Test in throw */
@@ -255,7 +255,7 @@ class InputWhitespaceDefault
 
     public void testInThrow2() throws Exception {
         // Violation
-        throw new Exception() ; // violation
+        throw new Exception() ; // violation contains invalid whitespace.
     }
 
     /** Test in array initializer */
@@ -264,6 +264,6 @@ class InputWhitespaceDefault
         int[] arr1 = new int[] {1, 2, 3};
 
         // Violation
-        int[] arr2 = new int[] {1, 2, 3 } ; // violation
+        int[] arr2 = new int[] {1, 2, 3 } ; // violation contains invalid whitespace.
     }
 }
