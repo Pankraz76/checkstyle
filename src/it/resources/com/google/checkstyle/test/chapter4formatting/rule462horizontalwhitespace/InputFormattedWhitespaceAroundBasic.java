@@ -1,7 +1,7 @@
 package com.google.checkstyle.test.chapter4formatting.rule462horizontalwhitespace;
 
 /*
- * Bug 806242 (NoWhitespaceCheck violation with an interface).
+ * Bug 806242 (NoWhitespaceBeforeCheck violation with an interface).
  *
  * @author o_sukhodolsky
  * @version 1.0
@@ -22,7 +22,7 @@ class InputFormattedWhitespaceAroundBasic {
   int abc; //       multiple space between double slash and comment's text.
   int pqr; //     testing both.
 
-  /** bug 806243 (NoWhitespaceCheck violation for anonymous inner class). */
+  /** bug 806243 (NoWhitespaceBeforeCheck violation for anonymous inner class). */
   private int test;
 
   private int i4;
@@ -161,7 +161,7 @@ class InputFormattedWhitespaceAroundBasic {
     for (int i = 0; i < 5; i++) {}
   }
 
-  /** bug 806243 (NoWhitespaceCheck violation for anonymous inner class). */
+  /** bug 806243 (NoWhitespaceBeforeCheck violation for anonymous inner class). */
   void bug806243() {
     Object o =
         new InputFormattedWhitespaceAroundBasic() {

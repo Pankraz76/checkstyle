@@ -94,7 +94,7 @@
   <!--   <property name="headerFile" value="${checkstyle.header.file}"/> -->
   <!--   <property name="fileExtensions" value="java"/> -->
   <!-- </module> -->
-  <module name="NoWhitespace"/>
+
   <module name="TreeWalker">
 
     <!-- Checks for Javadoc comments.                     -->
@@ -138,6 +138,7 @@
     <module name="GenericWhitespace"/>
     <module name="MethodParamPad"/>
     <module name="NoWhitespaceAfter"/>
+    <module name="NoWhitespaceBefore"/>
     <module name="OperatorWrap"/>
     <module name="ParenPad"/>
     <module name="TypecastParenPad"/>

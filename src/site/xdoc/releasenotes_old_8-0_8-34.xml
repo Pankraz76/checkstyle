@@ -383,7 +383,7 @@
           <a href="https://github.com/checkstyle/checkstyle/issues/7957">#7957</a>
         </li>
         <li>
-          Add LABELED_STAT token support to NoWhitespace.
+          Add LABELED_STAT token support to NoWhitespaceBefore.
           Author: Wilfried Bounsi
           <a href="https://github.com/checkstyle/checkstyle/issues/8124">#8124</a>
         </li>
@@ -983,7 +983,7 @@
           <a href="https://github.com/checkstyle/checkstyle/issues/7636">#7636</a>
         </li>
         <li>
-          Update doc for NoWhitespace.
+          Update doc for NoWhitespaceBefore.
           Author: Abhishek-kumar09
           <a href="https://github.com/checkstyle/checkstyle/issues/7625">#7625</a>
         </li>
@@ -4408,7 +4408,7 @@
           <a href="https://github.com/checkstyle/checkstyle/issues/4294">#4294</a>
         </li>
         <li>
-          NoWhitespace and empty for loop conditions. Author: Liam Miller-Cushon
+          NoWhitespaceBefore and empty for loop conditions. Author: Liam Miller-Cushon
           <a href="https://github.com/checkstyle/checkstyle/issues/5058">#5058</a>
         </li>
         <li>

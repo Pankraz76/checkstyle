@@ -1011,9 +1011,9 @@
                   <span class="wrapper inline">
                     <img src="images/ok_blue.png" alt="" />
                   </span>
-                  <a href="checks/whitespace/nowhitespace.html#NoWhitespace">
-                    NoWhitespace</a>
-                  (<a href="https://github.com/search?q=path%3Asrc%2Fmain%2Fresources%20path%3A**%2Fgoogle_checks.xml+repo%3Acheckstyle%2Fcheckstyle+NoWhitespace">
+                  <a href="checks/whitespace/nowhitespacebefore.html#NoWhitespaceBefore">
+                    NoWhitespaceBefore</a>
+                  (<a href="https://github.com/search?q=path%3Asrc%2Fmain%2Fresources%20path%3A**%2Fgoogle_checks.xml+repo%3Acheckstyle%2Fcheckstyle+NoWhitespaceBefore">
                   config</a>)
                   <br />
                   <br />

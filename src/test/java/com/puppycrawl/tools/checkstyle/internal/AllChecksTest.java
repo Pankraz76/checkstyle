@@ -83,7 +83,7 @@ public class AllChecksTest extends AbstractModuleTestSupport {
     static {
         // checkstyle
 
-        CHECKSTYLE_TOKENS_IN_CONFIG_TO_IGNORE.put("NoWhitespace", Stream.of(
+        CHECKSTYLE_TOKENS_IN_CONFIG_TO_IGNORE.put("NoWhitespaceBefore", Stream.of(
                 // we use GenericWhitespace for this behavior
                 "GENERIC_START", "GENERIC_END").collect(Collectors.toUnmodifiableSet()));
         CHECKSTYLE_TOKENS_IN_CONFIG_TO_IGNORE.put("AbbreviationAsWordInName", Stream.of(
@@ -253,7 +253,7 @@ public class AllChecksTest extends AbstractModuleTestSupport {
                 // COLON token ignored in check config, explained in
                 // https://github.com/checkstyle/checkstyle/issues/4122
                 "COLON").collect(Collectors.toUnmodifiableSet()));
-        GOOGLE_TOKENS_IN_CONFIG_TO_IGNORE.put("NoWhitespace", Stream.of(
+        GOOGLE_TOKENS_IN_CONFIG_TO_IGNORE.put("NoWhitespaceBefore", Stream.of(
                 // google uses GenericWhitespace for this behavior
                 "GENERIC_START", "GENERIC_END",
                 // whitespace is necessary between a type annotation and ellipsis

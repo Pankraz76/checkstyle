@@ -1,19 +1,20 @@
 /*
-WhitespaceAfter
-tokens = TYPECAST
+NoWhitespaceBefore
+allowLineBreaks = yes
+tokens = DOT
 
 
 */
 
-package com . puppycrawl
+package com . puppycrawl // violation
     .tools.
-    checkstyle.checks.whitespace.whitespaceafter;
+    checkstyle.checks.whitespace.nowhitespacebefore;
 
 /**
  * Class for testing whitespace issues.
  * violation missing author tag
  **/
-class InputWhitespaceAfterTypeCast
+class InputNoWhitespaceBeforeDotAllowLineBreaks
 {
     /** ignore assignment **/
     private int mVar1=1;
@@ -88,7 +89,7 @@ class InputWhitespaceAfterTypeCast
     private void testCasts()
     {
         Object o = (Object) new Object();
-        o = (Object)o; // violation ''typecast' is not followed by whitespace'
+        o = (Object)o;
         o = ( Object ) o;
         o = (Object)
             o;
@@ -129,14 +130,14 @@ class InputWhitespaceAfterTypeCast
     }
 
     /** @return dot test **/
-    private java .lang.  String dotTest()
+    private java .lang.  String dotTest() // violation
     {
         Object o = new java.lang.Object();
         o.
             toString();
         o
             .toString();
-        o . toString();
+        o . toString(); // violation
         return o.toString();
     }
 
@@ -192,7 +193,7 @@ class InputWhitespaceAfterTypeCast
     /** bug 806243 (NoWhitespaceBeforeCheck violation for anonymous inner class) */
     void bug806243()
     {
-        Object o = new InputWhitespaceAfterTypeCast() {
+        Object o = new InputNoWhitespaceBeforeDotAllowLineBreaks() {
             private int j ;
             //           ^ whitespace
         };
@@ -207,7 +208,7 @@ class InputWhitespaceAfterTypeCast
  * @author o_sukhodolsky
  * @version 1.0
  */
-interface IFoo
+interface IFoo_NoWhitespaceBeforeDotAllowLineBreaks
 {
     void foo() ;
     //        ^ whitespace
@@ -218,7 +219,7 @@ interface IFoo
  * @author lkuehne
  * @version 1.0
  */
-class SpecialCasesInForLoop
+class SpecialCasesInForLoop_NoWhitespaceBeforeDotAllowLineBreaks
 {
     void forIterator()
     {

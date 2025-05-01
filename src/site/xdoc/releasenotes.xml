@@ -6320,7 +6320,7 @@ Azure.
             <a href="https://github.com/checkstyle/checkstyle/issues/10144">#10144</a>
           </li>
           <li>
-            Version 9.x reports NoWhitespace error on semicolon or comma
+            Version 9.x reports NoWhitespaceBefore error on semicolon or comma
             after string with emoji.
             Author: Nick Mancuso
             <a href="https://github.com/checkstyle/checkstyle/issues/10920">#10920</a>
@@ -9151,7 +9151,7 @@ Azure.
             <a href="https://github.com/checkstyle/checkstyle/issues/8889">#8889</a>
           </li>
           <li>
-            NoWhitespaceCheck: String index out of range (with Java 15 Text Block)
+            NoWhitespaceBeforeCheck: String index out of range (with Java 15 Text Block)
             when tabs are used.
             Author: Nick Mancuso
             <a href="https://github.com/checkstyle/checkstyle/issues/8849">#8849</a>

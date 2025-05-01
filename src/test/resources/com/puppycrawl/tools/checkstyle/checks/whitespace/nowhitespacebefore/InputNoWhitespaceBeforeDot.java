@@ -1,19 +1,20 @@
 /*
-WhitespaceAfter
-tokens = TYPECAST
+NoWhitespaceBefore
+allowLineBreaks = (default)false
+tokens = DOT
 
 
 */
 
-package com . puppycrawl
-    .tools.
-    checkstyle.checks.whitespace.whitespaceafter;
+package com . puppycrawl // violation
+    .tools. // violation
+    checkstyle.checks.whitespace.nowhitespacebefore;
 
 /**
  * Class for testing whitespace issues.
  * violation missing author tag
  **/
-class InputWhitespaceAfterTypeCast
+class InputNoWhitespaceBeforeDot
 {
     /** ignore assignment **/
     private int mVar1=1;
@@ -88,7 +89,7 @@ class InputWhitespaceAfterTypeCast
     private void testCasts()
     {
         Object o = (Object) new Object();
-        o = (Object)o; // violation ''typecast' is not followed by whitespace'
+        o = (Object)o;
         o = ( Object ) o;
         o = (Object)
             o;
@@ -129,21 +130,23 @@ class InputWhitespaceAfterTypeCast
     }
 
     /** @return dot test **/
-    private java .lang.  String dotTest()
+    private java .lang.  String dotTest() // violation
     {
         Object o = new java.lang.Object();
         o.
             toString();
         o
-            .toString();
-        o . toString();
+            .toString(); // violation
+        o . toString(); // violation
         return o.toString();
     }
 
     /** assert statement test */
     public void assertTest()
     {
+
         assert true;
+
 
         assert true : "Whups";
 
@@ -192,7 +195,7 @@ class InputWhitespaceAfterTypeCast
     /** bug 806243 (NoWhitespaceBeforeCheck violation for anonymous inner class) */
     void bug806243()
     {
-        Object o = new InputWhitespaceAfterTypeCast() {
+        Object o = new InputNoWhitespaceBeforeDot() {
             private int j ;
             //           ^ whitespace
         };
@@ -207,7 +210,7 @@ class InputWhitespaceAfterTypeCast
  * @author o_sukhodolsky
  * @version 1.0
  */
-interface IFoo
+interface IFoo_NoWhitespaceBeforeDot
 {
     void foo() ;
     //        ^ whitespace
@@ -218,7 +221,7 @@ interface IFoo
  * @author lkuehne
  * @version 1.0
  */
-class SpecialCasesInForLoop
+class SpecialCasesInForLoop_NoWhitespaceBeforeDot
 {
     void forIterator()
     {
@@ -262,7 +265,7 @@ class SpecialCasesInForLoop
                 }
             }};
         runs[0]
-.
+. // violation
  run()
 ;
     }

@@ -239,11 +239,12 @@
     <property name="ignorePattern"
               value="^( *\* *([^ ]+|\{@code .*|&lt;a href=&quot;[^&quot;]+&quot;&gt;)|(package|import) .*)$"/>
   </module>
+
   <!-- Whitespace -->
-  <module name="NoWhitespace"/>
   <module name="FileTabCharacter">
     <property name="eachLine" value="false"/>
   </module>
+
   <module name="TreeWalker">
     <property name="tabWidth" value="4"/>
 
@@ -924,7 +925,13 @@
       <property name="tokens" value="INDEX_OP"/>
       <property name="tokens" value="METHOD_REF"/>
     </module>
+    <module name="NoWhitespaceBefore"/>
     <module name="NoWhitespaceBeforeCaseDefaultColon"/>
+    <module name="NoWhitespaceBefore">
+      <property name="tokens" value="DOT"/>
+      <property name="tokens" value="METHOD_REF"/>
+      <property name="allowLineBreaks" value="true"/>
+    </module>
     <module name="OperatorWrap">
       <property name="tokens" value="QUESTION"/>
       <property name="tokens" value="COLON"/>

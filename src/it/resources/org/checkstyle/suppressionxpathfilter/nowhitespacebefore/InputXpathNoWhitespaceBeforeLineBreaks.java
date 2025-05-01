@@ -1,4 +1,4 @@
-package org.checkstyle.suppressionxpathfilter.nowhitespace;
+package org.checkstyle.suppressionxpathfilter.nowhitespacebefore;
 
 public class InputXpathNoWhitespaceBeforeLineBreaks {
     public void test() {

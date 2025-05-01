@@ -1,12 +1,14 @@
 /*xml
 <module name="Checker">
-  <module name="NoWhitespace"/>
+  <module name="TreeWalker">
+    <module name="NoWhitespaceBefore"/>
+  </module>
 </module>
 
 
 */
 
-package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespace;
+package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespacebefore;
 
 import com.google.common.collect.Lists;
 
@@ -15,8 +17,6 @@ class Example1 {
   int foo = 5;
   void example() {
     foo ++; // violation 'is preceded with whitespace'
-     foo++; // violation 'is preceded with whitespace'
-    foo++ ; // violation '';' is preceded with whitespace'
     foo++;
     for (int i = 0 ; i < 5; i++) {}  // violation '';' is preceded with whitespace'
     for (int i = 0; i < 5; i++) {}

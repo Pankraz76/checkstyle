@@ -2307,9 +2307,9 @@
 
         <li>Unused... checks don't work together (bug 805954)</li>
 
-        <li>NoWhitespaceCheck error with an interface (bug 806242)</li>
+        <li>NoWhitespaceBeforeCheck error with an interface (bug 806242)</li>
 
-        <li>NoWhitespaceCheck error for anonymous inner class (bug 806243)</li>
+        <li>NoWhitespaceBeforeCheck error for anonymous inner class (bug 806243)</li>
 
         <li>Usage of optional checks should be documented (bug 806961)</li>
 

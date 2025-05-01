@@ -1,12 +1,16 @@
 /*xml
 <module name="Checker">
-  <module name="NoWhitespace"/>
+  <module name="TreeWalker">
+    <module name="NoWhitespaceBefore">
+      <property name="allowLineBreaks" value="true"/>
+    </module>
+  </module>
 </module>
 
 
 */
 
-package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespace;
+package com.puppycrawl.tools.checkstyle.checks.whitespace.nowhitespacebefore;
 
 import com.google.common.collect.Lists;
 
