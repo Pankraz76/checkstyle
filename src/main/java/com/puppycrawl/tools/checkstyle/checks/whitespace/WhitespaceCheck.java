@@ -36,7 +36,7 @@ public class WhitespaceCheck extends AbstractFileSetCheck {
     /**
      * A key is pointing to the warning message text in "messages.properties" file.
      */
-    public static final String MSG_KEY = "ws.preceded";
+    public static final String MSG_KEY = "ws.contains";
 
     /**
      * Common whitespace patterns to check for.

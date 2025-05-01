@@ -81,7 +81,12 @@ class InputWhitespaceDefault
     /** Test generics violations */
     public void testGenerics() {
         java.util.List<String> list = new java.util.ArrayList<>();
-
+        java.util.List<String> list1;
+        java.util.List< String> list2; // violation contains invalid whitespace.
+        java.util.List<String > list3; // violation contains invalid whitespace.
+        new java.util.ArrayList< >(); // violation contains invalid whitespace.
+        new java.util.ArrayList< > (); // violation contains invalid whitespace.
+        new java.util.ArrayList <>(); // violation contains invalid whitespace.
         // Valid
         list.add("test");
 
