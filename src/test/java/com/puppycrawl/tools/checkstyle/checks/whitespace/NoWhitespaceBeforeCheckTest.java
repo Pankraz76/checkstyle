@@ -140,8 +140,4 @@ public class NoWhitespaceBeforeCheckTest
                 getPath("InputNoWhitespaceBeforeWithEmoji.java"), expected);
     }
 
-    @Nested
-    class NextGeneration {
-    }
-
 }
