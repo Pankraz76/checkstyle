@@ -19,10 +19,9 @@
 
 package com.puppycrawl.tools.checkstyle.checks.coding;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.puppycrawl.tools.checkstyle.FileStatefulCheck;
 import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
@@ -113,6 +112,8 @@ public class UseModernAPICheck extends AbstractCheck {
      */
     @Override
     public void visitToken(DetailAST ast) {
+        Collector<Object, ?, List<Object>> list = Collectors.toList();
+        // check for usage of method and violate list
         processMethod(ast.getType(), ast.getFirstChild());
     }
 
@@ -174,6 +175,7 @@ public class UseModernAPICheck extends AbstractCheck {
      */
     @Override
     public void finishTree(DetailAST ast) {
+        // check for usage of method and violate
         methods.keySet().stream()
                 .filter(methodName -> !calls.contains(methodName))
                 .forEach(methodName -> {
