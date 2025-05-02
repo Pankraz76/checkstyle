@@ -50,7 +50,7 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
  * @since 10.24.0
  */
 @FileStatefulCheck
-public class UnusedLocalMethodCheck extends AbstractCheck {
+public class UseModernAPICheck extends AbstractCheck {
 
     /** Message key for unused local method violations. */
     public static final String MSG_UNUSED_LOCAL_METHOD = "unused.local.method";
