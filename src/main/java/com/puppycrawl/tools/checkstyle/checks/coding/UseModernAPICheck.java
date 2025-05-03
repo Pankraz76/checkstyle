@@ -16,7 +16,7 @@ public class UseModernAPICheck extends AbstractCheck {
     private static final Map<String,String> OUTDATED_METHODS = Map.of(
             "toList","Collectors.toList()",
             // too much usage ATM wait for 21 migration: https://github.com/checkstyle/checkstyle/issues/16981
-         "toUnmodifiableList","Collectors.toUnmodifiableList()",
+            // "toUnmodifiableList","Collectors.toUnmodifiableList()",
             "new URL(String)","new Locale(String)",
             "new Locale(String)","new Locale(String)",
             "new Locale(String, String)","new Locale(String, String)"

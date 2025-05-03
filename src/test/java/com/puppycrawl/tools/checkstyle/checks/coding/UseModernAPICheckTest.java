@@ -9,11 +9,11 @@ import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
 public class UseModernAPICheckTest extends AbstractModuleTestSupport {
 
     public static final String TO_LIST = "Collectors.toList()";
-    public static final String TO_UNMODIFIABLE_LIST = "Collectors.TO_UNMODIFIABLE_LIST()";
-    //    public static final String NEW_URL_STRING = "new URL(String)";
-    //    public static final String NEW_LOCALE_STRING_STRING = "new Locale(String, String)";
-    //    public static final String NEW_LOCALE_STRING = "new Locale(String)";
-    //    public static final String LIST_OF_STREAM = "List.of().stream()";
+    // public static final String TO_UNMODIFIABLE_LIST = "Collectors.TO_UNMODIFIABLE_LIST()";
+    // public static final String NEW_URL_STRING = "new URL(String)";
+    // public static final String NEW_LOCALE_STRING_STRING = "new Locale(String, String)";
+    // public static final String NEW_LOCALE_STRING = "new Locale(String)";
+    // public static final String LIST_OF_STREAM = "List.of().stream()";
 
     @Override
     protected String getPackageLocation() {
@@ -38,33 +38,33 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
                 "27:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
                 "28:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
                 "40:31: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
-                "45:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_UNMODIFIABLE_LIST),
+                // "45:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_UNMODIFIABLE_LIST),
         };
         verifyWithInlineConfigParser(getPath("InputUseModernAPIForCollectors.java"), expected);
     }
 
-    //    @Test
-    //    public void stream() throws Exception {
-    //        final String[] expected = {
-    //                "22:17: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
-    //        };
-    //        verifyWithInlineConfigParser(getPath("InputUseModernAPIForStream.java"), expected);
-    //    }
+    // @Test
+    // public void stream() throws Exception {
+    //     final String[] expected = {
+    //             "22:17: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
+    //     };
+    //     verifyWithInlineConfigParser(getPath("InputUseModernAPIForStream.java"), expected);
+    // }
     //
-    //    @Test
-    //    public void url() throws Exception {
-    //        final String[] expected = {
-    //                "16:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, NEW_URL_STRING),
-    //        };
-    //        verifyWithInlineConfigParser(getPath("InputUseModernAPIForURL.java"), expected);
-    //    }
+    // @Test
+    // public void url() throws Exception {
+    //     final String[] expected = {
+    //             "16:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, NEW_URL_STRING),
+    //     };
+    //     verifyWithInlineConfigParser(getPath("InputUseModernAPIForURL.java"), expected);
+    // }
     //
-    //    @Test
-    //    public void locale() throws Exception {
-    //        final String[] expected = {
-    //                "14:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, NEW_LOCALE_STRING_STRING),
-    //                "15:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, NEW_LOCALE_STRING),
-    //        };
-    //        verifyWithInlineConfigParser(getPath("InputUseModernAPIForLocale.java"), expected);
-    //    }
+    // @Test
+    // public void locale() throws Exception {
+    //     final String[] expected = {
+    //             "14:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, NEW_LOCALE_STRING_STRING),
+    //             "15:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, NEW_LOCALE_STRING),
+    //     };
+    //     verifyWithInlineConfigParser(getPath("InputUseModernAPIForLocale.java"), expected);
+    // }
 }

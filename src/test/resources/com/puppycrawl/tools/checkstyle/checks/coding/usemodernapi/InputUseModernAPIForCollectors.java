@@ -42,6 +42,6 @@ public class InputUseModernAPIForCollectors {
     }
 
     static {
-        Collectors.toUnmodifiableList(); // violation, Outdated api usage 'Collectors.toUnmodifiableList()'
+        Collectors.toUnmodifiableList(); // _violation, Outdated api usage 'Collectors.toUnmodifiableList()'
     }
 }
