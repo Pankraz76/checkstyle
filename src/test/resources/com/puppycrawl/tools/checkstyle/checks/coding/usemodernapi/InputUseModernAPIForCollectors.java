@@ -31,7 +31,8 @@ public class InputUseModernAPIForCollectors {
         // Stream.of(FOO).toList(); // ok, as modern
         // Test other Collector methods
         Collectors.toCollection(ArrayList::new); // ok, modern API
-        // FIXME Foo.toList(); // ok, as custom
+        // FIXME: but was       : [22, 23, 26, 27, 28, 35]
+        // Foo.toList(); // ok, as custom
     }
 
     static class Foo {
