@@ -9,6 +9,7 @@ import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
 public class UseModernAPICheckTest extends AbstractModuleTestSupport {
 
     public static final String COLLECTORS_TO_LIST = "Collectors.toList()";
+    public static final String toUnmodifiableList = "Collectors.toUnmodifiableList()";
     //    public static final String NEW_URL_STRING = "new URL(String)";
     //    public static final String NEW_LOCALE_STRING_STRING = "new Locale(String, String)";
     //    public static final String NEW_LOCALE_STRING = "new Locale(String)";
@@ -37,6 +38,7 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
                 "27:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
                 "28:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
                 "40:31: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
+                "45:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, toUnmodifiableList),
         };
         verifyWithInlineConfigParser(getPath("InputUseModernAPIForCollectors.java"), expected);
     }

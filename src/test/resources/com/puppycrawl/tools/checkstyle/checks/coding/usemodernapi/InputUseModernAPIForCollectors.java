@@ -40,4 +40,8 @@ public class InputUseModernAPIForCollectors {
             return Collectors.toList(); // violation, Outdated api usage 'Collectors.toList()'
         }
     }
+
+    static {
+        Collectors.toUnmodifiableList(); // violation, Outdated api usage 'Collectors.toUnmodifiableList()'
+    }
 }
