@@ -41,6 +41,15 @@
           </tr>
           <tr>
             <td>
+              <a href="usemodernapi.html#AvoidOutdatedUsage">
+                AvoidOutdatedUsage
+              </a>
+            </td>
+            <td>Checks that a local method is declared but not used, except for overloaded ones.
+            </td>
+          </tr>
+          <tr>
+            <td>
               <a href="avoidnoargumentsuperconstructorcall.html#AvoidNoArgumentSuperConstructorCall">
                 AvoidNoArgumentSuperConstructorCall
               </a>
@@ -590,15 +599,6 @@
             </td>
             <td>
               Checks that a local variable is declared and/or assigned, but not used.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="usemodernapi.html#AvoidOutdatedUsage">
-                AvoidOutdatedUsage
-              </a>
-            </td>
-            <td>Checks that a local method is declared but not used, except for overloaded ones.
             </td>
           </tr>
           <tr>
