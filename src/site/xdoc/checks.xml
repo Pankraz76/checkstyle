@@ -127,6 +127,15 @@
           </tr>
           <tr>
             <td>
+              <a href="checks/coding/usemodernapi.html#AvoidOutdatedUsage">
+                AvoidOutdatedUsage
+              </a>
+            </td>
+            <td>Checks that a local method is declared but not used, except for overloaded ones.
+            </td>
+          </tr>
+          <tr>
+            <td>
               <a href="checks/imports/avoidstarimport.html#AvoidStarImport">
                 AvoidStarImport
               </a>
@@ -1412,15 +1421,6 @@
           <tr>
             <td><a href="checks/misc/upperell.html#UpperEll">UpperEll</a></td>
             <td>Checks that long constants are defined with an upper ell.</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="checks/coding/usemodernapi.html#AvoidOutdatedUsage">
-                AvoidOutdatedUsage
-              </a>
-            </td>
-            <td>Checks that a local method is declared but not used, except for overloaded ones.
-            </td>
           </tr>
           <tr>
             <td>
