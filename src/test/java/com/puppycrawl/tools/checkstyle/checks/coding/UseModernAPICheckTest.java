@@ -36,6 +36,7 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
                 "26:62: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
                 "27:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
                 "28:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
+                "40:31: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
         };
         verifyWithInlineConfigParser(getPath("InputUseModernAPIForCollectors.java"), expected);
     }

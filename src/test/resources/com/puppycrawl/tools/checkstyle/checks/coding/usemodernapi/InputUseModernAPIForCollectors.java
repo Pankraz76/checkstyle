@@ -36,8 +36,8 @@ public class InputUseModernAPIForCollectors {
     }
 
     static class Foo {
-        public static Collector<?, ?, List<?>> toList() {
-            return null;
+        public static Collector<Object, ?, List<Object>> toList() {
+            return Collectors.toList(); // violation, Outdated api usage 'Collectors.toList()'
         }
     }
 }
