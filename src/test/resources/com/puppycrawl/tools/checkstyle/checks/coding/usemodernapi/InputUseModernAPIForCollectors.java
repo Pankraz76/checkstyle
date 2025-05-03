@@ -31,10 +31,13 @@ public class InputUseModernAPIForCollectors {
         // Stream.of(FOO).toList(); // ok, as modern
         // Test other Collector methods
         Collectors.toCollection(ArrayList::new); // ok, modern API
+        Collectors.toList(); // violation, Outdated api usage 'Collectors.toList()'
+        Foo.toList(); // violation, Outdated api usage 'Collectors.toList()'
     }
 
     static class Foo {
-        private static void toList() { // ok, as custom
+        public static Collector<?, ?, List<?>> toList() {
+            return null;
         }
     }
 }
