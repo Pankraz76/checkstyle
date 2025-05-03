@@ -1,12 +1,12 @@
 /*
-UseModernAPI
+AvoidOutdatedUsage
 
 */
 package com.puppycrawl.tools.checkstyle.checks.coding.usemodernapi;
 
 import java.util.Locale;
 
-public class InputUseModernAPIForLocale {
+public class InputAvoidOutdatedUsageForLocale {
 
     static String FOO = "foo";
 

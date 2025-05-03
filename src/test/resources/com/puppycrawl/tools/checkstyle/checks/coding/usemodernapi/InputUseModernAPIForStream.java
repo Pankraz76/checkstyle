@@ -1,5 +1,5 @@
 /*
-UseModernAPI
+AvoidOutdatedUsage
 
 */
 package com.puppycrawl.tools.checkstyle.checks.coding.usemodernapi;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-public class InputUseModernAPIForStream {
+public class InputAvoidOutdatedUsageForStream {
 
     static String FOO = "foo";
 

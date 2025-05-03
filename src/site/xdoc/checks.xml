@@ -1415,8 +1415,8 @@
           </tr>
           <tr>
             <td>
-              <a href="checks/coding/usemodernapi.html#UseModernAPI">
-                UseModernAPI
+              <a href="checks/coding/usemodernapi.html#AvoidOutdatedUsage">
+                AvoidOutdatedUsage
               </a>
             </td>
             <td>Checks that a local method is declared but not used, except for overloaded ones.

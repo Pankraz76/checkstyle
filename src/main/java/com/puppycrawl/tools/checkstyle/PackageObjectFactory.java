@@ -599,8 +599,8 @@ public class PackageObjectFactory implements ModuleFactory {
                 BASE_PACKAGE + ".checks.coding.NoArrayTrailingCommaCheck");
         NAME_TO_FULL_MODULE_NAME.put("MatchXpathCheck",
                 BASE_PACKAGE + ".checks.coding.MatchXpathCheck");
-        NAME_TO_FULL_MODULE_NAME.put("UseModernAPICheck",
-                BASE_PACKAGE + ".checks.coding.UseModernAPICheck");
+        NAME_TO_FULL_MODULE_NAME.put("AvoidOutdatedUsageCheck",
+                BASE_PACKAGE + ".checks.coding.AvoidOutdatedUsageCheck");
         NAME_TO_FULL_MODULE_NAME.put("UnusedLocalVariableCheck",
                 BASE_PACKAGE + ".checks.coding.UnusedLocalVariableCheck");
         NAME_TO_FULL_MODULE_NAME.put("UnusedCatchParameterShouldBeUnnamedCheck",

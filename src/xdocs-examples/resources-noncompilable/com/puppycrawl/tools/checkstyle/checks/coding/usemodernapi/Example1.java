@@ -1,7 +1,7 @@
 /*xml
 <module name="Checker">
   <module name="TreeWalker">
-    <module name="UseModernAPI">
+    <module name="AvoidOutdatedUsage">
     </module>
   </module>
 </module>

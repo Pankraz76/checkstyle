@@ -8,7 +8,7 @@ import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 
 @StatelessCheck
-public class UseModernAPICheck extends AbstractCheck {
+public class AvoidOutdatedUsageCheck extends AbstractCheck {
 
     public static final String MSG_OUTDATED_API_USAGE = "outdated.api.usage";
 

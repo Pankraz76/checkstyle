@@ -19,13 +19,13 @@
 
 package com.puppycrawl.tools.checkstyle.checks.coding;
 
-import static com.puppycrawl.tools.checkstyle.checks.coding.UseModernAPICheck.MSG_OUTDATED_API_USAGE;
+import static com.puppycrawl.tools.checkstyle.checks.coding.AvoidOutdatedUsageCheck.MSG_OUTDATED_API_USAGE;
 
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
 
-public class UseModernAPICheckTest extends AbstractModuleTestSupport {
+public class AvoidOutdatedUsageCheckTest extends AbstractModuleTestSupport {
 
     public static final String TO_LIST = "Collectors.toList()";
     // public static final String TO_UNMODIFIABLE_LIST = "Collectors.TO_UNMODIFIABLE_LIST()";
@@ -38,6 +38,7 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
     protected String getPackageLocation() {
         return "com/puppycrawl/tools/checkstyle/checks/coding/usemodernapi";
     }
+
     @Test
     public void simple() throws Exception {
         final String[] expected = {
@@ -45,7 +46,7 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
             "18:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
             "19:43: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
         };
-        verifyWithInlineConfigParser(getPath("InputUseModernAPISimple.java"), expected);
+        verifyWithInlineConfigParser(getPath("InputAvoidOutdatedUsageSimple.java"), expected);
     }
 
     @Test
@@ -59,7 +60,7 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
             "40:31: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
             // "45:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_UNMODIFIABLE_LIST),
         };
-        verifyWithInlineConfigParser(getPath("InputUseModernAPIForCollectors.java"), expected);
+        verifyWithInlineConfigParser(getPath("InputAvoidOutdatedUsageForCollectors.java"), expected);
     }
 
     // @Test
@@ -67,7 +68,7 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
     //     final String[] expected = {
     //             "22:17: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
     //     };
-    //     verifyWithInlineConfigParser(getPath("InputUseModernAPIForStream.java"), expected);
+    //     verifyWithInlineConfigParser(getPath("InputAvoidOutdatedUsageForStream.java"), expected);
     // }
     //
     // @Test
@@ -75,7 +76,7 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
     //     final String[] expected = {
     //             "16:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, NEW_URL_STRING),
     //     };
-    //     verifyWithInlineConfigParser(getPath("InputUseModernAPIForURL.java"), expected);
+    //     verifyWithInlineConfigParser(getPath("InputAvoidOutdatedUsageForURL.java"), expected);
     // }
     //
     // @Test
@@ -84,6 +85,6 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
     //             "14:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, NEW_LOCALE_STRING_STRING),
     //             "15:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, NEW_LOCALE_STRING),
     //     };
-    //     verifyWithInlineConfigParser(getPath("InputUseModernAPIForLocale.java"), expected);
+    //     verifyWithInlineConfigParser(getPath("InputAvoidOutdatedUsageForLocale.java"), expected);
     // }
 }

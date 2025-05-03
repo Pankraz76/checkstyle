@@ -3,10 +3,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
   <head>
-    <title>UseModernAPI</title>
+    <title>AvoidOutdatedUsage</title>
   </head>
   <body>
-    <section name="UseModernAPI">
+    <section name="AvoidOutdatedUsage">
       <p>Since Checkstyle 10.24.0</p>
       <subsection name="Description" id="Description">
         <div>Checks that a local method is declared but not used, except for overloaded ones.</div>
@@ -33,7 +33,7 @@
       <subsection name="Example of Usage" id="Example_of_Usage">
         <ul>
           <li>
-            <a href="https://github.com/search?q=path%3Aconfig%20path%3A**%2Fcheckstyle-checks.xml+repo%3Acheckstyle%2Fcheckstyle+UseModernAPI">
+            <a href="https://github.com/search?q=path%3Aconfig%20path%3A**%2Fcheckstyle-checks.xml+repo%3Acheckstyle%2Fcheckstyle+AvoidOutdatedUsage">
                 Checkstyle Style</a>
           </li>
         </ul>
@@ -41,7 +41,7 @@
 
       <subsection name="Violation Messages" id="Violation_Messages">
         <macro name="violation-messages">
-          <param name="checkName" value="UseModernAPI"/>
+          <param name="checkName" value="AvoidOutdatedUsage"/>
         </macro>
         <p>
           All messages can be customized if the default message doesn't suit you.
@@ -58,7 +58,7 @@
 
       <subsection name="Parent Module" id="Parent_Module">
         <macro name="parent-module">
-          <param name="moduleName" value="UseModernAPI"/>
+          <param name="moduleName" value="AvoidOutdatedUsage"/>
         </macro>
       </subsection>
     </section>

@@ -1,5 +1,5 @@
 /*
-UseModernAPI
+AvoidOutdatedUsage
 
 */
 package com.puppycrawl.tools.checkstyle.checks.coding.usemodernapi;
@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 
-public class InputUseModernAPIForURL {
+public class InputAvoidOutdatedUsageForURL {
 
     static String FOO = "foo";
 

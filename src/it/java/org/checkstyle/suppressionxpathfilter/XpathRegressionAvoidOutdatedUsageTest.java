@@ -19,16 +19,16 @@
 
 package org.checkstyle.suppressionxpathfilter;
 
-import com.puppycrawl.tools.checkstyle.checks.coding.UseModernAPICheck;
+import com.puppycrawl.tools.checkstyle.checks.coding.AvoidOutdatedUsageCheck;
 import org.junit.jupiter.api.Test;
 
 import static com.google.common.truth.Truth.assertWithMessage;
 
-public class XpathRegressionUseModernAPITest extends AbstractXpathTestSupport {
+public class XpathRegressionAvoidOutdatedUsageTest extends AbstractXpathTestSupport {
 
     @Override
     protected String getCheckName() {
-        return UseModernAPICheck.class.getSimpleName();
+        return AvoidOutdatedUsageCheck.class.getSimpleName();
     }
 
     @Test
