@@ -594,6 +594,15 @@
           </tr>
           <tr>
             <td>
+              <a href="usemodernapi.html#UseModernAPI">
+                UseModernAPI
+              </a>
+            </td>
+            <td>Checks that a local method is declared but not used, except for overloaded ones.
+            </td>
+          </tr>
+          <tr>
+            <td>
               <a href="variabledeclarationusagedistance.html#VariableDeclarationUsageDistance">
                 VariableDeclarationUsageDistance
               </a>
