@@ -41,21 +41,21 @@
           </tr>
           <tr>
             <td>
-              <a href="usemodernapi.html#AvoidOutdatedUsage">
-                AvoidOutdatedUsage
-              </a>
-            </td>
-            <td>Checks that a local method is declared but not used, except for overloaded ones.
-            </td>
-          </tr>
-          <tr>
-            <td>
               <a href="avoidnoargumentsuperconstructorcall.html#AvoidNoArgumentSuperConstructorCall">
                 AvoidNoArgumentSuperConstructorCall
               </a>
             </td>
             <td>
               Checks if call to superclass constructor without arguments is present.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="usemodernapi.html#AvoidOutdatedUsage">
+                AvoidOutdatedUsage
+              </a>
+            </td>
+            <td>Checks that a local method is declared but not used, except for overloaded ones.
             </td>
           </tr>
           <tr>
