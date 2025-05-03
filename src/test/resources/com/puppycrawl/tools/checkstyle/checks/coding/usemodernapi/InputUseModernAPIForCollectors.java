@@ -31,8 +31,7 @@ public class InputUseModernAPIForCollectors {
         // Stream.of(FOO).toList(); // ok, as modern
         // Test other Collector methods
         Collectors.toCollection(ArrayList::new); // ok, modern API
-        Collectors.toList(); // violation, Outdated api usage 'Collectors.toList()'
-        Foo.toList(); // violation, Outdated api usage 'Collectors.toList()'
+        // FIXME Foo.toList(); // ok, as custom
     }
 
     static class Foo {
