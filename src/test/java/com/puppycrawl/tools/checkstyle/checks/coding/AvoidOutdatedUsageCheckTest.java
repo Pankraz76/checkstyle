@@ -36,7 +36,7 @@ public class AvoidOutdatedUsageCheckTest extends AbstractModuleTestSupport {
 
     @Override
     protected String getPackageLocation() {
-        return "com/puppycrawl/tools/checkstyle/checks/coding/usemodernapi";
+        return "com/puppycrawl/tools/checkstyle/checks/coding/avoidoutdatedusage";
     }
 
     @Test

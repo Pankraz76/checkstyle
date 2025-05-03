@@ -127,7 +127,7 @@
           </tr>
           <tr>
             <td>
-              <a href="checks/coding/usemodernapi.html#AvoidOutdatedUsage">
+              <a href="checks/coding/avoidoutdatedusage.html#AvoidOutdatedUsage">
                 AvoidOutdatedUsage
               </a>
             </td>

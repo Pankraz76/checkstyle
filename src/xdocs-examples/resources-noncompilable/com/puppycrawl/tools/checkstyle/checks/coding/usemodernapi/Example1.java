@@ -7,7 +7,7 @@
 </module>
 */
 //non-compiled with javac: Compilable with Java21
-package com.puppycrawl.tools.checkstyle.checks.coding.usemodernapi;
+package com.puppycrawl.tools.checkstyle.checks.coding.avoidoutdatedusage;
 
 // xdoc section -- start
 public class Example1 {

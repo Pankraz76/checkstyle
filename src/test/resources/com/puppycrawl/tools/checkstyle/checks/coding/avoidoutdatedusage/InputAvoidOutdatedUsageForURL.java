@@ -2,7 +2,7 @@
 AvoidOutdatedUsage
 
 */
-package com.puppycrawl.tools.checkstyle.checks.coding.usemodernapi;
+package com.puppycrawl.tools.checkstyle.checks.coding.avoidoutdatedusage;
 
 import java.net.MalformedURLException;
 import java.net.URI;

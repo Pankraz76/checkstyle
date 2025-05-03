@@ -275,7 +275,7 @@
   <suppress id="propertiesMacroMustExist"
          files="src[\\/]site[\\/]xdoc[\\/]checks[\\/]coding[\\/]unusedlambdaparametershouldbeunnamed.xml.template"/>
   <suppress id="propertiesMacroMustExist"
-            files="src[\\/]site[\\/]xdoc[\\/]checks[\\/]coding[\\/]usemodernapi.xml.template"/>
+            files="src[\\/]site[\\/]xdoc[\\/]checks[\\/]coding[\\/]avoidoutdatedusage.xml.template"/>
   <suppress id="propertiesMacroMustExist"
             files="src[\\/]site[\\/]xdoc[\\/]checks[\\/]coding[\\/]unusedlocalvariable.xml.template"/>
   <suppress id="propertiesMacroMustExist"

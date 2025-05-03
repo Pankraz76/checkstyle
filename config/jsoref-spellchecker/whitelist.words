@@ -1402,7 +1402,7 @@ unsubscribe
 unusedcatchparametershouldbeunnamed
 unusedimports
 unusedlambdaparametershouldbeunnamed
-usemodernapi
+avoidoutdatedusage
 unusedlocalvariable
 uppercased
 upperell
