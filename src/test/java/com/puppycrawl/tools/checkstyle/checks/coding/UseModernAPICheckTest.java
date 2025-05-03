@@ -8,8 +8,8 @@ import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
 
 public class UseModernAPICheckTest extends AbstractModuleTestSupport {
 
-    public static final String COLLECTORS_TO_LIST = "Collectors.toList()";
-    public static final String toUnmodifiableList = "Collectors.toUnmodifiableList()";
+    public static final String TO_LIST = "Collectors.toList()";
+    public static final String TO_UNMODIFIABLE_LIST = "Collectors.TO_UNMODIFIABLE_LIST()";
     //    public static final String NEW_URL_STRING = "new URL(String)";
     //    public static final String NEW_LOCALE_STRING_STRING = "new Locale(String, String)";
     //    public static final String NEW_LOCALE_STRING = "new Locale(String)";
@@ -22,9 +22,9 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
     @Test
     public void simple() throws Exception {
         final String[] expected = {
-                "17:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
-                "18:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
-                "19:43: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
+                "17:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
+                "18:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
+                "19:43: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
         };
         verifyWithInlineConfigParser(getPath("InputUseModernAPISimple.java"), expected);
     }
@@ -32,13 +32,13 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
     @Test
     public void collectors() throws Exception {
         final String[] expected = {
-                "22:32: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
-                "23:43: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
-                "26:62: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
-                "27:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
-                "28:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
-                "40:31: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
-                "45:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, toUnmodifiableList),
+                "22:32: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
+                "23:43: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
+                "26:62: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
+                "27:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
+                "28:9: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
+                "40:31: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
+                "45:20: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_UNMODIFIABLE_LIST),
         };
         verifyWithInlineConfigParser(getPath("InputUseModernAPIForCollectors.java"), expected);
     }
@@ -46,7 +46,7 @@ public class UseModernAPICheckTest extends AbstractModuleTestSupport {
     //    @Test
     //    public void stream() throws Exception {
     //        final String[] expected = {
-    //                "22:17: " + getCheckMessage(MSG_OUTDATED_API_USAGE, COLLECTORS_TO_LIST),
+    //                "22:17: " + getCheckMessage(MSG_OUTDATED_API_USAGE, TO_LIST),
     //        };
     //        verifyWithInlineConfigParser(getPath("InputUseModernAPIForStream.java"), expected);
     //    }
