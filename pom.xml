@@ -726,10 +726,52 @@
             </execution>
           </executions>
         </plugin>
-
+        <plugin>
+          <groupId>com.diffplug.spotless</groupId>
+          <artifactId>spotless-maven-plugin</artifactId>
+          <version>2.44.4</version>
+          <configuration>
+            <java>
+              <removeUnusedImports />
+              <eclipse>
+                <file>${project.basedir}/config/eclipse-format.xml</file>
+              </eclipse>
+              <importOrder>
+                <file>${project.basedir}/config/eclipse.importorder</file>
+              </importOrder>
+              <includes>
+                <include>src/it/java/**/**</include>
+                <include>src/main/java/**/**</include>
+                <include>src/test/java/**/**</include>
+              </includes>
+              <excludes>
+                <excluded>src/main/java/com/puppycrawl/tools/checkstyle/checks/javadoc/JavadocContentLocationCheck.java</excluded>
+              </excludes>
+            </java>
+<!--            <formats>-->
+<!--              <format>-->
+<!--                <trimTrailingWhitespace/>-->
+<!--                <endWithNewline/>-->
+<!--                <indent>-->
+<!--                  <spaces>true</spaces>-->
+<!--                  <spacesPerTab>2</spacesPerTab>-->
+<!--                </indent>-->
+<!--                <includes>-->
+<!--                  <include>src/it/java/**</include>-->
+<!--                  <include>src/main/java/**</include>-->
+<!--                  <include>src/test/java/**</include>-->
+<!--                </includes>-->
+<!--              </format>-->
+<!--            </formats>-->
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
+      <plugin>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-component-metadata</artifactId>
@@ -5263,6 +5305,52 @@
               <threads>${pitest.plugin.threads}</threads>
               <outputFormats>${pitest.plugin.output.formats}</outputFormats>
             </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>format</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.diffplug.spotless</groupId>
+            <artifactId>spotless-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>spotless-apply</id>
+                <phase>verify</phase>
+                <goals>
+                   <goal>apply</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>validate</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.diffplug.spotless</groupId>
+            <artifactId>spotless-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>spotless-check</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>check</goal>
+                </goals>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
