@@ -38,7 +38,6 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import de.thetaphi.forbiddenapis.SuppressForbidden;
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.AbstractAutomaticBean;
@@ -50,6 +49,7 @@ import com.puppycrawl.tools.checkstyle.PackageObjectFactory;
 import com.puppycrawl.tools.checkstyle.TreeWalker;
 import com.puppycrawl.tools.checkstyle.internal.utils.TestUtil;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
+import de.thetaphi.forbiddenapis.SuppressForbidden;
 
 /**
  * Unit test for WriteTagCheck.

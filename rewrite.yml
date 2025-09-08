@@ -29,7 +29,7 @@ recipeList:
   - org.openrewrite.staticanalysis.RemoveUnusedPrivateMethods
   - tech.picnic.errorprone.refasterrules.BugCheckerRulesRecipes
   - tech.picnic.errorprone.refasterrules.SuggestedFixRulesRecipes
-  # - org.checkstyle.java.LicenseHeader bug #todo
+  # - LicenseHeader bug #todo
   # - org.openrewrite.java.OrderImports bug #todo
   # - org.openrewrite.java.migrate.UpgradeToJava17
   # - org.openrewrite.java.migrate.UpgradeToJava25 issue #17734
@@ -58,7 +58,7 @@ recipeList:
   # - tech.picnic.errorprone.refasterrules.TimeRulesRecipes
 ---
 type: specs.openrewrite.org/v1beta/style
-name: Import Layout
+name: ImportLayout
 displayName: Checkstyle Auto Fix Configured
 styleConfigs:
   - org.openrewrite.java.style.ImportLayoutStyle:
@@ -78,7 +78,7 @@ styleConfigs:
         - import all other imports
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: org.checkstyle.java.LicenseHeader
+name: LicenseHeader
 displayName: License Header
 recipeList:
   - org.openrewrite.java.AddLicenseHeader:

@@ -25,13 +25,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.sf.saxon.om.NamespaceUri;
-import net.sf.saxon.om.NodeInfo;
-import net.sf.saxon.om.TreeInfo;
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.xpath.AbstractNode;
+import net.sf.saxon.om.NamespaceUri;
+import net.sf.saxon.om.NodeInfo;
+import net.sf.saxon.om.TreeInfo;
 
 public class ReverseListIteratorTest {
 

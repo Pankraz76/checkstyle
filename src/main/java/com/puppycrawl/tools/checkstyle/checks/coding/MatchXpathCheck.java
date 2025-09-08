@@ -21,19 +21,18 @@ package com.puppycrawl.tools.checkstyle.checks.coding;
 
 import java.util.List;
 
-import net.sf.saxon.Configuration;
-import net.sf.saxon.om.Item;
-import net.sf.saxon.sxpath.XPathDynamicContext;
-import net.sf.saxon.sxpath.XPathEvaluator;
-import net.sf.saxon.sxpath.XPathExpression;
-import net.sf.saxon.trans.XPathException;
-
 import com.puppycrawl.tools.checkstyle.StatelessCheck;
 import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 import com.puppycrawl.tools.checkstyle.xpath.AbstractNode;
 import com.puppycrawl.tools.checkstyle.xpath.RootNode;
+import net.sf.saxon.Configuration;
+import net.sf.saxon.om.Item;
+import net.sf.saxon.sxpath.XPathDynamicContext;
+import net.sf.saxon.sxpath.XPathEvaluator;
+import net.sf.saxon.sxpath.XPathExpression;
+import net.sf.saxon.trans.XPathException;
 
 /**
  * <div>

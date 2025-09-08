@@ -19,8 +19,9 @@
 
 package com.google.checkstyle.test.chapter4formatting.rule4822declaredwhenneeded;
 
-import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 import org.junit.jupiter.api.Test;
+
+import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 
 public class DeclaredWhenNeededTest extends AbstractGoogleModuleTestSupport {
 

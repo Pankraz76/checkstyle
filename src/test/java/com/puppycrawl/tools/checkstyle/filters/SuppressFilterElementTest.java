@@ -21,15 +21,15 @@ package com.puppycrawl.tools.checkstyle.filters;
 
 import static com.google.common.truth.Truth.assertWithMessage;
 
-import nl.jqno.equalsverifier.EqualsVerifier;
-import nl.jqno.equalsverifier.EqualsVerifierReport;
-import nl.jqno.equalsverifier.Warning;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.TreeWalkerTest;
 import com.puppycrawl.tools.checkstyle.api.AuditEvent;
 import com.puppycrawl.tools.checkstyle.api.Violation;
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.EqualsVerifierReport;
+import nl.jqno.equalsverifier.Warning;
 
 public class SuppressFilterElementTest {
 

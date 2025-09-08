@@ -591,6 +591,9 @@
             <activeRecipes>
               <recipe>CheckstyleAutoFix</recipe>
             </activeRecipes>
+            <activeStyles>
+              <style>ImportLayout</style>
+            </activeStyles>
             <plainTextMasks>
               <plainTextMask>**.groovy</plainTextMask>
               <plainTextMask>**.xml</plainTextMask>

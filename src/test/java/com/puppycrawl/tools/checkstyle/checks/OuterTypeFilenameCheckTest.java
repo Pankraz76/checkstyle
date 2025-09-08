@@ -25,9 +25,9 @@ import static com.puppycrawl.tools.checkstyle.checks.OuterTypeFilenameCheck.MSG_
 import java.io.File;
 import java.util.List;
 
-import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.Test;
 
+import com.google.common.collect.ImmutableMap;
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;

@@ -27,8 +27,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import nl.jqno.equalsverifier.EqualsVerifier;
-import nl.jqno.equalsverifier.EqualsVerifierReport;
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
@@ -44,9 +42,11 @@ import com.puppycrawl.tools.checkstyle.checks.naming.AbstractNameCheck;
 import com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck;
 import com.puppycrawl.tools.checkstyle.internal.utils.TestUtil;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.EqualsVerifierReport;
 
 public class SuppressWithNearbyCommentFilterTest
-        extends AbstractModuleTestSupport {
+    extends AbstractModuleTestSupport {
 
     private static final String[] ALL_MESSAGES = {
         "46:17: "

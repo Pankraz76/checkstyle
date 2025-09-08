@@ -25,6 +25,12 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.Set;
 
+import org.junit.jupiter.api.Test;
+
+import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
+import com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck;
+import com.puppycrawl.tools.checkstyle.checks.javadoc.AbstractJavadocCheck;
+import com.puppycrawl.tools.checkstyle.utils.ModuleReflectionUtil;
 import com.tngtech.archunit.base.DescribedPredicate;
 import com.tngtech.archunit.core.domain.JavaClass;
 import com.tngtech.archunit.core.domain.JavaClasses;
@@ -36,12 +42,6 @@ import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
-import org.junit.jupiter.api.Test;
-
-import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
-import com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck;
-import com.puppycrawl.tools.checkstyle.checks.javadoc.AbstractJavadocCheck;
-import com.puppycrawl.tools.checkstyle.utils.ModuleReflectionUtil;
 
 public class ArchUnitSuperClassTest {
 
