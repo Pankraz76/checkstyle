@@ -73,7 +73,9 @@ styleConfigs:
         - import org.*
         - <blank line>
         - import com.*
+        - <blank line>
         - import net.*
+        - <blank line>
         - import all other imports
 ---
 type: specs.openrewrite.org/v1beta/recipe
