@@ -71,8 +71,6 @@ styleConfigs:
         - <blank line>
         - import javax.*
         - <blank line>
-        - import jakarta.*
-        - <blank line>
         - import org.*
         - <blank line>
         - import com.*

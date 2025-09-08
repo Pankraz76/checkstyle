@@ -34,12 +34,12 @@ import java.util.stream.Collectors;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import com.google.common.reflect.ClassPath;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.google.common.reflect.ClassPath;
 import com.puppycrawl.tools.checkstyle.api.FileText;
 import com.puppycrawl.tools.checkstyle.checks.coding.AbstractSuperCheck;
 import com.puppycrawl.tools.checkstyle.checks.naming.AbstractAccessControlNameCheck;

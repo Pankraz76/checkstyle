@@ -19,8 +19,9 @@
 
 package com.google.checkstyle.test.chapter5naming.rule525nonconstantfieldnames;
 
-import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 import org.junit.jupiter.api.Test;
+
+import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 
 public class NonConstantFieldNamesTest extends AbstractGoogleModuleTestSupport {
 

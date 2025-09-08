@@ -27,9 +27,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.Test;
 
+import com.google.common.collect.ImmutableMap;
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.DetailAstImpl;
@@ -40,7 +40,7 @@ import com.puppycrawl.tools.checkstyle.internal.utils.TestUtil;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 public class IllegalInstantiationCheckTest
-        extends AbstractModuleTestSupport {
+    extends AbstractModuleTestSupport {
 
     @Override
     protected String getPackageLocation() {

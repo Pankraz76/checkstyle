@@ -22,12 +22,11 @@ package com.puppycrawl.tools.checkstyle.internal.utils;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.sf.saxon.om.NodeInfo;
-
 import com.puppycrawl.tools.checkstyle.DetailAstImpl;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.xpath.RootNode;
+import net.sf.saxon.om.NodeInfo;
 
 /**
  * XpathIteratorUtil.

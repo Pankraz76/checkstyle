@@ -21,9 +21,10 @@ package com.puppycrawl.tools.checkstyle.filters;
 
 import static com.google.common.truth.Truth.assertWithMessage;
 
+import org.junit.jupiter.api.Test;
+
 import nl.jqno.equalsverifier.EqualsVerifier;
 import nl.jqno.equalsverifier.EqualsVerifierReport;
-import org.junit.jupiter.api.Test;
 
 public class IntRangeFilterElementTest {
 
