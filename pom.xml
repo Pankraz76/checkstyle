@@ -1722,6 +1722,11 @@
       </plugin>
 
       <plugin>
+        <groupId>org.openrewrite.maven</groupId>
+        <artifactId>rewrite-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
         <executions>
@@ -5367,52 +5372,6 @@
           <plugin>
             <groupId>org.openrewrite.maven</groupId>
             <artifactId>rewrite-maven-plugin</artifactId>
-            <version>${rewrite-maven-plugin.version}</version>
-            <configuration>
-              <exclusions>
-                <exclusion>**.ci-temp**</exclusion>
-                <exclusion>**.groovy</exclusion>
-                <exclusion>**/resources-noncompilable/**</exclusion>
-                <exclusion>**release.yml</exclusion>
-                <exclusion>**src/it/resources**</exclusion>
-                <exclusion>**src/test/resources**</exclusion>
-                <exclusion>**xdocs-examples**</exclusion>
-              </exclusions>
-              <exportDatatables>true</exportDatatables>
-              <skipMavenParsing>true</skipMavenParsing>
-              <activeRecipes>
-                <recipe>CheckstyleAutoFix</recipe>
-              </activeRecipes>
-              <plainTextMasks>
-                <plainTextMask>**.groovy</plainTextMask>
-                <plainTextMask>**.xml</plainTextMask>
-                <plainTextMask>**.yml</plainTextMask>
-                <plainTextMask>**/resources-noncompilable/**</plainTextMask>
-                <plainTextMask>**/resources/**</plainTextMask>
-              </plainTextMasks>
-            </configuration>
-            <dependencies>
-              <dependency>
-                <groupId>com.puppycrawl.tools</groupId>
-                <artifactId>checkstyle-openrewrite-recipes</artifactId>
-                <version>${checkstyle.openrewrite.version}</version>
-              </dependency>
-              <dependency>
-                <groupId>org.openrewrite.recipe</groupId>
-                <artifactId>rewrite-third-party</artifactId>
-                <version>${rewrite-third-party.version}</version>
-              </dependency>
-              <dependency>
-                <groupId>org.openrewrite.recipe</groupId>
-                <artifactId>rewrite-static-analysis</artifactId>
-                <version>${rewrite-static-analysis.version}</version>
-              </dependency>
-              <dependency>
-                <groupId>org.openrewrite.recipe</groupId>
-                <artifactId>rewrite-rewrite</artifactId>
-                <version>${rewrite-rewrite.version}</version>
-              </dependency>
-            </dependencies>
           </plugin>
         </plugins>
       </build>
