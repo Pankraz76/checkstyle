@@ -23,6 +23,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import com.puppycrawl.tools.checkstyle.xpath.iterators.DescendantIterator;
+import com.puppycrawl.tools.checkstyle.xpath.iterators.FollowingIterator;
+import com.puppycrawl.tools.checkstyle.xpath.iterators.PrecedingIterator;
+import com.puppycrawl.tools.checkstyle.xpath.iterators.ReverseListIterator;
 import net.sf.saxon.om.AxisInfo;
 import net.sf.saxon.om.NamespaceUri;
 import net.sf.saxon.om.NodeInfo;
@@ -32,11 +36,6 @@ import net.sf.saxon.tree.iter.EmptyIterator;
 import net.sf.saxon.tree.iter.SingleNodeIterator;
 import net.sf.saxon.tree.util.Navigator;
 import net.sf.saxon.type.Type;
-
-import com.puppycrawl.tools.checkstyle.xpath.iterators.DescendantIterator;
-import com.puppycrawl.tools.checkstyle.xpath.iterators.FollowingIterator;
-import com.puppycrawl.tools.checkstyle.xpath.iterators.PrecedingIterator;
-import com.puppycrawl.tools.checkstyle.xpath.iterators.ReverseListIterator;
 
 /**
  * Represents element node of Xpath-tree.
@@ -100,8 +99,8 @@ public abstract class AbstractElementNode extends AbstractNode {
     @Override
     public int compareOrder(NodeInfo other) {
         int result = 0;
-        if (other instanceof AbstractNode node) {
-            result = Integer.compare(depth, node.getDepth());
+        if (other instanceof AbstractNode) {
+            result = Integer.compare(depth, ((AbstractNode) other).getDepth());
             if (result == 0) {
                 result = compareCommonAncestorChildrenOrder(this, other);
             }

@@ -29,7 +29,8 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
-import jakarta.annotation.Nullable;
+import javax.annotation.Nullable;
+
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.ConvertUtilsBean;
@@ -61,7 +62,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  * calling the bean's setters for all configuration attributes.
  */
 public abstract class AbstractAutomaticBean
-        implements Configurable, Contextualizable {
+    implements Configurable, Contextualizable {
 
     /**
      * Enum to specify behaviour regarding ignored modules.

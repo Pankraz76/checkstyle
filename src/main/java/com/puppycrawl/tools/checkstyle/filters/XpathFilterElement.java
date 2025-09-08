@@ -24,18 +24,17 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
+import com.puppycrawl.tools.checkstyle.TreeWalkerAuditEvent;
+import com.puppycrawl.tools.checkstyle.TreeWalkerFilter;
+import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
+import com.puppycrawl.tools.checkstyle.xpath.AbstractNode;
+import com.puppycrawl.tools.checkstyle.xpath.RootNode;
 import net.sf.saxon.Configuration;
 import net.sf.saxon.om.Item;
 import net.sf.saxon.sxpath.XPathDynamicContext;
 import net.sf.saxon.sxpath.XPathEvaluator;
 import net.sf.saxon.sxpath.XPathExpression;
 import net.sf.saxon.trans.XPathException;
-
-import com.puppycrawl.tools.checkstyle.TreeWalkerAuditEvent;
-import com.puppycrawl.tools.checkstyle.TreeWalkerFilter;
-import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
-import com.puppycrawl.tools.checkstyle.xpath.AbstractNode;
-import com.puppycrawl.tools.checkstyle.xpath.RootNode;
 
 /**
  * This filter element is immutable and processes {@link TreeWalkerAuditEvent}

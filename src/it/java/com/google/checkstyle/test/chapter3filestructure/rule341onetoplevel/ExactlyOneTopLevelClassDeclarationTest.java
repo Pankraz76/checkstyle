@@ -19,8 +19,9 @@
 
 package com.google.checkstyle.test.chapter3filestructure.rule341onetoplevel;
 
-import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 import org.junit.jupiter.api.Test;
+
+import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 
 public class ExactlyOneTopLevelClassDeclarationTest extends AbstractGoogleModuleTestSupport {
 

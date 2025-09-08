@@ -22,7 +22,8 @@ package com.puppycrawl.tools.checkstyle;
 import java.util.BitSet;
 import java.util.List;
 
-import jakarta.annotation.Nullable;
+import javax.annotation.Nullable;
+
 import org.antlr.v4.runtime.Token;
 
 import com.puppycrawl.tools.checkstyle.api.DetailAST;

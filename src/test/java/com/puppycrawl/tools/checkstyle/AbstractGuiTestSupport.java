@@ -25,10 +25,11 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.GraphicsEnvironment;
 
-import com.github.caciocavallosilano.cacio.ctc.junit.CacioExtension;
-import com.github.caciocavallosilano.cacio.ctc.junit.CacioTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
+
+import com.github.caciocavallosilano.cacio.ctc.junit.CacioExtension;
+import com.github.caciocavallosilano.cacio.ctc.junit.CacioTest;
 
 /**
  * Abstract base class for testing GUI components.
@@ -64,8 +65,8 @@ public abstract class AbstractGuiTestSupport extends AbstractPathTestSupport {
         if (name.equals(root.getName())) {
             result = root;
         }
-        else if (root instanceof Container container) {
-            final Component[] children = container.getComponents();
+        else if (root instanceof Container) {
+            final Component[] children = ((Container) root).getComponents();
             for (Component component : children) {
                 result = findComponentByName(component, name);
                 if (result != null) {

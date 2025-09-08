@@ -24,7 +24,6 @@ import static com.puppycrawl.tools.checkstyle.checks.javadoc.NonEmptyAtclauseDes
 
 import java.nio.charset.CodingErrorAction;
 
-import de.thetaphi.forbiddenapis.SuppressForbidden;
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
@@ -32,6 +31,7 @@ import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.TreeWalker;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
+import de.thetaphi.forbiddenapis.SuppressForbidden;
 
 public class NonEmptyAtclauseDescriptionCheckTest
         extends AbstractModuleTestSupport {

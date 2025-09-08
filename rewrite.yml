@@ -20,7 +20,7 @@ recipeList:
   - org.checkstyle.java.LicenseHeader
   - org.openrewrite.java.OrderImports
   - org.openrewrite.java.RemoveUnusedImports
-  - org.openrewrite.java.migrate.UpgradeToJava17
+  # - org.openrewrite.java.migrate.UpgradeToJava17
   - org.openrewrite.java.recipes.JavaRecipeBestPractices
   - org.openrewrite.staticanalysis.JavaApiBestPractices
   - org.openrewrite.staticanalysis.LowercasePackage
@@ -74,7 +74,6 @@ styleConfigs:
         - <blank line>
         - import com.*
         - import net.*
-        - import jakarta.*
         - import all other imports
 ---
 type: specs.openrewrite.org/v1beta/recipe

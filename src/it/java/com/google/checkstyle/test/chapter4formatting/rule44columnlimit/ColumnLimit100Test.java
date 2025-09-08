@@ -19,8 +19,9 @@
 
 package com.google.checkstyle.test.chapter4formatting.rule44columnlimit;
 
-import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 import org.junit.jupiter.api.Test;
+
+import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 
 public class ColumnLimit100Test extends AbstractGoogleModuleTestSupport {
 

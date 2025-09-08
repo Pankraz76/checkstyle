@@ -19,8 +19,9 @@
 
 package com.google.checkstyle.test.chapter6programpractice.rule61overridealwaysused;
 
-import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 import org.junit.jupiter.api.Test;
+
+import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
 
 /** Some Javadoc A {@code Foo} is a simple Javadoc. */
 class OverrideAlwaysUsedTest extends AbstractGoogleModuleTestSupport {

@@ -23,11 +23,11 @@ import static com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck.MSG_K
 
 import java.nio.charset.CodingErrorAction;
 
-import de.thetaphi.forbiddenapis.SuppressForbidden;
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
+import de.thetaphi.forbiddenapis.SuppressForbidden;
 
 public class LineLengthCheckTest extends AbstractModuleTestSupport {
 

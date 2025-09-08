@@ -25,12 +25,6 @@ import static com.puppycrawl.tools.checkstyle.utils.XpathUtil.getXpathItems;
 import java.io.File;
 import java.util.List;
 
-import net.sf.saxon.om.AxisInfo;
-import net.sf.saxon.om.NamespaceUri;
-import net.sf.saxon.om.NodeInfo;
-import net.sf.saxon.tree.iter.ArrayIterator;
-import net.sf.saxon.tree.iter.AxisIterator;
-import net.sf.saxon.tree.iter.EmptyIterator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -40,6 +34,12 @@ import com.puppycrawl.tools.checkstyle.JavaParser;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.xpath.iterators.DescendantIterator;
+import net.sf.saxon.om.AxisInfo;
+import net.sf.saxon.om.NamespaceUri;
+import net.sf.saxon.om.NodeInfo;
+import net.sf.saxon.tree.iter.ArrayIterator;
+import net.sf.saxon.tree.iter.AxisIterator;
+import net.sf.saxon.tree.iter.EmptyIterator;
 
 public class ElementNodeTest extends AbstractPathTestSupport {
 

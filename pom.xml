@@ -333,12 +333,6 @@
       <artifactId>reflections</artifactId>
       <version>0.10.2</version>
     </dependency>
-    <dependency>
-      <groupId>jakarta.annotation</groupId>
-      <artifactId>jakarta.annotation-api</artifactId>
-      <version>3.0.0</version>
-      <scope>provided</scope>
-    </dependency>
 
     <!-- test scope stuff -->
     <dependency>

@@ -52,11 +52,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import com.google.common.collect.Lists;
-import jakarta.annotation.Nullable;
+import javax.annotation.Nullable;
+
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.maven.doxia.macro.MacroExecutionException;
 
+import com.google.common.collect.Lists;
 import com.puppycrawl.tools.checkstyle.Checker;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.ModuleFactory;
@@ -1129,8 +1130,8 @@ public final class SiteUtil {
             stream = collection.stream()
                     .mapToInt(int.class::cast);
         }
-        else if (value instanceof BitSet set) {
-            stream = set.stream();
+        else if (value instanceof BitSet) {
+            stream = ((BitSet) value).stream();
         }
         else {
             stream = Arrays.stream((int[]) value);
