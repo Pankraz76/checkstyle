@@ -19,9 +19,8 @@
 
 package com.google.checkstyle.test.chapter5naming.rule53camelcase;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class CamelCaseDefinedTest extends AbstractGoogleModuleTestSupport {
     @Override

@@ -58,7 +58,8 @@ recipeList:
   # - tech.picnic.errorprone.refasterrules.TimeRulesRecipes
 ---
 type: specs.openrewrite.org/v1beta/style
-name: ImportLayout
+name: Import Layout
+displayName: Checkstyle Auto Fix Configured
 styleConfigs:
   - org.openrewrite.java.style.ImportLayoutStyle:
       classCountToUseStarImport: 999
@@ -80,6 +81,7 @@ styleConfigs:
 ---
 type: specs.openrewrite.org/v1beta/recipe
 name: org.checkstyle.java.LicenseHeader
+displayName: License Header
 recipeList:
   - org.openrewrite.java.AddLicenseHeader:
       licenseText: |

@@ -19,9 +19,8 @@
 
 package com.google.checkstyle.test.chapter4formatting.rule452indentcontinuationlines;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractIndentationTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class IndentContinuationLinesAtLeast4SpacesTest extends AbstractIndentationTestSupport {
 

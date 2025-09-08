@@ -19,9 +19,8 @@
 
 package com.google.checkstyle.test.chapter7javadoc.rule731selfexplanatory;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class ExceptionSelfExplanatoryMembersTest extends AbstractGoogleModuleTestSupport {
 

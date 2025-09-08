@@ -37,6 +37,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.google.common.truth.StandardSubjectBuilder;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Location;
 import org.apache.tools.ant.Project;
@@ -45,7 +46,6 @@ import org.apache.tools.ant.types.Path;
 import org.apache.tools.ant.types.resources.FileResource;
 import org.junit.jupiter.api.Test;
 
-import com.google.common.truth.StandardSubjectBuilder;
 import com.puppycrawl.tools.checkstyle.AbstractPathTestSupport;
 import com.puppycrawl.tools.checkstyle.DefaultLogger;
 import com.puppycrawl.tools.checkstyle.Definitions;

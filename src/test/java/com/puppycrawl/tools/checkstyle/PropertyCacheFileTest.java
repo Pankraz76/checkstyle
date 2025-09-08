@@ -44,6 +44,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+import com.google.common.io.BaseEncoding;
+import com.google.common.io.ByteStreams;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledOnOs;
 import org.junit.jupiter.api.condition.OS;
@@ -52,8 +54,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
 
-import com.google.common.io.BaseEncoding;
-import com.google.common.io.ByteStreams;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
 import com.puppycrawl.tools.checkstyle.api.Configuration;
 import com.puppycrawl.tools.checkstyle.internal.utils.TestUtil;

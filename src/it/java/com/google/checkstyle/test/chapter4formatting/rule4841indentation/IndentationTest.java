@@ -19,9 +19,8 @@
 
 package com.google.checkstyle.test.chapter4formatting.rule4841indentation;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractIndentationTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class IndentationTest extends AbstractIndentationTestSupport {
 

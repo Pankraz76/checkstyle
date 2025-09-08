@@ -19,9 +19,8 @@
 
 package com.google.checkstyle.test.chapter4formatting.rule411optionalbracesusage;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class UseOfOptionalBracesTest extends AbstractGoogleModuleTestSupport {
 

@@ -30,6 +30,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
+import nl.jqno.equalsverifier.EqualsVerifierReport;
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
@@ -50,11 +52,9 @@ import com.puppycrawl.tools.checkstyle.checks.naming.ConstantNameCheck;
 import com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck;
 import com.puppycrawl.tools.checkstyle.internal.utils.TestUtil;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
-import nl.jqno.equalsverifier.EqualsVerifier;
-import nl.jqno.equalsverifier.EqualsVerifierReport;
 
 public class SuppressionCommentFilterTest
-    extends AbstractModuleTestSupport {
+        extends AbstractModuleTestSupport {
 
     private static final String[] ALL_MESSAGES = {
         "45:17: "

@@ -19,9 +19,8 @@
 
 package com.google.checkstyle.test.chapter3filestructure.rule332nolinewrap;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class NoLineWrappingTest extends AbstractGoogleModuleTestSupport {
 

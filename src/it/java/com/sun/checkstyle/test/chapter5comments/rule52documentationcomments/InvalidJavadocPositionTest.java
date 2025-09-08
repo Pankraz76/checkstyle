@@ -19,11 +19,11 @@
 
 package com.sun.checkstyle.test.chapter5comments.rule52documentationcomments;
 
+import com.sun.checkstyle.test.base.AbstractSunModuleTestSupport;
 import org.junit.jupiter.api.Test;
 
 import com.puppycrawl.tools.checkstyle.api.Configuration;
 import com.puppycrawl.tools.checkstyle.checks.javadoc.InvalidJavadocPositionCheck;
-import com.sun.checkstyle.test.base.AbstractSunModuleTestSupport;
 
 public class InvalidJavadocPositionTest extends AbstractSunModuleTestSupport {
 

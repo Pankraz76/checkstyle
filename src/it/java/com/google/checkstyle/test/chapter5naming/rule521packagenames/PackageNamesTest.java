@@ -22,9 +22,8 @@ package com.google.checkstyle.test.chapter5naming.rule521packagenames;
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class PackageNamesTest extends AbstractGoogleModuleTestSupport {
 

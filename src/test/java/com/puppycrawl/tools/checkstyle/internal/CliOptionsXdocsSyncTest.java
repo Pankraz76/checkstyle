@@ -37,10 +37,10 @@ import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import com.puppycrawl.tools.checkstyle.internal.utils.XmlUtil;
 import picocli.CommandLine;
 import picocli.CommandLine.Model.OptionSpec;
+
+import com.puppycrawl.tools.checkstyle.internal.utils.XmlUtil;
 
 public class CliOptionsXdocsSyncTest {
 
