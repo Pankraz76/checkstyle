@@ -220,7 +220,6 @@
     <checkstyle.skipCompileInputResources>true</checkstyle.skipCompileInputResources>
     <checkstyle.openrewrite.version>1.0.0-SNAPSHOT</checkstyle.openrewrite.version>
     <rewrite-maven-plugin.version>6.17.0</rewrite-maven-plugin.version>
-    <rewrite-rewrite.version>0.12.0</rewrite-rewrite.version>
     <rewrite-static-analysis.version>2.16.0</rewrite-static-analysis.version>
     <rewrite-third-party.version>0.26.0</rewrite-third-party.version>
     <java.version>17</java.version>
@@ -615,11 +614,6 @@
               <groupId>org.openrewrite.recipe</groupId>
               <artifactId>rewrite-static-analysis</artifactId>
               <version>${rewrite-static-analysis.version}</version>
-            </dependency>
-            <dependency>
-              <groupId>org.openrewrite.recipe</groupId>
-              <artifactId>rewrite-rewrite</artifactId>
-              <version>${rewrite-rewrite.version}</version>
             </dependency>
           </dependencies>
         </plugin>
