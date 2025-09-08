@@ -13,10 +13,6 @@ tags:
   - java
   - code-quality
 recipeList:
-  - org.checkstyle.autofix.CheckstyleAutoFix:
-      violationReportPath: "target/cs_errors.xml"
-      configurationPath: "config/checkstyle-checks.xml"
-      propertiesPath: "config/openrewrite-recipes-checkstyle.properties"
   - org.checkstyle.java.LicenseHeader
   - org.openrewrite.java.RemoveUnusedImports
   - org.openrewrite.java.migrate.UpgradeToJava17
