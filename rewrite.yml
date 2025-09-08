@@ -71,11 +71,11 @@ styleConfigs:
         - <blank line>
         - import javax.*
         - <blank line>
+        - import jakarta.*
+        - <blank line>
         - import org.*
         - <blank line>
         - import com.*
-        - <blank line>
-        - import net.*
         - <blank line>
         - import all other imports
 ---
