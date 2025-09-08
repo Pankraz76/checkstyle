@@ -18,6 +18,7 @@ recipeList:
 #      configurationPath: "config/checkstyle-checks.xml"
 #      propertiesPath: "config/openrewrite-recipes-checkstyle.properties"
   - org.checkstyle.java.LicenseHeader
+  - org.openrewrite.java.OrderImports
   - org.openrewrite.java.RemoveUnusedImports
   - org.openrewrite.java.migrate.UpgradeToJava17
   - org.openrewrite.java.recipes.JavaRecipeBestPractices
