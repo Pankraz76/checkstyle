@@ -33,12 +33,17 @@ tags:
   - java
   - code-quality
 recipeList:
+  # - tech.picnic.errorprone.refasterrules.EqualityRulesRecipes
+  # - tech.picnic.errorprone.refasterrules.NullRulesRecipes
+  # - tech.picnic.errorprone.refasterrules.OptionalRulesRecipes
+  # - tech.picnic.errorprone.refasterrules.StringRulesRecipes
   - tech.picnic.errorprone.refasterrules.BigDecimalRulesRecipes
   - tech.picnic.errorprone.refasterrules.BugCheckerRulesRecipes
   - tech.picnic.errorprone.refasterrules.CharSequenceRulesRecipes
   - tech.picnic.errorprone.refasterrules.ClassRulesRecipes
   - tech.picnic.errorprone.refasterrules.CollectionRulesRecipes
   - tech.picnic.errorprone.refasterrules.ComparatorRulesRecipes
+  - tech.picnic.errorprone.refasterrules.FileRulesRecipes
   - tech.picnic.errorprone.refasterrules.MicrometerRulesRecipes
   - tech.picnic.errorprone.refasterrules.PatternRulesRecipes
   - tech.picnic.errorprone.refasterrules.PreconditionsRulesRecipes
@@ -46,11 +51,6 @@ recipeList:
   - tech.picnic.errorprone.refasterrules.StreamRulesRecipes
   - tech.picnic.errorprone.refasterrules.SuggestedFixRulesRecipes
   - tech.picnic.errorprone.refasterrules.TimeRulesRecipes
-  # - tech.picnic.errorprone.refasterrules.EqualityRulesRecipes
-  # - tech.picnic.errorprone.refasterrules.FileRulesRecipes
-  # - tech.picnic.errorprone.refasterrules.NullRulesRecipes
-  # - tech.picnic.errorprone.refasterrules.OptionalRulesRecipes
-  # - tech.picnic.errorprone.refasterrules.StringRulesRecipes
 ---
 type: specs.openrewrite.org/v1beta/recipe
 name: org.checkstyle.CodeConvention
