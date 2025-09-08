@@ -19,9 +19,8 @@
 
 package com.google.checkstyle.test.chapter5naming.rule528typevariablenames;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class TypeVariableNamesTest extends AbstractGoogleModuleTestSupport {
 

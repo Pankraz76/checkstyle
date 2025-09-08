@@ -19,9 +19,8 @@
 
 package com.google.checkstyle.test.chapter6programpractice.rule62donotignoreexceptions;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class CaughtExceptionsNotIgnoredTest extends AbstractGoogleModuleTestSupport {
 

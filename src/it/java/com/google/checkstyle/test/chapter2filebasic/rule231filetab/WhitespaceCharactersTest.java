@@ -19,9 +19,8 @@
 
 package com.google.checkstyle.test.chapter2filebasic.rule231filetab;
 
-import org.junit.jupiter.api.Test;
-
 import com.google.checkstyle.test.base.AbstractGoogleModuleTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class WhitespaceCharactersTest extends AbstractGoogleModuleTestSupport {
 

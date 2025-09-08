@@ -22,9 +22,8 @@ package com.puppycrawl.tools.checkstyle.xpath.iterators;
 import static com.google.common.truth.Truth.assertWithMessage;
 import static com.puppycrawl.tools.checkstyle.internal.utils.XpathIteratorUtil.findNode;
 
-import org.junit.jupiter.api.Test;
-
 import net.sf.saxon.om.NodeInfo;
+import org.junit.jupiter.api.Test;
 
 public class FollowingIteratorTest {
 

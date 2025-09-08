@@ -19,7 +19,6 @@
 
 package com.puppycrawl.tools.checkstyle.xpath;
 
-import com.puppycrawl.tools.checkstyle.xpath.iterators.DescendantIterator;
 import net.sf.saxon.Configuration;
 import net.sf.saxon.om.AxisInfo;
 import net.sf.saxon.om.GenericTreeInfo;
@@ -30,6 +29,8 @@ import net.sf.saxon.tree.iter.AxisIterator;
 import net.sf.saxon.tree.iter.EmptyIterator;
 import net.sf.saxon.tree.iter.SingleNodeIterator;
 import net.sf.saxon.type.Type;
+
+import com.puppycrawl.tools.checkstyle.xpath.iterators.DescendantIterator;
 
 /**
  * Represents root node of Xpath-tree.
