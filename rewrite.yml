@@ -80,7 +80,7 @@ type: specs.openrewrite.org/v1beta/recipe
 name: org.checkstyle.java.LicenseHeader
 recipeList:
   - org.openrewrite.java.AddLicenseHeader:
-      licenseText: |-
+      licenseText: |
         ///////////////////////////////////////////////////////////////////////////////////////////////
         // checkstyle: Checks Java source code and other text files for adherence to a set of rules.
         // Copyright (C) 2001-${CURRENT_YEAR} the original author or authors.
