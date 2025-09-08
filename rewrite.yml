@@ -68,12 +68,13 @@ styleConfigs:
         - <blank line>
         - import java.*
         - <blank line>
-        - import ja.*
+        - import javax.*
         - <blank line>
         - import org.*
         - <blank line>
         - import com.*
         - import net.*
+        - import jakarta.*
         - import all other imports
 ---
 type: specs.openrewrite.org/v1beta/recipe

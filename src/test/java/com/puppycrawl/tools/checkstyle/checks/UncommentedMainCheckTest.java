@@ -25,10 +25,10 @@ import static com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheck.MSG_KE
 import java.io.File;
 import java.util.List;
 
+import com.google.common.collect.ImmutableMap;
 import org.antlr.v4.runtime.CommonToken;
 import org.junit.jupiter.api.Test;
 
-import com.google.common.collect.ImmutableMap;
 import com.puppycrawl.tools.checkstyle.AbstractModuleTestSupport;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.DetailAstImpl;
@@ -36,7 +36,7 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 
 public class UncommentedMainCheckTest
-    extends AbstractModuleTestSupport {
+        extends AbstractModuleTestSupport {
 
     @Override
     protected String getPackageLocation() {

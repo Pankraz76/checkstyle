@@ -23,10 +23,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import com.puppycrawl.tools.checkstyle.xpath.iterators.DescendantIterator;
-import com.puppycrawl.tools.checkstyle.xpath.iterators.FollowingIterator;
-import com.puppycrawl.tools.checkstyle.xpath.iterators.PrecedingIterator;
-import com.puppycrawl.tools.checkstyle.xpath.iterators.ReverseListIterator;
 import net.sf.saxon.om.AxisInfo;
 import net.sf.saxon.om.NamespaceUri;
 import net.sf.saxon.om.NodeInfo;
@@ -36,6 +32,11 @@ import net.sf.saxon.tree.iter.EmptyIterator;
 import net.sf.saxon.tree.iter.SingleNodeIterator;
 import net.sf.saxon.tree.util.Navigator;
 import net.sf.saxon.type.Type;
+
+import com.puppycrawl.tools.checkstyle.xpath.iterators.DescendantIterator;
+import com.puppycrawl.tools.checkstyle.xpath.iterators.FollowingIterator;
+import com.puppycrawl.tools.checkstyle.xpath.iterators.PrecedingIterator;
+import com.puppycrawl.tools.checkstyle.xpath.iterators.ReverseListIterator;
 
 /**
  * Represents element node of Xpath-tree.
