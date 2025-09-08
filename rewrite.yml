@@ -17,10 +17,9 @@ recipeList:
   #      violationReportPath: "target/cs_errors.xml"
   #      configurationPath: "config/checkstyle-checks.xml"
   #      propertiesPath: "config/openrewrite-recipes-checkstyle.properties"
-  - org.checkstyle.java.LicenseHeader
+  - org.checkstyle.java.LicenseHeaderr
   - org.openrewrite.java.OrderImports
   - org.openrewrite.java.RemoveUnusedImports
-  # - org.openrewrite.java.migrate.UpgradeToJava17
   - org.openrewrite.java.recipes.JavaRecipeBestPractices
   - org.openrewrite.staticanalysis.JavaApiBestPractices
   - org.openrewrite.staticanalysis.LowercasePackage
@@ -32,6 +31,7 @@ recipeList:
   - org.openrewrite.staticanalysis.RemoveUnusedPrivateMethods
   - tech.picnic.errorprone.refasterrules.BugCheckerRulesRecipes
   - tech.picnic.errorprone.refasterrules.SuggestedFixRulesRecipes
+  # - org.openrewrite.java.migrate.UpgradeToJava17
   # - org.openrewrite.java.migrate.UpgradeToJava25 #17734
   # - org.openrewrite.java.recipes.RecipeNullabilityBestPractices
   # - org.openrewrite.java.recipes.RecipeTestingBestPractices
