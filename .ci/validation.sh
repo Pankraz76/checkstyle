@@ -1277,6 +1277,25 @@ openrewrite-recipes)
   rm -rf /tmp/checkstyle-openrewrite-recipes
   ;;
 
+openrewrite-refasterrules)
+  export MAVEN_OPTS="-Xmx4g -Xms2g"
+
+  cd "$PROJECT_ROOT"
+
+  echo "Running Checkstyle validation to get report for openrewrite..."
+  set +e
+  ./mvnw -e --no-transfer-progress clean compile antrun:run@ant-phase-verify
+  set -e
+  echo "Running OpenRewrite recipes..."
+  ./mvnw -e --no-transfer-progress -Drewrite.recipeChangeLogLevel=INFO \
+  rewrite:run -P openrewrite-refasterrules
+
+  echo "Checking for uncommitted changes..."
+  ./.ci/print-diff-as-patch.sh target/rewrite.patch
+
+  rm -rf /tmp/checkstyle-openrewrite-recipes
+  ;;
+
 *)
   echo "Unexpected argument: $1"
   echo "Supported tasks:"

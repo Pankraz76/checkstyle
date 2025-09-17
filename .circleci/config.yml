@@ -324,3 +324,10 @@ workflows:
           name: "openrewrite-recipes"
           image-name: "cimg/openjdk:21.0"
           command: "./.ci/validation.sh openrewrite-recipes"
+
+  openrewrite-refasterrules:
+    jobs:
+      - validate-with-maven-script:
+          name: "openrewrite-refasterrules"
+          image-name: "cimg/openjdk:21.0"
+          command: "./.ci/validation.sh openrewrite-refasterrules"
