@@ -70,8 +70,9 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
         final List<String> expected = Arrays.asList(
             "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]",
             "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]"
-                    + "/MODIFIERS/LITERAL_PUBLIC");
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]\
+            /MODIFIERS/LITERAL_PUBLIC""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -85,12 +86,15 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='callSomeMethod']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='callSomeMethod']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='callSomeMethod']]/MODIFIERS/LITERAL_PUBLIC");
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='callSomeMethod']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='callSomeMethod']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='callSomeMethod']]/MODIFIERS/LITERAL_PUBLIC""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -104,22 +108,26 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='callSomeMethod']]/SLIST/LITERAL_FOR/SLIST"
-                + "/VARIABLE_DEF[./IDENT[@text='d']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='callSomeMethod']]/SLIST/LITERAL_FOR/SLIST"
-                + "/VARIABLE_DEF[./IDENT[@text='d']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='callSomeMethod']]/SLIST/LITERAL_FOR/SLIST"
-                + "/VARIABLE_DEF[./IDENT[@text='d']]/TYPE",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='callSomeMethod']]/SLIST/LITERAL_FOR/SLIST"
-                + "/VARIABLE_DEF[./IDENT[@text='d']]/TYPE/LITERAL_SHORT");
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='callSomeMethod']]/SLIST/LITERAL_FOR/SLIST\
+            /VARIABLE_DEF[./IDENT[@text='d']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='callSomeMethod']]/SLIST/LITERAL_FOR/SLIST\
+            /VARIABLE_DEF[./IDENT[@text='d']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='callSomeMethod']]/SLIST/LITERAL_FOR/SLIST\
+            /VARIABLE_DEF[./IDENT[@text='d']]/TYPE""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='callSomeMethod']]/SLIST/LITERAL_FOR/SLIST\
+            /VARIABLE_DEF[./IDENT[@text='d']]/TYPE/LITERAL_SHORT""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -133,8 +141,9 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='Label']]/SLIST/LITERAL_SWITCH/LCURLY");
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='Label']]/SLIST/LITERAL_SWITCH/LCURLY""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -148,8 +157,9 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK"
-                + "/INSTANCE_INIT/SLIST/RCURLY");
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK\
+            /INSTANCE_INIT/SLIST/RCURLY""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -163,10 +173,12 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='mUse4']]/ASSIGN/EXPR",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='mUse4']]/ASSIGN/EXPR/DOT");
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='mUse4']]/ASSIGN/EXPR""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='mUse4']]/ASSIGN/EXPR/DOT""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -180,8 +192,9 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='callSomeMethod']]/LPAREN");
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='callSomeMethod']]/LPAREN""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -236,24 +249,29 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='saveUser']]/PARAMETERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='saveUser']]/PARAMETERS/PARAMETER_DEF[./IDENT[@text='name']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='saveUser']]/PARAMETERS/PARAMETER_DEF[./IDENT[@text='name']]"
-                + "/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='saveUser']]/PARAMETERS/PARAMETER_DEF[./IDENT[@text='name']]"
-                + "/TYPE[./IDENT[@text='String']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='saveUser']]/PARAMETERS/PARAMETER_DEF[./IDENT[@text='name']]"
-                + "/TYPE/IDENT[@text='String']");
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='saveUser']]/PARAMETERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='saveUser']]/PARAMETERS/PARAMETER_DEF[./IDENT[@text='name']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='saveUser']]/PARAMETERS/PARAMETER_DEF[./IDENT[@text='name']]\
+            /MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='saveUser']]/PARAMETERS/PARAMETER_DEF[./IDENT[@text='name']]\
+            /TYPE[./IDENT[@text='String']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='saveUser']]/PARAMETERS/PARAMETER_DEF[./IDENT[@text='name']]\
+            /TYPE/IDENT[@text='String']""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -267,8 +285,9 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='Label']]/SLIST/LITERAL_SWITCH");
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='Label']]/SLIST/LITERAL_SWITCH""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -282,12 +301,14 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='Label']]/SLIST/LITERAL_SWITCH/CASE_GROUP[1]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='Label']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_DEFAULT");
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='Label']]/SLIST/LITERAL_SWITCH/CASE_GROUP[1]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='Label']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_DEFAULT""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -301,14 +322,16 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='callSomeMethod']]/SLIST/VARIABLE_DEF[./IDENT[@text='another']]"
-                + "/ASSIGN/EXPR[./STRING_LITERAL[@text='HelloWorld']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='callSomeMethod']]/SLIST/VARIABLE_DEF[./IDENT[@text='another']]"
-                + "/ASSIGN/EXPR/STRING_LITERAL[@text='HelloWorld']");
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='callSomeMethod']]/SLIST/VARIABLE_DEF[./IDENT[@text='another']]\
+            /ASSIGN/EXPR[./STRING_LITERAL[@text='HelloWorld']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='callSomeMethod']]/SLIST/VARIABLE_DEF[./IDENT[@text='another']]\
+            /ASSIGN/EXPR/STRING_LITERAL[@text='HelloWorld']""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -322,9 +345,10 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='foo']]/SLIST/LITERAL_FOR/FOR_ITERATOR/ELIST/COMMA");
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGenerator']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='foo']]/SLIST/LITERAL_FOR/FOR_ITERATOR/ELIST/COMMA""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -338,10 +362,12 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, fileText, DEFAULT_TAB_WIDTH);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/TYPE",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/TYPE/LITERAL_VOID");
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/TYPE""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/TYPE/LITERAL_VOID""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -418,15 +444,18 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, testFileText, tabWidth);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='toString']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='toString']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='toString']]/MODIFIERS/LITERAL_PUBLIC");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='toString']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='toString']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='toString']]/MODIFIERS/LITERAL_PUBLIC""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -447,12 +476,14 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, testFileText, tabWidth);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='getName']]/TYPE",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='getName']]/TYPE/LITERAL_VOID");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='getName']]/TYPE""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='getName']]/TYPE/LITERAL_VOID""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -472,9 +503,10 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, testFileText, tabWidth);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='tabAfterMe']]/SLIST");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorTabWidth']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='tabAfterMe']]/SLIST""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -494,8 +526,9 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 columnNumber, testFileText, tabWidth);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGeneratorTabWidth']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='endLineTab']]/SEMI");
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGeneratorTabWidth']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='endLineTab']]/SEMI""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -527,8 +560,9 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
         final List<String> expected = Arrays.asList(
                 "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]",
                 "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/MODIFIERS"
-                    + "/LITERAL_PUBLIC");
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator']]/MODIFIERS\
+                /LITERAL_PUBLIC""");
         assertWithMessage("Generated queries do not match expected ones")
             .that(actual)
             .isEqualTo(expected);
@@ -549,16 +583,18 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 lineNumberOne, columnNumberOne, testFileText, tabWidth);
         final List<String> actualTestOne = queryGeneratorOne.generate();
         final List<String> expectedTestOne = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathQueryGeneratorEscapeCharacters']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR[./"
-                        + "STRING_LITERAL[@text='&lt;&gt;&apos;&apos;\\&quot;&amp;abc;&amp;lt;"
-                        + "\\u0080\\n']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathQueryGeneratorEscapeCharacters']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR/"
-                        + "STRING_LITERAL[@text='&lt;&gt;&apos;&apos;\\&quot;&amp;abc;&amp;lt;"
-                        + "\\u0080\\n']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorEscapeCharacters']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR[./\
+                STRING_LITERAL[@text='&lt;&gt;&apos;&apos;\\&quot;&amp;abc;&amp;lt;\
+                \\u0080\\n']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorEscapeCharacters']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR/\
+                STRING_LITERAL[@text='&lt;&gt;&apos;&apos;\\&quot;&amp;abc;&amp;lt;\
+                \\u0080\\n']"""
         );
         assertWithMessage("Generated queries do not match expected ones")
             .that(actualTestOne)
@@ -570,14 +606,16 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 lineNumberTwo, columnNumberTwo, testFileText, tabWidth);
         final List<String> actualTestTwo = queryGeneratorTwo.generate();
         final List<String> expectedTestTwo = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathQueryGeneratorEscapeCharacters']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='testTwo']]/ASSIGN/EXPR[./"
-                        + "STRING_LITERAL[@text='&amp;#0;&amp;#X0\\u0001\\r']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathQueryGeneratorEscapeCharacters']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='testTwo']]/ASSIGN/EXPR/"
-                        + "STRING_LITERAL[@text='&amp;#0;&amp;#X0\\u0001\\r']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathQueryGeneratorEscapeCharacters']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='testTwo']]/ASSIGN/EXPR[./\
+                STRING_LITERAL[@text='&amp;#0;&amp;#X0\\u0001\\r']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorEscapeCharacters']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='testTwo']]/ASSIGN/EXPR/\
+                STRING_LITERAL[@text='&amp;#0;&amp;#X0\\u0001\\r']"""
         );
         assertWithMessage("Generated queries do not match expected ones")
             .that(actualTestTwo)
@@ -600,11 +638,12 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 lineNumber, columnNumber, testFileText, tabWidth);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathQueryGeneratorTextBlock']]/OBJBLOCK/"
-                    + "VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR/"
-                    + "TEXT_BLOCK_LITERAL_BEGIN/TEXT_BLOCK_CONTENT[@text='\\n        "
-                    + "&amp;1line\\n        &gt;2line\\n        &lt;3line\\n        ']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathQueryGeneratorTextBlock']]/OBJBLOCK/\
+            VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR/\
+            TEXT_BLOCK_LITERAL_BEGIN/TEXT_BLOCK_CONTENT[@text='\\n        \
+            &amp;1line\\n        &gt;2line\\n        &lt;3line\\n        ']"""
             );
         assertWithMessage("Generated queries do not match expected ones")
                 .that(expected)
@@ -627,11 +666,12 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 lineNumber, columnNumber, testFileText, tabWidth);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathQueryGeneratorTextBlockNewLine']]/OBJBLOCK/"
-                        + "VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR/"
-                        + "TEXT_BLOCK_LITERAL_BEGIN/TEXT_BLOCK_CONTENT[@text='\\n        "
-                        + "&amp;1line\\n\\n        &gt;2line\\n        &lt;3line\\n        ']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorTextBlockNewLine']]/OBJBLOCK/\
+                VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR/\
+                TEXT_BLOCK_LITERAL_BEGIN/TEXT_BLOCK_CONTENT[@text='\\n        \
+                &amp;1line\\n\\n        &gt;2line\\n        &lt;3line\\n        ']"""
         );
         assertWithMessage("Generated queries do not match expected ones")
                 .that(expected)
@@ -654,12 +694,13 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 lineNumber, columnNumber, testFileText, tabWidth);
         final List<String> actual = queryGenerator.generate();
         final List<String> expected = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathQueryGeneratorTextBlockCrlf']]/OBJBLOCK/"
-                        + "VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR/"
-                        + "TEXT_BLOCK_LITERAL_BEGIN/TEXT_BLOCK_CONTENT[@text='\\n        "
-                        + "&amp;1line\\n\\n        &gt;2line\\n        &lt;3line\\n"
-                        + "        ']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGeneratorTextBlockCrlf']]/OBJBLOCK/\
+                VARIABLE_DEF[./IDENT[@text='testOne']]/ASSIGN/EXPR/\
+                TEXT_BLOCK_LITERAL_BEGIN/TEXT_BLOCK_CONTENT[@text='\\n        \
+                &amp;1line\\n\\n        &gt;2line\\n        &lt;3line\\n\
+                        ']"""
         );
         assertWithMessage("Generated queries do not match expected ones")
                 .that(expected)
@@ -682,9 +723,10 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 lineNumberOne, columnNumberOne, testFileText, tabWidth);
         final List<String> actualTestOne = queryGeneratorOne.generate();
         final List<String> expectedTestOne = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathQueryGenerator2']]"
-                        + "/OBJBLOCK/ENUM_DEF[./IDENT[@text='Foo3']]/OBJBLOCK/COMMA[2]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathQueryGenerator2']]\
+                /OBJBLOCK/ENUM_DEF[./IDENT[@text='Foo3']]/OBJBLOCK/COMMA[2]"""
         );
         assertWithMessage("Generated queries do not match expected ones")
             .that(actualTestOne)
@@ -707,8 +749,9 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 lineNumber3, columnNumber3, testFileText, tabWidth);
         final List<String> actualTest3 = queryGenerator3.generate();
         final List<String> expectedTest3 = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator3']]"
-                        + "/OBJBLOCK/SEMI[1]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator3']]\
+                /OBJBLOCK/SEMI[1]"""
         );
         assertWithMessage("Generated queries do not match expected ones")
                 .that(actualTest3)
@@ -731,14 +774,16 @@ public class XpathQueryGeneratorTest extends AbstractModuleTestSupport {
                 lineNumber2, columnNumber2, testFileText, tabWidth);
         final List<String> actualTest = queryGenerator2.generate();
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator4']]"
-                + "/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='methodFallThruCustomWords']]/SLIST/LITERAL_WHILE/SLIST"
-                + "/LITERAL_SWITCH/CASE_GROUP[./SLIST/EXPR/POST_INC/IDENT[@text='i']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator4']]"
-                + "/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='methodFallThruCustomWords']]/SLIST/LITERAL_WHILE/SLIST"
-                + "/LITERAL_SWITCH/CASE_GROUP/LITERAL_DEFAULT"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator4']]\
+            /OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='methodFallThruCustomWords']]/SLIST/LITERAL_WHILE/SLIST\
+            /LITERAL_SWITCH/CASE_GROUP[./SLIST/EXPR/POST_INC/IDENT[@text='i']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathQueryGenerator4']]\
+            /OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='methodFallThruCustomWords']]/SLIST/LITERAL_WHILE/SLIST\
+            /LITERAL_SWITCH/CASE_GROUP/LITERAL_DEFAULT"""
         );
         assertWithMessage("Generated queries do not match expected ones")
             .that(actualTest)

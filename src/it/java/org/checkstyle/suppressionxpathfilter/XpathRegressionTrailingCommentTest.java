@@ -50,10 +50,11 @@ public class XpathRegressionTrailingCommentTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathTrailingCommentSingleLine']]/"
-                        + "OBJBLOCK/SINGLE_LINE_COMMENT[./COMMENT_CONTENT[@text=' don&apos;"
-                        + "&apos;t use trailing comments :) // warn\\n']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathTrailingCommentSingleLine']]/\
+                OBJBLOCK/SINGLE_LINE_COMMENT[./COMMENT_CONTENT[@text=' don&apos;\
+                &apos;t use trailing comments :) // warn\\n']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -74,9 +75,10 @@ public class XpathRegressionTrailingCommentTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathTrailingCommentBlock']]"
-                        + "/OBJBLOCK/SINGLE_LINE_COMMENT[./COMMENT_CONTENT[@text=' warn\\n']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathTrailingCommentBlock']]\
+                /OBJBLOCK/SINGLE_LINE_COMMENT[./COMMENT_CONTENT[@text=' warn\\n']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

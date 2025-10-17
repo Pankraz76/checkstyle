@@ -32,8 +32,9 @@ public class RequireEmptyLineBeforeBlockTagGroupCheckTest extends AbstractModule
 
     @Override
     protected String getPackageLocation() {
-        return "com/puppycrawl/tools/checkstyle/checks/javadoc/"
-                + "requireemptylinebeforeblocktaggroup";
+        return """
+                com/puppycrawl/tools/checkstyle/checks/javadoc/\
+                requireemptylinebeforeblocktaggroup""";
     }
 
     @Test

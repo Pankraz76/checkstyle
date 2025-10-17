@@ -491,15 +491,17 @@ public class CustomImportOrderCheckTest extends AbstractModuleTestSupport {
             assertWithMessage("Invalid exception message")
                 .that(exc)
                 .hasMessageThat()
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                        + "cannot initialize module com.puppycrawl.tools.checkstyle.checks"
-                        + ".imports.CustomImportOrderCheck - "
-                        + "Cannot set property 'customImportOrderRules' to "
-                        + "'SAME_PACKAGE(-1)'");
+                .isEqualTo("""
+                        cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                        cannot initialize module com.puppycrawl.tools.checkstyle.checks\
+                        .imports.CustomImportOrderCheck - \
+                        Cannot set property 'customImportOrderRules' to \
+                        'SAME_PACKAGE(-1)'""");
             assertWithMessage("Invalid exception message")
                 .that(exc.getCause().getCause().getCause().getCause().getMessage())
-                .isEqualTo("SAME_PACKAGE rule parameter should be positive integer: "
-                        + "SAME_PACKAGE(-1)");
+                .isEqualTo("""
+                        SAME_PACKAGE rule parameter should be positive integer: \
+                        SAME_PACKAGE(-1)""");
         }
     }
 
@@ -515,15 +517,17 @@ public class CustomImportOrderCheckTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                        + "cannot initialize module com.puppycrawl.tools.checkstyle.checks"
-                        + ".imports.CustomImportOrderCheck - "
-                        + "Cannot set property 'customImportOrderRules' to "
-                        + "'SAME_PACKAGE(0)'");
+                .isEqualTo("""
+                        cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                        cannot initialize module com.puppycrawl.tools.checkstyle.checks\
+                        .imports.CustomImportOrderCheck - \
+                        Cannot set property 'customImportOrderRules' to \
+                        'SAME_PACKAGE(0)'""");
             assertWithMessage("Invalid exception message")
                 .that(exc.getCause().getCause().getCause().getCause().getMessage())
-                .isEqualTo("SAME_PACKAGE rule parameter should be positive integer: "
-                        + "SAME_PACKAGE(0)");
+                .isEqualTo("""
+                        SAME_PACKAGE rule parameter should be positive integer: \
+                        SAME_PACKAGE(0)""");
         }
     }
 
@@ -539,11 +543,12 @@ public class CustomImportOrderCheckTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                        + "cannot initialize module com.puppycrawl.tools.checkstyle.checks"
-                        + ".imports.CustomImportOrderCheck - "
-                        + "Cannot set property 'customImportOrderRules' to "
-                        + "'SAME_PACKAGE(3)###UNSUPPORTED_RULE'");
+                .isEqualTo("""
+                        cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                        cannot initialize module com.puppycrawl.tools.checkstyle.checks\
+                        .imports.CustomImportOrderCheck - \
+                        Cannot set property 'customImportOrderRules' to \
+                        'SAME_PACKAGE(3)###UNSUPPORTED_RULE'""");
             assertWithMessage("Invalid exception message")
                 .that(exc.getCause().getCause().getCause().getCause().getMessage())
                 .isEqualTo("Unexpected rule: UNSUPPORTED_RULE");
@@ -562,11 +567,12 @@ public class CustomImportOrderCheckTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                        + "cannot initialize module com.puppycrawl.tools.checkstyle.checks"
-                        + ".imports.CustomImportOrderCheck - "
-                        + "Cannot set property 'customImportOrderRules' to "
-                        + "'SAME_PACKAGE(INT_IS_REQUIRED_HERE)'");
+                .isEqualTo("""
+                        cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                        cannot initialize module com.puppycrawl.tools.checkstyle.checks\
+                        .imports.CustomImportOrderCheck - \
+                        Cannot set property 'customImportOrderRules' to \
+                        'SAME_PACKAGE(INT_IS_REQUIRED_HERE)'""");
             assertWithMessage("Invalid exception message")
                 .that(exc.getCause().getCause().getCause().getCause().getMessage())
                 .isEqualTo("For input string: \"INT_IS_REQUIRED_HERE\"");

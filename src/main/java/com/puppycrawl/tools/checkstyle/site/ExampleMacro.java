@@ -83,8 +83,9 @@ public class ExampleMacro extends AbstractMacro {
 
             if (config.isBlank()) {
                 final String message = String.format(Locale.ROOT,
-                        "Empty config snippet from %s, check"
-                                + " for xml config snippet delimiters in input file.", path
+                        """
+                        Empty config snippet from %s, check\
+                         for xml config snippet delimiters in input file.""", path
                 );
                 throw new MacroExecutionException(message);
             }
@@ -100,8 +101,9 @@ public class ExampleMacro extends AbstractMacro {
 
             if (code.isBlank()) {
                 final String message = String.format(Locale.ROOT,
-                        "Empty code snippet from %s, check"
-                                + " for code snippet delimiters in input file.", path
+                        """
+                        Empty code snippet from %s, check\
+                         for code snippet delimiters in input file.""", path
                 );
                 throw new MacroExecutionException(message);
             }

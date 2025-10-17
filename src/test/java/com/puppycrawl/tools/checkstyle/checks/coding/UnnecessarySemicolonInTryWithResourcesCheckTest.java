@@ -31,8 +31,9 @@ public class UnnecessarySemicolonInTryWithResourcesCheckTest extends AbstractMod
 
     @Override
     protected String getPackageLocation() {
-        return "com/puppycrawl/tools/checkstyle/checks/coding/"
-            + "unnecessarysemicolonintrywithresources";
+        return """
+            com/puppycrawl/tools/checkstyle/checks/coding/\
+            unnecessarysemicolonintrywithresources""";
     }
 
     @Test

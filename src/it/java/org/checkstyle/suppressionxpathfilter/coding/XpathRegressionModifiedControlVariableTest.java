@@ -54,13 +54,15 @@ public class XpathRegressionModifiedControlVariableTest extends AbstractXpathTes
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableWithFor']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableWithFor']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/LITERAL_FOR/SLIST/EXPR/POST_INC[./IDENT[@text='i']]");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableWithFor']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableWithFor']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+                /SLIST/LITERAL_FOR/SLIST/EXPR/POST_INC[./IDENT[@text='i']]""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -75,13 +77,15 @@ public class XpathRegressionModifiedControlVariableTest extends AbstractXpathTes
                         ModifiedControlVariableCheck.MSG_KEY, "s"),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableWithForeach']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableWithForeach']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='s']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableWithForeach']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableWithForeach']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+                /SLIST/LITERAL_FOR/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='s']]"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -98,13 +102,15 @@ public class XpathRegressionModifiedControlVariableTest extends AbstractXpathTes
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableSkipEnhancedForLoop']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableSkipEnhancedForLoop']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/LITERAL_FOR/SLIST/EXPR/POST_INC[./IDENT[@text='i']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableSkipEnhancedForLoop']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableSkipEnhancedForLoop']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+                /SLIST/LITERAL_FOR/SLIST/EXPR/POST_INC[./IDENT[@text='i']]"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -120,15 +126,17 @@ public class XpathRegressionModifiedControlVariableTest extends AbstractXpathTes
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableNestedWithFor']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableNestedWithFor']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/LITERAL_FOR/SLIST"
-                + "/LITERAL_FOR/SLIST/EXPR/STAR_ASSIGN[./IDENT[@text='j']]");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableNestedWithFor']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+                /SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableNestedWithFor']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+                /SLIST/LITERAL_FOR/SLIST\
+                /LITERAL_FOR/SLIST/EXPR/STAR_ASSIGN[./IDENT[@text='j']]""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -144,15 +152,17 @@ public class XpathRegressionModifiedControlVariableTest extends AbstractXpathTes
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableNestedWithForeach']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableNestedWithForeach']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR"
-                + "/PLUS_ASSIGN[./IDENT[@text='s']]");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableNestedWithForeach']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+                /SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableNestedWithForeach']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+                /SLIST/LITERAL_FOR/SLIST/LITERAL_FOR/SLIST/EXPR\
+                /PLUS_ASSIGN[./IDENT[@text='s']]""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -169,13 +179,15 @@ public class XpathRegressionModifiedControlVariableTest extends AbstractXpathTes
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableNestedSkipEnhancedForLoop']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathModifiedControlVariableNestedSkipEnhancedForLoop']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR"
-                + "/PLUS_ASSIGN[./IDENT[@text='i']]");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableNestedSkipEnhancedForLoop']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathModifiedControlVariableNestedSkipEnhancedForLoop']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST/EXPR\
+                /PLUS_ASSIGN[./IDENT[@text='i']]""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }

@@ -128,25 +128,31 @@ public class ImmutabilityTest {
         "com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck.primitiveDataTypes",
         "com.puppycrawl.tools.checkstyle.checks.SuppressWarningsHolder.ENTRIES",
         "com.puppycrawl.tools.checkstyle.checks.annotation.MissingDeprecatedCheck.TYPES_HASH_SET",
-        "com.puppycrawl.tools.checkstyle.checks.coding.AvoidDoubleBraceInitializationCheck"
-            + ".HAS_MEMBERS",
-        "com.puppycrawl.tools.checkstyle.checks.coding.AvoidDoubleBraceInitializationCheck"
-            + ".IGNORED_TYPES",
-        "com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck"
-            + ".ALLOWED_ASSIGNMENT_CONTEXT",
-        "com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck"
-            + ".ALLOWED_ASSIGNMENT_IN_COMPARISON_CONTEXT",
+        """
+        com.puppycrawl.tools.checkstyle.checks.coding.AvoidDoubleBraceInitializationCheck\
+        .HAS_MEMBERS""",
+        """
+        com.puppycrawl.tools.checkstyle.checks.coding.AvoidDoubleBraceInitializationCheck\
+        .IGNORED_TYPES""",
+        """
+        com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck\
+        .ALLOWED_ASSIGNMENT_CONTEXT""",
+        """
+        com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck\
+        .ALLOWED_ASSIGNMENT_IN_COMPARISON_CONTEXT""",
         "com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck.COMPARISON_TYPES",
         "com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck.CONTROL_CONTEXT",
-        "com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck"
-            + ".LOOP_IDIOM_IGNORED_PARENTS",
+        """
+        com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck\
+        .LOOP_IDIOM_IGNORED_PARENTS""",
         "com.puppycrawl.tools.checkstyle.checks.coding.MatchXpathCheck.xpathExpression",
         "com.puppycrawl.tools.checkstyle.checks.javadoc.AtclauseOrderCheck.DEFAULT_ORDER",
         "com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocBlockTagLocationCheck.DEFAULT_TAGS",
         "com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck.ALLOWED_TYPES",
         "com.puppycrawl.tools.checkstyle.checks.modifier.ModifierOrderCheck.JLS_ORDER",
-        "com.puppycrawl.tools.checkstyle.checks.modifier.RedundantModifierCheck"
-            + ".TOKENS_FOR_INTERFACE_MODIFIERS",
+        """
+        com.puppycrawl.tools.checkstyle.checks.modifier.RedundantModifierCheck\
+        .TOKENS_FOR_INTERFACE_MODIFIERS""",
         "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpMultilineCheck.detector",
         "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpSinglelineCheck.detector",
         "com.puppycrawl.tools.checkstyle.checks.coding.IllegalTokenTextCheck.formatString",

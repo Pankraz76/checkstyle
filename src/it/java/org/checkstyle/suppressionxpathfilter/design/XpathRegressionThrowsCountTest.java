@@ -54,10 +54,11 @@ public class XpathRegressionThrowsCountTest extends AbstractXpathTestSupport {
                         ThrowsCountCheck.MSG_KEY, 5, 4),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                    + "/CLASS_DEF[./IDENT[@text='InputXpathThrowsCountDefault']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]"
-                    + "/LITERAL_THROWS[./IDENT[@text='CloneNotSupportedException']]"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathThrowsCountDefault']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]\
+                /LITERAL_THROWS[./IDENT[@text='CloneNotSupportedException']]"""
 
         );
 
@@ -79,10 +80,11 @@ public class XpathRegressionThrowsCountTest extends AbstractXpathTestSupport {
                         ThrowsCountCheck.MSG_KEY, 3, 2),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                    + "/INTERFACE_DEF[./IDENT[@text='InputXpathThrowsCountCustomMax']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]"
-                    + "/LITERAL_THROWS[./IDENT[@text='IllegalStateException']]"
+                """
+                /COMPILATION_UNIT\
+                /INTERFACE_DEF[./IDENT[@text='InputXpathThrowsCountCustomMax']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]\
+                /LITERAL_THROWS[./IDENT[@text='IllegalStateException']]"""
 
         );
 
@@ -104,13 +106,14 @@ public class XpathRegressionThrowsCountTest extends AbstractXpathTestSupport {
                         ThrowsCountCheck.MSG_KEY, 5, 4),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                    + "/CLASS_DEF[./IDENT[@text='InputXpathThrowsCountPrivateMethods']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunc']]"
-                    + "/SLIST/VARIABLE_DEF[./IDENT[@text='foo']]"
-                    + "/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='myClass']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='privateFunc']]"
-                    + "/LITERAL_THROWS[./IDENT[@text='CloneNotSupportedException']]"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathThrowsCountPrivateMethods']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunc']]\
+                /SLIST/VARIABLE_DEF[./IDENT[@text='foo']]\
+                /ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='myClass']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='privateFunc']]\
+                /LITERAL_THROWS[./IDENT[@text='CloneNotSupportedException']]"""
 
         );
 

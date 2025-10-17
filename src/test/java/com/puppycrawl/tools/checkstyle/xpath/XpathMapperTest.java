@@ -64,8 +64,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testFullPath() throws Exception {
-        final String xpath = "/COMPILATION_UNIT/CLASS_DEF/OBJBLOCK"
-                + "/METHOD_DEF[1]/SLIST/VARIABLE_DEF[2]";
+        final String xpath = """
+                /COMPILATION_UNIT/CLASS_DEF/OBJBLOCK\
+                /METHOD_DEF[1]/SLIST/VARIABLE_DEF[2]""";
         final RootNode rootNode = getRootNode("InputXpathMapperAst.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedVariableDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -171,8 +172,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testComplexQueryThree() throws Exception {
-        final String xpath = "//CLASS_DEF | //CLASS_DEF//METHOD_DEF |"
-                + " /COMPILATION_UNIT/CLASS_DEF/OBJBLOCK";
+        final String xpath = """
+                //CLASS_DEF | //CLASS_DEF//METHOD_DEF |\
+                 /COMPILATION_UNIT/CLASS_DEF/OBJBLOCK""";
         final RootNode rootNode = getRootNode("InputXpathMapperAst.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedClassDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -194,8 +196,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testAttributeOr() throws Exception {
-        final String xpath = "//METHOD_DEF[./IDENT[@text='getSomeMethod'] "
-                + "or ./IDENT[@text='nonExistentMethod']]";
+        final String xpath = """
+                //METHOD_DEF[./IDENT[@text='getSomeMethod'] \
+                or ./IDENT[@text='nonExistentMethod']]""";
         final RootNode rootNode = getRootNode("InputXpathMapperAst.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedClassDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -213,8 +216,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testAttributeAnd() throws Exception {
-        final String xpath = "//METHOD_DEF[./IDENT[@text='callSomeMethod'] and "
-                + "../..[./IDENT[@text='InputXpathMapperAst']]]";
+        final String xpath = """
+                //METHOD_DEF[./IDENT[@text='callSomeMethod'] and \
+                ../..[./IDENT[@text='InputXpathMapperAst']]]""";
         final RootNode rootNode = getRootNode("InputXpathMapperAst.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedClassDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -357,8 +361,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testQueryMethodDefinitionsByClassName() throws Exception {
-        final String xpath = "//CLASS_DEF[./IDENT[@text='InputXpathMapperAst']]"
-                + "//OBJBLOCK//METHOD_DEF";
+        final String xpath = """
+                //CLASS_DEF[./IDENT[@text='InputXpathMapperAst']]\
+                //OBJBLOCK//METHOD_DEF""";
         final RootNode rootNode = getRootNode("InputXpathMapperAst.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedMethodDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -381,8 +386,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testQueryByClassNameAndMethodName() throws Exception {
-        final String xpath = "//CLASS_DEF[./IDENT[@text='InputXpathMapperAst']]//OBJBLOCK"
-                + "//METHOD_DEF[./IDENT[@text='getSomeMethod']]";
+        final String xpath = """
+                //CLASS_DEF[./IDENT[@text='InputXpathMapperAst']]//OBJBLOCK\
+                //METHOD_DEF[./IDENT[@text='getSomeMethod']]""";
         final RootNode rootNode = getRootNode("InputXpathMapperAst.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedMethodDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -454,8 +460,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testQueryAncestorOrSelf() throws Exception {
-        final String xpath = "//VARIABLE_DEF[./IDENT[@text='another']]"
-                + "/ancestor-or-self::VARIABLE_DEF";
+        final String xpath = """
+                //VARIABLE_DEF[./IDENT[@text='another']]\
+                /ancestor-or-self::VARIABLE_DEF""";
         final RootNode rootNode = getRootNode("InputXpathMapperAst.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedVariableDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -768,8 +775,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testStringVariableByItsValue() throws Exception {
-        final String xpath = "//VARIABLE_DEF[./ASSIGN/EXPR"
-                + "/STRING_LITERAL[@text='HelloWorld']]";
+        final String xpath = """
+                //VARIABLE_DEF[./ASSIGN/EXPR\
+                /STRING_LITERAL[@text='HelloWorld']]""";
         final RootNode rootNode = getRootNode("InputXpathMapperAst.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedVariableDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -801,8 +809,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testMethodDefByAnnotationValue() throws Exception {
-        final String xpath = "//METHOD_DEF[.//ANNOTATION[./IDENT[@text='SuppressWarnings']"
-                + " and .//*[@text='good']]]";
+        final String xpath = """
+                //METHOD_DEF[.//ANNOTATION[./IDENT[@text='SuppressWarnings']\
+                 and .//*[@text='good']]]""";
         final RootNode rootNode = getRootNode("InputXpathMapperAnnotation.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedAnnotationNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -886,9 +895,10 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testFirstCaseGroup() throws Exception {
-        final String xpath = "//CLASS_DEF[./IDENT[@text='InputXpathMapperPositions']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='switchMethod']]"
-                + "/SLIST/LITERAL_SWITCH/CASE_GROUP[1]";
+        final String xpath = """
+                //CLASS_DEF[./IDENT[@text='InputXpathMapperPositions']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='switchMethod']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP[1]""";
         final RootNode rootNode = getRootNode("InputXpathMapperPositions.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedVariableDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -907,9 +917,10 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testSecondCaseGroup() throws Exception {
-        final String xpath = "//CLASS_DEF[./IDENT[@text='InputXpathMapperPositions']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='switchMethod']]"
-                + "/SLIST/LITERAL_SWITCH/CASE_GROUP[2]";
+        final String xpath = """
+                //CLASS_DEF[./IDENT[@text='InputXpathMapperPositions']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='switchMethod']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP[2]""";
         final RootNode rootNode = getRootNode("InputXpathMapperPositions.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedVariableDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -929,9 +940,10 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testThirdCaseGroup() throws Exception {
-        final String xpath = "//CLASS_DEF[./IDENT[@text='InputXpathMapperPositions']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='switchMethod']]"
-                + "/SLIST/LITERAL_SWITCH/CASE_GROUP[3]";
+        final String xpath = """
+                //CLASS_DEF[./IDENT[@text='InputXpathMapperPositions']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='switchMethod']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP[3]""";
         final RootNode rootNode = getRootNode("InputXpathMapperPositions.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedVariableDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -952,9 +964,10 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testFourthCaseGroup() throws Exception {
-        final String xpath = "//CLASS_DEF[./IDENT[@text='InputXpathMapperPositions']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='switchMethod']]"
-                + "/SLIST/LITERAL_SWITCH/CASE_GROUP[4]";
+        final String xpath = """
+                //CLASS_DEF[./IDENT[@text='InputXpathMapperPositions']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='switchMethod']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP[4]""";
         final RootNode rootNode = getRootNode("InputXpathMapperPositions.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedVariableDefNode = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -1114,8 +1127,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testQueryElementPrecedingSiblingVariableDef() throws Exception {
-        final String xpath = "//VARIABLE_DEF[./IDENT[@text='array']]/preceding-sibling::"
-                + "VARIABLE_DEF";
+        final String xpath = """
+                //VARIABLE_DEF[./IDENT[@text='array']]/preceding-sibling::\
+                VARIABLE_DEF""";
         final RootNode rootNode = getRootNode("InputXpathMapperAst.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedVariableDefNode1 = getSiblingByType(rootNode.getUnderlyingNode(),
@@ -1200,8 +1214,9 @@ public class XpathMapperTest extends AbstractModuleTestSupport {
 
     @Test
     public void testTextBlockByItsValue() throws Exception {
-        final String xpath = "//TEXT_BLOCK_LITERAL_BEGIN[./TEXT_BLOCK_CONTENT"
-                + "[@text='\\n        &1line\\n        >2line\\n        <3line\\n        ']]";
+        final String xpath = """
+                //TEXT_BLOCK_LITERAL_BEGIN[./TEXT_BLOCK_CONTENT\
+                [@text='\\n        &1line\\n        >2line\\n        <3line\\n        ']]""";
         final RootNode rootNode = getRootNode("InputXpathMapperTextBlock.java");
         final DetailAST[] actual = convertToArray(getXpathItems(xpath, rootNode));
         final DetailAST expectedVariableDefNode = getSiblingByType(rootNode.getUnderlyingNode(),

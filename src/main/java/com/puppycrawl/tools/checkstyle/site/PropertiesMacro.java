@@ -564,9 +564,10 @@ public class PropertiesMacro extends AbstractMacro {
             }
         }
         else if (SiteUtil.CHARSET.equals(propertyName)) {
-            result = "the charset property of the parent"
-                + " <a href=\"https://checkstyle.org/config.html#Checker\">"
-                + "Checker</a> module";
+            result = """
+                the charset property of the parent\
+                 <a href="https://checkstyle.org/config.html#Checker">\
+                Checker</a> module""";
         }
 
         return result;

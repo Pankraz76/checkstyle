@@ -57,10 +57,11 @@ public class XpathRegressionInvalidJavadocPositionTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathInvalidJavadocPositionOne']]"
-                    + "/MODIFIERS/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT"
-                    + "[@text='* // warn\\n * Javadoc Comment\\n ']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathInvalidJavadocPositionOne']]\
+            /MODIFIERS/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT\
+            [@text='* // warn\\n * Javadoc Comment\\n ']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,10 +82,11 @@ public class XpathRegressionInvalidJavadocPositionTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathInvalidJavadocPositionTwo']]"
-                    + "/OBJBLOCK/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT"
-                    + "[@text='* // warn\\n * Javadoc comment\\n ']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathInvalidJavadocPositionTwo']]\
+            /OBJBLOCK/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT\
+            [@text='* // warn\\n * Javadoc comment\\n ']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -105,10 +107,11 @@ public class XpathRegressionInvalidJavadocPositionTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathInvalidJavadocPositionThree']]/"
-                    + "OBJBLOCK/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT"
-                    + "[@text='* // warn\\n     * Javadoc comment\\n     ']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathInvalidJavadocPositionThree']]/\
+            OBJBLOCK/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT\
+            [@text='* // warn\\n     * Javadoc comment\\n     ']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -129,10 +132,11 @@ public class XpathRegressionInvalidJavadocPositionTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathInvalidJavadocPositionFour']]"
-                + "/OBJBLOCK/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT"
-                + "[@text='* // warn\\n     * Javadoc Comment\\n     ']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathInvalidJavadocPositionFour']]\
+            /OBJBLOCK/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT\
+            [@text='* // warn\\n     * Javadoc Comment\\n     ']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -153,11 +157,12 @@ public class XpathRegressionInvalidJavadocPositionTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathInvalidJavadocPositionFive']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT"
-                + "[@text='* // warn\\n         * Javadoc comment\\n         ']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathInvalidJavadocPositionFive']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+            /SLIST/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT\
+            [@text='* // warn\\n         * Javadoc comment\\n         ']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -178,10 +183,11 @@ public class XpathRegressionInvalidJavadocPositionTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathInvalidJavadocPositionSix']]"
-                + "/OBJBLOCK/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT"
-                + "[@text='* // warn\\n     * Javadoc Comment\\n     ']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathInvalidJavadocPositionSix']]\
+            /OBJBLOCK/BLOCK_COMMENT_BEGIN[./COMMENT_CONTENT\
+            [@text='* // warn\\n     * Javadoc Comment\\n     ']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

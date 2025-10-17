@@ -166,8 +166,9 @@ public class JavadocMethodCheck extends AbstractCheck {
             "^\\s*(?>\\*|\\/\\*\\*)?\\s*@(throws|exception|param)\\s+(\\S+)\\s+\\S*");
     /** Compiled regexp to match Javadoc tags with argument but with missing description. */
     private static final Pattern MATCH_JAVADOC_ARG_MISSING_DESCRIPTION =
-        CommonUtil.createPattern("^\\s*(?>\\*|\\/\\*\\*)?\\s*@(throws|exception|param)\\s+"
-            + "(\\S[^*]*)(?:(\\s+|\\*\\/))?");
+        CommonUtil.createPattern("""
+            ^\\s*(?>\\*|\\/\\*\\*)?\\s*@(throws|exception|param)\\s+\
+            (\\S[^*]*)(?:(\\s+|\\*\\/))?""");
 
     /** Compiled regexp to look for a continuation of the comment. */
     private static final Pattern MATCH_JAVADOC_MULTILINE_CONT =

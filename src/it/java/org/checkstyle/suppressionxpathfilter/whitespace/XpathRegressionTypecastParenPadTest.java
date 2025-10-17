@@ -60,12 +60,14 @@ public class XpathRegressionTypecastParenPadTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathTypecastParenPadLeftFollowed']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathTypecastParenPadLeftFollowed']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/TYPECAST"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathTypecastParenPadLeftFollowed']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathTypecastParenPadLeftFollowed']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/TYPECAST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -87,12 +89,14 @@ public class XpathRegressionTypecastParenPadTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathTypecastParenPadLeftNotFollowed']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathTypecastParenPadLeftNotFollowed']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/TYPECAST"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathTypecastParenPadLeftNotFollowed']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathTypecastParenPadLeftNotFollowed']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/TYPECAST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -113,9 +117,10 @@ public class XpathRegressionTypecastParenPadTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathTypecastParenPadRightPreceded']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/TYPECAST/RPAREN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathTypecastParenPadRightPreceded']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/TYPECAST/RPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -137,9 +142,10 @@ public class XpathRegressionTypecastParenPadTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathTypecastParenPadRightNotPreceded']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/TYPECAST/RPAREN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathTypecastParenPadRightNotPreceded']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/TYPECAST/RPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

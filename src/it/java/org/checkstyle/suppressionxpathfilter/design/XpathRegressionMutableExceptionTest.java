@@ -57,18 +57,21 @@ public class XpathRegressionMutableExceptionTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionDefault']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionDefault']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionDefault']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS/LITERAL_PRIVATE"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionDefault']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionDefault']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionDefault']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS/LITERAL_PRIVATE"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -91,18 +94,22 @@ public class XpathRegressionMutableExceptionTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionClassName']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionClassName']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionClassName']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/TYPE",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionClassName']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/TYPE/LITERAL_INT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionClassName']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionClassName']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionClassName']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/TYPE""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionClassName']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/TYPE/LITERAL_INT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -125,18 +132,21 @@ public class XpathRegressionMutableExceptionTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionExtendedClassName']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionExtendedClassName']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMutableExceptionExtendedClassName']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS/LITERAL_PRIVATE");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionExtendedClassName']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionExtendedClassName']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMutableExceptionExtendedClassName']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='FooException']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='code']]/MODIFIERS/LITERAL_PRIVATE""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

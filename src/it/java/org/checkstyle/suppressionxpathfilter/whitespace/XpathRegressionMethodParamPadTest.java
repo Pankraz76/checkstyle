@@ -57,9 +57,10 @@ public class XpathRegressionMethodParamPadTest extends AbstractXpathTestSupport 
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathMethodParamPadOne']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='InputMethodParamPad']]/LPAREN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathMethodParamPadOne']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='InputMethodParamPad']]/LPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -80,9 +81,10 @@ public class XpathRegressionMethodParamPadTest extends AbstractXpathTestSupport 
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathMethodParamPadTwo']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='sayHello']]/LPAREN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathMethodParamPadTwo']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='sayHello']]/LPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -104,9 +106,10 @@ public class XpathRegressionMethodParamPadTest extends AbstractXpathTestSupport 
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathMethodParamPadThree']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='sayHello']]/LPAREN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathMethodParamPadThree']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='sayHello']]/LPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

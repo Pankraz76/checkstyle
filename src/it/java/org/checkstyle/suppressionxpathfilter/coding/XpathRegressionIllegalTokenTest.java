@@ -54,10 +54,11 @@ public class XpathRegressionIllegalTokenTest extends AbstractXpathTestSupport {
                         IllegalTokenCheck.MSG_KEY, "outer:"),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                    + "/CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenLabel']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest']]"
-                    + "/SLIST/LABELED_STAT[./IDENT[@text='outer']]"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenLabel']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest']]\
+                /SLIST/LABELED_STAT[./IDENT[@text='outer']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -78,10 +79,11 @@ public class XpathRegressionIllegalTokenTest extends AbstractXpathTestSupport {
                         IllegalTokenCheck.MSG_KEY, "native"),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenNative']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest']]"
-                        + "/MODIFIERS/LITERAL_NATIVE"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenNative']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest']]\
+                /MODIFIERS/LITERAL_NATIVE"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

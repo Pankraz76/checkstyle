@@ -231,8 +231,9 @@ public class WriteTagCheckTest extends AbstractModuleTestSupport {
 
         final String secondSeverityLevel = matcher.group(1).toLowerCase(Locale.ENGLISH);
 
-        assertWithMessage("Second violation's severity level"
-                + " should have been reset back to default (error)")
+        assertWithMessage("""
+                Second violation's severity level\
+                 should have been reset back to default (error)""")
                 .that(secondSeverityLevel)
                 .isEqualTo(expectedSeverityLevelAfterReset);
 

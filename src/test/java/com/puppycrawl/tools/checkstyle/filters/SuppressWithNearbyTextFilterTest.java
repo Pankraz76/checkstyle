@@ -268,8 +268,9 @@ public class SuppressWithNearbyTextFilterTest extends AbstractModuleTestSupport 
         };
 
         verifyFilterWithInlineConfigParser(
-            getPath("InputSuppressWithNearbyTextFilter"
-                    + "VariableNearbyTextPatternAndLineRange.xml.txt"),
+            getPath("""
+                    InputSuppressWithNearbyTextFilter\
+                    VariableNearbyTextPatternAndLineRange.xml.txt"""),
             violationMessages, removeSuppressed(violationMessages, suppressedMessages)
         );
     }
@@ -304,8 +305,9 @@ public class SuppressWithNearbyTextFilterTest extends AbstractModuleTestSupport 
         };
 
         verifyFilterWithInlineConfigParser(
-                getPath("InputSuppressWithNearbyTextFilterNearbyTextPattern"
-                        + "CompactVariableCheckPattern.java"),
+                getPath("""
+                        InputSuppressWithNearbyTextFilterNearbyTextPattern\
+                        CompactVariableCheckPattern.java"""),
                 violationMessages, removeSuppressed(violationMessages, suppressedMessages)
         );
     }
@@ -325,8 +327,9 @@ public class SuppressWithNearbyTextFilterTest extends AbstractModuleTestSupport 
         };
 
         verifyFilterWithInlineConfigParser(
-            getPath("InputSuppressWithNearbyTextFilterNearbyTextPatternUrlLineLengthSuppression"
-                    + ".java"),
+            getPath("""
+                    InputSuppressWithNearbyTextFilterNearbyTextPatternUrlLineLengthSuppression\
+                    .java"""),
             violationMessages, removeSuppressed(violationMessages, suppressedMessages)
         );
     }
@@ -415,8 +418,9 @@ public class SuppressWithNearbyTextFilterTest extends AbstractModuleTestSupport 
                 .that(exc)
                 .hasCauseThat()
                 .hasMessageThat()
-                .isEqualTo("unable to parse line range"
-                        + " from 'SUPPRESS CHECKSTYLE LineLengthCheck' using a!b");
+                .isEqualTo("""
+                        unable to parse line range\
+                         from 'SUPPRESS CHECKSTYLE LineLengthCheck' using a!b""");
         }
     }
 

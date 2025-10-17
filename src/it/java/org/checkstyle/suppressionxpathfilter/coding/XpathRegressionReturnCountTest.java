@@ -56,18 +56,22 @@ public class XpathRegressionReturnCountTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/TYPE",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/TYPE/LITERAL_VOID"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathReturnCountVoid']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/TYPE""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/TYPE/LITERAL_VOID"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -90,18 +94,22 @@ public class XpathRegressionReturnCountTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/TYPE",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/TYPE/LITERAL_VOID"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathReturnCountVoid']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/TYPE""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testVoid']]/TYPE/LITERAL_VOID"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -122,18 +130,22 @@ public class XpathRegressionReturnCountTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountNonVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountNonVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountNonVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/TYPE",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountNonVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/TYPE/LITERAL_BOOLEAN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathReturnCountNonVoid']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountNonVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountNonVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/TYPE""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountNonVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/TYPE/LITERAL_BOOLEAN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -156,18 +168,22 @@ public class XpathRegressionReturnCountTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountNonVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountNonVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountNonVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/TYPE",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountNonVoid']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/TYPE/LITERAL_BOOLEAN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathReturnCountNonVoid']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountNonVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountNonVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/TYPE""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountNonVoid']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testNonVoid']]/TYPE/LITERAL_BOOLEAN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -188,16 +204,19 @@ public class XpathRegressionReturnCountTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountCtor']]"
-                + "/OBJBLOCK/CTOR_DEF[./IDENT[@text='InputXpathReturnCountCtor']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountCtor']]"
-                + "/OBJBLOCK/CTOR_DEF[./IDENT[@text='InputXpathReturnCountCtor']]"
-                + "/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathReturnCountCtor']]"
-                + "/OBJBLOCK/CTOR_DEF/IDENT[@text='InputXpathReturnCountCtor']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathReturnCountCtor']]\
+            /OBJBLOCK/CTOR_DEF[./IDENT[@text='InputXpathReturnCountCtor']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountCtor']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT[@text='InputXpathReturnCountCtor']]\
+                /MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountCtor']]\
+                /OBJBLOCK/CTOR_DEF/IDENT[@text='InputXpathReturnCountCtor']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -218,10 +237,11 @@ public class XpathRegressionReturnCountTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathReturnCountLambda']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testLambda']]/SLIST"
-                        + "/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/LAMBDA[./IDENT[@text='i']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathReturnCountLambda']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testLambda']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/LAMBDA[./IDENT[@text='i']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

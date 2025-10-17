@@ -57,10 +57,11 @@ public class XpathRegressionNestedTryDepthTest extends AbstractXpathTestSupport 
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNestedTryDepth']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST"
-                + "/LITERAL_TRY/SLIST/LITERAL_TRY"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNestedTryDepth']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/SLIST\
+            /LITERAL_TRY/SLIST/LITERAL_TRY"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -82,14 +83,15 @@ public class XpathRegressionNestedTryDepthTest extends AbstractXpathTestSupport 
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNestedTryDepthMax']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/LITERAL_TRY"
-                + "/SLIST/LITERAL_TRY"
-                + "/SLIST/LITERAL_TRY"
-                + "/SLIST/LITERAL_TRY"
-                + "/SLIST/LITERAL_TRY"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNestedTryDepthMax']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/LITERAL_TRY\
+            /SLIST/LITERAL_TRY\
+            /SLIST/LITERAL_TRY\
+            /SLIST/LITERAL_TRY\
+            /SLIST/LITERAL_TRY"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

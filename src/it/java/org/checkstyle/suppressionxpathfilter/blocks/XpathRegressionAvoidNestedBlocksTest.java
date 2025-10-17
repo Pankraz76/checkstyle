@@ -56,9 +56,10 @@ public class XpathRegressionAvoidNestedBlocksTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAvoidNestedBlocksEmpty']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='empty']]/SLIST/SLIST"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAvoidNestedBlocksEmpty']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='empty']]/SLIST/SLIST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -79,9 +80,10 @@ public class XpathRegressionAvoidNestedBlocksTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAvoidNestedBlocksVariable']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='varAssign']]/SLIST/SLIST"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAvoidNestedBlocksVariable']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='varAssign']]/SLIST/SLIST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -102,14 +104,16 @@ public class XpathRegressionAvoidNestedBlocksTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAvoidNestedBlocksNotAllowedInSwitchCase"
-                        + "']]/OBJBLOCK/METHOD_DEF"
-                        + "[./IDENT[@text='s']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAvoidNestedBlocksNotAllowedInSwitchCase"
-                        + "']]/OBJBLOCK/METHOD_DEF"
-                        + "[./IDENT[@text='s']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/SLIST"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAvoidNestedBlocksNotAllowedInSwitchCase\
+                ']]/OBJBLOCK/METHOD_DEF\
+                [./IDENT[@text='s']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAvoidNestedBlocksNotAllowedInSwitchCase\
+                ']]/OBJBLOCK/METHOD_DEF\
+                [./IDENT[@text='s']]/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/SLIST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -131,10 +135,11 @@ public class XpathRegressionAvoidNestedBlocksTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathAvoidNestedBlocksAllowedInSwitchCase"
-                        + "']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='s']]"
-                        + "/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/SLIST"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathAvoidNestedBlocksAllowedInSwitchCase\
+                ']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='s']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/SLIST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -155,14 +160,16 @@ public class XpathRegressionAvoidNestedBlocksTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathAvoidNestedBlocksBreakOutside']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='s']]"
-                        + "/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathAvoidNestedBlocksBreakOutside']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='s']]"
-                        + "/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/SLIST"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathAvoidNestedBlocksBreakOutside']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='s']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathAvoidNestedBlocksBreakOutside']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='s']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/SLIST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

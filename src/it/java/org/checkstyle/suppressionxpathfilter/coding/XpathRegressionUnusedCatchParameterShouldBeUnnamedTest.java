@@ -61,24 +61,28 @@ public class XpathRegressionUnusedCatchParameterShouldBeUnnamedTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathUnusedCatchParameterShouldBeUnnamedSimple']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/"
-                        + "LITERAL_CATCH/PARAMETER_DEF[./IDENT[@text='e']]",
-                "/COMPILATION_UNIT/CLASS_DEF["
-                        + "./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedSimple']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/"
-                        + "LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF[./IDENT[@text='e']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF["
-                        + "./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedSimple']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/"
-                        + "LITERAL_CATCH/PARAMETER_DEF[./IDENT[@text='e']]"
-                        + "/TYPE[./IDENT[@text='Exception']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedSimple']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY"
-                        + "/LITERAL_CATCH/PARAMETER_DEF[./IDENT[@text='e']]"
-                        + "/TYPE/IDENT[@text='Exception']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathUnusedCatchParameterShouldBeUnnamedSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/\
+                LITERAL_CATCH/PARAMETER_DEF[./IDENT[@text='e']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[\
+                ./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/\
+                LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF[./IDENT[@text='e']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[\
+                ./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/\
+                LITERAL_CATCH/PARAMETER_DEF[./IDENT[@text='e']]\
+                /TYPE[./IDENT[@text='Exception']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY\
+                /LITERAL_CATCH/PARAMETER_DEF[./IDENT[@text='e']]\
+                /TYPE/IDENT[@text='Exception']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -101,26 +105,30 @@ public class XpathRegressionUnusedCatchParameterShouldBeUnnamedTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF["
-                        + "./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedNested']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/"
-                        + "LITERAL_CATCH/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF"
-                        + "[./IDENT[@text='exception']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathUnusedCatchParameterShouldBeUnnamedNested']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY"
-                        + "/LITERAL_CATCH/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF["
-                        + "./IDENT[@text='exception']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedNested']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/"
-                        + "LITERAL_CATCH/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF"
-                        + "[./IDENT[@text='exception']]/TYPE[./IDENT[@text='Exception']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedNested']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY"
-                        + "/LITERAL_CATCH/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF"
-                        + "[./IDENT[@text='exception']]/TYPE/IDENT[@text='Exception']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[\
+                ./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/\
+                LITERAL_CATCH/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF\
+                [./IDENT[@text='exception']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathUnusedCatchParameterShouldBeUnnamedNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY\
+                /LITERAL_CATCH/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF[\
+                ./IDENT[@text='exception']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY/\
+                LITERAL_CATCH/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF\
+                [./IDENT[@text='exception']]/TYPE[./IDENT[@text='Exception']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathUnusedCatchParameterShouldBeUnnamedNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_TRY\
+                /LITERAL_CATCH/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF\
+                [./IDENT[@text='exception']]/TYPE/IDENT[@text='Exception']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

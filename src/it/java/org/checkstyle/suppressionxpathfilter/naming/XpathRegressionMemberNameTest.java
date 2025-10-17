@@ -59,10 +59,11 @@ public class XpathRegressionMemberNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathMemberNameDefault']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM2']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathMemberNameDefault']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM2']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -86,11 +87,12 @@ public class XpathRegressionMemberNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathMemberNameIgnoreProtected']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM1']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathMemberNameIgnoreProtected']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM1']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

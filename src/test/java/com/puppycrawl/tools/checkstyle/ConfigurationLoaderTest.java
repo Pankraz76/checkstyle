@@ -551,8 +551,9 @@ public class ConfigurationLoaderTest extends AbstractPathTestSupport {
         final Class<?> aClassParent = ConfigurationLoader.class;
         final Object objParent = TestUtil.instantiate(aClassParent, null, true, null);
 
-        final Class<?> aClass = Class.forName("com.puppycrawl.tools.checkstyle."
-                + "ConfigurationLoader$InternalLoader");
+        final Class<?> aClass = Class.forName("""
+                com.puppycrawl.tools.checkstyle.\
+                ConfigurationLoader$InternalLoader""");
         final Object obj = TestUtil.instantiate(aClass, objParent);
 
         try {

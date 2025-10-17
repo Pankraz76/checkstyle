@@ -475,8 +475,9 @@ public class CheckerTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Error message is not expected")
                 .that(exc.getMessage())
-                .isEqualTo("if no custom moduleFactory is set,"
-                    + " moduleClassLoader must be specified");
+                .isEqualTo("""
+                    if no custom moduleFactory is set,\
+                     moduleClassLoader must be specified""");
         }
     }
 
@@ -804,8 +805,9 @@ public class CheckerTest extends AbstractModuleTestSupport {
     @Test
     public void testCatchErrorInProcessFilesMethod() throws Exception {
         // Assume that I/O error is happened when we try to invoke 'lastModified()' method.
-        final String errorMessage = "Java Virtual Machine is broken"
-            + " or has run out of resources necessary for it to continue operating.";
+        final String errorMessage = """
+            Java Virtual Machine is broken\
+             or has run out of resources necessary for it to continue operating.""";
         final Error expectedError = new IOError(new InternalError(errorMessage));
 
         final File mock = new File("testFile") {
@@ -864,8 +866,9 @@ public class CheckerTest extends AbstractModuleTestSupport {
     @Test
     public void testCatchErrorWithNoFileName() throws Exception {
         // Assume that I/O error is happened when we try to invoke 'lastModified()' method.
-        final String errorMessage = "Java Virtual Machine is broken"
-            + " or has run out of resources necessary for it to continue operating.";
+        final String errorMessage = """
+            Java Virtual Machine is broken\
+             or has run out of resources necessary for it to continue operating.""";
         final Error expectedError = new IOError(new InternalError(errorMessage));
 
         final File mock = new File("testFile") {
@@ -1160,8 +1163,9 @@ public class CheckerTest extends AbstractModuleTestSupport {
         checkerConfig.addProperty("charset", StandardCharsets.UTF_8.name());
         checkerConfig.addProperty("cacheFile", cacheFile.getPath());
 
-        final String errorMessage = "Java Virtual Machine is broken"
-            + " or has run out of resources necessary for it to continue operating.";
+        final String errorMessage = """
+            Java Virtual Machine is broken\
+             or has run out of resources necessary for it to continue operating.""";
         final Error expectedError = new IOError(new InternalError(errorMessage));
 
         final File mock = new File("testFile") {
@@ -1238,8 +1242,9 @@ public class CheckerTest extends AbstractModuleTestSupport {
         checkerConfig.addProperty("charset", StandardCharsets.UTF_8.name());
         checkerConfig.addProperty("cacheFile", cacheFile.getPath());
 
-        final String errorMessage = "Java Virtual Machine is broken"
-            + " or has run out of resources necessary for it to continue operating.";
+        final String errorMessage = """
+            Java Virtual Machine is broken\
+             or has run out of resources necessary for it to continue operating.""";
         final Error expectedError = new IOError(new InternalError(errorMessage));
 
         final File mock = new File("testFile") {
@@ -1872,15 +1877,17 @@ public class CheckerTest extends AbstractModuleTestSupport {
         public void visitToken(DetailAST ast) {
             if (ast.findFirstToken(TokenTypes.MODIFIERS).findFirstToken(
                     TokenTypes.BLOCK_COMMENT_BEGIN) != null) {
-                log(ast, "AST has incorrect structure structure."
-                    + " The check does not require comment nodes but there were comment nodes"
-                    + " in the AST.");
+                log(ast, """
+                    AST has incorrect structure structure.\
+                     The check does not require comment nodes but there were comment nodes\
+                     in the AST.""");
             }
             final int childCount = ast.getChildCount();
             if (childCount != METHOD_DEF_CHILD_COUNT) {
                 final String msg = String.format(Locale.ENGLISH,
-                    "AST node in no comment tree has wrong number of children. "
-                            + "Expected is %d but was %d",
+                    """
+                    AST node in no comment tree has wrong number of children. \
+                    Expected is %d but was %d""",
                     METHOD_DEF_CHILD_COUNT, childCount);
                 log(ast, msg);
             }
@@ -1893,8 +1900,9 @@ public class CheckerTest extends AbstractModuleTestSupport {
             final int cacheChildCount = ast.getFirstChild().getChildCount();
             if (cacheChildCount != actualChildCount) {
                 final String msg = String.format(Locale.ENGLISH,
-                        "AST node with no comment has wrong number of children. "
-                                + "Expected is %d but was %d",
+                        """
+                        AST node with no comment has wrong number of children. \
+                        Expected is %d but was %d""",
                         cacheChildCount, actualChildCount);
                 log(ast, msg);
             }
@@ -1937,8 +1945,9 @@ public class CheckerTest extends AbstractModuleTestSupport {
             final int childCount = ast.getChildCount();
             if (childCount != METHOD_DEF_CHILD_COUNT) {
                 final String msg = String.format(Locale.ENGLISH,
-                    "AST node in comment tree has wrong number of children. "
-                            + "Expected is %d but was %d",
+                    """
+                    AST node in comment tree has wrong number of children. \
+                    Expected is %d but was %d""",
                     METHOD_DEF_CHILD_COUNT, childCount);
                 log(ast, msg);
             }
@@ -1951,8 +1960,9 @@ public class CheckerTest extends AbstractModuleTestSupport {
             final int cacheChildCount = ast.getFirstChild().getChildCount();
             if (cacheChildCount != actualChildCount) {
                 final String msg = String.format(Locale.ENGLISH,
-                        "AST node with comment has wrong number of children. "
-                                + "Expected is %d but was %d",
+                        """
+                        AST node with comment has wrong number of children. \
+                        Expected is %d but was %d""",
                         cacheChildCount, actualChildCount);
                 log(ast, msg);
             }

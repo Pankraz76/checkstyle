@@ -57,10 +57,11 @@ public class XpathRegressionIllegalCatchTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathIllegalCatchOne']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='fun']]/SLIST"
-                + "/LITERAL_TRY/LITERAL_CATCH"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIllegalCatchOne']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='fun']]/SLIST\
+            /LITERAL_TRY/LITERAL_CATCH"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,10 +82,11 @@ public class XpathRegressionIllegalCatchTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathIllegalCatchTwo']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='methodTwo']]/SLIST"
-                + "/LITERAL_TRY/LITERAL_CATCH"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIllegalCatchTwo']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='methodTwo']]/SLIST\
+            /LITERAL_TRY/LITERAL_CATCH"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

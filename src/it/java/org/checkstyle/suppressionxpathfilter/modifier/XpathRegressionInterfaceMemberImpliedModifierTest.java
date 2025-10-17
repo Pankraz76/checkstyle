@@ -56,19 +56,22 @@ public class XpathRegressionInterfaceMemberImpliedModifierTest extends AbstractX
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceMemberImpliedModifierField']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='str']]",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+            [@text='InputXpathInterfaceMemberImpliedModifierField']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='str']]""",
 
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceMemberImpliedModifierField']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='str']]"
-                + "/MODIFIERS",
+            """
+/COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+[@text='InputXpathInterfaceMemberImpliedModifierField']]\
+/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='str']]\
+/MODIFIERS""",
 
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceMemberImpliedModifierField']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='str']]"
-                + "/MODIFIERS/LITERAL_PUBLIC"
+            """
+/COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+[@text='InputXpathInterfaceMemberImpliedModifierField']]\
+/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='str']]\
+/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -89,19 +92,22 @@ public class XpathRegressionInterfaceMemberImpliedModifierTest extends AbstractX
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceMemberImpliedModifierMethod']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='setData']]",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+            [@text='InputXpathInterfaceMemberImpliedModifierMethod']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='setData']]""",
 
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceMemberImpliedModifierMethod']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='setData']]"
-                + "/MODIFIERS",
+            """
+/COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+[@text='InputXpathInterfaceMemberImpliedModifierMethod']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='setData']]\
+/MODIFIERS""",
 
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceMemberImpliedModifierMethod']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='setData']]"
-                + "/MODIFIERS/ABSTRACT"
+            """
+/COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+[@text='InputXpathInterfaceMemberImpliedModifierMethod']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='setData']]\
+/MODIFIERS/ABSTRACT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -122,19 +128,22 @@ public class XpathRegressionInterfaceMemberImpliedModifierTest extends AbstractX
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceMemberImpliedModifierInner']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Data']]",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+            [@text='InputXpathInterfaceMemberImpliedModifierInner']]\
+            /OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Data']]""",
 
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceMemberImpliedModifierInner']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Data']]"
-                + "/MODIFIERS",
+            """
+/COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+[@text='InputXpathInterfaceMemberImpliedModifierInner']]\
+/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Data']]\
+/MODIFIERS""",
 
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceMemberImpliedModifierInner']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Data']]"
-                + "/MODIFIERS/LITERAL_PUBLIC"
+            """
+/COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+[@text='InputXpathInterfaceMemberImpliedModifierInner']]\
+/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Data']]\
+/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

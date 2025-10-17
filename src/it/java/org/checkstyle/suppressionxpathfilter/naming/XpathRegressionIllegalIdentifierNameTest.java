@@ -60,9 +60,10 @@ public class XpathRegressionIllegalIdentifierNameTest extends AbstractXpathTestS
             };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/RECORD_DEF"
-                + "[./IDENT[@text='InputXpathIllegalIdentifierNameOne'"
-                + "]]/RECORD_COMPONENTS/RECORD_COMPONENT_DEF/IDENT[@text='var']"
+            """
+            /COMPILATION_UNIT/RECORD_DEF\
+            [./IDENT[@text='InputXpathIllegalIdentifierNameOne'\
+            ]]/RECORD_COMPONENTS/RECORD_COMPONENT_DEF/IDENT[@text='var']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -85,10 +86,11 @@ public class XpathRegressionIllegalIdentifierNameTest extends AbstractXpathTestS
             };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathIllegalIdentifierNameTwo']"
-                + "]/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/PARAMETERS/PARAMETER_DEF"
-                + "/IDENT[@text='te$t']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIllegalIdentifierNameTwo']\
+            ]/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/PARAMETERS/PARAMETER_DEF\
+            /IDENT[@text='te$t']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

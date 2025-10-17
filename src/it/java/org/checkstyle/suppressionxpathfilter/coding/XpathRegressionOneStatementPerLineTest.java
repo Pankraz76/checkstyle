@@ -57,9 +57,10 @@ public class XpathRegressionOneStatementPerLineTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathOneStatementPerLineClassFields']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='j']]/SEMI"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathOneStatementPerLineClassFields']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='j']]/SEMI"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -80,9 +81,10 @@ public class XpathRegressionOneStatementPerLineTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathOneStatementPerLineForLoopBlock']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='foo5']]/SLIST/LITERAL_FOR/SLIST/SEMI[2]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathOneStatementPerLineForLoopBlock']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='foo5']]/SLIST/LITERAL_FOR/SLIST/SEMI[2]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

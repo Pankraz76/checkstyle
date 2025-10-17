@@ -135,8 +135,9 @@ public class RegexpCheck extends AbstractCheck {
 
     /** Error count exceeded message. */
     private static final String ERROR_LIMIT_EXCEEDED_MESSAGE =
-        "The error limit has been exceeded, "
-        + "the check is aborting, there may be more unreported errors.";
+        """
+        The error limit has been exceeded, \
+        the check is aborting, there may be more unreported errors.""";
 
     /**
      * Specify message which is used to notify about violations,

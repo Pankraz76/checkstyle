@@ -200,8 +200,9 @@ public class TreeWalkerTest extends AbstractModuleTestSupport {
             throws Exception {
         final DefaultConfiguration checkConfig =
             createModuleConfig(HiddenFieldCheck.class);
-        checkConfig.addProperty("tokens", "VARIABLE_DEF, ENUM_DEF, CLASS_DEF, METHOD_DEF,"
-                + "IMPORT");
+        checkConfig.addProperty("tokens", """
+                VARIABLE_DEF, ENUM_DEF, CLASS_DEF, METHOD_DEF,\
+                IMPORT""");
         try {
             execute(checkConfig, getPath("InputTreeWalker.java"));
             assertWithMessage("CheckstyleException is expected").fail();
@@ -266,9 +267,10 @@ public class TreeWalkerTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Error message is not expected")
                 .that(exc.getMessage())
-                .isEqualTo("TreeWalker is not allowed as a parent of java.lang.String "
-                    + "Please review 'Parent Module' section for this Check in "
-                    + "web documentation if Check is standard.");
+                .isEqualTo("""
+                    TreeWalker is not allowed as a parent of java.lang.String \
+                    Please review 'Parent Module' section for this Check in \
+                    web documentation if Check is standard.""");
         }
     }
 
@@ -303,11 +305,12 @@ public class TreeWalkerTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Error message is unexpected")
                     .that(exc.getMessage())
-                    .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle."
-                            + "TreeWalker - Check 'com.puppycrawl.tools.checkstyle."
-                            + "TreeWalkerTest$BadJavaDocCheck' waits for comment type token "
-                            + "('SINGLE_LINE_COMMENT') and should override "
-                            + "'isCommentNodesRequired()' method to return 'true'");
+                    .isEqualTo("""
+                            cannot initialize module com.puppycrawl.tools.checkstyle.\
+                            TreeWalker - Check 'com.puppycrawl.tools.checkstyle.\
+                            TreeWalkerTest$BadJavaDocCheck' waits for comment type token \
+                            ('SINGLE_LINE_COMMENT') and should override \
+                            'isCommentNodesRequired()' method to return 'true'""");
             assertWithMessage("Error message is unexpected")
                     .that(exc.getMessage())
                     .contains("isCommentNodesRequired");

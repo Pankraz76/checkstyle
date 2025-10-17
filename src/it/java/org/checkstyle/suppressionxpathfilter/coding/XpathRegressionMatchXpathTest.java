@@ -59,12 +59,15 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathMatchXpathOne']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathMatchXpathOne']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathMatchXpathOne']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathMatchXpathOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathMatchXpathOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathMatchXpathOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -78,18 +81,20 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
 
         final DefaultConfiguration moduleConfig =
                 createModuleConfig(MatchXpathCheck.class);
-        moduleConfig.addProperty("query", "//LITERAL_THROWS[./IDENT[@text='Throwable' or "
-                + "@text='RuntimeException' or ends-with(@text, 'Error')]]");
+        moduleConfig.addProperty("query", """
+                //LITERAL_THROWS[./IDENT[@text='Throwable' or \
+                @text='RuntimeException' or ends-with(@text, 'Error')]]""");
 
         final String[] expectedViolation = {
             "4:25: " + getCheckMessage(MatchXpathCheck.class, MatchXpathCheck.MSG_KEY),
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathTwo']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='func1']]"
-                        + "/LITERAL_THROWS[./IDENT[@text='RuntimeException']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathTwo']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='func1']]\
+                /LITERAL_THROWS[./IDENT[@text='RuntimeException']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -111,14 +116,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedQuoteString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='quoteChar']]/ASSIGN/EXPR"
-                    + "[./STRING_LITERAL[@text='\\&quot;testOne\\&quot;']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedQuoteString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='quoteChar']]/ASSIGN/EXPR"
-                    + "/STRING_LITERAL[@text='\\&quot;testOne\\&quot;']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedQuoteString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='quoteChar']]/ASSIGN/EXPR\
+            [./STRING_LITERAL[@text='\\&quot;testOne\\&quot;']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedQuoteString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='quoteChar']]/ASSIGN/EXPR\
+            /STRING_LITERAL[@text='\\&quot;testOne\\&quot;']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -140,14 +147,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedLessString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lessChar']]/ASSIGN/EXPR"
-                    + "[./STRING_LITERAL[@text='&lt;testTwo']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedLessString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lessChar']]/ASSIGN/EXPR/"
-                    + "STRING_LITERAL[@text='&lt;testTwo']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedLessString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lessChar']]/ASSIGN/EXPR\
+            [./STRING_LITERAL[@text='&lt;testTwo']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedLessString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lessChar']]/ASSIGN/EXPR/\
+            STRING_LITERAL[@text='&lt;testTwo']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -169,14 +178,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedNewLineString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='newLineChar']]/ASSIGN/EXPR"
-                    + "[./STRING_LITERAL[@text='testFive\\n']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedNewLineString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='newLineChar']]/ASSIGN/EXPR"
-                    + "/STRING_LITERAL[@text='testFive\\n']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedNewLineString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='newLineChar']]/ASSIGN/EXPR\
+            [./STRING_LITERAL[@text='testFive\\n']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedNewLineString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='newLineChar']]/ASSIGN/EXPR\
+            /STRING_LITERAL[@text='testFive\\n']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -198,14 +209,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedGreaterString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='greaterChar']]/ASSIGN/EXPR"
-                    + "[./STRING_LITERAL[@text='&gt;testFour']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedGreaterString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='greaterChar']]/ASSIGN/EXPR"
-                    + "/STRING_LITERAL[@text='&gt;testFour']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedGreaterString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='greaterChar']]/ASSIGN/EXPR\
+            [./STRING_LITERAL[@text='&gt;testFour']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedGreaterString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='greaterChar']]/ASSIGN/EXPR\
+            /STRING_LITERAL[@text='&gt;testFour']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -227,14 +240,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedAmpString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='ampersandChar']]/ASSIGN/EXPR"
-                    + "[./STRING_LITERAL[@text='&amp;testThree']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedAmpString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='ampersandChar']]/ASSIGN/EXPR"
-                    + "/STRING_LITERAL[@text='&amp;testThree']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedAmpString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='ampersandChar']]/ASSIGN/EXPR\
+            [./STRING_LITERAL[@text='&amp;testThree']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedAmpString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='ampersandChar']]/ASSIGN/EXPR\
+            /STRING_LITERAL[@text='&amp;testThree']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -256,14 +271,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedAposString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='aposChar']]/ASSIGN/EXPR"
-                    + "[./STRING_LITERAL[@text='&apos;&apos;SingleQuoteOnBothSide&apos;&apos;']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMatchXpathEncodedAposString']]/"
-                    + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='aposChar']]/ASSIGN/EXPR"
-                    + "/STRING_LITERAL[@text='&apos;&apos;SingleQuoteOnBothSide&apos;&apos;']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedAposString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='aposChar']]/ASSIGN/EXPR\
+            [./STRING_LITERAL[@text='&apos;&apos;SingleQuoteOnBothSide&apos;&apos;']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMatchXpathEncodedAposString']]/\
+            OBJBLOCK/VARIABLE_DEF[./IDENT[@text='aposChar']]/ASSIGN/EXPR\
+            /STRING_LITERAL[@text='&apos;&apos;SingleQuoteOnBothSide&apos;&apos;']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -285,14 +302,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedCarriageString"
-                        + "']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='carriageChar']]/ASSIGN"
-                        + "/EXPR[./STRING_LITERAL[@text='carriageCharAtEnd\\r']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedCarriageString"
-                        + "']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='carriageChar']]/ASSIGN"
-                        + "/EXPR/STRING_LITERAL[@text='carriageCharAtEnd\\r']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedCarriageString\
+                ']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='carriageChar']]/ASSIGN\
+                /EXPR[./STRING_LITERAL[@text='carriageCharAtEnd\\r']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedCarriageString\
+                ']]/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='carriageChar']]/ASSIGN\
+                /EXPR/STRING_LITERAL[@text='carriageCharAtEnd\\r']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -314,14 +333,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueriesForAmpersand = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedAmpChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='ampChar']]/ASSIGN/EXPR"
-                        + "[./CHAR_LITERAL[@text='&apos;&apos;&amp;&apos;&apos;']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedAmpChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='ampChar']]/ASSIGN/EXPR"
-                        + "/CHAR_LITERAL[@text='&apos;&apos;&amp;&apos;&apos;']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedAmpChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='ampChar']]/ASSIGN/EXPR\
+                [./CHAR_LITERAL[@text='&apos;&apos;&amp;&apos;&apos;']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedAmpChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='ampChar']]/ASSIGN/EXPR\
+                /CHAR_LITERAL[@text='&apos;&apos;&amp;&apos;&apos;']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolationForAmpersand,
@@ -343,14 +364,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueriesForQuote = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedQuoteChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='quotChar']]/ASSIGN/EXPR"
-                        + "[./CHAR_LITERAL[@text='&apos;&apos;\\&quot;&apos;&apos;']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedQuoteChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='quotChar']]/ASSIGN/EXPR/"
-                        + "CHAR_LITERAL[@text='&apos;&apos;\\&quot;&apos;&apos;']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedQuoteChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='quotChar']]/ASSIGN/EXPR\
+                [./CHAR_LITERAL[@text='&apos;&apos;\\&quot;&apos;&apos;']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedQuoteChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='quotChar']]/ASSIGN/EXPR/\
+                CHAR_LITERAL[@text='&apos;&apos;\\&quot;&apos;&apos;']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolationsForQuote,
@@ -372,14 +395,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueriesForLess = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedLessChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lessChar']]/ASSIGN/EXPR"
-                        + "[./CHAR_LITERAL[@text='&apos;&apos;&lt;&apos;&apos;']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedLessChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lessChar']]/ASSIGN/EXPR/"
-                        + "CHAR_LITERAL[@text='&apos;&apos;&lt;&apos;&apos;']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedLessChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lessChar']]/ASSIGN/EXPR\
+                [./CHAR_LITERAL[@text='&apos;&apos;&lt;&apos;&apos;']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedLessChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lessChar']]/ASSIGN/EXPR/\
+                CHAR_LITERAL[@text='&apos;&apos;&lt;&apos;&apos;']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolationsForLess,
@@ -401,14 +426,16 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueriesForApos = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedAposChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='aposChar']]/ASSIGN/EXPR"
-                        + "[./CHAR_LITERAL[@text='&apos;&apos;\\&apos;&apos;&apos;&apos;']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMatchXpathEncodedAposChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='aposChar']]/ASSIGN/EXPR/"
-                        + "CHAR_LITERAL[@text='&apos;&apos;\\&apos;&apos;&apos;&apos;']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedAposChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='aposChar']]/ASSIGN/EXPR\
+                [./CHAR_LITERAL[@text='&apos;&apos;\\&apos;&apos;&apos;&apos;']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMatchXpathEncodedAposChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='aposChar']]/ASSIGN/EXPR/\
+                CHAR_LITERAL[@text='&apos;&apos;\\&apos;&apos;&apos;&apos;']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolationsForApos,
@@ -430,16 +457,18 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueriesForGreater = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='"
-                        + "InputXpathMatchXpathEncodedGreaterChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='greaterChar']]/ASSIGN/EXPR"
-                        + "[./CHAR_LITERAL[@text='&apos;&apos;&gt;&apos;&apos;']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='"
-                        + "InputXpathMatchXpathEncodedGreaterChar']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='greaterChar']]/ASSIGN/EXPR/"
-                        + "CHAR_LITERAL[@text='&apos;&apos;&gt;&apos;&apos;']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='\
+                InputXpathMatchXpathEncodedGreaterChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='greaterChar']]/ASSIGN/EXPR\
+                [./CHAR_LITERAL[@text='&apos;&apos;&gt;&apos;&apos;']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='\
+                InputXpathMatchXpathEncodedGreaterChar']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='greaterChar']]/ASSIGN/EXPR/\
+                CHAR_LITERAL[@text='&apos;&apos;&gt;&apos;&apos;']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolationsForGreater,
@@ -461,9 +490,10 @@ public class XpathRegressionMatchXpathTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text='InputXpathMatchXpathThree']]"
-                        + "/OBJBLOCK/RCURLY"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathMatchXpathThree']]\
+                /OBJBLOCK/RCURLY"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

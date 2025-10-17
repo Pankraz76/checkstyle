@@ -56,12 +56,14 @@ public class XpathRegressionWhenShouldBeUsedTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-               "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathWhenShouldBeUsedSimple']]"
-               + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/SWITCH_RULE"
-               + "[./LITERAL_CASE/PATTERN_VARIABLE_DEF/IDENT[@text='s']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathWhenShouldBeUsedSimple']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/"
-                        + "LITERAL_SWITCH/SWITCH_RULE/LITERAL_CASE"
+               """
+               /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathWhenShouldBeUsedSimple']]\
+               /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/SWITCH_RULE\
+               [./LITERAL_CASE/PATTERN_VARIABLE_DEF/IDENT[@text='s']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathWhenShouldBeUsedSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/\
+                LITERAL_SWITCH/SWITCH_RULE/LITERAL_CASE"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -80,17 +82,19 @@ public class XpathRegressionWhenShouldBeUsedTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathWhenShouldBeUsedNested']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/"
-                + "VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_SWITCH"
-                + "/SWITCH_RULE/SLIST/"
-                + "LITERAL_SWITCH/SWITCH_RULE[./LITERAL_CASE/PATTERN_VARIABLE_DEF/"
-                + "IDENT[@text='_']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathWhenShouldBeUsedNested']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF"
-                + "[./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_SWITCH/"
-                + "SWITCH_RULE/SLIST/"
-                + "LITERAL_SWITCH/SWITCH_RULE/LITERAL_CASE"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathWhenShouldBeUsedNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/\
+                VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_SWITCH\
+                /SWITCH_RULE/SLIST/\
+                LITERAL_SWITCH/SWITCH_RULE[./LITERAL_CASE/PATTERN_VARIABLE_DEF/\
+                IDENT[@text='_']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathWhenShouldBeUsedNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_SWITCH/\
+                SWITCH_RULE/SLIST/\
+                LITERAL_SWITCH/SWITCH_RULE/LITERAL_CASE"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }

@@ -52,9 +52,10 @@ public class XpathRegressionTodoCommentTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                        + "'InputXpathTodoCommentSingleLine']]/OBJBLOCK/"
-                        + "SINGLE_LINE_COMMENT/COMMENT_CONTENT[@text=' warn FIXME:\\n']");
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+                'InputXpathTodoCommentSingleLine']]/OBJBLOCK/\
+                SINGLE_LINE_COMMENT/COMMENT_CONTENT[@text=' warn FIXME:\\n']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -74,10 +75,11 @@ public class XpathRegressionTodoCommentTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                        + "'InputXpathTodoCommentBlock']]/"
-                        + "OBJBLOCK/BLOCK_COMMENT_BEGIN/COMMENT_CONTENT"
-                        + "[@text=' // warn\\n     * FIXME:\\n     * TODO\\n     ']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+                'InputXpathTodoCommentBlock']]/\
+                OBJBLOCK/BLOCK_COMMENT_BEGIN/COMMENT_CONTENT\
+                [@text=' // warn\\n     * FIXME:\\n     * TODO\\n     ']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

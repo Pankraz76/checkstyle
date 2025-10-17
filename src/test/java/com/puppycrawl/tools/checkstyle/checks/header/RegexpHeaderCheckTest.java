@@ -117,8 +117,9 @@ public class RegexpHeaderCheckTest extends AbstractModuleTestSupport {
         catch (IllegalArgumentException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("Unable to parse format: ^/**\\n *"
-                    + " Licensed to the Apache Software Foundation (ASF)");
+                .isEqualTo("""
+                    Unable to parse format: ^/**\\n *\
+                     Licensed to the Apache Software Foundation (ASF)""");
         }
     }
 
@@ -142,9 +143,10 @@ public class RegexpHeaderCheckTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module"
-                    + " com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"
-                    + " - Cannot set property 'headerFile' to ''");
+                .isEqualTo("""
+                    cannot initialize module\
+                     com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck\
+                     - Cannot set property 'headerFile' to ''""");
         }
     }
 
@@ -211,9 +213,10 @@ public class RegexpHeaderCheckTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module"
-                    + " com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"
-                    + " - Cannot set property 'header' to '^(.*\\n.*)'");
+                .isEqualTo("""
+                    cannot initialize module\
+                     com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck\
+                     - Cannot set property 'header' to '^(.*\\n.*)'""");
         }
     }
 

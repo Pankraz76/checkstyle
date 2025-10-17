@@ -50,30 +50,35 @@ public class XpathRegressionFinalParametersTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalParametersMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                    + "/PARAMETERS",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathFinalParametersMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+                /PARAMETERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalParametersMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                    + "/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersMethod']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalParametersMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                    + "/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersMethod']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalParametersMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                    + "/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersMethod']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalParametersMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                    + "/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE/LITERAL_INT"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersMethod']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE/LITERAL_INT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -95,35 +100,40 @@ public class XpathRegressionFinalParametersTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersCtor']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT["
-                        + "@text='InputXpathFinalParametersCtor']]"
-                        + "/PARAMETERS",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathFinalParametersCtor']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT[\
+                @text='InputXpathFinalParametersCtor']]\
+                /PARAMETERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersCtor']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT["
-                        + "@text='InputXpathFinalParametersCtor']]"
-                        + "/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersCtor']]\
+/OBJBLOCK/CTOR_DEF[./IDENT[\
+@text='InputXpathFinalParametersCtor']]\
+/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersCtor']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT["
-                        + "@text='InputXpathFinalParametersCtor']]"
-                        + "/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersCtor']]\
+/OBJBLOCK/CTOR_DEF[./IDENT[\
+@text='InputXpathFinalParametersCtor']]\
+/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersCtor']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT["
-                        + "@text='InputXpathFinalParametersCtor']]"
-                        + "/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersCtor']]\
+/OBJBLOCK/CTOR_DEF[./IDENT[\
+@text='InputXpathFinalParametersCtor']]\
+/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersCtor']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT["
-                        + "@text='InputXpathFinalParametersCtor']]"
-                        + "/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE/LITERAL_INT"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersCtor']]\
+/OBJBLOCK/CTOR_DEF[./IDENT[\
+@text='InputXpathFinalParametersCtor']]\
+/PARAMETERS/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE/LITERAL_INT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -145,44 +155,49 @@ public class XpathRegressionFinalParametersTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersAnonymous']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/"
-                        + "VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR"
-                        + "/LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK"
-                        + "/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathFinalParametersAnonymous']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/\
+                VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR\
+                /LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='method']]/PARAMETERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersAnonymous']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/"
-                        + "VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR"
-                        + "/LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK"
-                        + "/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS"
-                        + "/PARAMETER_DEF[./IDENT[@text='argOne']]",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersAnonymous']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/\
+VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR\
+/LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK\
+/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS\
+/PARAMETER_DEF[./IDENT[@text='argOne']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersAnonymous']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/"
-                        + "VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR"
-                        + "/LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK"
-                        + "/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS"
-                        + "/PARAMETER_DEF[./IDENT[@text='argOne']]/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersAnonymous']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/\
+VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR\
+/LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK\
+/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS\
+/PARAMETER_DEF[./IDENT[@text='argOne']]/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersAnonymous']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/"
-                        + "VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR"
-                        + "/LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK"
-                        + "/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS"
-                        + "/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE[./IDENT[@text='String']]",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersAnonymous']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/\
+VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR\
+/LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK\
+/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS\
+/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE[./IDENT[@text='String']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalParametersAnonymous']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/"
-                        + "VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR"
-                        + "/LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK"
-                        + "/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS"
-                        + "/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE/IDENT[@text='String']"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathFinalParametersAnonymous']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='createClass']]/SLIST/\
+VARIABLE_DEF[./IDENT[@text='obj']]/ASSIGN/EXPR\
+/LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK\
+/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS\
+/PARAMETER_DEF[./IDENT[@text='argOne']]/TYPE/IDENT[@text='String']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

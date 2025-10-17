@@ -59,9 +59,10 @@ public class XpathRegressionSimplifyBooleanReturnTest extends AbstractXpathTestS
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                + "'InputXpathSimplifyBooleanReturnIfBooleanEqualsBoolean']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='toTest']]/SLIST/LITERAL_IF"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+            'InputXpathSimplifyBooleanReturnIfBooleanEqualsBoolean']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='toTest']]/SLIST/LITERAL_IF"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -82,10 +83,11 @@ public class XpathRegressionSimplifyBooleanReturnTest extends AbstractXpathTestS
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                + "'InputXpathSimplifyBooleanReturnIfBooleanReturnBoolean']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='toTest']]/SLIST/EXPR/METHOD_CALL/ELIST"
-                + "/LAMBDA[./IDENT[@text='statement']]/SLIST/LITERAL_IF"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+            'InputXpathSimplifyBooleanReturnIfBooleanReturnBoolean']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='toTest']]/SLIST/EXPR/METHOD_CALL/ELIST\
+            /LAMBDA[./IDENT[@text='statement']]/SLIST/LITERAL_IF"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

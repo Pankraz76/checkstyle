@@ -58,43 +58,47 @@ public class XpathRegressionRedundantModifierTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierClass']]"
-                   + "/OBJBLOCK/CLASS_DEF"
-                   + "[./IDENT[@text='Example1']]"
-                   + "/OBJBLOCK/METHOD_DEF"
-                   + "[./IDENT[@text='test']]"
-                   + "/SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/RESOURCES",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathRedundantModifierClass']]\
+                /OBJBLOCK/CLASS_DEF\
+                [./IDENT[@text='Example1']]\
+                /OBJBLOCK/METHOD_DEF\
+                [./IDENT[@text='test']]\
+                /SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/RESOURCES""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierClass']]"
-                   + "/OBJBLOCK/CLASS_DEF"
-                   + "[./IDENT[@text='Example1']]"
-                   + "/OBJBLOCK/METHOD_DEF"
-                   + "[./IDENT[@text='test']]"
-                   + "/SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/RESOURCES"
-                   + "/RESOURCE"
-                   + "[./IDENT[@text='a']]",
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathRedundantModifierClass']]\
+/OBJBLOCK/CLASS_DEF\
+[./IDENT[@text='Example1']]\
+/OBJBLOCK/METHOD_DEF\
+[./IDENT[@text='test']]\
+/SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/RESOURCES\
+/RESOURCE\
+[./IDENT[@text='a']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierClass']]"
-                   + "/OBJBLOCK/CLASS_DEF"
-                   + "[./IDENT[@text='Example1']]"
-                   + "/OBJBLOCK/METHOD_DEF"
-                   + "[./IDENT[@text='test']]"
-                   + "/SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/RESOURCES"
-                   + "/RESOURCE"
-                   + "[./IDENT[@text='a']]/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathRedundantModifierClass']]\
+/OBJBLOCK/CLASS_DEF\
+[./IDENT[@text='Example1']]\
+/OBJBLOCK/METHOD_DEF\
+[./IDENT[@text='test']]\
+/SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/RESOURCES\
+/RESOURCE\
+[./IDENT[@text='a']]/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierClass']]"
-                   + "/OBJBLOCK/CLASS_DEF"
-                   + "[./IDENT[@text='Example1']]"
-                   + "/OBJBLOCK/METHOD_DEF"
-                   + "[./IDENT[@text='test']]"
-                   + "/SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/RESOURCES"
-                   + "/RESOURCE"
-                   + "[./IDENT[@text='a']]/MODIFIERS/FINAL"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathRedundantModifierClass']]\
+/OBJBLOCK/CLASS_DEF\
+[./IDENT[@text='Example1']]\
+/OBJBLOCK/METHOD_DEF\
+[./IDENT[@text='test']]\
+/SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/RESOURCES\
+/RESOURCE\
+[./IDENT[@text='a']]/MODIFIERS/FINAL"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
@@ -117,26 +121,29 @@ public class XpathRegressionRedundantModifierTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/INTERFACE_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierInterface']]"
-                   + "/OBJBLOCK"
-                   + "/METHOD_DEF"
-                   + "[./IDENT[@text='m']]",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF\
+                [./IDENT[@text='InputXpathRedundantModifierInterface']]\
+                /OBJBLOCK\
+                /METHOD_DEF\
+                [./IDENT[@text='m']]""",
 
-                "/COMPILATION_UNIT/INTERFACE_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierInterface']]"
-                   + "/OBJBLOCK"
-                   + "/METHOD_DEF"
-                   + "[./IDENT[@text='m']]"
-                   + "/MODIFIERS",
+                """
+/COMPILATION_UNIT/INTERFACE_DEF\
+[./IDENT[@text='InputXpathRedundantModifierInterface']]\
+/OBJBLOCK\
+/METHOD_DEF\
+[./IDENT[@text='m']]\
+/MODIFIERS""",
 
-                "/COMPILATION_UNIT/INTERFACE_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierInterface']]"
-                   + "/OBJBLOCK"
-                   + "/METHOD_DEF"
-                   + "[./IDENT[@text='m']]"
-                   + "/MODIFIERS"
-                   + "/LITERAL_PUBLIC"
+                """
+/COMPILATION_UNIT/INTERFACE_DEF\
+[./IDENT[@text='InputXpathRedundantModifierInterface']]\
+/OBJBLOCK\
+/METHOD_DEF\
+[./IDENT[@text='m']]\
+/MODIFIERS\
+/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
@@ -158,29 +165,32 @@ public class XpathRegressionRedundantModifierTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierWithEnum']]"
-                   + "/OBJBLOCK/INTERFACE_DEF"
-                   + "[./IDENT[@text='I']]"
-                   + "/OBJBLOCK/ENUM_DEF"
-                   + "[./IDENT[@text='E']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathRedundantModifierWithEnum']]\
+                /OBJBLOCK/INTERFACE_DEF\
+                [./IDENT[@text='I']]\
+                /OBJBLOCK/ENUM_DEF\
+                [./IDENT[@text='E']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierWithEnum']]"
-                   + "/OBJBLOCK/INTERFACE_DEF"
-                   + "[./IDENT[@text='I']]"
-                   + "/OBJBLOCK/ENUM_DEF"
-                   + "[./IDENT[@text='E']]"
-                   + "/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathRedundantModifierWithEnum']]\
+/OBJBLOCK/INTERFACE_DEF\
+[./IDENT[@text='I']]\
+/OBJBLOCK/ENUM_DEF\
+[./IDENT[@text='E']]\
+/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                   + "[./IDENT[@text='InputXpathRedundantModifierWithEnum']]"
-                   + "/OBJBLOCK/INTERFACE_DEF"
-                   + "[./IDENT[@text='I']]"
-                   + "/OBJBLOCK/ENUM_DEF"
-                   + "[./IDENT[@text='E']]"
-                   + "/MODIFIERS"
-                   + "/LITERAL_STATIC"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathRedundantModifierWithEnum']]\
+/OBJBLOCK/INTERFACE_DEF\
+[./IDENT[@text='I']]\
+/OBJBLOCK/ENUM_DEF\
+[./IDENT[@text='E']]\
+/MODIFIERS\
+/LITERAL_STATIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);

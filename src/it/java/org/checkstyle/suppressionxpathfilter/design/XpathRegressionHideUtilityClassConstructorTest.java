@@ -55,12 +55,15 @@ public class XpathRegressionHideUtilityClassConstructorTest extends AbstractXpat
             "3:1: " + getCheckMessage(HideUtilityClassConstructorCheck.class, MSG_KEY),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                    + "InputXpathHideUtilityClassConstructorDefault']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                    + "InputXpathHideUtilityClassConstructorDefault']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                    + "InputXpathHideUtilityClassConstructorDefault']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+            InputXpathHideUtilityClassConstructorDefault']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+            InputXpathHideUtilityClassConstructorDefault']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+            InputXpathHideUtilityClassConstructorDefault']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -77,12 +80,15 @@ public class XpathRegressionHideUtilityClassConstructorTest extends AbstractXpat
             "3:1: " + getCheckMessage(HideUtilityClassConstructorCheck.class, MSG_KEY),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                    + "InputXpathHideUtilityClassConstructorPublic']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                    + "InputXpathHideUtilityClassConstructorPublic']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                    + "InputXpathHideUtilityClassConstructorPublic']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+            InputXpathHideUtilityClassConstructorPublic']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+            InputXpathHideUtilityClassConstructorPublic']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+            InputXpathHideUtilityClassConstructorPublic']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

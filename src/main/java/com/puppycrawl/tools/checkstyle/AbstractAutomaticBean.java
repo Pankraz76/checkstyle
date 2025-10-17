@@ -232,8 +232,9 @@ public abstract class AbstractAutomaticBean
                 final PropertyDescriptor descriptor =
                         PropertyUtils.getPropertyDescriptor(this, key);
                 if (descriptor == null) {
-                    final String message = String.format(Locale.ROOT, "Property '%s' "
-                            + "does not exist, please check the documentation", key);
+                    final String message = String.format(Locale.ROOT, """
+                            Property '%s' \
+                            does not exist, please check the documentation""", key);
                     throw new CheckstyleException(message);
                 }
             }
@@ -251,8 +252,9 @@ public abstract class AbstractAutomaticBean
             throw new CheckstyleException(message, exc);
         }
         catch (final IllegalArgumentException | ConversionException exc) {
-            final String message = String.format(Locale.ROOT, "illegal value '%s' for property "
-                    + "'%s'", value, key);
+            final String message = String.format(Locale.ROOT, """
+                    illegal value '%s' for property \
+                    '%s'""", value, key);
             throw new CheckstyleException(message, exc);
         }
     }

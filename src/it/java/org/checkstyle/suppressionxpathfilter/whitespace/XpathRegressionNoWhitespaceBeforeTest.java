@@ -57,9 +57,10 @@ public class XpathRegressionNoWhitespaceBeforeTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceBefore']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='bad']]/SEMI"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceBefore']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='bad']]/SEMI"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,11 +82,12 @@ public class XpathRegressionNoWhitespaceBeforeTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceBeforeTokens']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/TYPE/DOT[./IDENT[@text='String']]"
-                + "/DOT[./IDENT[@text='java']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceBeforeTokens']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /TYPE/DOT[./IDENT[@text='String']]\
+            /DOT[./IDENT[@text='java']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -107,11 +109,12 @@ public class XpathRegressionNoWhitespaceBeforeTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceBeforeLineBreaks']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='array']]"
-                + "/ASSIGN/ARRAY_INIT/COMMA"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceBeforeLineBreaks']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='array']]\
+            /ASSIGN/ARRAY_INIT/COMMA"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

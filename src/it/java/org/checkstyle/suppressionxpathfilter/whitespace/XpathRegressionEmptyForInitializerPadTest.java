@@ -58,12 +58,14 @@ public class XpathRegressionEmptyForInitializerPadTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathEmptyForInitializerPadPreceded']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/FOR_INIT",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathEmptyForInitializerPadPreceded']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/SEMI[1]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathEmptyForInitializerPadPreceded']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/FOR_INIT""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathEmptyForInitializerPadPreceded']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/SEMI[1]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -85,12 +87,14 @@ public class XpathRegressionEmptyForInitializerPadTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathEmptyForInitializerPadNotPreceded']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/FOR_INIT",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathEmptyForInitializerPadNotPreceded']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/SEMI[1]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathEmptyForInitializerPadNotPreceded']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/FOR_INIT""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathEmptyForInitializerPadNotPreceded']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/SEMI[1]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

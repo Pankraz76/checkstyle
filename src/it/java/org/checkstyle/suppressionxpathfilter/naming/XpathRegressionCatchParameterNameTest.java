@@ -60,10 +60,11 @@ public class XpathRegressionCatchParameterNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathCatchParameterNameSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                + "/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='e1']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathCatchParameterNameSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+                /SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='e1']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -85,12 +86,13 @@ public class XpathRegressionCatchParameterNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathCatchParameterNameNested']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='NestedClass']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                + "/SLIST/LITERAL_IF/SLIST"
-                + "/LITERAL_TRY/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='i']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathCatchParameterNameNested']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='NestedClass']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+                /SLIST/LITERAL_IF/SLIST\
+                /LITERAL_TRY/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='i']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -113,10 +115,11 @@ public class XpathRegressionCatchParameterNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathCatchParameterNameStaticInit']]"
-                + "/OBJBLOCK/STATIC_INIT/SLIST"
-                + "/LITERAL_DO/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='Ex']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathCatchParameterNameStaticInit']]\
+                /OBJBLOCK/STATIC_INIT/SLIST\
+                /LITERAL_DO/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='Ex']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -139,13 +142,14 @@ public class XpathRegressionCatchParameterNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathCatchParameterNameAnonymous']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]"
-                + "/OBJBLOCK/CTOR_DEF[./IDENT[@text='InnerClass']]"
-                + "/SLIST/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]"
-                + "/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='E1']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathCatchParameterNameAnonymous']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT[@text='InnerClass']]\
+                /SLIST/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]\
+                /SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='E1']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -168,12 +172,13 @@ public class XpathRegressionCatchParameterNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathCatchParameterNameLambda']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lambdaFunction']]"
-                + "/ASSIGN/LAMBDA[./IDENT[@text='a']]"
-                + "/SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_CATCH"
-                + "/PARAMETER_DEF/IDENT[@text='e']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathCatchParameterNameLambda']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='lambdaFunction']]\
+                /ASSIGN/LAMBDA[./IDENT[@text='a']]\
+                /SLIST/LITERAL_FOR/SLIST/LITERAL_TRY/LITERAL_CATCH\
+                /PARAMETER_DEF/IDENT[@text='e']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -196,12 +201,13 @@ public class XpathRegressionCatchParameterNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/ENUM_DEF"
-                + "[./IDENT[@text='InputXpathCatchParameterNameEnum']]"
-                + "/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='VALUE']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                + "/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_TRY/LITERAL_CATCH/"
-                + "PARAMETER_DEF/IDENT[@text='eX']"
+                """
+                /COMPILATION_UNIT/ENUM_DEF\
+                [./IDENT[@text='InputXpathCatchParameterNameEnum']]\
+                /OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT[@text='VALUE']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/LITERAL_TRY/LITERAL_CATCH/\
+                PARAMETER_DEF/IDENT[@text='eX']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -224,11 +230,12 @@ public class XpathRegressionCatchParameterNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/INTERFACE_DEF"
-                + "[./IDENT[@text='InputXpathCatchParameterNameInterface']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='InnerInterface']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                + "/SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='EX']"
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF\
+                [./IDENT[@text='InputXpathCatchParameterNameInterface']]\
+                /OBJBLOCK/INTERFACE_DEF[./IDENT[@text='InnerInterface']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+                /SLIST/LITERAL_TRY/LITERAL_CATCH/PARAMETER_DEF/IDENT[@text='EX']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

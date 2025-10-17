@@ -635,10 +635,11 @@ public final class Main {
      * @noinspectionreason LocalCanBeFinal - usage of picocli requires
      *      suppression of above inspections
      */
-    @Command(name = "checkstyle", description = "Checkstyle verifies that the specified "
-            + "source code files adhere to the specified rules. By default, violations are "
-            + "reported to standard out in plain format. Checkstyle requires a configuration "
-            + "XML file that configures the checks to apply.",
+    @Command(name = "checkstyle", description = """
+            Checkstyle verifies that the specified \
+            source code files adhere to the specified rules. By default, violations are \
+            reported to standard out in plain format. Checkstyle requires a configuration \
+            XML file that configures the checks to apply.""",
             mixinStandardHelpOptions = true)
     private static final class CliOptions {
 
@@ -676,9 +677,10 @@ public final class Main {
         private List<File> files;
 
         /** Config file location. */
-        @Option(names = "-c", description = "Specifies the location of the file that defines"
-                + " the configuration modules. The location can either be a filesystem location"
-                + ", or a name passed to the ClassLoader.getResource() method.")
+        @Option(names = "-c", description = """
+                Specifies the location of the file that defines\
+                 the configuration modules. The location can either be a filesystem location\
+                , or a name passed to the ClassLoader.getResource() method.""")
         private String configurationFile;
 
         /** Output file location. */
@@ -691,15 +693,16 @@ public final class Main {
 
         /** LineNo and columnNo for the suppression. */
         @Option(names = "-s",
-                description = "Prints xpath suppressions at the file's line and column position. "
-                        + "Argument is the line and column number (separated by a : ) in the file "
-                        + "that the suppression should be generated for. The option cannot be used "
-                        + "with other options and requires exactly one file to run on to be "
-                        + "specified. Note that the generated result will have few queries, joined "
-                        + "by pipe(|). Together they will match all AST nodes on "
-                        + "specified line and column. You need to choose only one and recheck "
-                        + "that it works. Usage of all of them is also ok, but might result in "
-                        + "undesirable matching and suppress other issues.")
+                description = """
+                        Prints xpath suppressions at the file's line and column position. \
+                        Argument is the line and column number (separated by a : ) in the file \
+                        that the suppression should be generated for. The option cannot be used \
+                        with other options and requires exactly one file to run on to be \
+                        specified. Note that the generated result will have few queries, joined \
+                        by pipe(|). Together they will match all AST nodes on \
+                        specified line and column. You need to choose only one and recheck \
+                        that it works. Usage of all of them is also ok, but might result in \
+                        undesirable matching and suppress other issues.""")
         private String suppressionLineColumnNumber;
 
         /**
@@ -710,27 +713,30 @@ public final class Main {
          *      reflection to manage such fields
          */
         @Option(names = {"-w", "--tabWidth"},
-                description = "Sets the length of the tab character. "
-                + "Used only with -s option. Default value is ${DEFAULT-VALUE}.")
+                description = """
+                Sets the length of the tab character. \
+                Used only with -s option. Default value is ${DEFAULT-VALUE}.""")
         private int tabWidth = CommonUtil.DEFAULT_TAB_WIDTH;
 
         /** Switch whether to generate xpath suppressions file or not. */
         @Option(names = {"-g", "--generate-xpath-suppression"},
-                description = "Generates to output a xpath suppression xml to use to suppress all "
-                        + "violations from user's config. Instead of printing every violation, "
-                        + "all violations will be catched and single suppressions xml file will "
-                        + "be printed out. Used only with -c option. Output "
-                        + "location can be specified with -o option.")
+                description = """
+                        Generates to output a xpath suppression xml to use to suppress all \
+                        violations from user's config. Instead of printing every violation, \
+                        all violations will be catched and single suppressions xml file will \
+                        be printed out. Used only with -c option. Output \
+                        location can be specified with -o option.""")
         private boolean generateXpathSuppressionsFile;
 
         /** Switch whether to generate check and file suppressions file or not. */
         @Option(names = {"-G", "--generate-checks-and-files-suppression"},
-                description = "Generates to output a suppression xml that will have suppress "
-                        + "elements with \"checks\" and \"files\" attributes only to use to "
-                        + "suppress all violations from user's config. Instead of printing every "
-                        + "violation, all violations will be catched and single suppressions xml "
-                        + "file will be printed out. Used only with -c option. Output "
-                        + "location can be specified with -o option.")
+                description = """
+                        Generates to output a suppression xml that will have suppress \
+                        elements with "checks" and "files" attributes only to use to \
+                        suppress all violations from user's config. Instead of printing every \
+                        violation, all violations will be catched and single suppressions xml \
+                        file will be printed out. Used only with -c option. Output \
+                        location can be specified with -o option.""")
         private boolean generateCheckAndFileSuppressionsFile;
 
         /**
@@ -741,39 +747,44 @@ public final class Main {
          *      reflection to manage such fields
          */
         @Option(names = "-f",
-                description = "Specifies the output format. Valid values: "
-                + "${COMPLETION-CANDIDATES} for XMLLogger, SarifLogger, "
-                + "and DefaultLogger respectively. Defaults to ${DEFAULT-VALUE}.")
+                description = """
+                Specifies the output format. Valid values: \
+                ${COMPLETION-CANDIDATES} for XMLLogger, SarifLogger, \
+                and DefaultLogger respectively. Defaults to ${DEFAULT-VALUE}.""")
         private OutputFormat format = DEFAULT_OUTPUT_FORMAT;
 
         /** Option that controls whether to print the AST of the file. */
         @Option(names = {"-t", "--tree"},
-                description = "This option is used to display the Abstract Syntax Tree (AST) "
-                        + "without any comments of the specified file. It can only be used on "
-                        + "a single file and cannot be combined with other options.")
+                description = """
+                        This option is used to display the Abstract Syntax Tree (AST) \
+                        without any comments of the specified file. It can only be used on \
+                        a single file and cannot be combined with other options.""")
         private boolean printAst;
 
         /** Option that controls whether to print the AST of the file including comments. */
         @Option(names = {"-T", "--treeWithComments"},
-                description = "This option is used to display the Abstract Syntax Tree (AST) "
-                        + "with comment nodes excluding Javadoc of the specified file. It can only"
-                        + " be used on a single file and cannot be combined with other options.")
+                description = """
+                        This option is used to display the Abstract Syntax Tree (AST) \
+                        with comment nodes excluding Javadoc of the specified file. It can only\
+                         be used on a single file and cannot be combined with other options.""")
         private boolean printAstWithComments;
 
         /** Option that controls whether to print the parse tree of the javadoc comment. */
         @Option(names = {"-j", "--javadocTree"},
-                description = "This option is used to print the Parse Tree of the Javadoc comment."
-                        + " The file has to contain only Javadoc comment content "
-                        + "excluding '/**' and '*/' at the beginning and at the end respectively. "
-                        + "It can only be used on a single file and cannot be combined "
-                        + "with other options.")
+                description = """
+                        This option is used to print the Parse Tree of the Javadoc comment.\
+                         The file has to contain only Javadoc comment content \
+                        excluding '/**' and '*/' at the beginning and at the end respectively. \
+                        It can only be used on a single file and cannot be combined \
+                        with other options.""")
         private boolean printJavadocTree;
 
         /** Option that controls whether to print the full AST of the file. */
         @Option(names = {"-J", "--treeWithJavadoc"},
-                description = "This option is used to display the Abstract Syntax Tree (AST) "
-                        + "with Javadoc nodes of the specified file. It can only be used on a "
-                        + "single file and cannot be combined with other options.")
+                description = """
+                        This option is used to display the Abstract Syntax Tree (AST) \
+                        with Javadoc nodes of the specified file. It can only be used on a \
+                        single file and cannot be combined with other options.""")
         private boolean printTreeWithJavadoc;
 
         /** Option that controls whether to print debug info. */
@@ -789,9 +800,10 @@ public final class Main {
          *      reflection to manage such fields
          */
         @Option(names = {"-e", "--exclude"},
-                description = "Directory/file to exclude from CheckStyle. The path can be the "
-                        + "full, absolute path, or relative to the current path. Multiple "
-                        + "excludes are allowed.")
+                description = """
+                        Directory/file to exclude from CheckStyle. The path can be the \
+                        full, absolute path, or relative to the current path. Multiple \
+                        excludes are allowed.""")
         private List<File> exclude = new ArrayList<>();
 
         /**
@@ -802,8 +814,9 @@ public final class Main {
          *      reflection to manage such fields
          */
         @Option(names = {"-x", "--exclude-regexp"},
-                description = "Directory/file pattern to exclude from CheckStyle. Multiple "
-                        + "excludes are allowed.")
+                description = """
+                        Directory/file pattern to exclude from CheckStyle. Multiple \
+                        excludes are allowed.""")
         private List<Pattern> excludeRegex = new ArrayList<>();
 
         /** Switch whether to execute ignored modules or not. */

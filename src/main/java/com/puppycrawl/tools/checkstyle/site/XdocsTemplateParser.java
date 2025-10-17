@@ -159,8 +159,9 @@ public class XdocsTemplateParser extends XdocParser {
                     || paramName.isEmpty()
                     || paramValue.isEmpty()) {
                 final String message = String.format(Locale.ROOT,
-                        "'%s' and '%s' attributes for the '%s' tag are required"
-                                + " inside the '%s' tag.",
+                        """
+                        '%s' and '%s' attributes for the '%s' tag are required\
+                         inside the '%s' tag.""",
                         Attribute.NAME, Attribute.VALUE, PARAM, MACRO_TAG);
                 throw new MacroExecutionException(message);
             }

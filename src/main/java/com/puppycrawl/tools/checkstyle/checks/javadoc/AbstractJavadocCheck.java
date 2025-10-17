@@ -190,8 +190,9 @@ public abstract class AbstractJavadocCheck extends AbstractCheck {
             Arrays.sort(acceptableJavadocTokens);
             for (Integer javadocTokenId : javadocTokens) {
                 if (Arrays.binarySearch(acceptableJavadocTokens, javadocTokenId) < 0) {
-                    final String message = String.format(Locale.ROOT, "Javadoc Token \"%s\" was "
-                            + "not found in Acceptable javadoc tokens list in check %s",
+                    final String message = String.format(Locale.ROOT, """
+                            Javadoc Token "%s" was \
+                            not found in Acceptable javadoc tokens list in check %s""",
                             JavadocUtil.getTokenName(javadocTokenId), getClass().getName());
                     throw new IllegalStateException(message);
                 }
@@ -216,9 +217,10 @@ public abstract class AbstractJavadocCheck extends AbstractCheck {
 
         if (!missingRequiredTokenNames.isEmpty()) {
             final String message = String.format(Locale.ROOT,
-                        "Javadoc Token \"%s\" from required javadoc "
-                            + "tokens was not found in default "
-                            + "javadoc tokens list in check %s",
+                        """
+                        Javadoc Token "%s" from required javadoc \
+                        tokens was not found in default \
+                        javadoc tokens list in check %s""",
                         missingRequiredTokenNames.stream()
                         .map(String::valueOf)
                         .collect(Collectors.joining(", ")),

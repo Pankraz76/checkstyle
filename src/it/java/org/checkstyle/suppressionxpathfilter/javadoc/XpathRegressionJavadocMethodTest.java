@@ -60,16 +60,19 @@ public class XpathRegressionJavadocMethodTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathJavadocMethodOne']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='uninheritableMethod']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathJavadocMethodOne']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='uninheritableMethod']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathJavadocMethodOne']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='uninheritableMethod']]/MODIFIERS"
-                        + "/LITERAL_PRIVATE");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavadocMethodOne']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='uninheritableMethod']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavadocMethodOne']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='uninheritableMethod']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavadocMethodOne']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='uninheritableMethod']]/MODIFIERS\
+                /LITERAL_PRIVATE""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -89,10 +92,11 @@ public class XpathRegressionJavadocMethodTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathJavadocMethodTwo']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='checkParam']]/PARAMETERS"
-                        + "/PARAMETER_DEF/IDENT[@text='x']");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavadocMethodTwo']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='checkParam']]/PARAMETERS\
+                /PARAMETER_DEF/IDENT[@text='x']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -112,14 +116,16 @@ public class XpathRegressionJavadocMethodTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathJavadocMethodThree']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='checkTypeParam']]/TYPE_PARAMETERS"
-                        + "/TYPE_PARAMETER[./IDENT[@text='T']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathJavadocMethodThree']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='checkTypeParam']]/TYPE_PARAMETERS"
-                        + "/TYPE_PARAMETER/IDENT[@text='T']");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavadocMethodThree']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='checkTypeParam']]/TYPE_PARAMETERS\
+                /TYPE_PARAMETER[./IDENT[@text='T']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavadocMethodThree']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='checkTypeParam']]/TYPE_PARAMETERS\
+                /TYPE_PARAMETER/IDENT[@text='T']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -141,10 +147,11 @@ public class XpathRegressionJavadocMethodTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathJavadocMethodFour']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                        + "/LITERAL_THROWS/IDENT[@text='Exception']");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavadocMethodFour']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+                /LITERAL_THROWS/IDENT[@text='Exception']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -166,14 +173,15 @@ public class XpathRegressionJavadocMethodTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathJavadocMethodFive']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bar']]/SLIST"
-                        + "/LITERAL_THROW/EXPR/LITERAL_NEW"
-                        + "/DOT[./IDENT[@text='BuildException']]"
-                        + "/DOT[./IDENT[@text='ant']]"
-                        + "/DOT[./IDENT[@text='tools']]"
-                        + "/DOT/IDENT[@text='org']");
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavadocMethodFive']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='bar']]/SLIST\
+                /LITERAL_THROW/EXPR/LITERAL_NEW\
+                /DOT[./IDENT[@text='BuildException']]\
+                /DOT[./IDENT[@text='ant']]\
+                /DOT[./IDENT[@text='tools']]\
+                /DOT/IDENT[@text='org']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

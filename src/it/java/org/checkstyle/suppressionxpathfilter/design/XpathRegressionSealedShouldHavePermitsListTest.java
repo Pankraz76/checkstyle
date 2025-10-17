@@ -57,15 +57,18 @@ public class XpathRegressionSealedShouldHavePermitsListTest extends AbstractXpat
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathSealedShouldHavePermitsListInner']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='A']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathSealedShouldHavePermitsListInner']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='A']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathSealedShouldHavePermitsListInner']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='A']]/MODIFIERS/LITERAL_SEALED"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSealedShouldHavePermitsListInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='A']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSealedShouldHavePermitsListInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='A']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSealedShouldHavePermitsListInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='A']]/MODIFIERS/LITERAL_SEALED"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -87,13 +90,16 @@ public class XpathRegressionSealedShouldHavePermitsListTest extends AbstractXpat
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSealedShouldHavePermitsListTopLevel']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSealedShouldHavePermitsListTopLevel']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSealedShouldHavePermitsListTopLevel']]"
-                        + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSealedShouldHavePermitsListTopLevel']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSealedShouldHavePermitsListTopLevel']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSealedShouldHavePermitsListTopLevel']]\
+                /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

@@ -60,15 +60,18 @@ public class XpathRegressionNPathComplexityTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNPathComplexityMethod']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='test']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNPathComplexityMethod']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNPathComplexityMethod']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNPathComplexityMethod']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='test']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNPathComplexityMethod']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='test']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNPathComplexityMethod']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='test']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -90,9 +93,10 @@ public class XpathRegressionNPathComplexityTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNPathComplexityStaticBlock']]"
-                + "/OBJBLOCK/STATIC_INIT"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNPathComplexityStaticBlock']]\
+            /OBJBLOCK/STATIC_INIT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

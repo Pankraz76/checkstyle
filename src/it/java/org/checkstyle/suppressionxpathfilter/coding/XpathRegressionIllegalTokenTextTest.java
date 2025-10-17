@@ -57,14 +57,16 @@ public class XpathRegressionIllegalTokenTextTest extends AbstractXpathTestSuppor
                         IllegalTokenTextCheck.MSG_KEY, "12345"),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT"
-                    + "/CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenTextField']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='illegalNumber']]"
-                    + "/ASSIGN/EXPR[./NUM_INT[@text='12345']]",
-                "/COMPILATION_UNIT"
-                    + "/CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenTextField']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='illegalNumber']]"
-                    + "/ASSIGN/EXPR/NUM_INT[@text='12345']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenTextField']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='illegalNumber']]\
+                /ASSIGN/EXPR[./NUM_INT[@text='12345']]""",
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenTextField']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='illegalNumber']]\
+                /ASSIGN/EXPR/NUM_INT[@text='12345']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -84,16 +86,18 @@ public class XpathRegressionIllegalTokenTextTest extends AbstractXpathTestSuppor
                         IllegalTokenTextCheck.MSG_KEY, "forbiddenText"),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT"
-                    + "/CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenTextMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myMethod']]"
-                    + "/SLIST/VARIABLE_DEF[./IDENT[@text='illegalString']]"
-                    + "/ASSIGN/EXPR[./STRING_LITERAL[@text='forbiddenText']]",
-                "/COMPILATION_UNIT"
-                    + "/CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenTextMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myMethod']]"
-                    + "/SLIST/VARIABLE_DEF[./IDENT[@text='illegalString']]"
-                    + "/ASSIGN/EXPR/STRING_LITERAL[@text='forbiddenText']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenTextMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myMethod']]\
+                /SLIST/VARIABLE_DEF[./IDENT[@text='illegalString']]\
+                /ASSIGN/EXPR[./STRING_LITERAL[@text='forbiddenText']]""",
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathIllegalTokenTextMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myMethod']]\
+                /SLIST/VARIABLE_DEF[./IDENT[@text='illegalString']]\
+                /ASSIGN/EXPR/STRING_LITERAL[@text='forbiddenText']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -113,9 +117,10 @@ public class XpathRegressionIllegalTokenTextTest extends AbstractXpathTestSuppor
                         IllegalTokenTextCheck.MSG_KEY, "invalidIdentifier"),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                    + "/INTERFACE_DEF[./IDENT[@text='InputXpathIllegalTokenTextInterface']]"
-                    + "/OBJBLOCK/METHOD_DEF/IDENT[@text='invalidIdentifier']"
+                """
+                /COMPILATION_UNIT\
+                /INTERFACE_DEF[./IDENT[@text='InputXpathIllegalTokenTextInterface']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='invalidIdentifier']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

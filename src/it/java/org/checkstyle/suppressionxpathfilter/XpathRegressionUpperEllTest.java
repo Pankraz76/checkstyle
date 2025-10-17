@@ -51,13 +51,15 @@ public class XpathRegressionUpperEllTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUpperEllOne']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR[./NUM_LONG[@text='0l']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUpperEllOne']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR"
-                + "/NUM_LONG[@text='0l']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUpperEllOne']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR[./NUM_LONG[@text='0l']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUpperEllOne']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR\
+            /NUM_LONG[@text='0l']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -78,14 +80,16 @@ public class XpathRegressionUpperEllTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-                + "[./IDENT[@text='InputXpathUpperEllTwo']]/OBJBLOCK/METHOD_DEF"
-                + "[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='var2']]/ASSIGN/EXPR"
-                + "[./NUM_LONG[@text='508987l']]",
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-                + "[./IDENT[@text='InputXpathUpperEllTwo']]/OBJBLOCK/METHOD_DEF"
-                + "[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='var2']]/ASSIGN/EXPR"
-                + "/NUM_LONG[@text='508987l']"
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='InputXpathUpperEllTwo']]/OBJBLOCK/METHOD_DEF\
+            [./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='var2']]/ASSIGN/EXPR\
+            [./NUM_LONG[@text='508987l']]""",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='InputXpathUpperEllTwo']]/OBJBLOCK/METHOD_DEF\
+            [./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='var2']]/ASSIGN/EXPR\
+            /NUM_LONG[@text='508987l']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

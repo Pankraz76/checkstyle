@@ -419,8 +419,9 @@ public class AbbreviationAsWordInNameCheckTest extends AbstractModuleTestSupport
 
         verifyWithInlineConfigParser(
                 getPath(
-                        "InputAbbreviationAsWordInNameCheckEnhanced"
-                                + "InstanceofAllowXmlLength1.java"),
+                        """
+                        InputAbbreviationAsWordInNameCheckEnhanced\
+                        InstanceofAllowXmlLength1.java"""),
                 expected);
     }
 

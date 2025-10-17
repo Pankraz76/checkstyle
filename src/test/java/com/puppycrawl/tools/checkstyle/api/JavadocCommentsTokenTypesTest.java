@@ -35,8 +35,9 @@ public class JavadocCommentsTokenTypesTest {
 
     @Test
     public void testTokenValues() {
-        final String msg = "Please ensure that token values in `JavadocTokenTypes.java` have not"
-                + " changed.";
+        final String msg = """
+                Please ensure that token values in `JavadocTokenTypes.java` have not\
+                 changed.""";
 
         assertWithMessage(msg)
                 .that(JavadocCommentsTokenTypes.JAVADOC_CONTENT)

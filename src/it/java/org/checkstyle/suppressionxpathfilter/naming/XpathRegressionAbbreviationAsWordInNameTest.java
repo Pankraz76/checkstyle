@@ -57,9 +57,10 @@ public class XpathRegressionAbbreviationAsWordInNameTest extends AbstractXpathTe
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathAbbreviationAsWordInNameAnnotation']]"
-                    + "/OBJBLOCK/ANNOTATION_DEF/IDENT[@text='ANNOTATION']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathAbbreviationAsWordInNameAnnotation']]\
+                /OBJBLOCK/ANNOTATION_DEF/IDENT[@text='ANNOTATION']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -80,9 +81,10 @@ public class XpathRegressionAbbreviationAsWordInNameTest extends AbstractXpathTe
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/ANNOTATION_DEF[./IDENT["
-                    + "@text='InputXpathAbbreviationAsWordInNameAnnotationField']]"
-                    + "/OBJBLOCK/ANNOTATION_FIELD_DEF/IDENT[@text='ANNOTATION_FIELD']"
+                """
+                /COMPILATION_UNIT/ANNOTATION_DEF[./IDENT[\
+                @text='InputXpathAbbreviationAsWordInNameAnnotationField']]\
+                /OBJBLOCK/ANNOTATION_FIELD_DEF/IDENT[@text='ANNOTATION_FIELD']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -103,9 +105,10 @@ public class XpathRegressionAbbreviationAsWordInNameTest extends AbstractXpathTe
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathAbbreviationAsWordInNameClass']]"
-                    + "/OBJBLOCK/CLASS_DEF/IDENT[@text='CLASS']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathAbbreviationAsWordInNameClass']]\
+                /OBJBLOCK/CLASS_DEF/IDENT[@text='CLASS']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -126,9 +129,10 @@ public class XpathRegressionAbbreviationAsWordInNameTest extends AbstractXpathTe
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathAbbreviationAsWordInNameEnum']]"
-                    + "/OBJBLOCK/ENUM_DEF/IDENT[@text='ENUMERATION']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathAbbreviationAsWordInNameEnum']]\
+                /OBJBLOCK/ENUM_DEF/IDENT[@text='ENUMERATION']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -149,9 +153,10 @@ public class XpathRegressionAbbreviationAsWordInNameTest extends AbstractXpathTe
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathAbbreviationAsWordInNameField']]"
-                    + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='FIELD']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathAbbreviationAsWordInNameField']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='FIELD']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -172,9 +177,10 @@ public class XpathRegressionAbbreviationAsWordInNameTest extends AbstractXpathTe
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathAbbreviationAsWordInNameInterface']]"
-                    + "/OBJBLOCK/INTERFACE_DEF/IDENT[@text='INTERFACE']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathAbbreviationAsWordInNameInterface']]\
+                /OBJBLOCK/INTERFACE_DEF/IDENT[@text='INTERFACE']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -195,9 +201,10 @@ public class XpathRegressionAbbreviationAsWordInNameTest extends AbstractXpathTe
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT["
-                    + "@text='InputXpathAbbreviationAsWordInNameMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF/IDENT[@text='METHOD']"
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT[\
+                @text='InputXpathAbbreviationAsWordInNameMethod']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='METHOD']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -218,10 +225,11 @@ public class XpathRegressionAbbreviationAsWordInNameTest extends AbstractXpathTe
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT["
-                    + "@text='InputXpathAbbreviationAsWordInNameParameter']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                    + "/PARAMETERS/PARAMETER_DEF/IDENT[@text='PARAMETER']"
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT[\
+                @text='InputXpathAbbreviationAsWordInNameParameter']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+                /PARAMETERS/PARAMETER_DEF/IDENT[@text='PARAMETER']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -242,10 +250,11 @@ public class XpathRegressionAbbreviationAsWordInNameTest extends AbstractXpathTe
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathAbbreviationAsWordInNameVariable']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                    + "/SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathAbbreviationAsWordInNameVariable']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+                /SLIST/VARIABLE_DEF/IDENT[@text='VARIABLE']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

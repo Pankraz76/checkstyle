@@ -55,10 +55,11 @@ public class XpathRegressionInnerAssignmentTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text='InputXpathInnerAssignment']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]"
-                        + "/SLIST/EXPR/ASSIGN[./IDENT[@text='a']]/ASSIGN[./IDENT[@text='b']]"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathInnerAssignment']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]\
+                /SLIST/EXPR/ASSIGN[./IDENT[@text='a']]/ASSIGN[./IDENT[@text='b']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -76,16 +77,18 @@ public class XpathRegressionInnerAssignmentTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT"
-                + "/CLASS_DEF[./IDENT[@text='InputXpathInnerAssignmentArrays']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='doubleArray']]"
-                + "/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./ASSIGN/IDENT[@text='myDouble']]",
-                "/COMPILATION_UNIT"
-                + "/CLASS_DEF[./IDENT[@text='InputXpathInnerAssignmentArrays']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]/"
-                + "SLIST/VARIABLE_DEF[./IDENT[@text='doubleArray']]"
-                + "/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR/ASSIGN[./IDENT[@text='myDouble']]"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathInnerAssignmentArrays']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]\
+                /SLIST/VARIABLE_DEF[./IDENT[@text='doubleArray']]\
+                /ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR[./ASSIGN/IDENT[@text='myDouble']]""",
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathInnerAssignmentArrays']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]/\
+                SLIST/VARIABLE_DEF[./IDENT[@text='doubleArray']]\
+                /ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/EXPR/ASSIGN[./IDENT[@text='myDouble']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

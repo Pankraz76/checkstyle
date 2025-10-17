@@ -55,15 +55,18 @@ public class XpathRegressionNoFinalizerTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoFinalizerMain']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='finalize']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoFinalizerMain']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoFinalizerMain']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS/LITERAL_PROTECTED"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoFinalizerMain']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='finalize']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoFinalizerMain']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoFinalizerMain']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS/LITERAL_PROTECTED"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -84,24 +87,28 @@ public class XpathRegressionNoFinalizerTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoFinalizerInner']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/"
-                + "METHOD_DEF[./IDENT[@text='finalize']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoFinalizerInner']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/"
-                + "METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoFinalizerInner']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/"
-                + "METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS/"
-                + "ANNOTATION[./IDENT[@text='Override']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoFinalizerInner']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/"
-                + "METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS/"
-                + "ANNOTATION[./IDENT[@text='Override']]/AT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoFinalizerInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='finalize']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoFinalizerInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoFinalizerInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS/\
+                ANNOTATION[./IDENT[@text='Override']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoFinalizerInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='finalize']]/MODIFIERS/\
+                ANNOTATION[./IDENT[@text='Override']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

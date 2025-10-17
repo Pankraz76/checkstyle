@@ -55,9 +55,10 @@ public class XpathRegressionParameterNumberTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathParameterNumberDefault']]"
-                + "/OBJBLOCK/METHOD_DEF/IDENT[@text='myMethod']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathParameterNumberDefault']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='myMethod']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -78,9 +79,10 @@ public class XpathRegressionParameterNumberTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-               "/COMPILATION_UNIT/CLASS_DEF"
-               + "[./IDENT[@text='InputXpathParameterNumberMethods']]"
-               + "/OBJBLOCK/METHOD_DEF/IDENT[@text='myMethod']"
+               """
+               /COMPILATION_UNIT/CLASS_DEF\
+               [./IDENT[@text='InputXpathParameterNumberMethods']]\
+               /OBJBLOCK/METHOD_DEF/IDENT[@text='myMethod']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -100,10 +102,11 @@ public class XpathRegressionParameterNumberTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathParameterNumberIgnoreOverriddenMethods']]"
-                + "/OBJBLOCK/CTOR_DEF/IDENT"
-                + "[@text='InputXpathParameterNumberIgnoreOverriddenMethods']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathParameterNumberIgnoreOverriddenMethods']]\
+                /OBJBLOCK/CTOR_DEF/IDENT\
+                [@text='InputXpathParameterNumberIgnoreOverriddenMethods']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -124,13 +127,14 @@ public class XpathRegressionParameterNumberTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathParameterNumberIgnoreAnnotatedBy']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]"
-                + "/OBJBLOCK/STATIC_INIT/SLIST/EXPR/LITERAL_NEW[./IDENT[@text='Object']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                + "/SLIST/LITERAL_IF/SLIST/EXPR/LITERAL_NEW[./IDENT[@text='Object']]"
-                + "/OBJBLOCK/METHOD_DEF/IDENT[@text='checkedMethod']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathParameterNumberIgnoreAnnotatedBy']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]\
+                /OBJBLOCK/STATIC_INIT/SLIST/EXPR/LITERAL_NEW[./IDENT[@text='Object']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+                /SLIST/LITERAL_IF/SLIST/EXPR/LITERAL_NEW[./IDENT[@text='Object']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='checkedMethod']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);

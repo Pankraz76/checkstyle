@@ -102,19 +102,22 @@ public class XpathRegressionEmptyLineSeparatorTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathEmptyLineSeparatorThree']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathEmptyLineSeparatorThree']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathEmptyLineSeparatorThree']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]"
-                        + "/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathEmptyLineSeparatorThree']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]\
+/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathEmptyLineSeparatorThree']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]"
-                        + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathEmptyLineSeparatorThree']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]\
+/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -136,9 +139,10 @@ public class XpathRegressionEmptyLineSeparatorTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathEmptyLineSeparatorFour']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/SLIST/RCURLY"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathEmptyLineSeparatorFour']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/SLIST/RCURLY"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -161,10 +165,11 @@ public class XpathRegressionEmptyLineSeparatorTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathEmptyLineSeparatorFive']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/SLIST/LITERAL_TRY/SLIST"
-                        + "/SINGLE_LINE_COMMENT/COMMENT_CONTENT[@text=' warn\\n']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathEmptyLineSeparatorFive']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/SLIST/LITERAL_TRY/SLIST\
+                /SINGLE_LINE_COMMENT/COMMENT_CONTENT[@text=' warn\\n']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

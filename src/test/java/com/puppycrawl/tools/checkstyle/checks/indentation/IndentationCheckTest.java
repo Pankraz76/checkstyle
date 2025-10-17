@@ -52,8 +52,9 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
 public class IndentationCheckTest extends AbstractModuleTestSupport {
 
     private static final Pattern LINE_WITH_COMMENT_REGEX = Pattern.compile(
-        ".*?//(?:below )?indent:(\\d+)(?:"
-                + " ioffset:(\\d+))? exp:(>=)?(\\d+(?:,\\d+)*?)( warn)?$");
+        """
+        .*?//(?:below )?indent:(\\d+)(?:\
+         ioffset:(\\d+))? exp:(>=)?(\\d+(?:,\\d+)*?)( warn)?$""");
 
     private static final IndentComment[] EMPTY_INDENT_COMMENT_ARRAY = new IndentComment[0];
 
@@ -90,8 +91,9 @@ public class IndentationCheckTest extends AbstractModuleTestSupport {
                 }
                 else if (!line.isEmpty()) {
                     throw new IllegalStateException(String.format(Locale.ROOT,
-                            "File \"%1$s\" has no indentation comment or its format "
-                                    + "malformed. Error on line: %2$d",
+                            """
+                            File "%1$s" has no indentation comment or its format \
+                            malformed. Error on line: %2$d""",
                             aFileName,
                             lineNumber));
                 }
@@ -108,8 +110,9 @@ public class IndentationCheckTest extends AbstractModuleTestSupport {
             int actualIndent, int lineNumber, List<IndentComment> result) {
         if (actualIndent != pendingBelowComment.getIndent()) {
             throw new IllegalStateException(String.format(Locale.ROOT,
-                    "Incorrect indentation in 'below' comment. "
-                            + "Line %1$d (from line %2$d): comment:%3$d, actual:%4$d.",
+                    """
+                    Incorrect indentation in 'below' comment. \
+                    Line %1$d (from line %2$d): comment:%3$d, actual:%4$d.""",
                     lineNumber,
                     pendingBelowComment.getLineNumber(),
                     pendingBelowComment.getIndent(),
@@ -132,8 +135,9 @@ public class IndentationCheckTest extends AbstractModuleTestSupport {
 
         if (actualIndent != warn.getIndent()) {
             throw new IllegalStateException(String.format(Locale.ROOT,
-                    "File \"%1$s\" has incorrect indentation in comment. "
-                            + "Line %2$d: comment:%3$d, actual:%4$d.",
+                    """
+                    File "%1$s" has incorrect indentation in comment. \
+                    Line %2$d: comment:%3$d, actual:%4$d.""",
                     fileName,
                     lineNumber,
                     warn.getIndent(),
@@ -199,8 +203,9 @@ public class IndentationCheckTest extends AbstractModuleTestSupport {
         final IndentComment[] linesWithWarn =
                         getLinesWithWarnAndCheckComments(filePath, tabWidth);
         verify(config, filePath, expected, linesWithWarn);
-        assertWithMessage("Expected warning count in UT does not match warn comment count "
-                + "in input file")
+        assertWithMessage("""
+                Expected warning count in UT does not match warn comment count \
+                in input file""")
             .that(expected.length)
             .isEqualTo(linesWithWarn.length);
     }
@@ -391,8 +396,9 @@ public class IndentationCheckTest extends AbstractModuleTestSupport {
         };
 
         verifyWarns(checkConfig,
-            getPath("InputIndentation"
-                + "AnnotationClosingParenthesisEndsInSameIndentationAsOpen.java"),
+            getPath("""
+                InputIndentation\
+                AnnotationClosingParenthesisEndsInSameIndentationAsOpen.java"""),
                 expected);
     }
 
@@ -3339,9 +3345,10 @@ public class IndentationCheckTest extends AbstractModuleTestSupport {
                     .allMatch(index -> index >= indexOfArgumentZero);
         });
         assertWithMessage(
-                    "the argument 0 of error messages (indentation.error, indentation.child.error,"
-                        + " indentation.error.multi, indentation.child.error.multi)"
-                        + " is required to be the first argument of them")
+                    """
+                    the argument 0 of error messages (indentation.error, indentation.child.error,\
+                     indentation.error.multi, indentation.child.error.multi)\
+                     is required to be the first argument of them""")
                 .that(isInOrder)
                 .isTrue();
     }
@@ -4099,8 +4106,9 @@ public class IndentationCheckTest extends AbstractModuleTestSupport {
                     .reduce("", (cur, next) -> cur + "\"" + next + "\", ");
             final String assertMessage = String.format(
                     Locale.ROOT,
-                    "input expected warning #%d at line %d to report one of the following: %s"
-                            + "but got instead: %d: %s",
+                    """
+                    input expected warning #%d at line %d to report one of the following: %s\
+                    but got instead: %d: %s""",
                     position, comment.getLineNumber(), possibleExceptedMessages, line, message);
             assertWithMessage(assertMessage)
                     .that(line == comment.getLineNumber() && Arrays

@@ -57,30 +57,38 @@ public class XpathRegressionMultipleVariableDeclarationsTest extends AbstractXpa
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='i']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='i']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='i']]/TYPE",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='i']]/TYPE/LITERAL_INT",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='j']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='j']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='j']]/TYPE",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='j']]/TYPE/LITERAL_INT"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='i']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='i']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='i']]/TYPE""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='i']]/TYPE/LITERAL_INT""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='j']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='j']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='j']]/TYPE""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarationsCommaSeparator']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='j']]/TYPE/LITERAL_INT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -101,18 +109,22 @@ public class XpathRegressionMultipleVariableDeclarationsTest extends AbstractXpa
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarations']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='i1']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarations']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='i1']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarations']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='i1']]/TYPE",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathMultipleVariableDeclarations']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='i1']]/TYPE/LITERAL_INT"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarations']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='i1']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarations']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='i1']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarations']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='i1']]/TYPE""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathMultipleVariableDeclarations']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='i1']]/TYPE/LITERAL_INT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

@@ -80,10 +80,12 @@ public class XpathRegressionPackageDeclarationTest extends AbstractXpathTestSupp
         final List<String> expectedXpathQueries = Arrays.asList(
                 "/COMPILATION_UNIT",
                 "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathMissingPackage']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMissingPackage']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMissingPackage']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMissingPackage']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMissingPackage']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

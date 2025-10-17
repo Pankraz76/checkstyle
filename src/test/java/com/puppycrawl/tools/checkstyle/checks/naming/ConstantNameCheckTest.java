@@ -60,10 +60,11 @@ public class ConstantNameCheckTest
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                    + "cannot initialize module com.puppycrawl.tools.checkstyle.checks."
-                    + "naming.ConstantNameCheck - "
-                    + "illegal value '\\' for property 'format'");
+                .isEqualTo("""
+                    cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                    cannot initialize module com.puppycrawl.tools.checkstyle.checks.\
+                    naming.ConstantNameCheck - \
+                    illegal value '\\' for property 'format'""");
         }
     }
 

@@ -172,8 +172,9 @@ public class XpathUtilTest {
         final String uniqueFileName = "junit_" + UUID.randomUUID() + ".java";
         final File file = new File(tempFolder, uniqueFileName);
         Files.writeString(file.toPath(), fileContent, StandardCharsets.UTF_8);
-        final String invalidXpath = "\\//CLASS_DEF"
-                + "//METHOD_DEF//VARIABLE_DEF//IDENT";
+        final String invalidXpath = """
+                \\//CLASS_DEF\
+                //METHOD_DEF//VARIABLE_DEF//IDENT""";
         try {
             XpathUtil.printXpathBranch(invalidXpath, file);
             assertWithMessage("Should end with exception").fail();

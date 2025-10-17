@@ -88,8 +88,9 @@ public class MultiFileRegexpHeaderCheckTest extends AbstractModuleTestSupport {
         instance.configure(checkConfig);
 
         assertWithMessage(
-                "Expected no header files to be configured when"
-                + " 'headerFiles' property is not set")
+                """
+                Expected no header files to be configured when\
+                 'headerFiles' property is not set""")
             .that(instance.getExternalResourceLocations())
             .isEmpty();
     }

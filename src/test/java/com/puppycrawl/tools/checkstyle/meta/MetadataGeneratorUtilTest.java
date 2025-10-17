@@ -85,8 +85,9 @@ public final class MetadataGeneratorUtilTest extends AbstractModuleTestSupport {
                 .sorted()
                 .collect(Collectors.toCollection(LinkedHashSet::new));
         checkstyleModules.removeAll(modulesContainingNoMetadataFile);
-        assertWithMessage("Number of generated metadata files dont match with "
-                + "number of checkstyle module")
+        assertWithMessage("""
+                Number of generated metadata files dont match with \
+                number of checkstyle module""")
                 .that(metaFiles)
                 .isEqualTo(checkstyleModules);
     }

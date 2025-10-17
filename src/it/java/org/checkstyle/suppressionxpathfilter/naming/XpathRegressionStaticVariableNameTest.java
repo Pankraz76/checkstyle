@@ -59,10 +59,11 @@ public class XpathRegressionStaticVariableNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathStaticVariableName']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM2']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathStaticVariableName']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM2']"""
 
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -85,12 +86,13 @@ public class XpathRegressionStaticVariableNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathStaticVariableNameInnerClassField']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='outerMethod']]"
-                        + "/SLIST/CLASS_DEF[./IDENT[@text='MyLocalClass']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM3']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathStaticVariableNameInnerClassField']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='outerMethod']]\
+                /SLIST/CLASS_DEF[./IDENT[@text='MyLocalClass']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM3']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -112,10 +114,11 @@ public class XpathRegressionStaticVariableNameTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathStaticVariableNameNoAccessModifier']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM3']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathStaticVariableNameNoAccessModifier']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='NUM3']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

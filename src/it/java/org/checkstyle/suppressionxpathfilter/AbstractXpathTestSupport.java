@@ -203,8 +203,9 @@ public abstract class AbstractXpathTestSupport extends AbstractCheckstyleModuleT
                                   List<String> expectedXpathQueries) throws Exception {
         if (expectedViolation.length != 1) {
             throw new IllegalArgumentException(
-                    "Expected violations should contain exactly one element."
-                            + " Multiple violations are not supported."
+                    """
+                    Expected violations should contain exactly one element.\
+                     Multiple violations are not supported."""
             );
         }
 

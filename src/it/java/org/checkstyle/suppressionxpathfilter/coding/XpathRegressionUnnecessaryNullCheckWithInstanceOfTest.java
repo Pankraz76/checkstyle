@@ -55,10 +55,11 @@ public class XpathRegressionUnnecessaryNullCheckWithInstanceOfTest
                     UnnecessaryNullCheckWithInstanceOfCheck.MSG_UNNECESSARY_NULLCHECK),
         };
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                + "'InputXpathUnnecessaryNullCheckWithInstanceOf']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodWithUnnecessaryNullCheck1']]"
-                + "/SLIST/LITERAL_IF/EXPR/LAND/NOT_EQUAL/IDENT[@text='obj']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+            'InputXpathUnnecessaryNullCheckWithInstanceOf']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodWithUnnecessaryNullCheck1']]\
+            /SLIST/LITERAL_IF/EXPR/LAND/NOT_EQUAL/IDENT[@text='obj']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
@@ -77,11 +78,12 @@ public class XpathRegressionUnnecessaryNullCheckWithInstanceOfTest
                     UnnecessaryNullCheckWithInstanceOfCheck.MSG_UNNECESSARY_NULLCHECK),
         };
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathUnnecessaryNullCheckWithInstanceOfAnonymous']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='runnable']]/ASSIGN/EXPR/LITERAL_NEW"
-                + "[./IDENT[@text='Runnable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]"
-                + "/SLIST/LITERAL_IF/EXPR/LAND/NOT_EQUAL/IDENT[@text='obj']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathUnnecessaryNullCheckWithInstanceOfAnonymous']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='runnable']]/ASSIGN/EXPR/LITERAL_NEW\
+            [./IDENT[@text='Runnable']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='run']]\
+            /SLIST/LITERAL_IF/EXPR/LAND/NOT_EQUAL/IDENT[@text='obj']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
@@ -100,10 +102,11 @@ public class XpathRegressionUnnecessaryNullCheckWithInstanceOfTest
                     UnnecessaryNullCheckWithInstanceOfCheck.MSG_UNNECESSARY_NULLCHECK),
         };
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathUnnecessaryNullCheckWithInstanceOfInterface']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='validateString']]/SLIST/LITERAL_RETURN"
-                + "/EXPR/LAND/NOT_EQUAL/IDENT[@text='obj']"
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+            [@text='InputXpathUnnecessaryNullCheckWithInstanceOfInterface']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='validateString']]/SLIST/LITERAL_RETURN\
+            /EXPR/LAND/NOT_EQUAL/IDENT[@text='obj']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);

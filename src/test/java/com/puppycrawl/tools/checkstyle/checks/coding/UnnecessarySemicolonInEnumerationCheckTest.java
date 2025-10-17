@@ -35,8 +35,9 @@ public class UnnecessarySemicolonInEnumerationCheckTest extends AbstractModuleTe
 
     @Override
     protected String getPackageLocation() {
-        return "com/puppycrawl/tools/checkstyle/checks/coding/"
-            + "unnecessarysemicoloninenumeration";
+        return """
+            com/puppycrawl/tools/checkstyle/checks/coding/\
+            unnecessarysemicoloninenumeration""";
     }
 
     @Test

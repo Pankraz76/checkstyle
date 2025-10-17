@@ -67,18 +67,19 @@ public class AvoidEscapedUnicodeCharactersCheck
      * @see <a href="https://en.wiktionary.org/wiki/Appendix:Control_characters">
      *     Appendix:Control characters</a>
      */
-    private static final Pattern UNICODE_CONTROL = Pattern.compile("\\\\u+"
-            + "(00[0-1][\\dA-Fa-f]"
-            + "|00[8-9][\\dA-Fa-f]"
-            + "|00[aA][dD]"
-            + "|034[fF]"
-            + "|070[fF]"
-            + "|180[eE]"
-            + "|200[b-fB-F]"
-            + "|202[a-eA-E]"
-            + "|206[0-4a-fA-F]"
-            + "|[fF]{3}[9a-bA-B]"
-            + "|[fF][eE][fF]{2})");
+    private static final Pattern UNICODE_CONTROL = Pattern.compile("""
+            \\\\u+\
+            (00[0-1][\\dA-Fa-f]\
+            |00[8-9][\\dA-Fa-f]\
+            |00[aA][dD]\
+            |034[fF]\
+            |070[fF]\
+            |180[eE]\
+            |200[b-fB-F]\
+            |202[a-eA-E]\
+            |206[0-4a-fA-F]\
+            |[fF]{3}[9a-bA-B]\
+            |[fF][eE][fF]{2})""");
 
     /**
      * Regular expression for all escaped chars.
@@ -103,76 +104,78 @@ public class AvoidEscapedUnicodeCharactersCheck
     private static final Pattern ESCAPED_BACKSLASH = Pattern.compile("\\\\\\\\");
 
     /** Regular expression for non-printable unicode chars. */
-    private static final Pattern NON_PRINTABLE_CHARS = Pattern.compile("\\\\u0000"
-            + "|\\\\u0009"
-            + "|\\\\u000[bB]"
-            + "|\\\\u000[cC]"
-            + "|\\\\u0020"
-            + "|\\\\u007[fF]"
-            + "|\\\\u0085"
-            + "|\\\\u009[fF]"
-            + "|\\\\u00[aA]0"
-            + "|\\\\u00[aA][dD]"
-            + "|\\\\u04[fF]9"
-            + "|\\\\u05[bB][eE]"
-            + "|\\\\u05[dD]0"
-            + "|\\\\u05[eE][aA]"
-            + "|\\\\u05[fF]3"
-            + "|\\\\u05[fF]4"
-            + "|\\\\u0600"
-            + "|\\\\u0604"
-            + "|\\\\u061[cC]"
-            + "|\\\\u06[dD]{2}"
-            + "|\\\\u06[fF]{2}"
-            + "|\\\\u070[fF]"
-            + "|\\\\u0750"
-            + "|\\\\u077[fF]"
-            + "|\\\\u0[eE]00"
-            + "|\\\\u0[eE]7[fF]"
-            + "|\\\\u1680"
-            + "|\\\\u180[eE]"
-            + "|\\\\u1[eE]00"
-            + "|\\\\u2000"
-            + "|\\\\u2001"
-            + "|\\\\u2002"
-            + "|\\\\u2003"
-            + "|\\\\u2004"
-            + "|\\\\u2005"
-            + "|\\\\u2006"
-            + "|\\\\u2007"
-            + "|\\\\u2008"
-            + "|\\\\u2009"
-            + "|\\\\u200[aA]"
-            + "|\\\\u200[fF]"
-            + "|\\\\u2025"
-            + "|\\\\u2028"
-            + "|\\\\u2029"
-            + "|\\\\u202[fF]"
-            + "|\\\\u205[fF]"
-            + "|\\\\u2064"
-            + "|\\\\u2066"
-            + "|\\\\u2067"
-            + "|\\\\u2068"
-            + "|\\\\u2069"
-            + "|\\\\u206[aA]"
-            + "|\\\\u206[fF]"
-            + "|\\\\u20[aA][fF]"
-            + "|\\\\u2100"
-            + "|\\\\u213[aA]"
-            + "|\\\\u3000"
-            + "|\\\\u[dD]800"
-            + "|\\\\u[fF]8[fF]{2}"
-            + "|\\\\u[fF][bB]50"
-            + "|\\\\u[fF][dD][fF]{2}"
-            + "|\\\\u[fF][eE]70"
-            + "|\\\\u[fF][eE][fF]{2}"
-            + "|\\\\u[fF]{2}0[eE]"
-            + "|\\\\u[fF]{2}61"
-            + "|\\\\u[fF]{2}[dD][cC]"
-            + "|\\\\u[fF]{3}9"
-            + "|\\\\u[fF]{3}[aA]"
-            + "|\\\\u[fF]{3}[bB]"
-            + "|\\\\u[fF]{4}");
+    private static final Pattern NON_PRINTABLE_CHARS = Pattern.compile("""
+            \\\\u0000\
+            |\\\\u0009\
+            |\\\\u000[bB]\
+            |\\\\u000[cC]\
+            |\\\\u0020\
+            |\\\\u007[fF]\
+            |\\\\u0085\
+            |\\\\u009[fF]\
+            |\\\\u00[aA]0\
+            |\\\\u00[aA][dD]\
+            |\\\\u04[fF]9\
+            |\\\\u05[bB][eE]\
+            |\\\\u05[dD]0\
+            |\\\\u05[eE][aA]\
+            |\\\\u05[fF]3\
+            |\\\\u05[fF]4\
+            |\\\\u0600\
+            |\\\\u0604\
+            |\\\\u061[cC]\
+            |\\\\u06[dD]{2}\
+            |\\\\u06[fF]{2}\
+            |\\\\u070[fF]\
+            |\\\\u0750\
+            |\\\\u077[fF]\
+            |\\\\u0[eE]00\
+            |\\\\u0[eE]7[fF]\
+            |\\\\u1680\
+            |\\\\u180[eE]\
+            |\\\\u1[eE]00\
+            |\\\\u2000\
+            |\\\\u2001\
+            |\\\\u2002\
+            |\\\\u2003\
+            |\\\\u2004\
+            |\\\\u2005\
+            |\\\\u2006\
+            |\\\\u2007\
+            |\\\\u2008\
+            |\\\\u2009\
+            |\\\\u200[aA]\
+            |\\\\u200[fF]\
+            |\\\\u2025\
+            |\\\\u2028\
+            |\\\\u2029\
+            |\\\\u202[fF]\
+            |\\\\u205[fF]\
+            |\\\\u2064\
+            |\\\\u2066\
+            |\\\\u2067\
+            |\\\\u2068\
+            |\\\\u2069\
+            |\\\\u206[aA]\
+            |\\\\u206[fF]\
+            |\\\\u20[aA][fF]\
+            |\\\\u2100\
+            |\\\\u213[aA]\
+            |\\\\u3000\
+            |\\\\u[dD]800\
+            |\\\\u[fF]8[fF]{2}\
+            |\\\\u[fF][bB]50\
+            |\\\\u[fF][dD][fF]{2}\
+            |\\\\u[fF][eE]70\
+            |\\\\u[fF][eE][fF]{2}\
+            |\\\\u[fF]{2}0[eE]\
+            |\\\\u[fF]{2}61\
+            |\\\\u[fF]{2}[dD][cC]\
+            |\\\\u[fF]{3}9\
+            |\\\\u[fF]{3}[aA]\
+            |\\\\u[fF]{3}[bB]\
+            |\\\\u[fF]{4}\
+            """);
 
     /** Cpp style comments. */
     private Map<Integer, TextBlock> singlelineComments;

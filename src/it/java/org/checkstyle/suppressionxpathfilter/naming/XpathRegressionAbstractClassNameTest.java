@@ -58,14 +58,17 @@ public class XpathRegressionAbstractClassNameTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAbstractClassNameTop']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAbstractClassNameTop']]"
-                        + "/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAbstractClassNameTop']]"
-                        + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAbstractClassNameTop']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAbstractClassNameTop']]\
+                /MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAbstractClassNameTop']]\
+                /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -87,15 +90,18 @@ public class XpathRegressionAbstractClassNameTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAbstractClassNameInner']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAbstractClassNameInner']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAbstractClassNameInner']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass']]/MODIFIERS/ABSTRACT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAbstractClassNameInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAbstractClassNameInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAbstractClassNameInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass']]/MODIFIERS/ABSTRACT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -117,15 +123,18 @@ public class XpathRegressionAbstractClassNameTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAbstractClassNameNoModifier']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='AbstractMyClass']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAbstractClassNameNoModifier']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='AbstractMyClass']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAbstractClassNameNoModifier']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='AbstractMyClass']]/LITERAL_CLASS"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAbstractClassNameNoModifier']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='AbstractMyClass']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAbstractClassNameNoModifier']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='AbstractMyClass']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAbstractClassNameNoModifier']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='AbstractMyClass']]/LITERAL_CLASS"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

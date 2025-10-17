@@ -60,15 +60,18 @@ public class XpathRegressionDesignForExtensionTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-               + "[@text='InputXpathDesignForExtensionClass']]/OBJBLOCK"
-               + "/METHOD_DEF[./IDENT[@text='calculateValue']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-               + "[@text='InputXpathDesignForExtensionClass']]/OBJBLOCK"
-               + "/METHOD_DEF[./IDENT[@text='calculateValue']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-               + "[@text='InputXpathDesignForExtensionClass']]/OBJBLOCK"
-               + "/METHOD_DEF[./IDENT[@text='calculateValue']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDesignForExtensionClass']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='calculateValue']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDesignForExtensionClass']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='calculateValue']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDesignForExtensionClass']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='calculateValue']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         // Run the verifications
@@ -94,15 +97,18 @@ public class XpathRegressionDesignForExtensionTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-               + "[@text='InputXpathDesignForExtensionWithEnum']]/OBJBLOCK"
-               + "/METHOD_DEF[./IDENT[@text='processData']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-               + "[@text='InputXpathDesignForExtensionWithEnum']]/OBJBLOCK"
-               + "/METHOD_DEF[./IDENT[@text='processData']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-               + "[@text='InputXpathDesignForExtensionWithEnum']]/OBJBLOCK"
-               + "/METHOD_DEF[./IDENT[@text='processData']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDesignForExtensionWithEnum']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='processData']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDesignForExtensionWithEnum']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='processData']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDesignForExtensionWithEnum']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='processData']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         // Run the verifications

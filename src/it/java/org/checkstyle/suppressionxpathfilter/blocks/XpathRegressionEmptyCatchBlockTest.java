@@ -55,10 +55,11 @@ public class XpathRegressionEmptyCatchBlockTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathEmptyCatchBlockOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"
-                + "/SLIST/LITERAL_TRY/LITERAL_CATCH/SLIST"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathEmptyCatchBlockOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]\
+            /SLIST/LITERAL_TRY/LITERAL_CATCH/SLIST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -76,10 +77,11 @@ public class XpathRegressionEmptyCatchBlockTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathEmptyCatchBlockTwo']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]"
-                + "/SLIST/LITERAL_TRY/LITERAL_CATCH/SLIST"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathEmptyCatchBlockTwo']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]\
+            /SLIST/LITERAL_TRY/LITERAL_CATCH/SLIST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

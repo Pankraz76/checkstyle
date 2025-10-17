@@ -53,10 +53,11 @@ public class XpathRegressionEmptyStatementTest extends AbstractXpathTestSupport 
             "5:36: " + getCheckMessage(EmptyStatementCheck.class, EmptyStatementCheck.MSG_KEY),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text='InputXpathEmptyStatementLoops']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                        + "/SLIST/LITERAL_FOR/EMPTY_STAT"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathEmptyStatementLoops']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+                /SLIST/LITERAL_FOR/EMPTY_STAT"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -72,10 +73,11 @@ public class XpathRegressionEmptyStatementTest extends AbstractXpathTestSupport 
             "6:19: " + getCheckMessage(EmptyStatementCheck.class, EmptyStatementCheck.MSG_KEY),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text='InputXpathEmptyStatementConditionals']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                        + "/SLIST/LITERAL_IF/EMPTY_STAT"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathEmptyStatementConditionals']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+                /SLIST/LITERAL_IF/EMPTY_STAT"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

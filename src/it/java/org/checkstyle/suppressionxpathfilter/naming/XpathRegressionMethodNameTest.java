@@ -59,10 +59,11 @@ public class XpathRegressionMethodNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathMethodNameDefault']]"
-                        + "/OBJBLOCK/METHOD_DEF/IDENT[@text='SecondMethod']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathMethodNameDefault']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='SecondMethod']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -84,11 +85,12 @@ public class XpathRegressionMethodNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathMethodNameInner']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]"
-                        + "/OBJBLOCK/METHOD_DEF/IDENT[@text='MyMethod2']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathMethodNameInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='MyMethod2']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -113,9 +115,10 @@ public class XpathRegressionMethodNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/INTERFACE_DEF[./IDENT[@text='Check']]"
-                        + "/OBJBLOCK/METHOD_DEF/IDENT[@text='ThirdMethod']"
+                """
+                /COMPILATION_UNIT\
+                /INTERFACE_DEF[./IDENT[@text='Check']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='ThirdMethod']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

@@ -57,10 +57,11 @@ public class XpathRegressionJavadocContentLocationTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-                + "[./IDENT[@text='InputXpathJavadocContentLocationOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/TYPE/BLOCK_COMMENT_BEGIN"
-                + "[./COMMENT_CONTENT[@text='* Text. // warn\\n     ']]"
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='InputXpathJavadocContentLocationOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/TYPE/BLOCK_COMMENT_BEGIN\
+            [./COMMENT_CONTENT[@text='* Text. // warn\\n     ']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -83,10 +84,11 @@ public class XpathRegressionJavadocContentLocationTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                    + "[@text='InputXpathJavadocContentLocationTwo']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/TYPE/BLOCK_COMMENT_BEGIN"
-                    + "[./COMMENT_CONTENT[@text='*\\n     * Text.\\n     ']]"
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+            [@text='InputXpathJavadocContentLocationTwo']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/TYPE/BLOCK_COMMENT_BEGIN\
+            [./COMMENT_CONTENT[@text='*\\n     * Text.\\n     ']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

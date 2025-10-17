@@ -176,10 +176,11 @@ public class OperatorWrapCheckTest
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                    + "cannot initialize module com.puppycrawl.tools.checkstyle.checks."
-                    + "whitespace.OperatorWrapCheck - "
-                    + "Cannot set property 'option' to 'invalid_option'");
+                .isEqualTo("""
+                    cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                    cannot initialize module com.puppycrawl.tools.checkstyle.checks.\
+                    whitespace.OperatorWrapCheck - \
+                    Cannot set property 'option' to 'invalid_option'""");
         }
     }
 

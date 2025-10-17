@@ -57,21 +57,25 @@ public class XpathRegressionIndentationTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationDefault']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='wrongIntend']]",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIndentationDefault']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='wrongIntend']]""",
 
-             "/COMPILATION_UNIT/CLASS_DEF"
-                     + "[./IDENT[@text='InputXpathIndentationDefault']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='wrongIntend']]/MODIFIERS",
+             """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathIndentationDefault']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='wrongIntend']]/MODIFIERS""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationDefault']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='wrongIntend']]/TYPE",
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathIndentationDefault']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='wrongIntend']]/TYPE""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationDefault']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='wrongIntend']]/TYPE/LITERAL_VOID"
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathIndentationDefault']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='wrongIntend']]/TYPE/LITERAL_VOID"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -100,21 +104,25 @@ public class XpathRegressionIndentationTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationBasicOffset']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIndentationBasicOffset']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationBasicOffset']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS",
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathIndentationBasicOffset']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationBasicOffset']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/TYPE",
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathIndentationBasicOffset']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/TYPE""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationBasicOffset']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/TYPE/LITERAL_VOID"
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathIndentationBasicOffset']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/TYPE/LITERAL_VOID"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -143,15 +151,17 @@ public class XpathRegressionIndentationTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationSwitchCase']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/"
-                    + "CASE_GROUP",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIndentationSwitchCase']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/\
+            CASE_GROUP""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationSwitchCase']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/"
-                    + "CASE_GROUP/LITERAL_CASE"
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathIndentationSwitchCase']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/\
+CASE_GROUP/LITERAL_CASE"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -180,10 +190,11 @@ public class XpathRegressionIndentationTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationLambdaOne"
-                    + "']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF"
-                    + "[./IDENT[@text='getA']]/ASSIGN/LAMBDA/LPAREN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIndentationLambdaOne\
+            ']]/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF\
+            [./IDENT[@text='getA']]/ASSIGN/LAMBDA/LPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -212,10 +223,11 @@ public class XpathRegressionIndentationTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationLambdaTwo']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF["
-                    + "./IDENT[@text='div']]/ASSIGN/LAMBDA/SLIST/LITERAL_RETURN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIndentationLambdaTwo']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[\
+            ./IDENT[@text='div']]/ASSIGN/LAMBDA/SLIST/LITERAL_RETURN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -245,10 +257,11 @@ public class XpathRegressionIndentationTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationIfWithoutCurly']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR/"
-                    + "METHOD_CALL/IDENT[@text='e']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIndentationIfWithoutCurly']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR/\
+            METHOD_CALL/IDENT[@text='e']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -278,10 +291,11 @@ public class XpathRegressionIndentationTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathIndentationElseWithoutCurly']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF/LITERAL_ELSE"
-                    + "/EXPR/METHOD_CALL/IDENT[@text='exp']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIndentationElseWithoutCurly']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF/LITERAL_ELSE\
+            /EXPR/METHOD_CALL/IDENT[@text='exp']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

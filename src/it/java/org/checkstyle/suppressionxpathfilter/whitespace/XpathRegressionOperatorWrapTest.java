@@ -57,14 +57,15 @@ public class XpathRegressionOperatorWrapTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathOperatorWrapNewLine']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                        + "/SLIST/VARIABLE_DEF[./IDENT[@text='x']]"
-                        + "/ASSIGN/EXPR/MINUS[./NUM_INT[@text='4']]"
-                        + "/MINUS[./NUM_INT[@text='3']]"
-                        + "/PLUS[./NUM_INT[@text='1']]"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathOperatorWrapNewLine']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+                /SLIST/VARIABLE_DEF[./IDENT[@text='x']]\
+                /ASSIGN/EXPR/MINUS[./NUM_INT[@text='4']]\
+                /MINUS[./NUM_INT[@text='3']]\
+                /PLUS[./NUM_INT[@text='1']]"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -86,10 +87,11 @@ public class XpathRegressionOperatorWrapTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-             "/COMPILATION_UNIT"
-                + "/CLASS_DEF[./IDENT[@text='InputXpathOperatorWrapPreviousLine']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]"
-                + "/ASSIGN"
+             """
+             /COMPILATION_UNIT\
+             /CLASS_DEF[./IDENT[@text='InputXpathOperatorWrapPreviousLine']]\
+             /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]\
+             /ASSIGN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

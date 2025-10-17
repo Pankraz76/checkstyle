@@ -32,8 +32,9 @@ public class NoWhitespaceBeforeCaseDefaultColonCheckTest
 
     @Override
     protected String getPackageLocation() {
-        return "com/puppycrawl/tools/checkstyle/checks/whitespace"
-                + "/nowhitespacebeforecasedefaultcolon";
+        return """
+                com/puppycrawl/tools/checkstyle/checks/whitespace\
+                /nowhitespacebeforecasedefaultcolon""";
     }
 
     @Test

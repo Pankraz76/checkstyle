@@ -125,8 +125,9 @@ public abstract class AbstractHeaderCheck extends AbstractFileSetCheck
     private void checkHeaderNotInitialized() {
         if (!readerLines.isEmpty()) {
             throw new IllegalArgumentException(
-                    "header has already been set - "
-                    + "set either header or headerFile, not both");
+                    """
+                    header has already been set - \
+                    set either header or headerFile, not both""");
         }
     }
 

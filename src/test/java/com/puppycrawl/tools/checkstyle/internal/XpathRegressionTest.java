@@ -158,8 +158,9 @@ public class XpathRegressionTest extends AbstractModuleTestSupport {
         final Set<String> abstractJavadocCheckSimpleNames =
                 CheckUtil.getSimpleNames(abstractJavadocCheckNames);
         abstractJavadocCheckSimpleNames.removeAll(INTERNAL_MODULES);
-        assertWithMessage("INCOMPATIBLE_JAVADOC_CHECK_NAMES should contains all descendants "
-                    + "of AbstractJavadocCheck")
+        assertWithMessage("""
+                    INCOMPATIBLE_JAVADOC_CHECK_NAMES should contains all descendants \
+                    of AbstractJavadocCheck""")
             .that(abstractJavadocCheckSimpleNames)
             .isEqualTo(INCOMPATIBLE_JAVADOC_CHECK_NAMES);
     }

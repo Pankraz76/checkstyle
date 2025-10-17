@@ -57,10 +57,11 @@ public class XpathRegressionSeparatorWrapTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathSeparatorWrapClass']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]"
-                        + "/PARAMETERS/COMMA"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathSeparatorWrapClass']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]\
+                /PARAMETERS/COMMA"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,11 +82,12 @@ public class XpathRegressionSeparatorWrapTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/INTERFACE_DEF"
-                        + "[./IDENT[@text='InputXpathSeparatorWrapInterface']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod2']]"
-                        + "/PARAMETERS/PARAMETER_DEF"
-                        + "[./IDENT[@text='parameters']]/ELLIPSIS"
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF\
+                [./IDENT[@text='InputXpathSeparatorWrapInterface']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod2']]\
+                /PARAMETERS/PARAMETER_DEF\
+                [./IDENT[@text='parameters']]/ELLIPSIS"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -105,16 +107,18 @@ public class XpathRegressionSeparatorWrapTest extends AbstractXpathTestSupport {
                     SeparatorWrapCheck.MSG_LINE_PREVIOUS, "."),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                        + "'InputXpathSeparatorWrapMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method1']]/SLIST"
-                        + "/VARIABLE_DEF[./IDENT[@text='stringLength']]"
-                        + "/ASSIGN/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                        + "'InputXpathSeparatorWrapMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method1']]/SLIST"
-                        + "/VARIABLE_DEF[./IDENT[@text='stringLength']]/ASSIGN"
-                        + "/EXPR/DOT[./IDENT[@text='stringArray']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+                'InputXpathSeparatorWrapMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method1']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='stringLength']]\
+                /ASSIGN/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+                'InputXpathSeparatorWrapMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method1']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='stringLength']]/ASSIGN\
+                /EXPR/DOT[./IDENT[@text='stringArray']]"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

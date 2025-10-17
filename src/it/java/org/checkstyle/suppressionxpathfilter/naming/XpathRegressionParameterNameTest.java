@@ -59,11 +59,12 @@ public class XpathRegressionParameterNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathParameterNameDefaultPattern']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method1']]"
-                        + "/PARAMETERS/PARAMETER_DEF/IDENT[@text='v_1']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathParameterNameDefaultPattern']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method1']]\
+                /PARAMETERS/PARAMETER_DEF/IDENT[@text='v_1']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -85,11 +86,12 @@ public class XpathRegressionParameterNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathParameterNameDifferentPattern']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method2']]"
-                        + "/PARAMETERS/PARAMETER_DEF/IDENT[@text='V2']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathParameterNameDifferentPattern']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method2']]\
+                /PARAMETERS/PARAMETER_DEF/IDENT[@text='V2']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -111,11 +113,12 @@ public class XpathRegressionParameterNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathParameterNameIgnoreOverridden']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method2']]"
-                        + "/PARAMETERS/PARAMETER_DEF/IDENT[@text='V2']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathParameterNameIgnoreOverridden']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method2']]\
+                /PARAMETERS/PARAMETER_DEF/IDENT[@text='V2']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -138,11 +141,12 @@ public class XpathRegressionParameterNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathParameterNameAccessModifier']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method2']]"
-                        + "/PARAMETERS/PARAMETER_DEF/IDENT[@text='b']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathParameterNameAccessModifier']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='method2']]\
+                /PARAMETERS/PARAMETER_DEF/IDENT[@text='b']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

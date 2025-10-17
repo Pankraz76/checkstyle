@@ -67,7 +67,9 @@ public class IllegalTokenTextCheckTest
             throws Exception {
 
         final String[] expected = {
-            "34:28: " + "My custom message",
+            """
+            34:28: \
+            My custom message""",
         };
         verifyWithInlineConfigParser(
                 getPath("InputIllegalTokenTextCheckCustomMessageInStringLiteral.java"), expected);
@@ -162,8 +164,9 @@ public class IllegalTokenTextCheckTest
     @Test
     public void testAcceptableTokensMakeSense() {
         final int expectedTokenTypesTotalNumber = 189;
-        assertWithMessage("Total number of TokenTypes has changed, acceptable tokens in"
-                + " IllegalTokenTextCheck need to be reconsidered.")
+        assertWithMessage("""
+                Total number of TokenTypes has changed, acceptable tokens in\
+                 IllegalTokenTextCheck need to be reconsidered.""")
             .that(TokenUtil.getTokenTypesTotalNumber())
             .isEqualTo(expectedTokenTypesTotalNumber);
 

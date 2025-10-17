@@ -57,17 +57,20 @@ public class XpathRegressionJavaNCSSTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavaNCSSOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavaNCSSOne']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavaNCSSOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathJavaNCSSOne']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavaNCSSOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathJavaNCSSOne']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -89,15 +92,18 @@ public class XpathRegressionJavaNCSSTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavaNCSSTwo']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathJavaNCSSTwo']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavaNCSSTwo']]/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathJavaNCSSTwo']]/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavaNCSSTwo']]"
-                + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathJavaNCSSTwo']]\
+/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

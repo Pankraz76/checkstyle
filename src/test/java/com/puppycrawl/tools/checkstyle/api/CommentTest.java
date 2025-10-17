@@ -47,8 +47,9 @@ public class CommentTest {
                 .isEqualTo(3);
         assertWithMessage("invalid string")
                 .that(comment.toString())
-                .isEqualTo("Comment[text=[test], startLineNo=2,"
-                        + " endLineNo=2, startColNo=1, endColNo=3]");
+                .isEqualTo("""
+                        Comment[text=[test], startLineNo=2,\
+                         endLineNo=2, startColNo=1, endColNo=3]""");
     }
 
     @Test

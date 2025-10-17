@@ -78,19 +78,22 @@ public class XpathRegressionNoLineWrapTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathNoLineWrapTokensMethodDef']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathNoLineWrapTokensMethodDef']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathNoLineWrapTokensMethodDef']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]"
-                    + "/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathNoLineWrapTokensMethodDef']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]\
+/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathNoLineWrapTokensMethodDef']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]"
-                    + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathNoLineWrapTokensMethodDef']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]\
+/MODIFIERS/LITERAL_PUBLIC"""
 
                 );
 
@@ -113,18 +116,21 @@ public class XpathRegressionNoLineWrapTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]"
-                    + "/OBJBLOCK/CTOR_DEF[./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]"
-                    + "/OBJBLOCK/CTOR_DEF[./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]"
-                    + "/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]\
+/OBJBLOCK/CTOR_DEF[./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]\
+/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]"
-                    + "/OBJBLOCK/CTOR_DEF/IDENT[@text='InputXpathNoLineWrapTokensCtorDef']"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathNoLineWrapTokensCtorDef']]\
+/OBJBLOCK/CTOR_DEF/IDENT[@text='InputXpathNoLineWrapTokensCtorDef']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

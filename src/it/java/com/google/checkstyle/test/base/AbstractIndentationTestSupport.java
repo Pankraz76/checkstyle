@@ -84,8 +84,9 @@ public abstract class AbstractIndentationTestSupport extends AbstractGoogleModul
 
                     if (actualIndent != indentInComment) {
                         throw new IllegalStateException(String.format(Locale.ROOT,
-                                        "File \"%1$s\" has incorrect indentation in comment."
-                                                        + "Line %2$d: comment:%3$d, actual:%4$d.",
+                                        """
+                                        File "%1$s" has incorrect indentation in comment.\
+                                        Line %2$d: comment:%3$d, actual:%4$d.""",
                                         aFileName,
                                         lineNumber,
                                         indentInComment,
@@ -105,8 +106,9 @@ public abstract class AbstractIndentationTestSupport extends AbstractGoogleModul
                 }
                 else if (NONEMPTY_LINE_REGEX.matcher(line).matches()) {
                     throw new IllegalStateException(String.format(Locale.ROOT,
-                                    "File \"%1$s\" has no indentation comment or its format "
-                                                    + "malformed. Error on line: %2$d(%3$s)",
+                                    """
+                                    File "%1$s" has no indentation comment or its format \
+                                    malformed. Error on line: %2$d(%3$s)""",
                                     aFileName,
                                     lineNumber,
                                     line));

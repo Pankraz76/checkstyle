@@ -127,8 +127,9 @@ public class RegexpCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testIllegalFailAboveErrorLimit() throws Exception {
-        final String error = "The error limit has been exceeded, "
-                + "the check is aborting, there may be more unreported errors.";
+        final String error = """
+                The error limit has been exceeded, \
+                the check is aborting, there may be more unreported errors.""";
         final String[] expected = {
             "15: " + getCheckMessage(MSG_ILLEGAL_REGEXP, "^import"),
             "16: " + getCheckMessage(MSG_ILLEGAL_REGEXP, error + "^import"),

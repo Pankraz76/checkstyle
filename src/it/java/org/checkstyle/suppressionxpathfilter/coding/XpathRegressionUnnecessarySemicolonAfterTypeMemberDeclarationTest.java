@@ -42,8 +42,9 @@ public class XpathRegressionUnnecessarySemicolonAfterTypeMemberDeclarationTest
 
     @Override
     protected String getPackageLocation() {
-        return "org/checkstyle/suppressionxpathfilter/coding/"
-            + "unnecessarysemicolonaftertypememberdeclaration";
+        return """
+            org/checkstyle/suppressionxpathfilter/coding/\
+            unnecessarysemicolonaftertypememberdeclaration""";
     }
 
     @Test
@@ -57,10 +58,11 @@ public class XpathRegressionUnnecessarySemicolonAfterTypeMemberDeclarationTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text="
-                + "'InputXpathUnnecessarySemicolonAfterTypeMemberDeclarationDefault']]"
-                + "/OBJBLOCK/SEMI"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text=\
+            'InputXpathUnnecessarySemicolonAfterTypeMemberDeclarationDefault']]\
+            /OBJBLOCK/SEMI"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -69,8 +71,9 @@ public class XpathRegressionUnnecessarySemicolonAfterTypeMemberDeclarationTest
     @Test
     public void testTokens() throws Exception {
         final File fileToProcess = new File(getPath(
-            "InputXpathUnnecessarySemicolonAfterTypeMemberDeclarationTokens"
-                + ".java"));
+            """
+            InputXpathUnnecessarySemicolonAfterTypeMemberDeclarationTokens\
+            .java"""));
         final DefaultConfiguration moduleConfig = createModuleConfig(CLASS);
         moduleConfig.addProperty("tokens", "METHOD_DEF");
 
@@ -80,10 +83,11 @@ public class XpathRegressionUnnecessarySemicolonAfterTypeMemberDeclarationTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[."
-                + "/IDENT[@text='InputXpathUnnecessarySemicolonAfterTypeMember"
-                    + "DeclarationTokens']]"
-                + "/OBJBLOCK/SEMI[1]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[.\
+            /IDENT[@text='InputXpathUnnecessarySemicolonAfterTypeMember\
+            DeclarationTokens']]\
+            /OBJBLOCK/SEMI[1]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

@@ -77,8 +77,9 @@ public class XpathFileGeneratorAstFilterTest {
 
         assertWithMessage("expected xpath")
             .that(XpathFileGeneratorAstFilter.findCorrespondingXpathQuery(auditEvent))
-            .isEqualTo("/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFileGeneratorAstFilter']]/OBJBLOCK/LCURLY");
+            .isEqualTo("""
+                    /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                    [@text='InputXpathFileGeneratorAstFilter']]/OBJBLOCK/LCURLY""");
     }
 
     @Test
@@ -123,9 +124,10 @@ public class XpathFileGeneratorAstFilterTest {
 
         assertWithMessage("expected xpath")
             .that(XpathFileGeneratorAstFilter.findCorrespondingXpathQuery(auditEvent))
-            .isEqualTo("/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text='InputXpathFileGeneratorAstFilter']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='tabMethod']]/SLIST/LITERAL_RETURN");
+            .isEqualTo("""
+                        /COMPILATION_UNIT\
+                        /CLASS_DEF[./IDENT[@text='InputXpathFileGeneratorAstFilter']]\
+                        /OBJBLOCK/METHOD_DEF[./IDENT[@text='tabMethod']]/SLIST/LITERAL_RETURN""");
     }
 
     /**

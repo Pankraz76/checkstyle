@@ -58,12 +58,14 @@ public class XpathRegressionEmptyForIteratorPadTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathEmptyForIteratorPadFollowed']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/FOR_ITERATOR",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathEmptyForIteratorPadFollowed']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/RPAREN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathEmptyForIteratorPadFollowed']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/FOR_ITERATOR""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathEmptyForIteratorPadFollowed']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/RPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -85,12 +87,14 @@ public class XpathRegressionEmptyForIteratorPadTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathEmptyForIteratorPadNotFollowed']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/FOR_ITERATOR",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathEmptyForIteratorPadNotFollowed']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/RPAREN"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathEmptyForIteratorPadNotFollowed']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/FOR_ITERATOR""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathEmptyForIteratorPadNotFollowed']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='method']]/SLIST/LITERAL_FOR/RPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

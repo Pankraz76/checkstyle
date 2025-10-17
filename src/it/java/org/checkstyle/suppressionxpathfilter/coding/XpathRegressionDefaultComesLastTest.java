@@ -58,14 +58,16 @@ public class XpathRegressionDefaultComesLastTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathDefaultComesLastNonEmptyCase']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP["
-                + "./SLIST/EXPR/ASSIGN/IDENT[@text='id']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathDefaultComesLastNonEmptyCase']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP"
-                + "/LITERAL_DEFAULT"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDefaultComesLastNonEmptyCase']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP[\
+            ./SLIST/EXPR/ASSIGN/IDENT[@text='id']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDefaultComesLastNonEmptyCase']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP\
+            /LITERAL_DEFAULT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -87,10 +89,11 @@ public class XpathRegressionDefaultComesLastTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathDefaultComesLastEmptyCase']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP"
-                + "/LITERAL_DEFAULT"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDefaultComesLastEmptyCase']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP\
+            /LITERAL_DEFAULT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

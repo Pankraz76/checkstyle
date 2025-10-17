@@ -27,8 +27,9 @@ public class MethodsAndConstructorsAnnotationsTest extends AbstractGoogleModuleT
 
     @Override
     protected String getPackageLocation() {
-        return "com/google/checkstyle/test/chapter4formatting/"
-                    + "rule4853methodsandconstructorsannotations";
+        return """
+                    com/google/checkstyle/test/chapter4formatting/\
+                    rule4853methodsandconstructorsannotations""";
     }
 
     @Test

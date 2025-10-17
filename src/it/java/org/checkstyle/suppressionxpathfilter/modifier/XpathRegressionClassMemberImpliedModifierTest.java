@@ -57,15 +57,18 @@ public class XpathRegressionClassMemberImpliedModifierTest extends AbstractXpath
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathClassMemberImpliedModifierInterface']]"
-                        + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Foo']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathClassMemberImpliedModifierInterface']]"
-                        + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Foo']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathClassMemberImpliedModifierInterface']]"
-                        + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Foo']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathClassMemberImpliedModifierInterface']]\
+                /OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Foo']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathClassMemberImpliedModifierInterface']]\
+                /OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Foo']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathClassMemberImpliedModifierInterface']]\
+                /OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Foo']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -86,15 +89,18 @@ public class XpathRegressionClassMemberImpliedModifierTest extends AbstractXpath
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathClassMemberImpliedModifierEnum']]"
-                    + "/OBJBLOCK/ENUM_DEF[./IDENT[@text='Count']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathClassMemberImpliedModifierEnum']]"
-                    + "/OBJBLOCK/ENUM_DEF[./IDENT[@text='Count']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathClassMemberImpliedModifierEnum']]"
-                    + "/OBJBLOCK/ENUM_DEF[./IDENT[@text='Count']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathClassMemberImpliedModifierEnum']]\
+            /OBJBLOCK/ENUM_DEF[./IDENT[@text='Count']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathClassMemberImpliedModifierEnum']]\
+            /OBJBLOCK/ENUM_DEF[./IDENT[@text='Count']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathClassMemberImpliedModifierEnum']]\
+            /OBJBLOCK/ENUM_DEF[./IDENT[@text='Count']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

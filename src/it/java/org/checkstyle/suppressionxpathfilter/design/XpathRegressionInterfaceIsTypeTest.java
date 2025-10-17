@@ -57,13 +57,16 @@ public class XpathRegressionInterfaceIsTypeTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT["
-                    + "@text='InputXpathInterfaceIsTypeAllowMarker']]",
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT["
-                    + "@text='InputXpathInterfaceIsTypeAllowMarker']]/MODIFIERS",
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT["
-                    + "@text='InputXpathInterfaceIsTypeAllowMarker']]"
-                    + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT[\
+                @text='InputXpathInterfaceIsTypeAllowMarker']]""",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT[\
+                @text='InputXpathInterfaceIsTypeAllowMarker']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT[\
+                @text='InputXpathInterfaceIsTypeAllowMarker']]\
+                /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -86,13 +89,16 @@ public class XpathRegressionInterfaceIsTypeTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT["
-                    + "@text='InputXpathInterfaceIsType']]",
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT["
-                    + "@text='InputXpathInterfaceIsType']]/MODIFIERS",
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT["
-                    + "@text='InputXpathInterfaceIsType']]"
-                    + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT[\
+                @text='InputXpathInterfaceIsType']]""",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT[\
+                @text='InputXpathInterfaceIsType']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT[\
+                @text='InputXpathInterfaceIsType']]\
+                /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

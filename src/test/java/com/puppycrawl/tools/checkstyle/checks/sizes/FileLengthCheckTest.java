@@ -79,9 +79,10 @@ public class FileLengthCheckTest
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.checks."
-                    + "sizes.FileLengthCheck - "
-                    + "illegal value 'abc' for property 'max'");
+                .isEqualTo("""
+                    cannot initialize module com.puppycrawl.tools.checkstyle.checks.\
+                    sizes.FileLengthCheck - \
+                    illegal value 'abc' for property 'max'""");
         }
     }
 

@@ -57,12 +57,15 @@ public class XpathRegressionClassFanOutComplexityTest extends AbstractXpathTestS
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF"
-            + "[./IDENT[@text='InputXpathClassFanOutComplexityClass']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-            + "[./IDENT[@text='InputXpathClassFanOutComplexityClass']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-            + "[./IDENT[@text='InputXpathClassFanOutComplexityClass']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathClassFanOutComplexityClass']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathClassFanOutComplexityClass']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathClassFanOutComplexityClass']]/MODIFIERS/LITERAL_PUBLIC"""
 
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -83,12 +86,15 @@ public class XpathRegressionClassFanOutComplexityTest extends AbstractXpathTestS
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-            + "[./IDENT[@text='BadInterface']]",
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-            + "[./IDENT[@text='BadInterface']]/MODIFIERS",
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-            + "[./IDENT[@text='BadInterface']]/LITERAL_INTERFACE"
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='BadInterface']]""",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='BadInterface']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='BadInterface']]/LITERAL_INTERFACE"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -108,12 +114,15 @@ public class XpathRegressionClassFanOutComplexityTest extends AbstractXpathTestS
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/ENUM_DEF"
-            + "[./IDENT[@text='MyEnum']]",
-            "/COMPILATION_UNIT/ENUM_DEF"
-            + "[./IDENT[@text='MyEnum']]/MODIFIERS",
-            "/COMPILATION_UNIT/ENUM_DEF"
-            + "[./IDENT[@text='MyEnum']]/ENUM"
+            """
+            /COMPILATION_UNIT/ENUM_DEF\
+            [./IDENT[@text='MyEnum']]""",
+            """
+            /COMPILATION_UNIT/ENUM_DEF\
+            [./IDENT[@text='MyEnum']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/ENUM_DEF\
+            [./IDENT[@text='MyEnum']]/ENUM"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }

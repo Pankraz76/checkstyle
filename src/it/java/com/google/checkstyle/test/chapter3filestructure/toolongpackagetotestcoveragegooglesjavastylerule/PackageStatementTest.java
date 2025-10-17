@@ -27,8 +27,9 @@ public class PackageStatementTest extends AbstractGoogleModuleTestSupport {
 
     @Override
     protected String getPackageLocation() {
-        return "com/google/checkstyle/test/chapter3filestructure/"
-                + "toolongpackagetotestcoveragegooglesjavastylerule";
+        return """
+                com/google/checkstyle/test/chapter3filestructure/\
+                toolongpackagetotestcoveragegooglesjavastylerule""";
     }
 
     @Test

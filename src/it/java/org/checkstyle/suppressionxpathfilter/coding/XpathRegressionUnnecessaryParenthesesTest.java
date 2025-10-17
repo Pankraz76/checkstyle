@@ -57,15 +57,17 @@ public class XpathRegressionUnnecessaryParenthesesTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesClassFields']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]"
-                + "/ASSIGN/EXPR",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnnecessaryParenthesesClassFields']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]\
+            /ASSIGN/EXPR""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesClassFields']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]"
-                + "/ASSIGN/EXPR/LPAREN"
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathUnnecessaryParenthesesClassFields']]\
+/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]\
+/ASSIGN/EXPR/LPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -86,15 +88,17 @@ public class XpathRegressionUnnecessaryParenthesesTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesConditionals']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/LITERAL_IF/EXPR",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnnecessaryParenthesesConditionals']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+            /SLIST/LITERAL_IF/EXPR""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesConditionals']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/LITERAL_IF/EXPR/LPAREN"
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathUnnecessaryParenthesesConditionals']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+/SLIST/LITERAL_IF/EXPR/LPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -115,10 +119,11 @@ public class XpathRegressionUnnecessaryParenthesesTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesLambdas']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='predicate']]"
-                + "/ASSIGN/LAMBDA"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnnecessaryParenthesesLambdas']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='predicate']]\
+            /ASSIGN/LAMBDA"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -139,11 +144,12 @@ public class XpathRegressionUnnecessaryParenthesesTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesLocalVariables']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='b']]"
-                + "/ASSIGN/EXPR/PLUS/IDENT[@text='a']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnnecessaryParenthesesLocalVariables']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='b']]\
+            /ASSIGN/EXPR/PLUS/IDENT[@text='a']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -164,11 +170,12 @@ public class XpathRegressionUnnecessaryParenthesesTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesStringLiteral']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='str']]"
-                + "/ASSIGN/EXPR/PLUS/STRING_LITERAL[@text='Checkstyle']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnnecessaryParenthesesStringLiteral']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='str']]\
+            /ASSIGN/EXPR/PLUS/STRING_LITERAL[@text='Checkstyle']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -189,11 +196,12 @@ public class XpathRegressionUnnecessaryParenthesesTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesMethodDef']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='a']]"
-                + "/ASSIGN/EXPR/PLUS/NUM_INT[@text='10']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnnecessaryParenthesesMethodDef']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='a']]\
+            /ASSIGN/EXPR/PLUS/NUM_INT[@text='10']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -214,15 +222,17 @@ public class XpathRegressionUnnecessaryParenthesesTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesReturnExpr']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/LITERAL_RETURN/EXPR",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnnecessaryParenthesesReturnExpr']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+            /SLIST/LITERAL_RETURN/EXPR""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesReturnExpr']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/LITERAL_RETURN/EXPR/LPAREN"
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathUnnecessaryParenthesesReturnExpr']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+/SLIST/LITERAL_RETURN/EXPR/LPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -243,17 +253,19 @@ public class XpathRegressionUnnecessaryParenthesesTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesExprWithMethodParam']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='c']]"
-                + "/ASSIGN/EXPR",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnnecessaryParenthesesExprWithMethodParam']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='c']]\
+            /ASSIGN/EXPR""",
 
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnnecessaryParenthesesExprWithMethodParam']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='c']]"
-                + "/ASSIGN/EXPR/LPAREN"
+            """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathUnnecessaryParenthesesExprWithMethodParam']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+/SLIST/VARIABLE_DEF[./IDENT[@text='c']]\
+/ASSIGN/EXPR/LPAREN"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

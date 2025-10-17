@@ -136,23 +136,27 @@ public class CommitValidationTest {
             .that(validateCommitMessage("minor: Test. Test"))
             .isEqualTo(0);
         assertWithMessage("should accept commit message with less than or equal to 200 characters")
-            .that(validateCommitMessage("minor: Test Test Test Test Test"
-                + "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
-                + "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
-                + "Test Test Test Test Test Test Test  Test Test Test Test Test Test"))
+            .that(validateCommitMessage("""
+                minor: Test Test Test Test Test\
+                Test Test Test Test Test Test Test Test Test Test Test Test Test Test \
+                Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test \
+                Test Test Test Test Test Test Test  Test Test Test Test Test Test"""))
             .isEqualTo(4);
     }
 
     @Test
     public void testReleaseCommitMessage() {
         assertWithMessage("should accept release commit message for preparing release")
-                .that(validateCommitMessage("[maven-release-plugin] "
-                        + "prepare release checkstyle-10.8.0"))
+                .that(validateCommitMessage("""
+                        [maven-release-plugin] \
+                        prepare release checkstyle-10.8.0"""))
                 .isEqualTo(0);
-        assertWithMessage("should accept release commit message for preparing for "
-                + "next development iteration")
-                .that(validateCommitMessage("[maven-release-plugin] prepare for next "
-                        + "development iteration"))
+        assertWithMessage("""
+                should accept release commit message for preparing for \
+                next development iteration""")
+                .that(validateCommitMessage("""
+                        [maven-release-plugin] prepare for next \
+                        development iteration"""))
                 .isEqualTo(0);
     }
 
@@ -169,8 +173,10 @@ public class CommitValidationTest {
                 .that(validateCommitMessage("Revert \"doc: release notes for 10.8.0\""))
                 .isEqualTo(0);
         assertWithMessage("should not accept revert commit message with invalid prefix")
-                .that(validateCommitMessage("This reverts commit "
-                        + "ff873c3c22161656794c969bb28a8cb09595f.\n"))
+                .that(validateCommitMessage("""
+                        This reverts commit \
+                        ff873c3c22161656794c969bb28a8cb09595f.
+                        """))
                 .isEqualTo(1);
     }
 
@@ -178,8 +184,9 @@ public class CommitValidationTest {
     public void testSupplementalPrefix() {
         assertWithMessage("should accept commit message with supplemental prefix")
                 .that(0)
-                .isEqualTo(validateCommitMessage("supplemental: Test message for supplemental for"
-                        + " Issue #XXXX"));
+                .isEqualTo(validateCommitMessage("""
+                        supplemental: Test message for supplemental for\
+                         Issue #XXXX"""));
         assertWithMessage("should not accept commit message with periods on end")
                 .that(3)
                 .isEqualTo(validateCommitMessage("supplemental: Test. Test."));

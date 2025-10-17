@@ -57,12 +57,14 @@ public class XpathRegressionSimplifyBooleanExpressionTest extends AbstractXpathT
         };
 
         final List<String> expectedXpathQuery = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSimplifyBooleanExpressionSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR",
-                 "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSimplifyBooleanExpressionSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR/LNOT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSimplifyBooleanExpressionSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR""",
+                 """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSimplifyBooleanExpressionSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR/LNOT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQuery);
@@ -82,14 +84,16 @@ public class XpathRegressionSimplifyBooleanExpressionTest extends AbstractXpathT
         };
 
         final List<String> expectedXpathQuery = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSimplifyBooleanExpressionAnonymous']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF"
-                + "[./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSimplifyBooleanExpressionAnonymous']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF"
-                + "[./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='a']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSimplifyBooleanExpressionAnonymous']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF\
+                [./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSimplifyBooleanExpressionAnonymous']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF\
+                [./IDENT[@text='test']]/SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='a']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQuery);
@@ -109,10 +113,11 @@ public class XpathRegressionSimplifyBooleanExpressionTest extends AbstractXpathT
         };
 
         final List<String> expectedXpathQuery = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSimplifyBooleanExpressionInterface']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF[./IDENT"
-                + "[@text='test']]/SLIST/LITERAL_IF/EXPR/LNOT/NOT_EQUAL[./IDENT[@text='b']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSimplifyBooleanExpressionInterface']]\
+                /OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF[./IDENT\
+                [@text='test']]/SLIST/LITERAL_IF/EXPR/LNOT/NOT_EQUAL[./IDENT[@text='b']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQuery);

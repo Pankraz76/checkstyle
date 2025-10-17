@@ -58,9 +58,10 @@ public class XpathRegressionVisibilityModifierTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathVisibilityModifierDefault']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='field']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathVisibilityModifierDefault']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='field']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -81,9 +82,10 @@ public class XpathRegressionVisibilityModifierTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathVisibilityModifierAnnotation']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='annotatedString']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathVisibilityModifierAnnotation']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='annotatedString']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -102,11 +104,12 @@ public class XpathRegressionVisibilityModifierTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathVisibilityModifierAnonymous']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='runnable']]"
-                        + "/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='field1']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathVisibilityModifierAnonymous']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='runnable']]\
+                /ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='field1']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -125,10 +128,11 @@ public class XpathRegressionVisibilityModifierTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathVisibilityModifierInner']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/"
-                        + "VARIABLE_DEF/IDENT[@text='field2']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathVisibilityModifierInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/\
+                VARIABLE_DEF/IDENT[@text='field2']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

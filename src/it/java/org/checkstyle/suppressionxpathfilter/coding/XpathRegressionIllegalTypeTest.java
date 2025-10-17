@@ -55,11 +55,12 @@ public class XpathRegressionIllegalTypeTest extends AbstractXpathTestSupport {
                                       IllegalTypeCheck.MSG_KEY, "java.util.HashSet"),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT"
-                + "/CLASS_DEF[./IDENT[@text='InputXpathIllegalTypeOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='typeParam']]/TYPE_PARAMETERS/TYPE_PARAMETER"
-                + "[./IDENT[@text='T']]/TYPE_UPPER_BOUNDS/DOT"
-                + "[./IDENT[@text='HashSet']]/DOT/IDENT[@text='java']"
+            """
+            /COMPILATION_UNIT\
+            /CLASS_DEF[./IDENT[@text='InputXpathIllegalTypeOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='typeParam']]/TYPE_PARAMETERS/TYPE_PARAMETER\
+            [./IDENT[@text='T']]/TYPE_UPPER_BOUNDS/DOT\
+            [./IDENT[@text='HashSet']]/DOT/IDENT[@text='java']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -80,9 +81,10 @@ public class XpathRegressionIllegalTypeTest extends AbstractXpathTestSupport {
                                       IllegalTypeCheck.MSG_KEY, "Boolean"),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathIllegalTypeTwo']"
-                + "]/OBJBLOCK/METHOD_DEF[./IDENT[@text='typeParam']]/TYPE_PARAMETERS/"
-                + "TYPE_PARAMETER[./IDENT[@text='T']]/TYPE_UPPER_BOUNDS/IDENT[@text='Boolean']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathIllegalTypeTwo']\
+            ]/OBJBLOCK/METHOD_DEF[./IDENT[@text='typeParam']]/TYPE_PARAMETERS/\
+            TYPE_PARAMETER[./IDENT[@text='T']]/TYPE_UPPER_BOUNDS/IDENT[@text='Boolean']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

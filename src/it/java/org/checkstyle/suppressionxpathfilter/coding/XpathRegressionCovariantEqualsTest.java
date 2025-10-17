@@ -57,9 +57,10 @@ public class XpathRegressionCovariantEqualsTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathCovariantEqualsInClass']]"
-                + "/OBJBLOCK/METHOD_DEF/IDENT[@text='equals']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathCovariantEqualsInClass']]\
+            /OBJBLOCK/METHOD_DEF/IDENT[@text='equals']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -80,9 +81,10 @@ public class XpathRegressionCovariantEqualsTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/ENUM_DEF"
-                + "[./IDENT[@text='InputXpathCovariantEqualsInEnum']]"
-                        + "/OBJBLOCK/METHOD_DEF/IDENT[@text='equals']");
+                """
+                /COMPILATION_UNIT/ENUM_DEF\
+                [./IDENT[@text='InputXpathCovariantEqualsInEnum']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='equals']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -103,9 +105,10 @@ public class XpathRegressionCovariantEqualsTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/RECORD_DEF"
-                + "[./IDENT[@text='InputXpathCovariantEqualsInRecord']]"
-                        + "/OBJBLOCK/METHOD_DEF/IDENT[@text='equals']");
+                """
+                /COMPILATION_UNIT/RECORD_DEF\
+                [./IDENT[@text='InputXpathCovariantEqualsInRecord']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='equals']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

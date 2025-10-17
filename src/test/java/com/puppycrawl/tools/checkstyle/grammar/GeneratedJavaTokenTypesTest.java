@@ -755,9 +755,10 @@ public class GeneratedJavaTokenTypesTest {
 
         // Read JavaDoc before changing count below, the count should be equal to
         // the number of the last token asserted above.
-        assertWithMessage("all tokens must be added to list in"
-                        + " 'GeneratedJavaTokenTypesTest' and verified"
-                        + " that their old numbering didn't change")
+        assertWithMessage("""
+                        all tokens must be added to list in\
+                         'GeneratedJavaTokenTypesTest' and verified\
+                         that their old numbering didn't change""")
             .that(tokenCount)
             .isEqualTo(225);
     }
@@ -781,8 +782,9 @@ public class GeneratedJavaTokenTypesTest {
         final int lastIndexOfSublist =
                 Collections.lastIndexOfSubList(allTokenNames, INTERNAL_TOKENS);
         final int expectedNumberOfUsedTokens = allTokenNames.size() - INTERNAL_TOKENS.size();
-        final String message = "New tokens must be added to the 'tokens' block in the"
-                + " lexer grammar.";
+        final String message = """
+                New tokens must be added to the 'tokens' block in the\
+                 lexer grammar.""";
 
         assertWithMessage(message)
                 .that(expectedNumberOfUsedTokens)

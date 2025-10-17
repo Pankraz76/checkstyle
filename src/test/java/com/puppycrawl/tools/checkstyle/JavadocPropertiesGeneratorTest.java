@@ -45,13 +45,14 @@ public class JavadocPropertiesGeneratorTest extends AbstractPathTestSupport {
 
     private static final String EOL = System.lineSeparator();
     private static final String USAGE = String.format(Locale.ROOT,
-            "Usage: java com.puppycrawl.tools.checkstyle.JavadocPropertiesGenerator [-hV]%n"
-                    + "       --destfile=<outputFile> <inputFile>%n"
-                    + "      <inputFile>   The input file.%n"
-                    + "      --destfile=<outputFile>%n"
-                    + "                    The output file.%n"
-                    + "  -h, --help        Show this help message and exit.%n"
-                    + "  -V, --version     Print version information and exit.%n");
+            """
+            Usage: java com.puppycrawl.tools.checkstyle.JavadocPropertiesGenerator [-hV]%n\
+                   --destfile=<outputFile> <inputFile>%n\
+                  <inputFile>   The input file.%n\
+                  --destfile=<outputFile>%n\
+                                The output file.%n\
+              -h, --help        Show this help message and exit.%n\
+              -V, --version     Print version information and exit.%n""");
     private static final File DESTFILE = new File("target/tokentypes.properties");
     private static final String DESTFILE_ABSOLUTE_PATH = DESTFILE.getAbsolutePath();
 

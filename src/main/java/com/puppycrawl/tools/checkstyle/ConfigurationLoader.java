@@ -118,8 +118,9 @@ public final class ConfigurationLoader {
         "-//Puppy Crawl//DTD Check Configuration 1.3//EN";
 
     /** Prefix for the exception when unable to parse resource. */
-    private static final String UNABLE_TO_PARSE_EXCEPTION_PREFIX = "unable to parse"
-            + " configuration stream";
+    private static final String UNABLE_TO_PARSE_EXCEPTION_PREFIX = """
+            unable to parse\
+             configuration stream""";
 
     /** Dollar sign literal. */
     private static final char DOLLAR_SIGN = '$';

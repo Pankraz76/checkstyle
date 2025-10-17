@@ -42,8 +42,9 @@ public class XpathRegressionUnnecessarySemicolonInTryWithResourcesTest
 
     @Override
     protected String getPackageLocation() {
-        return "org/checkstyle/suppressionxpathfilter/coding/"
-            + "unnecessarysemicolonintrywithresources";
+        return """
+            org/checkstyle/suppressionxpathfilter/coding/\
+            unnecessarysemicolonintrywithresources""";
     }
 
     @Test
@@ -57,10 +58,11 @@ public class XpathRegressionUnnecessarySemicolonInTryWithResourcesTest
                 UnnecessarySemicolonInTryWithResourcesCheck.MSG_SEMI),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                        + "'InputXpathUnnecessarySemicolonInTryWithResourcesDefault']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='m']]/SLIST/LITERAL_TRY"
-                        + "/RESOURCE_SPECIFICATION/SEMI"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+                'InputXpathUnnecessarySemicolonInTryWithResourcesDefault']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='m']]/SLIST/LITERAL_TRY\
+                /RESOURCE_SPECIFICATION/SEMI"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -81,10 +83,11 @@ public class XpathRegressionUnnecessarySemicolonInTryWithResourcesTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                    + "'InputXpathUnnecessarySemicolonInTryWithResourcesNoBrace']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/SEMI"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+            'InputXpathUnnecessarySemicolonInTryWithResourcesNoBrace']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/LITERAL_TRY/RESOURCE_SPECIFICATION/SEMI"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }

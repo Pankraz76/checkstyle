@@ -59,10 +59,11 @@ public class XpathRegressionTypeNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathTypeNameDefault']]"
-                        + "/OBJBLOCK/CLASS_DEF/IDENT[@text='SecondName_']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathTypeNameDefault']]\
+                /OBJBLOCK/CLASS_DEF/IDENT[@text='SecondName_']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -85,10 +86,11 @@ public class XpathRegressionTypeNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text"
-                        + "='InputXpathTypeNameInterfaceDef']]"
-                        + "/OBJBLOCK/INTERFACE_DEF/IDENT[@text='SecondName']"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text\
+                ='InputXpathTypeNameInterfaceDef']]\
+                /OBJBLOCK/INTERFACE_DEF/IDENT[@text='SecondName']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

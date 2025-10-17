@@ -33,8 +33,9 @@ public class UnnecessarySemicolonAfterOuterTypeDeclarationCheckTest
 
     @Override
     protected String getPackageLocation() {
-        return "com/puppycrawl/tools/checkstyle/checks/coding/"
-            + "unnecessarysemicolonafteroutertypedeclaration";
+        return """
+            com/puppycrawl/tools/checkstyle/checks/coding/\
+            unnecessarysemicolonafteroutertypedeclaration""";
     }
 
     @Test

@@ -65,7 +65,9 @@ public class RegexpSinglelineJavaCheckTest extends AbstractModuleTestSupport {
     public void testMessageProperty()
             throws Exception {
         final String[] expected = {
-            "78: " + "Bad line :(",
+            """
+            78: \
+            Bad line :(""",
         };
         verifyWithInlineConfigParser(
                 getPath("InputRegexpSinglelineJavaSemantic2.java"), expected);

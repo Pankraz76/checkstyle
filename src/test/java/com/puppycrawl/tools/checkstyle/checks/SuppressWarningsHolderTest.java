@@ -337,8 +337,9 @@ public class SuppressWarningsHolderTest extends AbstractModuleTestSupport {
                 .that(exc)
                 .hasCauseThat()
                 .hasMessageThat()
-                .isEqualTo("Expression or annotation array initializer AST expected: "
-                        + "Method Def[0x0]");
+                .isEqualTo("""
+                        Expression or annotation array initializer AST expected: \
+                        Method Def[0x0]""");
         }
     }
 

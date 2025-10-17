@@ -59,9 +59,10 @@ public class XpathRegressionConstantNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathConstantNameLowercase']]"
-                + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='number']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathConstantNameLowercase']]\
+            /OBJBLOCK/VARIABLE_DEF/IDENT[@text='number']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,9 +82,10 @@ public class XpathRegressionConstantNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathConstantNameCamelCase']]"
-                + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='badConstant']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathConstantNameCamelCase']]\
+            /OBJBLOCK/VARIABLE_DEF/IDENT[@text='badConstant']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -102,9 +104,10 @@ public class XpathRegressionConstantNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathConstantNameWithBeginningUnderscore']]"
-                + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='_CONSTANT']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathConstantNameWithBeginningUnderscore']]\
+            /OBJBLOCK/VARIABLE_DEF/IDENT[@text='_CONSTANT']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -123,9 +126,10 @@ public class XpathRegressionConstantNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathConstantNameWithTwoUnderscores']]"
-                + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='BAD__NAME']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathConstantNameWithTwoUnderscores']]\
+            /OBJBLOCK/VARIABLE_DEF/IDENT[@text='BAD__NAME']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

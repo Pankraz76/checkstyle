@@ -58,13 +58,15 @@ public class XpathRegressionNoWhitespaceAfterTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceAfter']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceAfter']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/UNARY_MINUS["
-                + "./NUM_INT[@text='1']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceAfter']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceAfter']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/UNARY_MINUS[\
+            ./NUM_INT[@text='1']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -86,11 +88,12 @@ public class XpathRegressionNoWhitespaceAfterTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceAfterTokens']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/TYPE/DOT[./IDENT[@text='String']]"
-                + "/DOT[./IDENT[@text='java']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceAfterTokens']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /TYPE/DOT[./IDENT[@text='String']]\
+            /DOT[./IDENT[@text='java']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -112,24 +115,28 @@ public class XpathRegressionNoWhitespaceAfterTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceAfterLineBreaks']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='s']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceAfterLineBreaks']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='s']]"
-                + "/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceAfterLineBreaks']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='s']]/TYPE",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNoWhitespaceAfterLineBreaks']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='s']]"
-                + "/TYPE/DOT[./IDENT[@text='String']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceAfterLineBreaks']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='s']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceAfterLineBreaks']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='s']]\
+            /MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceAfterLineBreaks']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='s']]/TYPE""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoWhitespaceAfterLineBreaks']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='s']]\
+            /TYPE/DOT[./IDENT[@text='String']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

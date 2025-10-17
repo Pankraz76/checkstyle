@@ -59,15 +59,18 @@ public class XpathRegressionCyclomaticComplexityTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathCyclomaticComplexityConditionals']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathCyclomaticComplexityConditionals']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathCyclomaticComplexityConditionals']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathCyclomaticComplexityConditionals']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathCyclomaticComplexityConditionals']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathCyclomaticComplexityConditionals']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/MODIFIERS/LITERAL_PUBLIC"""
                 );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -89,15 +92,18 @@ public class XpathRegressionCyclomaticComplexityTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathCyclomaticComplexitySwitchBlock']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo2']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathCyclomaticComplexitySwitchBlock']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo2']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathCyclomaticComplexitySwitchBlock']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo2']]/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathCyclomaticComplexitySwitchBlock']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo2']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathCyclomaticComplexitySwitchBlock']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo2']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathCyclomaticComplexitySwitchBlock']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo2']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

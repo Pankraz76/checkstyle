@@ -49,15 +49,17 @@ public class XpathRegressionHexLiteralCaseTest extends AbstractXpathTestSupport 
                       HexLiteralCaseCheck.MSG_KEY),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathHexLiteralCase']]"
-                        + "/OBJBLOCK/VARIABLE_DEF"
-                        + "[./IDENT[@text='i']]/ASSIGN/EXPR[./NUM_INT[@text='0xa']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathHexLiteralCase']]\
+                /OBJBLOCK/VARIABLE_DEF\
+                [./IDENT[@text='i']]/ASSIGN/EXPR[./NUM_INT[@text='0xa']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathHexLiteralCase']]"
-                        + "/OBJBLOCK/VARIABLE_DEF"
-                        + "[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='0xa']"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathHexLiteralCase']]\
+/OBJBLOCK/VARIABLE_DEF\
+[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_INT[@text='0xa']"""
         );
         runVerifications(config, fileProcess, expected, expectedXpathQueries);
     }
@@ -74,15 +76,17 @@ public class XpathRegressionHexLiteralCaseTest extends AbstractXpathTestSupport 
                     HexLiteralCaseCheck.MSG_KEY),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathHexLiteralCaseLong']]"
-                        + "/OBJBLOCK/VARIABLE_DEF"
-                        + "[./IDENT[@text='i']]/ASSIGN/EXPR[./NUM_LONG[@text='0x00efL']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathHexLiteralCaseLong']]\
+                /OBJBLOCK/VARIABLE_DEF\
+                [./IDENT[@text='i']]/ASSIGN/EXPR[./NUM_LONG[@text='0x00efL']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathHexLiteralCaseLong']]"
-                        + "/OBJBLOCK/VARIABLE_DEF"
-                        + "[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_LONG[@text='0x00efL']"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathHexLiteralCaseLong']]\
+/OBJBLOCK/VARIABLE_DEF\
+[./IDENT[@text='i']]/ASSIGN/EXPR/NUM_LONG[@text='0x00efL']"""
         );
         runVerifications(config, fileProcess, expected, expectedXpathQueries);
     }
@@ -99,15 +103,17 @@ public class XpathRegressionHexLiteralCaseTest extends AbstractXpathTestSupport 
                     HexLiteralCaseCheck.MSG_KEY),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathHexLiteralCaseTwo']]"
-                        + "/OBJBLOCK/VARIABLE_DEF"
-                        + "[./IDENT[@text='a']]/ASSIGN/EXPR[./NUM_INT[@text='0xFa1']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathHexLiteralCaseTwo']]\
+                /OBJBLOCK/VARIABLE_DEF\
+                [./IDENT[@text='a']]/ASSIGN/EXPR[./NUM_INT[@text='0xFa1']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathHexLiteralCaseTwo']]"
-                        + "/OBJBLOCK/VARIABLE_DEF"
-                        + "[./IDENT[@text='a']]/ASSIGN/EXPR/NUM_INT[@text='0xFa1']"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathHexLiteralCaseTwo']]\
+/OBJBLOCK/VARIABLE_DEF\
+[./IDENT[@text='a']]/ASSIGN/EXPR/NUM_INT[@text='0xFa1']"""
         );
         runVerifications(config, fileProcess, expected, expectedXpathQueries);
     }

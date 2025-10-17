@@ -56,14 +56,16 @@ public class XpathRegressionAvoidDoubleBraceInitializationTest extends AbstractX
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathAvoidDoubleBraceInitializationClassFields']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='list']]/ASSIGN/EXPR/"
-                + "LITERAL_NEW[./IDENT[@text='ArrayList']]/OBJBLOCK",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathAvoidDoubleBraceInitializationClassFields']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='list']]/ASSIGN/EXPR/"
-                + "LITERAL_NEW[./IDENT[@text='ArrayList']]/OBJBLOCK/LCURLY"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathAvoidDoubleBraceInitializationClassFields']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='list']]/ASSIGN/EXPR/\
+            LITERAL_NEW[./IDENT[@text='ArrayList']]/OBJBLOCK""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathAvoidDoubleBraceInitializationClassFields']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='list']]/ASSIGN/EXPR/\
+            LITERAL_NEW[./IDENT[@text='ArrayList']]/OBJBLOCK/LCURLY"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -81,16 +83,18 @@ public class XpathRegressionAvoidDoubleBraceInitializationTest extends AbstractX
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                    + "'InputXpathAvoidDoubleBraceInitializationMethodDef']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/EXPR/LITERAL_NEW[./IDENT[@text='HashSet']]"
-                + "/OBJBLOCK",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                    + "'InputXpathAvoidDoubleBraceInitializationMethodDef']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/EXPR/LITERAL_NEW[./IDENT[@text='HashSet']]"
-                + "/OBJBLOCK/LCURLY"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+            'InputXpathAvoidDoubleBraceInitializationMethodDef']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/EXPR/LITERAL_NEW[./IDENT[@text='HashSet']]\
+            /OBJBLOCK""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+            'InputXpathAvoidDoubleBraceInitializationMethodDef']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/EXPR/LITERAL_NEW[./IDENT[@text='HashSet']]\
+            /OBJBLOCK/LCURLY"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

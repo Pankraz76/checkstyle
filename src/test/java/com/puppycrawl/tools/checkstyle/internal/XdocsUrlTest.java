@@ -111,8 +111,9 @@ public class XdocsUrlTest {
             final String checkNameInAttribute = sub.get(1);
             final String checkNameInText = sub.get(2);
             final String checkNameInconsistentErrorMsg = String.format(Locale.ROOT,
-                    "Check with name '%s' in attribute "
-                            + "is not consistent with check name in text in file '%s'",
+                    """
+                    Check with name '%s' in attribute \
+                    is not consistent with check name in text in file '%s'""",
                     checkNameInAttribute, AVAILABLE_CHECKS_PATH);
             assertWithMessage(checkNameInconsistentErrorMsg)
                     .that(checkNameInText)

@@ -58,14 +58,16 @@ public class XpathRegressionClassTypeParameterNameTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathClassTypeParameterNameClass']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass2']]"
-                        + "/TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT[@text='abc']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathClassTypeParameterNameClass']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass2']]/TYPE_PARAMETERS"
-                        + "/TYPE_PARAMETER/IDENT[@text='abc']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathClassTypeParameterNameClass']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass2']]\
+                /TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT[@text='abc']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathClassTypeParameterNameClass']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass2']]/TYPE_PARAMETERS\
+                /TYPE_PARAMETER/IDENT[@text='abc']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -88,14 +90,16 @@ public class XpathRegressionClassTypeParameterNameTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/INTERFACE_DEF"
-                        + "[./IDENT[@text='InputXpathClassTypeParameterNameInterface']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass2']]"
-                        + "/TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT[@text='aBc']]",
-                "/COMPILATION_UNIT/INTERFACE_DEF"
-                        + "[./IDENT[@text='InputXpathClassTypeParameterNameInterface']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass2']]"
-                        + "/TYPE_PARAMETERS/TYPE_PARAMETER/IDENT[@text='aBc']"
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF\
+                [./IDENT[@text='InputXpathClassTypeParameterNameInterface']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass2']]\
+                /TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT[@text='aBc']]""",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF\
+                [./IDENT[@text='InputXpathClassTypeParameterNameInterface']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='MyClass2']]\
+                /TYPE_PARAMETERS/TYPE_PARAMETER/IDENT[@text='aBc']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -117,16 +121,18 @@ public class XpathRegressionClassTypeParameterNameTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathClassTypeParameterNameMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest2']]/SLIST/CLASS_DEF"
-                        + "[./IDENT[@text='MyClass2']]/TYPE_PARAMETERS"
-                        + "/TYPE_PARAMETER[./IDENT[@text='ABC']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathClassTypeParameterNameMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest2']]/SLIST/CLASS_DEF"
-                        + "[./IDENT[@text='MyClass2']]/TYPE_PARAMETERS"
-                        + "/TYPE_PARAMETER/IDENT[@text='ABC']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathClassTypeParameterNameMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest2']]/SLIST/CLASS_DEF\
+                [./IDENT[@text='MyClass2']]/TYPE_PARAMETERS\
+                /TYPE_PARAMETER[./IDENT[@text='ABC']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathClassTypeParameterNameMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest2']]/SLIST/CLASS_DEF\
+                [./IDENT[@text='MyClass2']]/TYPE_PARAMETERS\
+                /TYPE_PARAMETER/IDENT[@text='ABC']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

@@ -65,8 +65,9 @@ public class CommentsTest extends AbstractTreeTestSupport {
         final Comment comment = new Comment(new String[] {"value"}, 1, 2, 3);
         assertWithMessage("Invalid toString result")
             .that(comment.toString())
-            .isEqualTo("Comment[text=[value], startLineNo=2, endLineNo=2, "
-                    + "startColNo=1, endColNo=3]");
+            .isEqualTo("""
+                    Comment[text=[value], startLineNo=2, endLineNo=2, \
+                    startColNo=1, endColNo=3]""");
     }
 
     @Test

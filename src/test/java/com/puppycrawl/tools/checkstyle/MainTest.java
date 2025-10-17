@@ -69,122 +69,124 @@ import com.puppycrawl.tools.checkstyle.utils.ChainedPropertyUtil;
 public class MainTest {
 
     private static final String SHORT_USAGE = String.format(Locale.ROOT,
-            "Usage: checkstyle [OPTIONS]... file(s) or folder(s) ...%n"
-            + "Try 'checkstyle --help' for more information.%n");
+            """
+            Usage: checkstyle [OPTIONS]... file(s) or folder(s) ...%n\
+            Try 'checkstyle --help' for more information.%n""");
 
     private static final String USAGE = String.format(Locale.ROOT,
-          "Usage: checkstyle [-dEgGhjJtTV] [-b=<xpath>] [-c=<configurationFile>] "
-                  + "[-f=<format>]%n"
-                  + "                  [-o=<outputPath>] [-p=<propertiesFile>] "
-                  + "[-s=<suppressionLineColumnNumber>]%n"
-                  + "                  [-w=<tabWidth>] [-e=<exclude>]... [-x=<excludeRegex>]... "
-                  + "<files or folders>...%n"
-                  + "Checkstyle verifies that the specified source code files adhere to the"
-                  + " specified rules. By default,%n"
-                  + "violations are reported to standard out in plain format. Checkstyle requires"
-                  + " a configuration XML%n"
-                  + "file that configures the checks to apply.%n"
-                  + "      <files or folders>... One or more source files to verify%n"
-                  + "  -b, --branch-matching-xpath=<xpath>%n"
-                  + "                            Shows Abstract Syntax Tree(AST) branches that"
-                  + " match given XPath query.%n"
-                  + "  -c=<configurationFile>    Specifies the location of the file that defines"
-                  + " the configuration%n"
-                  + "                              modules. The location can either be a"
-                  + " filesystem location, or a name%n"
-                  + "                              passed to the ClassLoader.getResource()"
-                  + " method.%n"
-                  + "  -d, --debug               Prints all debug logging of CheckStyle utility.%n"
-                  + "  -e, --exclude=<exclude>   Directory/file to exclude from CheckStyle. The"
-                  + " path can be the full,%n"
-                  + "                              absolute path, or relative to the current"
-                  + " path. Multiple excludes are%n"
-                  + "                              allowed.%n"
-                  + "  -E, --executeIgnoredModules%n"
-                  + "                            Allows ignored modules to be run.%n"
-                  + "  -f=<format>               Specifies the output format. Valid values: "
-                  + "xml, sarif, plain for%n"
-                  + "                              XMLLogger, SarifLogger, and "
-                  + "DefaultLogger respectively. Defaults to%n"
-                  + "                              plain.%n"
-                  + "  -g, --generate-xpath-suppression%n"
-                  + "                            Generates to output a xpath suppression xml to use"
-                  + " to suppress all%n"
-                  + "                              violations from user's config. Instead of"
-                  + " printing every violation,%n"
-                  + "                              all violations will be catched and single"
-                  + " suppressions xml file will%n"
-                  + "                              be printed out. Used only with -c option. Output"
-                  + " location can be%n"
-                  + "                              specified with -o option.%n"
-                  + "  -G, --generate-checks-and-files-suppression%n"
-                  + "                            Generates to output a suppression xml that will"
-                  + " have suppress elements%n"
-                  + "                              with \"checks\" and \"files\" attributes only to"
-                  + " use to suppress all%n"
-                  + "                              violations from user's config. Instead of"
-                  + " printing every violation,%n"
-                  + "                              all violations will be catched and single"
-                  + " suppressions xml file will%n"
-                  + "                              be printed out. Used only with -c option. Output"
-                  + " location can be%n"
-                  + "                              specified with -o option.%n"
-                  + "  -h, --help                Show this help message and exit.%n"
-                  + "  -j, --javadocTree         This option is used to print the Parse Tree of"
-                  + " the Javadoc comment. The%n"
-                  + "                              file has to contain only Javadoc comment"
-                  + " content excluding '/**' and%n"
-                  + "                              '*/' at the beginning and at the end"
-                  + " respectively. It can only be%n"
-                  + "                              used on a single file and cannot be"
-                  + " combined with other options.%n"
-                  + "  -J, --treeWithJavadoc     This option is used to display the Abstract"
-                  + " Syntax Tree (AST) with%n"
-                  + "                              Javadoc nodes of the specified file. It can"
-                  + " only be used on a single%n"
-                  + "                              file and cannot be combined"
-                  + " with other options.%n"
-                  + "  -o=<outputPath>           Sets the output file. Defaults to stdout.%n"
-                  + "  -p=<propertiesFile>       Sets the property files to load.%n"
-                  + "  -s=<suppressionLineColumnNumber>%n"
-                  + "                            Prints xpath suppressions at the file's line and"
-                  + " column position.%n"
-                  + "                              Argument is the line and column number"
-                  + " (separated by a : ) in the%n"
-                  + "                              file that the suppression should be generated"
-                  + " for. The option cannot%n"
-                  + "                              be used with other options and requires exactly"
-                  + " one file to run on to%n"
-                  + "                              be specified. Note that the generated result"
-                  + " will have few queries,%n"
-                  + "                              joined by pipe(|). Together they will match all"
-                  + " AST nodes on%n"
-                  + "                              specified line and column. You need to choose"
-                  + " only one and recheck%n"
-                  + "                              that it works. Usage of all of them is also ok,"
-                  + " but might result in%n"
-                  + "                              undesirable matching and suppress other"
-                  + " issues.%n"
-                  + "  -t, --tree                This option is used to display the Abstract"
-                  + " Syntax Tree (AST) without%n"
-                  + "                              any comments of the specified file. It can"
-                  + " only be used on a single%n"
-                  + "                              file and cannot be combined with"
-                  + " other options.%n"
-                  + "  -T, --treeWithComments    This option is used to display the Abstract"
-                  + " Syntax Tree (AST) with%n"
-                  + "                              comment nodes excluding Javadoc of the"
-                  + " specified file. It can only be%n"
-                  + "                              used on a single file and cannot be combined"
-                  + " with other options.%n"
-                  + "  -V, --version             Print version information and exit.%n"
-                  + "  -w, --tabWidth=<tabWidth> Sets the length of the tab character. Used only"
-                  + " with -s option. Default%n"
-                  + "                              value is 8.%n"
-                  + "  -x, --exclude-regexp=<excludeRegex>%n"
-                  + "                            Directory/file pattern to exclude from CheckStyle."
-                  + " Multiple excludes%n"
-                  + "                              are allowed.%n");
+          """
+          Usage: checkstyle [-dEgGhjJtTV] [-b=<xpath>] [-c=<configurationFile>] \
+          [-f=<format>]%n\
+                            [-o=<outputPath>] [-p=<propertiesFile>] \
+          [-s=<suppressionLineColumnNumber>]%n\
+                            [-w=<tabWidth>] [-e=<exclude>]... [-x=<excludeRegex>]... \
+          <files or folders>...%n\
+          Checkstyle verifies that the specified source code files adhere to the\
+           specified rules. By default,%n\
+          violations are reported to standard out in plain format. Checkstyle requires\
+           a configuration XML%n\
+          file that configures the checks to apply.%n\
+                <files or folders>... One or more source files to verify%n\
+            -b, --branch-matching-xpath=<xpath>%n\
+                                      Shows Abstract Syntax Tree(AST) branches that\
+           match given XPath query.%n\
+            -c=<configurationFile>    Specifies the location of the file that defines\
+           the configuration%n\
+                                        modules. The location can either be a\
+           filesystem location, or a name%n\
+                                        passed to the ClassLoader.getResource()\
+           method.%n\
+            -d, --debug               Prints all debug logging of CheckStyle utility.%n\
+            -e, --exclude=<exclude>   Directory/file to exclude from CheckStyle. The\
+           path can be the full,%n\
+                                        absolute path, or relative to the current\
+           path. Multiple excludes are%n\
+                                        allowed.%n\
+            -E, --executeIgnoredModules%n\
+                                      Allows ignored modules to be run.%n\
+            -f=<format>               Specifies the output format. Valid values: \
+          xml, sarif, plain for%n\
+                                        XMLLogger, SarifLogger, and \
+          DefaultLogger respectively. Defaults to%n\
+                                        plain.%n\
+            -g, --generate-xpath-suppression%n\
+                                      Generates to output a xpath suppression xml to use\
+           to suppress all%n\
+                                        violations from user's config. Instead of\
+           printing every violation,%n\
+                                        all violations will be catched and single\
+           suppressions xml file will%n\
+                                        be printed out. Used only with -c option. Output\
+           location can be%n\
+                                        specified with -o option.%n\
+            -G, --generate-checks-and-files-suppression%n\
+                                      Generates to output a suppression xml that will\
+           have suppress elements%n\
+                                        with "checks" and "files" attributes only to\
+           use to suppress all%n\
+                                        violations from user's config. Instead of\
+           printing every violation,%n\
+                                        all violations will be catched and single\
+           suppressions xml file will%n\
+                                        be printed out. Used only with -c option. Output\
+           location can be%n\
+                                        specified with -o option.%n\
+            -h, --help                Show this help message and exit.%n\
+            -j, --javadocTree         This option is used to print the Parse Tree of\
+           the Javadoc comment. The%n\
+                                        file has to contain only Javadoc comment\
+           content excluding '/**' and%n\
+                                        '*/' at the beginning and at the end\
+           respectively. It can only be%n\
+                                        used on a single file and cannot be\
+           combined with other options.%n\
+            -J, --treeWithJavadoc     This option is used to display the Abstract\
+           Syntax Tree (AST) with%n\
+                                        Javadoc nodes of the specified file. It can\
+           only be used on a single%n\
+                                        file and cannot be combined\
+           with other options.%n\
+            -o=<outputPath>           Sets the output file. Defaults to stdout.%n\
+            -p=<propertiesFile>       Sets the property files to load.%n\
+            -s=<suppressionLineColumnNumber>%n\
+                                      Prints xpath suppressions at the file's line and\
+           column position.%n\
+                                        Argument is the line and column number\
+           (separated by a : ) in the%n\
+                                        file that the suppression should be generated\
+           for. The option cannot%n\
+                                        be used with other options and requires exactly\
+           one file to run on to%n\
+                                        be specified. Note that the generated result\
+           will have few queries,%n\
+                                        joined by pipe(|). Together they will match all\
+           AST nodes on%n\
+                                        specified line and column. You need to choose\
+           only one and recheck%n\
+                                        that it works. Usage of all of them is also ok,\
+           but might result in%n\
+                                        undesirable matching and suppress other\
+           issues.%n\
+            -t, --tree                This option is used to display the Abstract\
+           Syntax Tree (AST) without%n\
+                                        any comments of the specified file. It can\
+           only be used on a single%n\
+                                        file and cannot be combined with\
+           other options.%n\
+            -T, --treeWithComments    This option is used to display the Abstract\
+           Syntax Tree (AST) with%n\
+                                        comment nodes excluding Javadoc of the\
+           specified file. It can only be%n\
+                                        used on a single file and cannot be combined\
+           with other options.%n\
+            -V, --version             Print version information and exit.%n\
+            -w, --tabWidth=<tabWidth> Sets the length of the tab character. Used only\
+           with -s option. Default%n\
+                                        value is 8.%n\
+            -x, --exclude-regexp=<excludeRegex>%n\
+                                      Directory/file pattern to exclude from CheckStyle.\
+           Multiple excludes%n\
+                                        are allowed.%n""");
 
     private static final Logger LOG = Logger.getLogger(MainTest.class.getName()).getParent();
     private static final Handler[] HANDLERS = LOG.getHandlers();
@@ -364,8 +366,9 @@ public class MainTest {
         final String expectedOutputStart = addEndOfLine(auditStartMessage.getMessage())
             + "[ERROR] ";
         final String expectedOutputEnd = addEndOfLine(
-                "InputMainCustomSeverityForGoogleConfig.java:3:1:"
-                    + " Missing a Javadoc comment. [MissingJavadocType]",
+                """
+                InputMainCustomSeverityForGoogleConfig.java:3:1:\
+                 Missing a Javadoc comment. [MissingJavadocType]""",
                 auditFinishMessage.getMessage());
         assertWithMessage("Unexpected output log")
             .that(systemOut.getCapturedData())
@@ -383,8 +386,9 @@ public class MainTest {
         final String expectedOutputStart = addEndOfLine(auditStartMessage.getMessage())
                 + "[WARN] ";
         final String expectedOutputEnd = addEndOfLine(
-                "InputMainCustomSeverityForGoogleConfig.java:3:1:"
-                        + " Missing a Javadoc comment. [MissingJavadocType]",
+                """
+                InputMainCustomSeverityForGoogleConfig.java:3:1:\
+                 Missing a Javadoc comment. [MissingJavadocType]""",
                 auditFinishMessage.getMessage());
         assertWithMessage("Unexpected output log")
                 .that(systemOut.getCapturedData())
@@ -401,8 +405,9 @@ public class MainTest {
                     getPath("InputMain.java"));
         assertWithMessage("Unexpected output log")
             .that(systemOut.getCapturedData())
-            .isEqualTo(addEndOfLine("Could not find config XML file "
-                    + "'src/main/resources/non_existent_config.xml'."));
+            .isEqualTo(addEndOfLine("""
+                    Could not find config XML file \
+                    'src/main/resources/non_existent_config.xml'."""));
         assertWithMessage("Unexpected system error log")
             .that(systemErr.getCapturedData())
             .isEqualTo("");
@@ -426,8 +431,9 @@ public class MainTest {
     public void testNonExistentClass(@SysErr Capturable systemErr) {
         assertMainReturnCode(-2, "-c", getPath("InputMainConfig-non-existent-classname.xml"),
                     getPath("InputMain.java"));
-        final String cause = "com.puppycrawl.tools.checkstyle.api.CheckstyleException:"
-                + " cannot initialize module TreeWalker - ";
+        final String cause = """
+                com.puppycrawl.tools.checkstyle.api.CheckstyleException:\
+                 cannot initialize module TreeWalker - """;
         assertWithMessage("Unexpected system error log")
                 .that(systemErr.getCapturedData())
                 .startsWith(cause);
@@ -777,8 +783,9 @@ public class MainTest {
     public void testExistingIncorrectConfigFile(@SysErr Capturable systemErr) {
         assertMainReturnCode(-2, "-c", getPath("InputMainConfig-Incorrect.xml"),
                 getPath("InputMain.java"));
-        final String errorOutput = "com.puppycrawl.tools.checkstyle.api."
-            + "CheckstyleException: unable to parse configuration stream - ";
+        final String errorOutput = """
+            com.puppycrawl.tools.checkstyle.api.\
+            CheckstyleException: unable to parse configuration stream - """;
         assertWithMessage("Unexpected system error log")
                 .that(systemErr.getCapturedData())
                 .startsWith(errorOutput);
@@ -788,9 +795,10 @@ public class MainTest {
     public void testExistingIncorrectChildrenInConfigFile(@SysErr Capturable systemErr) {
         assertMainReturnCode(-2, "-c", getPath("InputMainConfig-incorrectChildren.xml"),
                     getPath("InputMain.java"));
-        final String errorOutput = "com.puppycrawl.tools.checkstyle.api."
-                + "CheckstyleException: cannot initialize module RegexpSingleline"
-                + " - RegexpSingleline is not allowed as a child in RegexpSingleline";
+        final String errorOutput = """
+                com.puppycrawl.tools.checkstyle.api.\
+                CheckstyleException: cannot initialize module RegexpSingleline\
+                 - RegexpSingleline is not allowed as a child in RegexpSingleline""";
         assertWithMessage("Unexpected system error log")
                 .that(systemErr.getCapturedData())
                 .startsWith(errorOutput);
@@ -800,10 +808,11 @@ public class MainTest {
     public void testExistingIncorrectChildrenInConfigFile2(@SysErr Capturable systemErr) {
         assertMainReturnCode(-2, "-c", getPath("InputMainConfig-incorrectChildren2.xml"),
                     getPath("InputMain.java"));
-        final String errorOutput = "com.puppycrawl.tools.checkstyle.api."
-                + "CheckstyleException: cannot initialize module TreeWalker - "
-                + "cannot initialize module JavadocMethod - "
-                + "JavadocVariable is not allowed as a child in JavadocMethod";
+        final String errorOutput = """
+                com.puppycrawl.tools.checkstyle.api.\
+                CheckstyleException: cannot initialize module TreeWalker - \
+                cannot initialize module JavadocMethod - \
+                JavadocVariable is not allowed as a child in JavadocMethod""";
         assertWithMessage("Unexpected system error log")
                 .that(systemErr.getCapturedData())
                 .startsWith(errorOutput);
@@ -1055,8 +1064,9 @@ public class MainTest {
             "|       |       |--VARIABLE_DEF -> VARIABLE_DEF [5:8]",
             "|       |       |   |--IDENT -> a [5:12]");
         assertMainReturnCode(0, "-b",
-                "/COMPILATION_UNIT/CLASS_DEF//METHOD_DEF[./IDENT[@text='methodOne']]"
-                        + "//VARIABLE_DEF/IDENT",
+                """
+                /COMPILATION_UNIT/CLASS_DEF//METHOD_DEF[./IDENT[@text='methodOne']]\
+                //VARIABLE_DEF/IDENT""",
                 getPath("InputMainXPath.java"));
         assertWithMessage("Unexpected output log")
             .that(systemOut.getCapturedData())
@@ -1109,8 +1119,9 @@ public class MainTest {
             "|       |   `--SLIST -> { [8:26]",
             "|       |       |--VARIABLE_DEF -> VARIABLE_DEF [9:8]",
             "|       |       |   |--IDENT -> a [9:12]");
-        final String xpath = "/COMPILATION_UNIT/CLASS_DEF//METHOD_DEF[./IDENT[@text='method']]"
-                + "//VARIABLE_DEF/IDENT";
+        final String xpath = """
+                /COMPILATION_UNIT/CLASS_DEF//METHOD_DEF[./IDENT[@text='method']]\
+                //VARIABLE_DEF/IDENT""";
         assertMainReturnCode(0, "--branch-matching-xpath", xpath, getPath("InputMainXPath.java"));
         assertWithMessage("Unexpected output log")
             .that(systemOut.getCapturedData())
@@ -1146,8 +1157,9 @@ public class MainTest {
 
     @Test
     public void testPrintXpathInvalidXpath(@SysErr Capturable systemErr) throws Exception {
-        final String invalidXpath = "\\/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='Two']]"
-                + "//METHOD_DEF";
+        final String invalidXpath = """
+                \\/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='Two']]\
+                //METHOD_DEF""";
         final String filePath = getFilePath("InputMainXPath.java");
         assertMainReturnCode(-2, "--branch-matching-xpath", invalidXpath, filePath);
         final String exceptionFirstLine = addEndOfLine("com.puppycrawl.tools.checkstyle.api."
@@ -1234,10 +1246,12 @@ public class MainTest {
             @SysOut Capturable systemOut) {
         final String expected = addEndOfLine(
             "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputMainSuppressionsStringPrinter']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputMainSuppressionsStringPrinter']]"
-                        + "/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputMainSuppressionsStringPrinter']"
-                        + "]/LITERAL_CLASS");
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputMainSuppressionsStringPrinter']]\
+                /MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputMainSuppressionsStringPrinter']\
+                ]/LITERAL_CLASS""");
 
         assertMainReturnCode(0, getPath("InputMainSuppressionsStringPrinter.java"), "-s", "3:1");
         assertWithMessage("Unexpected output log")
@@ -1252,22 +1266,26 @@ public class MainTest {
     public void testPrintSuppressionAndTabWidthOption(@SysErr Capturable systemErr,
             @SysOut Capturable systemOut) {
         final String expected = addEndOfLine(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputMainSuppressionsStringPrinter']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='getName']]"
-                    + "/SLIST/VARIABLE_DEF[./IDENT[@text='var']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputMainSuppressionsStringPrinter']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='getName']]/SLIST"
-                    + "/VARIABLE_DEF[./IDENT[@text='var']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputMainSuppressionsStringPrinter']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='getName']]/SLIST"
-                    + "/VARIABLE_DEF[./IDENT[@text='var']]/TYPE",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputMainSuppressionsStringPrinter']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='getName']]/SLIST"
-                    + "/VARIABLE_DEF[./IDENT[@text='var']]/TYPE/LITERAL_INT");
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputMainSuppressionsStringPrinter']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='getName']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='var']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputMainSuppressionsStringPrinter']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='getName']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='var']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputMainSuppressionsStringPrinter']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='getName']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='var']]/TYPE""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputMainSuppressionsStringPrinter']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='getName']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='var']]/TYPE/LITERAL_INT""");
 
         assertMainReturnCode(0, getPath("InputMainSuppressionsStringPrinter.java"),
                 "-s", "7:9", "--tabWidth", "2");
@@ -1353,22 +1371,26 @@ public class MainTest {
         final String expected = addEndOfLine(
             "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
                 "<!DOCTYPE suppressions PUBLIC",
-                "    \"-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2"
-                    + "//EN\"",
+                """
+                    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2\
+                //EN"\
+                """,
                 "    \"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd\">",
                 "<suppressions>",
                 "  <suppress-xpath",
                 "       files=\"InputMainComplexityOverflow.java\"",
                 "       checks=\"MissingJavadocMethodCheck\"",
-                "       query=\"/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputMainComplexityOverflow']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='provokeNpathIntegerOverflow']]\"/>",
+                """
+                       query="/COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputMainComplexityOverflow']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='provokeNpathIntegerOverflow']]"/>""",
                 "  <suppress-xpath",
                 "       files=\"InputMainComplexityOverflow.java\"",
                 "       id=\"LeftCurlyEol\"",
-                "       query=\"/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputMainComplexityOverflow']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='provokeNpathIntegerOverflow']]/SLIST\"/>",
+                """
+                       query="/COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputMainComplexityOverflow']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='provokeNpathIntegerOverflow']]/SLIST"/>""",
                 "</suppressions>");
 
         assertMainReturnCode(0, "-c", "/google_checks.xml", "--generate-xpath-suppression",
@@ -1387,30 +1409,35 @@ public class MainTest {
         final String expected = addEndOfLine(
             "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
             "<!DOCTYPE suppressions PUBLIC",
-            "    \"-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2"
-                + "//EN\"",
+            """
+                "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2\
+            //EN"\
+            """,
             "    \"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd\">",
             "<suppressions>",
             "  <suppress-xpath",
             "       files=\"InputMainGenerateXpathSuppressions.java\"",
             "       checks=\"ExplicitInitializationCheck\"",
-            "       query=\"/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputMainGenerateXpathSuppressions']]"
-                + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='low']\"/>",
+            """
+                   query="/COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputMainGenerateXpathSuppressions']]\
+            /OBJBLOCK/VARIABLE_DEF/IDENT[@text='low']"/>""",
             "  <suppress-xpath",
             "       files=\"InputMainGenerateXpathSuppressions.java\"",
             "       checks=\"IllegalThrowsCheck\"",
-            "       query=\"/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputMainGenerateXpathSuppressions']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/LITERAL_THROWS"
-                + "/IDENT[@text='RuntimeException']\"/>",
+            """
+                   query="/COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputMainGenerateXpathSuppressions']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/LITERAL_THROWS\
+            /IDENT[@text='RuntimeException']"/>""",
             "  <suppress-xpath",
             "       files=\"InputMainGenerateXpathSuppressions.java\"",
             "       checks=\"NestedForDepthCheck\"",
-            "       query=\"/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputMainGenerateXpathSuppressions']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST"
-                + "/LITERAL_FOR/SLIST/LITERAL_FOR\"/>",
+            """
+                   query="/COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputMainGenerateXpathSuppressions']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_FOR/SLIST\
+            /LITERAL_FOR/SLIST/LITERAL_FOR"/>""",
             "</suppressions>");
 
         assertMainReturnCode(0, "-c", getPath("InputMainConfig-xpath-suppressions.xml"),
@@ -1445,16 +1472,19 @@ public class MainTest {
         final String expected = addEndOfLine(
             "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
                 "<!DOCTYPE suppressions PUBLIC",
-                "    \"-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2"
-                    + "//EN\"",
+                """
+                    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2\
+                //EN"\
+                """,
                 "    \"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd\">",
                 "<suppressions>",
                 "  <suppress-xpath",
                 "       files=\"InputMainGenerateXpathSuppressionsTabWidth.java\"",
                 "       checks=\"ExplicitInitializationCheck\"",
-                "       query=\"/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputMainGenerateXpathSuppressionsTabWidth']]"
-                    + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='low']\"/>",
+                """
+                       query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputMainGenerateXpathSuppressionsTabWidth']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='low']"/>""",
                 "</suppressions>");
         final File file = new File(temporaryFolder, "file.output");
         assertMainReturnCode(0, "-c", getPath("InputMainConfig-xpath-suppressions.xml"), "-o",
@@ -1477,16 +1507,19 @@ public class MainTest {
         final String expected = addEndOfLine(
             "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
                 "<!DOCTYPE suppressions PUBLIC",
-                "    \"-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2"
-                    + "//EN\"",
+                """
+                    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2\
+                //EN"\
+                """,
                 "    \"https://checkstyle.org/dtds/suppressions_1_2_xpath_experimental.dtd\">",
                 "<suppressions>",
                 "  <suppress-xpath",
                 "       files=\"InputMainGenerateXpathSuppressionsTabWidth.java\"",
                 "       checks=\"ExplicitInitializationCheck\"",
-                "       query=\"/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputMainGenerateXpathSuppressionsTabWidth']]"
-                    + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='low']\"/>",
+                """
+                       query="/COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputMainGenerateXpathSuppressionsTabWidth']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='low']"/>""",
                 "</suppressions>");
 
         assertMainReturnCode(0, "-c", getPath("InputMainConfig-xpath-suppressions.xml"),
@@ -1891,8 +1924,9 @@ public class MainTest {
             @SysErr Capturable systemErr) {
         assertMainReturnCode(-2, "-c", getPath("InputMainConfig-non-existent-classname-ignore.xml"),
                     "--executeIgnoredModules", getPath("InputMain.java"));
-        final String cause = "com.puppycrawl.tools.checkstyle.api.CheckstyleException:"
-                + " cannot initialize module TreeWalker - ";
+        final String cause = """
+                com.puppycrawl.tools.checkstyle.api.CheckstyleException:\
+                 cannot initialize module TreeWalker - """;
         assertWithMessage("Unexpected system error log")
                 .that(systemErr.getCapturedData())
                 .startsWith(cause);
@@ -1903,8 +1937,9 @@ public class MainTest {
             @SysErr Capturable systemErr) {
         assertMainReturnCode(-2, "-c", getPath("InputMainConfig-TypeName-bad-value.xml"),
                     "--executeIgnoredModules", getPath("InputMain.java"));
-        final String cause = "com.puppycrawl.tools.checkstyle.api.CheckstyleException:"
-                + " cannot initialize module TreeWalker - ";
+        final String cause = """
+                com.puppycrawl.tools.checkstyle.api.CheckstyleException:\
+                 cannot initialize module TreeWalker - """;
         final String causeDetail = "it is not a boolean";
         assertWithMessage("Unexpected system error log")
                 .that(systemErr.getCapturedData())

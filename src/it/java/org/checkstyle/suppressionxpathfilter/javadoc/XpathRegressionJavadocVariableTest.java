@@ -57,15 +57,18 @@ public class XpathRegressionJavadocVariableTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavadocVariablePrivateClassFields']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='age']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavadocVariablePrivateClassFields']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='age']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavadocVariablePrivateClassFields']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='age']]/MODIFIERS/LITERAL_PRIVATE"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathJavadocVariablePrivateClassFields']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='age']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathJavadocVariablePrivateClassFields']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='age']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathJavadocVariablePrivateClassFields']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='age']]/MODIFIERS/LITERAL_PRIVATE"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -86,19 +89,22 @@ public class XpathRegressionJavadocVariableTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavadocVariableInnerClassFields']]/OBJBLOCK"
-                + "/CLASS_DEF[./IDENT[@text='InnerInner2']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='fData']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavadocVariableInnerClassFields']]/OBJBLOCK"
-                + "/CLASS_DEF[./IDENT[@text='InnerInner2']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='fData']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathJavadocVariableInnerClassFields']]/OBJBLOCK"
-                + "/CLASS_DEF[./IDENT[@text='InnerInner2']]/OBJBLOCK"
-                + "/VARIABLE_DEF[./IDENT[@text='fData']]/MODIFIERS"
-                + "/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathJavadocVariableInnerClassFields']]/OBJBLOCK\
+            /CLASS_DEF[./IDENT[@text='InnerInner2']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='fData']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathJavadocVariableInnerClassFields']]/OBJBLOCK\
+            /CLASS_DEF[./IDENT[@text='InnerInner2']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='fData']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathJavadocVariableInnerClassFields']]/OBJBLOCK\
+            /CLASS_DEF[./IDENT[@text='InnerInner2']]/OBJBLOCK\
+            /VARIABLE_DEF[./IDENT[@text='fData']]/MODIFIERS\
+            /LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

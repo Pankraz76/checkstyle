@@ -57,14 +57,16 @@ public class XpathRegressionIllegalInstantiationTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathIllegalInstantiationSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/"
-                + "VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathIllegalInstantiationSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF"
-                + "[./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Boolean']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathIllegalInstantiationSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/\
+                VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathIllegalInstantiationSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Boolean']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -86,15 +88,17 @@ public class XpathRegressionIllegalInstantiationTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathIllegalInstantiationAnonymous']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF"
-                + "[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='e']]/ASSIGN/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathIllegalInstantiationAnonymous']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF"
-                + "[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='e']]"
-                + "/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathIllegalInstantiationAnonymous']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF\
+                [./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='e']]/ASSIGN/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathIllegalInstantiationAnonymous']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]/OBJBLOCK/METHOD_DEF\
+                [./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[@text='e']]\
+                /ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Integer']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -116,16 +120,18 @@ public class XpathRegressionIllegalInstantiationTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathIllegalInstantiationInterface']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Inner']]/"
-                + "OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/"
-                + "VARIABLE_DEF[./IDENT[@text='s']]/ASSIGN/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathIllegalInstantiationInterface']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Inner']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF"
-                + "[./IDENT[@text='s']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='String']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathIllegalInstantiationInterface']]\
+                /OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Inner']]/\
+                OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/\
+                VARIABLE_DEF[./IDENT[@text='s']]/ASSIGN/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathIllegalInstantiationInterface']]\
+                /OBJBLOCK/INTERFACE_DEF[./IDENT[@text='Inner']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='s']]/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='String']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

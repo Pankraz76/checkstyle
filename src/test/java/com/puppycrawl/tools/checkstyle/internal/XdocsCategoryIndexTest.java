@@ -107,8 +107,9 @@ public class XdocsCategoryIndexTest extends AbstractModuleTestSupport {
                     + "#" + mainSectionName;
             final String actualHref = checkInfoFromIndex.href();
 
-            final String hrefMismatchFmt = "Href mismatch for '%s' in %s."
-                    + "Expected: '%s', Found: '%s'";
+            final String hrefMismatchFmt = """
+                    Href mismatch for '%s' in %s.\
+                    Expected: '%s', Found: '%s'""";
             final String hrefMismatchMsg = String.format(Locale.ROOT,
                     hrefMismatchFmt,
                     mainSectionName, categoryIndexFile, expectedHref, actualHref);
@@ -121,8 +122,9 @@ public class XdocsCategoryIndexTest extends AbstractModuleTestSupport {
             final String normalizedIndexDesc = normalizeText(descriptionFromIndex);
             final String normalizedXdocDesc = normalizeText(descriptionFromXdoc);
 
-            final String descMismatchFmt = "Check '%s' in index '%s': "
-                    + "index description is not a prefix of XDoc description.";
+            final String descMismatchFmt = """
+                    Check '%s' in index '%s': \
+                    index description is not a prefix of XDoc description.""";
             final String descMismatchMsg = String.format(Locale.ROOT,
                     descMismatchFmt,
                     mainSectionName, categoryIndexFile);

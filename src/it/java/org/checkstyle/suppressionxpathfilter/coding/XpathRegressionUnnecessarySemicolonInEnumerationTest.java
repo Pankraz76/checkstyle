@@ -80,9 +80,10 @@ public class XpathRegressionUnnecessarySemicolonInEnumerationTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/ENUM_DEF[./IDENT[@text="
-                + "'InputXpathUnnecessarySemicolonInEnumerationAll']]"
-                + "/OBJBLOCK/SEMI"
+            """
+            /COMPILATION_UNIT/ENUM_DEF[./IDENT[@text=\
+            'InputXpathUnnecessarySemicolonInEnumerationAll']]\
+            /OBJBLOCK/SEMI"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

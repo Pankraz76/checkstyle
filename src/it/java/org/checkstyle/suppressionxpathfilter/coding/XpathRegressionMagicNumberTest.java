@@ -54,14 +54,16 @@ public class XpathRegressionMagicNumberTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMagicNumberVariable']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='d']]"
-                    + "/ASSIGN/EXPR[./NUM_INT[@text='5']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMagicNumberVariable']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='d']]"
-                    + "/ASSIGN/EXPR/NUM_INT[@text='5']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMagicNumberVariable']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='d']]\
+            /ASSIGN/EXPR[./NUM_INT[@text='5']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathMagicNumberVariable']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='d']]\
+            /ASSIGN/EXPR/NUM_INT[@text='5']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,16 +83,18 @@ public class XpathRegressionMagicNumberTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMagicNumberMethodDef']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodWithMagicNumber']]"
-                        + "/SLIST/VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR[./"
-                        + "NUM_INT[@text='20']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMagicNumberMethodDef']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodWithMagicNumber']]"
-                        + "/SLIST/VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR/NU"
-                        + "M_INT[@text='20']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMagicNumberMethodDef']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodWithMagicNumber']]\
+                /SLIST/VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR[./\
+                NUM_INT[@text='20']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMagicNumberMethodDef']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodWithMagicNumber']]\
+                /SLIST/VARIABLE_DEF[./IDENT[@text='x']]/ASSIGN/EXPR/NU\
+                M_INT[@text='20']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -109,12 +113,13 @@ public class XpathRegressionMagicNumberTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMagicNumberAnotherVariable']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='performOperation']]"
-                        + "/SLIST/LITERAL_TRY/LITERAL_CATCH/SLIST/LITERAL_IF"
-                        + "/LITERAL_ELSE/SLIST/EXPR/ASSIGN"
-                        + "[./IDENT[@text='a']]/NUM_INT[@text='20']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMagicNumberAnotherVariable']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='performOperation']]\
+                /SLIST/LITERAL_TRY/LITERAL_CATCH/SLIST/LITERAL_IF\
+                /LITERAL_ELSE/SLIST/EXPR/ASSIGN\
+                [./IDENT[@text='a']]/NUM_INT[@text='20']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

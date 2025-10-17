@@ -249,8 +249,9 @@ public final class InlineConfigParser {
             "com.puppycrawl.tools.checkstyle.checks.coding.NestedTryDepthCheck",
             "com.puppycrawl.tools.checkstyle.checks.coding.StringLiteralEqualityCheck",
             "com.puppycrawl.tools.checkstyle.checks.coding.SuperFinalizeCheck",
-            "com.puppycrawl.tools.checkstyle.checks.coding"
-                    + ".UnnecessarySemicolonAfterTypeMemberDeclarationCheck",
+            """
+            com.puppycrawl.tools.checkstyle.checks.coding\
+            .UnnecessarySemicolonAfterTypeMemberDeclarationCheck""",
             "com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck",
             "com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck",
             "com.puppycrawl.tools.checkstyle.checks.design.InnerTypeLastCheck",
@@ -258,23 +259,27 @@ public final class InlineConfigParser {
             "com.puppycrawl.tools.checkstyle.checks.design.OneTopLevelClassCheck",
 
             "com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck",
-            "com.puppycrawl.tools.checkstyle.checks.javadoc."
-                    + "AbstractJavadocCheckTest$TokenIsNotInAcceptablesCheck",
+            """
+            com.puppycrawl.tools.checkstyle.checks.javadoc.\
+            AbstractJavadocCheckTest$TokenIsNotInAcceptablesCheck""",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.AtclauseOrderCheck",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.InvalidJavadocPositionCheck",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocBlockTagLocationCheck",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMissingLeadingAsteriskCheck",
-            "com.puppycrawl.tools.checkstyle.checks.javadoc"
-                    + ".JavadocMissingWhitespaceAfterAsteriskCheck",
-            "com.puppycrawl.tools.checkstyle.checks.javadoc"
-                    + ".JavadocTagContinuationIndentationCheck",
+            """
+            com.puppycrawl.tools.checkstyle.checks.javadoc\
+            .JavadocMissingWhitespaceAfterAsteriskCheck""",
+            """
+            com.puppycrawl.tools.checkstyle.checks.javadoc\
+            .JavadocTagContinuationIndentationCheck""",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocMethodCheck",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocPackageCheck",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.MissingJavadocTypeCheck",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.NonEmptyAtclauseDescriptionCheck",
-            "com.puppycrawl.tools.checkstyle.checks.javadoc"
-                    + ".RequireEmptyLineBeforeBlockTagGroupCheck",
+            """
+            com.puppycrawl.tools.checkstyle.checks.javadoc\
+            .RequireEmptyLineBeforeBlockTagGroupCheck""",
             "com.puppycrawl.tools.checkstyle.checks.javadoc.SingleLineJavadocCheck",
             "com.puppycrawl.tools.checkstyle.checks.metrics.BooleanExpressionComplexityCheck",
             "com.puppycrawl.tools.checkstyle.checks.metrics.ClassDataAbstractionCouplingCheck",
@@ -306,8 +311,9 @@ public final class InlineConfigParser {
             "com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck",
             "com.puppycrawl.tools.checkstyle.checks.whitespace.NoLineWrapCheck",
             "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck",
-            "com.puppycrawl.tools.checkstyle.checks.whitespace."
-                    + "NoWhitespaceBeforeCaseDefaultColonCheck",
+            """
+            com.puppycrawl.tools.checkstyle.checks.whitespace.\
+            NoWhitespaceBeforeCaseDefaultColonCheck""",
             "com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck",
             "com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck",
             "com.puppycrawl.tools.checkstyle.checks.whitespace.SingleSpaceSeparatorCheck",
@@ -592,8 +598,9 @@ public final class InlineConfigParser {
                                    String inputFilePath, List<String> lines)
             throws Exception {
         if (!lines.get(0).startsWith("/*")) {
-            throw new CheckstyleException("Config not specified on top."
-                + "Please see other inputs for examples of what is required.");
+            throw new CheckstyleException("""
+                Config not specified on top.\
+                Please see other inputs for examples of what is required.""");
         }
 
         final List<String> inlineConfig = getInlineConfig(lines);
@@ -968,14 +975,16 @@ public final class InlineConfigParser {
                     .collect(Collectors.joining(", "));
 
             final String message = String.format(Locale.ROOT,
-                    "Default properties must use the '(default)' tag."
-                    + " Properties missing the '(default)' tag: %s", propertiesList);
+                    """
+                    Default properties must use the '(default)' tag.\
+                     Properties missing the '(default)' tag: %s""", propertiesList);
             throw new CheckstyleException(message);
         }
         if (!unusedProperties.isEmpty()) {
             final String message = String.format(Locale.ROOT,
-                    "All properties must be explicitly specified."
-                    + " Found unused properties: %s", unusedProperties);
+                    """
+                    All properties must be explicitly specified.\
+                     Found unused properties: %s""", unusedProperties);
             throw new CheckstyleException(message);
         }
     }

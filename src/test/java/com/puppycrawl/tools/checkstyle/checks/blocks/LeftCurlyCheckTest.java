@@ -505,10 +505,11 @@ public class LeftCurlyCheckTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                    + "cannot initialize module com.puppycrawl.tools.checkstyle.checks."
-                    + "blocks.LeftCurlyCheck - "
-                    + "Cannot set property 'option' to 'invalid_option'");
+                .isEqualTo("""
+                    cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                    cannot initialize module com.puppycrawl.tools.checkstyle.checks.\
+                    blocks.LeftCurlyCheck - \
+                    Cannot set property 'option' to 'invalid_option'""");
         }
     }
 

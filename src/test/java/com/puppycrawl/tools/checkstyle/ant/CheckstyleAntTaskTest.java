@@ -475,16 +475,19 @@ public class CheckstyleAntTaskTest extends AbstractPathTestSupport {
                 .isEqualTo(auditStartedMessage);
         assertWithMessage(errorMessage)
                 .that(output.get(1))
-                .matches("^\\[WARN].*InputCheckstyleAntTaskError.java:4: .*"
-                        + "@incomplete=Some javadoc \\[WriteTag]");
+                .matches("""
+                        ^\\[WARN].*InputCheckstyleAntTaskError.java:4: .*\
+                        @incomplete=Some javadoc \\[WriteTag]""");
         assertWithMessage(errorMessage)
                 .that(output.get(2))
-                .matches("^\\[ERROR].*InputCheckstyleAntTaskError.java:7: "
-                        + "Line is longer than 70 characters \\(found 80\\). \\[LineLength]");
+                .matches("""
+                        ^\\[ERROR].*InputCheckstyleAntTaskError.java:7: \
+                        Line is longer than 70 characters \\(found 80\\). \\[LineLength]""");
         assertWithMessage(errorMessage)
                 .that(output.get(3))
-                .matches("^\\[ERROR].*InputCheckstyleAntTaskError.java:9: "
-                        + "Line is longer than 70 characters \\(found 81\\). \\[LineLength]");
+                .matches("""
+                        ^\\[ERROR].*InputCheckstyleAntTaskError.java:9: \
+                        Line is longer than 70 characters \\(found 81\\). \\[LineLength]""");
         assertWithMessage(errorMessage)
                 .that(output.get(4))
                 .isEqualTo(auditFinishedMessage);

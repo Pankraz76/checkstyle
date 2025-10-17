@@ -56,14 +56,16 @@ public class XpathRegressionAvoidInlineConditionalsTest extends AbstractXpathTes
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAvoidInlineConditionalsVariableDef']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='substring']]/SLIST"
-                        + "/VARIABLE_DEF[./IDENT[@text='b']]/ASSIGN/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAvoidInlineConditionalsVariableDef']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='substring']]/SLIST"
-                        + "/VARIABLE_DEF[./IDENT[@text='b']]/ASSIGN/EXPR/QUESTION"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAvoidInlineConditionalsVariableDef']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='substring']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='b']]/ASSIGN/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAvoidInlineConditionalsVariableDef']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='substring']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='b']]/ASSIGN/EXPR/QUESTION"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -84,10 +86,11 @@ public class XpathRegressionAvoidInlineConditionalsTest extends AbstractXpathTes
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAvoidInlineConditionalsAssign']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='setB']]/SLIST"
-                        + "/EXPR/ASSIGN[./IDENT[@text='b']]/QUESTION"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAvoidInlineConditionalsAssign']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='setB']]/SLIST\
+                /EXPR/ASSIGN[./IDENT[@text='b']]/QUESTION"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -108,14 +111,16 @@ public class XpathRegressionAvoidInlineConditionalsTest extends AbstractXpathTes
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAvoidInlineConditionalsAssert']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='assertA']]/SLIST"
-                        + "/LITERAL_ASSERT/EXPR[./QUESTION/METHOD_CALL/DOT/IDENT[@text='a']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAvoidInlineConditionalsAssert']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='assertA']]/SLIST"
-                        + "/LITERAL_ASSERT/EXPR/QUESTION"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAvoidInlineConditionalsAssert']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='assertA']]/SLIST\
+                /LITERAL_ASSERT/EXPR[./QUESTION/METHOD_CALL/DOT/IDENT[@text='a']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAvoidInlineConditionalsAssert']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='assertA']]/SLIST\
+                /LITERAL_ASSERT/EXPR/QUESTION"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

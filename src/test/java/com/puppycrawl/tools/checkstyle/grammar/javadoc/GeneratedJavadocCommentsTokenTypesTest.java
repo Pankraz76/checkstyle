@@ -69,8 +69,9 @@ public class GeneratedJavadocCommentsTokenTypesTest {
         "Link_COMMA"
     );
 
-    private static final String MSG = "Ensure that token numbers generated for the elements"
-            + "present in JavadocParser are consistent with what the tests assert.";
+    private static final String MSG = """
+            Ensure that token numbers generated for the elements\
+            present in JavadocParser are consistent with what the tests assert.""";
 
     /**
      * This method checks that the numbers generated for tokens in <tt>JavadocLexer.g4</tt> don't
@@ -357,9 +358,10 @@ public class GeneratedJavadocCommentsTokenTypesTest {
                 .count();
 
         // Read JavaDoc before changing count below
-        assertWithMessage("all tokens must be added to list in"
-                        + " 'GeneratedJavadocTokenTypesTest' and verified"
-                        + " that their old numbering didn't change")
+        assertWithMessage("""
+                        all tokens must be added to list in\
+                         'GeneratedJavadocTokenTypesTest' and verified\
+                         that their old numbering didn't change""")
             .that(tokenCount)
             .isEqualTo(88);
     }

@@ -58,9 +58,10 @@ public class XpathRegressionNeedBracesTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathNeedBracesDo']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_DO"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNeedBracesDo']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_DO"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,9 +82,10 @@ public class XpathRegressionNeedBracesTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNeedBracesSingleLine']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNeedBracesSingleLine']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_IF"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -105,9 +107,10 @@ public class XpathRegressionNeedBracesTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNeedBracesSingleLineLambda']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='r3']]/ASSIGN/LAMBDA"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNeedBracesSingleLineLambda']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='r3']]/ASSIGN/LAMBDA"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -127,9 +130,10 @@ public class XpathRegressionNeedBracesTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathNeedBracesEmptyLoopBody']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_WHILE"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNeedBracesEmptyLoopBody']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_WHILE"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

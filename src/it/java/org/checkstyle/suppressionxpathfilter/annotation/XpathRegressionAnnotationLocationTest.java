@@ -57,17 +57,21 @@ public class XpathRegressionAnnotationLocationTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationClass']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationClass']]"
-                        + "/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationClass']]/"
-                        + "MODIFIERS/ANNOTATION[./IDENT[@text='ClassAnnotation']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationClass']]/"
-                        + "MODIFIERS/ANNOTATION[./IDENT[@text='ClassAnnotation']]/AT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationClass']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationClass']]\
+                /MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationClass']]/\
+                MODIFIERS/ANNOTATION[./IDENT[@text='ClassAnnotation']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationClass']]/\
+                MODIFIERS/ANNOTATION[./IDENT[@text='ClassAnnotation']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -89,18 +93,22 @@ public class XpathRegressionAnnotationLocationTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-                    + "[./IDENT[@text='"
-                    + "InputXpathAnnotationLocationInterface']]",
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-                    + "[./IDENT[@text='InputXpathAnnotationLocationInterface'"
-                    + "]]/MODIFIERS",
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-                    + "[./IDENT[@text='InputXpathAnnotationLocationInterface']]"
-                    + "/MODIFIERS/ANNOTATION[./IDENT[@text='InterfaceAnnotation']]",
-            "/COMPILATION_UNIT/INTERFACE_DEF"
-                    + "[./IDENT[@text='InputXpathAnnotationLocationInterface']]"
-                    + "/MODIFIERS/ANNOTATION[./IDENT[@text='InterfaceAnnotation']]/AT"
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='\
+            InputXpathAnnotationLocationInterface']]""",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='InputXpathAnnotationLocationInterface'\
+            ]]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='InputXpathAnnotationLocationInterface']]\
+            /MODIFIERS/ANNOTATION[./IDENT[@text='InterfaceAnnotation']]""",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF\
+            [./IDENT[@text='InputXpathAnnotationLocationInterface']]\
+            /MODIFIERS/ANNOTATION[./IDENT[@text='InterfaceAnnotation']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -122,17 +130,21 @@ public class XpathRegressionAnnotationLocationTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/ENUM_DEF[./IDENT[@text='"
-                        + "InputXpathAnnotationLocationEnum']]",
-                "/COMPILATION_UNIT/ENUM_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationEnum']]"
-                        + "/MODIFIERS",
-                "/COMPILATION_UNIT/ENUM_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationEnum']]"
-                        + "/MODIFIERS/ANNOTATION[./IDENT[@text='EnumAnnotation']]",
-                "/COMPILATION_UNIT/ENUM_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationEnum']]"
-                        + "/MODIFIERS/ANNOTATION[./IDENT[@text='EnumAnnotation']]/AT"
+                """
+                /COMPILATION_UNIT/ENUM_DEF[./IDENT[@text='\
+                InputXpathAnnotationLocationEnum']]""",
+                """
+                /COMPILATION_UNIT/ENUM_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationEnum']]\
+                /MODIFIERS""",
+                """
+                /COMPILATION_UNIT/ENUM_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationEnum']]\
+                /MODIFIERS/ANNOTATION[./IDENT[@text='EnumAnnotation']]""",
+                """
+                /COMPILATION_UNIT/ENUM_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationEnum']]\
+                /MODIFIERS/ANNOTATION[./IDENT[@text='EnumAnnotation']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -156,20 +168,24 @@ public class XpathRegressionAnnotationLocationTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationMethod']]/"
-                        + "OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationMethod']]/"
-                        + "OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationMethod']]/"
-                        + "OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/MODIFIERS/"
-                        + "ANNOTATION[./IDENT[@text='MethodAnnotation']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationMethod']]/"
-                        + "OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/MODIFIERS/"
-                        + "ANNOTATION[./IDENT[@text='MethodAnnotation']]/AT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationMethod']]/\
+                OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationMethod']]/\
+                OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationMethod']]/\
+                OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/MODIFIERS/\
+                ANNOTATION[./IDENT[@text='MethodAnnotation']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationMethod']]/\
+                OBJBLOCK/METHOD_DEF[./IDENT[@text='foo1']]/MODIFIERS/\
+                ANNOTATION[./IDENT[@text='MethodAnnotation']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -193,20 +209,24 @@ public class XpathRegressionAnnotationLocationTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationVariable']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationVariable']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationVariable']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]/MODIFIERS/"
-                        + "ANNOTATION[./IDENT[@text='VariableAnnotation']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationLocationVariable']]/"
-                        + "OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]/MODIFIERS/"
-                        + "ANNOTATION[./IDENT[@text='VariableAnnotation']]/AT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationVariable']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationVariable']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationVariable']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]/MODIFIERS/\
+                ANNOTATION[./IDENT[@text='VariableAnnotation']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationLocationVariable']]/\
+                OBJBLOCK/VARIABLE_DEF[./IDENT[@text='b']]/MODIFIERS/\
+                ANNOTATION[./IDENT[@text='VariableAnnotation']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -230,24 +250,28 @@ public class XpathRegressionAnnotationLocationTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAnnotationLocationCTOR']]/OBJBLOCK/CTOR_DEF"
-                        + "[./IDENT[@text='"
-                        + "InputXpathAnnotationLocationCTOR']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAnnotationLocationCTOR']]/OBJBLOCK/CTOR_DEF"
-                        + "[./IDENT[@text='"
-                        + "InputXpathAnnotationLocationCTOR']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAnnotationLocationCTOR']]/OBJBLOCK/CTOR_DEF"
-                        + "[./IDENT[@text='"
-                        + "InputXpathAnnotationLocationCTOR']]/"
-                        + "MODIFIERS/ANNOTATION[./IDENT[@text='CTORAnnotation']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='"
-                        + "InputXpathAnnotationLocationCTOR']]/OBJBLOCK/CTOR_DEF"
-                        + "[./IDENT[@text='"
-                        + "InputXpathAnnotationLocationCTOR']]/"
-                        + "MODIFIERS/ANNOTATION[./IDENT[@text='CTORAnnotation']]/AT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAnnotationLocationCTOR']]/OBJBLOCK/CTOR_DEF\
+                [./IDENT[@text='\
+                InputXpathAnnotationLocationCTOR']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAnnotationLocationCTOR']]/OBJBLOCK/CTOR_DEF\
+                [./IDENT[@text='\
+                InputXpathAnnotationLocationCTOR']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAnnotationLocationCTOR']]/OBJBLOCK/CTOR_DEF\
+                [./IDENT[@text='\
+                InputXpathAnnotationLocationCTOR']]/\
+                MODIFIERS/ANNOTATION[./IDENT[@text='CTORAnnotation']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='\
+                InputXpathAnnotationLocationCTOR']]/OBJBLOCK/CTOR_DEF\
+                [./IDENT[@text='\
+                InputXpathAnnotationLocationCTOR']]/\
+                MODIFIERS/ANNOTATION[./IDENT[@text='CTORAnnotation']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

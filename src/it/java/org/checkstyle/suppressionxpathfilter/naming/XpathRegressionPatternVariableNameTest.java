@@ -61,11 +61,12 @@ public class XpathRegressionPatternVariableNameTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathPatternVariableNameOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='MyClass']]/SLIST/LITERAL_IF/EXPR/"
-                + "LITERAL_INSTANCEOF[./IDENT[@text='o1']]/PATTERN_VARIABLE_DEF/"
-                + "IDENT[@text='STRING1']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathPatternVariableNameOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='MyClass']]/SLIST/LITERAL_IF/EXPR/\
+            LITERAL_INSTANCEOF[./IDENT[@text='o1']]/PATTERN_VARIABLE_DEF/\
+            IDENT[@text='STRING1']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -90,11 +91,12 @@ public class XpathRegressionPatternVariableNameTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathPatternVariableNameTwo']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='MyClass']]/SLIST/LITERAL_IF/EXPR/"
-                + "LITERAL_INSTANCEOF[./IDENT[@text='o1']]/"
-                + "PATTERN_VARIABLE_DEF/IDENT[@text='s']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathPatternVariableNameTwo']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='MyClass']]/SLIST/LITERAL_IF/EXPR/\
+            LITERAL_INSTANCEOF[./IDENT[@text='o1']]/\
+            PATTERN_VARIABLE_DEF/IDENT[@text='s']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -119,11 +121,12 @@ public class XpathRegressionPatternVariableNameTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathPatternVariableNameThree']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='MyClass']]/SLIST/LITERAL_IF/"
-                    + "EXPR/LITERAL_INSTANCEOF[./IDENT[@text='o1']]/"
-                    + "PATTERN_VARIABLE_DEF/IDENT[@text='STR']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathPatternVariableNameThree']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='MyClass']]/SLIST/LITERAL_IF/\
+                EXPR/LITERAL_INSTANCEOF[./IDENT[@text='o1']]/\
+                PATTERN_VARIABLE_DEF/IDENT[@text='STR']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -148,11 +151,12 @@ public class XpathRegressionPatternVariableNameTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathPatternVariableNameFour']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='MyClass']]/SLIST/LITERAL_IF/EXPR/"
-                    + "LITERAL_INSTANCEOF[./IDENT[@text='o1']]/"
-                    + "PATTERN_VARIABLE_DEF/IDENT[@text='st']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathPatternVariableNameFour']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='MyClass']]/SLIST/LITERAL_IF/EXPR/\
+                LITERAL_INSTANCEOF[./IDENT[@text='o1']]/\
+                PATTERN_VARIABLE_DEF/IDENT[@text='st']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

@@ -48,10 +48,11 @@ public class XpathRegressionArrayTypeStyleTest extends AbstractXpathTestSupport 
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathArrayTypeStyleVariable']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='strings']]/TYPE["
-                        + "./IDENT[@text='String']]/ARRAY_DECLARATOR"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathArrayTypeStyleVariable']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='strings']]/TYPE[\
+                ./IDENT[@text='String']]/ARRAY_DECLARATOR"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -71,9 +72,10 @@ public class XpathRegressionArrayTypeStyleTest extends AbstractXpathTestSupport 
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathArrayTypeStyleMethodDef']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='getData']]/TYPE/ARRAY_DECLARATOR"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathArrayTypeStyleMethodDef']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='getData']]/TYPE/ARRAY_DECLARATOR"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

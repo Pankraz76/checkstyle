@@ -59,17 +59,19 @@ public class XpathRegressionSuppressWarningsTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsClassDefinition']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR[./STRING_LITERAL[@text='']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSuppressWarningsClassDefinition']]\
+                /MODIFIERS/ANNOTATION[./IDENT\
+                [@text='SuppressWarnings']]\
+                /EXPR[./STRING_LITERAL[@text='']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsClassDefinition']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR/STRING_LITERAL[@text='']"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsClassDefinition']]\
+/MODIFIERS/ANNOTATION[./IDENT\
+[@text='SuppressWarnings']]\
+/EXPR/STRING_LITERAL[@text='']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -90,25 +92,27 @@ public class XpathRegressionSuppressWarningsTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsParameterDefinition']]"
-                + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsParameterDefinition']]"
-                + "/PARAMETERS/PARAMETER_DEF[./IDENT"
-                + "[@text='bar']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR[./STRING_LITERAL[@text='']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSuppressWarningsParameterDefinition']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathSuppressWarningsParameterDefinition']]\
+                /PARAMETERS/PARAMETER_DEF[./IDENT\
+                [@text='bar']]\
+                /MODIFIERS/ANNOTATION[./IDENT\
+                [@text='SuppressWarnings']]\
+                /EXPR[./STRING_LITERAL[@text='']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsParameterDefinition']]"
-                + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsParameterDefinition']]"
-                + "/PARAMETERS/PARAMETER_DEF[./IDENT"
-                + "[@text='bar']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR/STRING_LITERAL[@text='']"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsParameterDefinition']]\
+/OBJBLOCK/CTOR_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsParameterDefinition']]\
+/PARAMETERS/PARAMETER_DEF[./IDENT\
+[@text='bar']]\
+/MODIFIERS/ANNOTATION[./IDENT\
+[@text='SuppressWarnings']]\
+/EXPR/STRING_LITERAL[@text='']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -129,21 +133,23 @@ public class XpathRegressionSuppressWarningsTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsVariableDefinition']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT"
-                + "[@text='foo']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR[./STRING_LITERAL[@text='']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathSuppressWarningsVariableDefinition']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT\
+                [@text='foo']]\
+                /MODIFIERS/ANNOTATION[./IDENT\
+                [@text='SuppressWarnings']]\
+                /EXPR[./STRING_LITERAL[@text='']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsVariableDefinition']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT"
-                + "[@text='foo']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR/STRING_LITERAL[@text='']"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsVariableDefinition']]\
+/OBJBLOCK/VARIABLE_DEF[./IDENT\
+[@text='foo']]\
+/MODIFIERS/ANNOTATION[./IDENT\
+[@text='SuppressWarnings']]\
+/EXPR/STRING_LITERAL[@text='']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -164,17 +170,19 @@ public class XpathRegressionSuppressWarningsTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsEnumDefinition']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR[./STRING_LITERAL[@text='']]",
+                """
+                /COMPILATION_UNIT/ENUM_DEF[./IDENT\
+                [@text='InputXpathSuppressWarningsEnumDefinition']]\
+                /MODIFIERS/ANNOTATION[./IDENT\
+                [@text='SuppressWarnings']]\
+                /EXPR[./STRING_LITERAL[@text='']]""",
 
-                "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsEnumDefinition']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR/STRING_LITERAL[@text='']"
+                """
+/COMPILATION_UNIT/ENUM_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsEnumDefinition']]\
+/MODIFIERS/ANNOTATION[./IDENT\
+[@text='SuppressWarnings']]\
+/EXPR/STRING_LITERAL[@text='']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -195,17 +203,19 @@ public class XpathRegressionSuppressWarningsTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsInterfaceDefinition']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR[./STRING_LITERAL[@text='']]",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+                [@text='InputXpathSuppressWarningsInterfaceDefinition']]\
+                /MODIFIERS/ANNOTATION[./IDENT\
+                [@text='SuppressWarnings']]\
+                /EXPR[./STRING_LITERAL[@text='']]""",
 
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsInterfaceDefinition']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR/STRING_LITERAL[@text='']"
+                """
+/COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsInterfaceDefinition']]\
+/MODIFIERS/ANNOTATION[./IDENT\
+[@text='SuppressWarnings']]\
+/EXPR/STRING_LITERAL[@text='']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -226,21 +236,23 @@ public class XpathRegressionSuppressWarningsTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsEnumConstantDefinition']]"
-                + "/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT"
-                + "[@text='FOO']]"
-                + "/ANNOTATIONS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR[./STRING_LITERAL[@text='']]",
+                """
+                /COMPILATION_UNIT/ENUM_DEF[./IDENT\
+                [@text='InputXpathSuppressWarningsEnumConstantDefinition']]\
+                /OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT\
+                [@text='FOO']]\
+                /ANNOTATIONS/ANNOTATION[./IDENT\
+                [@text='SuppressWarnings']]\
+                /EXPR[./STRING_LITERAL[@text='']]""",
 
-                "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsEnumConstantDefinition']]"
-                + "/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT"
-                + "[@text='FOO']]"
-                + "/ANNOTATIONS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR/STRING_LITERAL[@text='']"
+                """
+/COMPILATION_UNIT/ENUM_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsEnumConstantDefinition']]\
+/OBJBLOCK/ENUM_CONSTANT_DEF[./IDENT\
+[@text='FOO']]\
+/ANNOTATIONS/ANNOTATION[./IDENT\
+[@text='SuppressWarnings']]\
+/EXPR/STRING_LITERAL[@text='']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -261,21 +273,23 @@ public class XpathRegressionSuppressWarningsTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-               "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-               + "[@text='InputXpathSuppressWarningsMethodDefinition']]"
-               + "/OBJBLOCK/METHOD_DEF[./IDENT"
-               + "[@text='getFoo']]"
-               + "/MODIFIERS/ANNOTATION[./IDENT"
-               + "[@text='SuppressWarnings']]"
-               + "/EXPR[./STRING_LITERAL[@text='']]",
+               """
+               /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+               [@text='InputXpathSuppressWarningsMethodDefinition']]\
+               /OBJBLOCK/METHOD_DEF[./IDENT\
+               [@text='getFoo']]\
+               /MODIFIERS/ANNOTATION[./IDENT\
+               [@text='SuppressWarnings']]\
+               /EXPR[./STRING_LITERAL[@text='']]""",
 
-               "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-               + "[@text='InputXpathSuppressWarningsMethodDefinition']]"
-               + "/OBJBLOCK/METHOD_DEF[./IDENT"
-               + "[@text='getFoo']]"
-               + "/MODIFIERS/ANNOTATION[./IDENT"
-               + "[@text='SuppressWarnings']]"
-               + "/EXPR/STRING_LITERAL[@text='']"
+               """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsMethodDefinition']]\
+/OBJBLOCK/METHOD_DEF[./IDENT\
+[@text='getFoo']]\
+/MODIFIERS/ANNOTATION[./IDENT\
+[@text='SuppressWarnings']]\
+/EXPR/STRING_LITERAL[@text='']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -296,17 +310,19 @@ public class XpathRegressionSuppressWarningsTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/ANNOTATION_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsAnnotationDefinition']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR[./STRING_LITERAL[@text='']]",
+                """
+                /COMPILATION_UNIT/ANNOTATION_DEF[./IDENT\
+                [@text='InputXpathSuppressWarningsAnnotationDefinition']]\
+                /MODIFIERS/ANNOTATION[./IDENT\
+                [@text='SuppressWarnings']]\
+                /EXPR[./STRING_LITERAL[@text='']]""",
 
-                "/COMPILATION_UNIT/ANNOTATION_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsAnnotationDefinition']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR/STRING_LITERAL[@text='']"
+                """
+/COMPILATION_UNIT/ANNOTATION_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsAnnotationDefinition']]\
+/MODIFIERS/ANNOTATION[./IDENT\
+[@text='SuppressWarnings']]\
+/EXPR/STRING_LITERAL[@text='']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -327,21 +343,23 @@ public class XpathRegressionSuppressWarningsTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/ANNOTATION_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsAnnotationFieldDefinition']]"
-                + "/OBJBLOCK/ANNOTATION_FIELD_DEF[./IDENT"
-                + "[@text='foo']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR[./STRING_LITERAL[@text='']]",
+                """
+                /COMPILATION_UNIT/ANNOTATION_DEF[./IDENT\
+                [@text='InputXpathSuppressWarningsAnnotationFieldDefinition']]\
+                /OBJBLOCK/ANNOTATION_FIELD_DEF[./IDENT\
+                [@text='foo']]\
+                /MODIFIERS/ANNOTATION[./IDENT\
+                [@text='SuppressWarnings']]\
+                /EXPR[./STRING_LITERAL[@text='']]""",
 
-                "/COMPILATION_UNIT/ANNOTATION_DEF[./IDENT"
-                + "[@text='InputXpathSuppressWarningsAnnotationFieldDefinition']]"
-                + "/OBJBLOCK/ANNOTATION_FIELD_DEF[./IDENT"
-                + "[@text='foo']]"
-                + "/MODIFIERS/ANNOTATION[./IDENT"
-                + "[@text='SuppressWarnings']]"
-                + "/EXPR/STRING_LITERAL[@text='']"
+                """
+/COMPILATION_UNIT/ANNOTATION_DEF[./IDENT\
+[@text='InputXpathSuppressWarningsAnnotationFieldDefinition']]\
+/OBJBLOCK/ANNOTATION_FIELD_DEF[./IDENT\
+[@text='foo']]\
+/MODIFIERS/ANNOTATION[./IDENT\
+[@text='SuppressWarnings']]\
+/EXPR/STRING_LITERAL[@text='']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);

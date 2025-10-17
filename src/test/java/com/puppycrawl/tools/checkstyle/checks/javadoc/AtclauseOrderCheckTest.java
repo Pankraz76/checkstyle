@@ -87,8 +87,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testIncorrect1() throws Exception {
-        final String tagOrder = "[@author, @version, @param, @return, @throws, @exception, @see,"
-                + " @since, @serial, @serialField, @serialData, @deprecated]";
+        final String tagOrder = """
+                [@author, @version, @param, @return, @throws, @exception, @see,\
+                 @since, @serial, @serialField, @serialData, @deprecated]""";
         final String[] expected = {
             "20: " + getCheckMessage(MSG_KEY, tagOrder),
             "22: " + getCheckMessage(MSG_KEY, tagOrder),
@@ -111,8 +112,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testIncorrect2() throws Exception {
-        final String tagOrder = "[@author, @version, @param, @return, @throws, @exception, @see,"
-                + " @since, @serial, @serialField, @serialData, @deprecated]";
+        final String tagOrder = """
+                [@author, @version, @param, @return, @throws, @exception, @see,\
+                 @since, @serial, @serialField, @serialData, @deprecated]""";
         final String[] expected = {
             "20: " + getCheckMessage(MSG_KEY, tagOrder),
             "22: " + getCheckMessage(MSG_KEY, tagOrder),
@@ -135,8 +137,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testIncorrect3() throws Exception {
-        final String tagOrder = "[@author, @version, @param, @return, @throws, @exception, @see,"
-                + " @since, @serial, @serialField, @serialData, @deprecated]";
+        final String tagOrder = """
+                [@author, @version, @param, @return, @throws, @exception, @see,\
+                 @since, @serial, @serialField, @serialData, @deprecated]""";
         final String[] expected = {
             "20: " + getCheckMessage(MSG_KEY, tagOrder),
             "22: " + getCheckMessage(MSG_KEY, tagOrder),
@@ -153,8 +156,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testIncorrect4() throws Exception {
-        final String tagOrder = "[@author, @version, @param, @return, @throws, @exception, @see,"
-                + " @since, @serial, @serialField, @serialData, @deprecated]";
+        final String tagOrder = """
+                [@author, @version, @param, @return, @throws, @exception, @see,\
+                 @since, @serial, @serialField, @serialData, @deprecated]""";
         final String[] expected = {
             "20: " + getCheckMessage(MSG_KEY, tagOrder),
             "22: " + getCheckMessage(MSG_KEY, tagOrder),
@@ -186,8 +190,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testIncorrectCustom2() throws Exception {
-        final String tagOrder = "[@since, @version, @param, @return, @throws, @exception,"
-                + " @deprecated, @see, @serial, @serialField, @serialData, @author]";
+        final String tagOrder = """
+                [@since, @version, @param, @return, @throws, @exception,\
+                 @deprecated, @see, @serial, @serialField, @serialData, @author]""";
         final String[] expected = {
             "30: " + getCheckMessage(MSG_KEY, tagOrder),
         };
@@ -197,8 +202,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testIncorrectCustom3() throws Exception {
-        final String tagOrder = "[@since, @version, @param, @return, @throws, @exception,"
-                + " @deprecated, @see, @serial, @serialField, @serialData, @author]";
+        final String tagOrder = """
+                [@since, @version, @param, @return, @throws, @exception,\
+                 @deprecated, @see, @serial, @serialField, @serialData, @author]""";
         final String[] expected = {
             "30: " + getCheckMessage(MSG_KEY, tagOrder),
         };
@@ -208,8 +214,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testIncorrectCustom4() throws Exception {
-        final String tagOrder = "[@since, @version, @param, @return, @throws, @exception,"
-                + " @deprecated, @see, @serial, @serialField, @serialData, @author]";
+        final String tagOrder = """
+                [@since, @version, @param, @return, @throws, @exception,\
+                 @deprecated, @see, @serial, @serialField, @serialData, @author]""";
         final String[] expected = {
             "30: " + getCheckMessage(MSG_KEY, tagOrder),
         };
@@ -227,8 +234,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testAtclauseOrderRecords() throws Exception {
-        final String tagOrder = "[@author, @version, @param, @return, @throws, @exception,"
-            + " @see, @since, @serial, @serialField, @serialData, @deprecated]";
+        final String tagOrder = """
+            [@author, @version, @param, @return, @throws, @exception,\
+             @see, @since, @serial, @serialField, @serialData, @deprecated]""";
 
         final String[] expected = {
             "36: " + getCheckMessage(MSG_KEY, tagOrder),
@@ -246,8 +254,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testMethodReturningArrayType() throws Exception {
-        final String tagOrder = "[@author, @version, @param, @return, @throws, @exception, @see,"
-                + " @since, @serial, @serialField, @serialData, @deprecated]";
+        final String tagOrder = """
+                [@author, @version, @param, @return, @throws, @exception, @see,\
+                 @since, @serial, @serialField, @serialData, @deprecated]""";
         final String[] expected = {
             "20: " + getCheckMessage(MSG_KEY, tagOrder),
             "32: " + getCheckMessage(MSG_KEY, tagOrder),
@@ -291,8 +300,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testAtclause() throws Exception {
-        final String tagOrder = "[@author, @version, @param, @return, @throws, @exception, @see,"
-                + " @since, @serial, @serialField, @serialData, @deprecated]";
+        final String tagOrder = """
+                [@author, @version, @param, @return, @throws, @exception, @see,\
+                 @since, @serial, @serialField, @serialData, @deprecated]""";
         final String[] expected = {
             "20: " + getCheckMessage(MSG_KEY, tagOrder),
             "21: " + getCheckMessage(MSG_KEY, tagOrder),
@@ -323,8 +333,9 @@ public class AtclauseOrderCheckTest extends AbstractModuleTestSupport {
 
     @Test
     public void testNewArrayDeclaratorStructure() throws Exception {
-        final String tagOrder = "[@author, @version, @param, @return, @throws, @exception, @see,"
-                + " @since, @serial, @serialField, @serialData, @deprecated]";
+        final String tagOrder = """
+                [@author, @version, @param, @return, @throws, @exception, @see,\
+                 @since, @serial, @serialField, @serialData, @deprecated]""";
 
         final String[] expected = {
             "41: " + getCheckMessage(MSG_KEY, tagOrder),

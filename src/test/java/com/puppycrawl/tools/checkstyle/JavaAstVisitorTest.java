@@ -119,10 +119,11 @@ public class JavaAstVisitorTest extends AbstractModuleTestSupport {
                 .map(Method::getName)
                 .collect(Collectors.toUnmodifiableSet());
 
-        final String message = "Visit methods in 'JavaLanguageParserBaseVisitor' generated from "
-                + "production rules and labeled alternatives in 'JavaLanguageParser.g4' should "
-                + "be overridden in 'JavaAstVisitor' or be added to 'VISIT_METHODS_NOT_OVERRIDDEN' "
-                + "with comment explaining why.";
+        final String message = """
+                Visit methods in 'JavaLanguageParserBaseVisitor' generated from \
+                production rules and labeled alternatives in 'JavaLanguageParser.g4' should \
+                be overridden in 'JavaAstVisitor' or be added to 'VISIT_METHODS_NOT_OVERRIDDEN' \
+                with comment explaining why.""";
 
         assertWithMessage(message)
                 .that(filteredVisitMethodNames)
@@ -133,13 +134,15 @@ public class JavaAstVisitorTest extends AbstractModuleTestSupport {
     public void testOrderOfVisitMethodsAndProductionRules() throws Exception {
         // Order of BaseVisitor's generated 'visit' methods match the order of
         // production rules in 'JavaLanguageParser.g4'.
-        final String baseVisitorFilename = "target/generated-sources/antlr/com/puppycrawl"
-                + "/tools/checkstyle/grammar/java/JavaLanguageParserBaseVisitor.java";
+        final String baseVisitorFilename = """
+                target/generated-sources/antlr/com/puppycrawl\
+                /tools/checkstyle/grammar/java/JavaLanguageParserBaseVisitor.java""";
         final DetailAST baseVisitorAst = JavaParser.parseFile(new File(baseVisitorFilename),
                             JavaParser.Options.WITHOUT_COMMENTS);
 
-        final String visitorFilename = "src/main/java/com/puppycrawl/tools/checkstyle"
-                + "/JavaAstVisitor.java";
+        final String visitorFilename = """
+                src/main/java/com/puppycrawl/tools/checkstyle\
+                /JavaAstVisitor.java""";
         final DetailAST visitorAst = JavaParser.parseFile(new File(visitorFilename),
                             JavaParser.Options.WITHOUT_COMMENTS);
 
@@ -153,8 +156,9 @@ public class JavaAstVisitorTest extends AbstractModuleTestSupport {
         // remove overridden 'visit' method from ParseTreeVisitor interface in JavaAstVisitor
         orderedVisitorMethodNames.remove("visit");
 
-        assertWithMessage("Visit methods in 'JavaAstVisitor' should appear in same order as "
-                + "production rules and labeled alternatives in 'JavaLanguageParser.g4'.")
+        assertWithMessage("""
+                Visit methods in 'JavaAstVisitor' should appear in same order as \
+                production rules and labeled alternatives in 'JavaLanguageParser.g4'.""")
                 .that(orderedVisitorMethodNames)
                 .containsExactlyElementsIn(orderedBaseVisitorMethodNames)
                 .inOrder();
@@ -171,8 +175,9 @@ public class JavaAstVisitorTest extends AbstractModuleTestSupport {
      */
     @Test
     public void countExprUsagesInParserGrammar() throws IOException {
-        final String parserGrammarFilename = "src/main/resources/com/puppycrawl"
-                + "/tools/checkstyle/grammar/java/JavaLanguageParser.g4";
+        final String parserGrammarFilename = """
+                src/main/resources/com/puppycrawl\
+                /tools/checkstyle/grammar/java/JavaLanguageParser.g4""";
 
         final int actualExprCount = Arrays.stream(new FileText(new File(parserGrammarFilename),
                         StandardCharsets.UTF_8.name()).toLinesArray())
@@ -183,8 +188,9 @@ public class JavaAstVisitorTest extends AbstractModuleTestSupport {
         // 'EXPR' node.
         final int expectedExprCount = 44;
 
-        assertWithMessage("The 'expr' parser rule does not build an imaginary"
-                + " 'EXPR' node. Any usage of this rule should be questioned.")
+        assertWithMessage("""
+                The 'expr' parser rule does not build an imaginary\
+                 'EXPR' node. Any usage of this rule should be questioned.""")
                 .that(actualExprCount)
                 .isEqualTo(expectedExprCount);
 

@@ -55,10 +55,11 @@ public class XpathRegressionSuperCloneTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathSuperCloneInnerClone']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClone']]"
-                        + "/OBJBLOCK/METHOD_DEF/IDENT[@text='clone']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathSuperCloneInnerClone']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClone']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='clone']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -78,10 +79,11 @@ public class XpathRegressionSuperCloneTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathSuperCloneNoSuperClone']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='NoSuperClone']]"
-                        + "/OBJBLOCK/METHOD_DEF/IDENT[@text='clone']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathSuperCloneNoSuperClone']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='NoSuperClone']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='clone']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -101,9 +103,10 @@ public class XpathRegressionSuperCloneTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathSuperClonePlainAndSubclasses']]"
-                        + "/OBJBLOCK/METHOD_DEF/IDENT[@text='clone']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathSuperClonePlainAndSubclasses']]\
+                /OBJBLOCK/METHOD_DEF/IDENT[@text='clone']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

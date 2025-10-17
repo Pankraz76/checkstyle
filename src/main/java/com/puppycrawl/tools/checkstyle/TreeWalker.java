@@ -272,8 +272,9 @@ public final class TreeWalker extends AbstractFileSetCheck implements ExternalRe
                     registerCheck(tokenId, check);
                 }
                 else {
-                    final String message = String.format(Locale.ROOT, "Token \"%s\" was "
-                            + "not found in Acceptable tokens list in check %s",
+                    final String message = String.format(Locale.ROOT, """
+                            Token "%s" was \
+                            not found in Acceptable tokens list in check %s""",
                             token, check.getClass().getName());
                     throw new CheckstyleException(message);
                 }
@@ -303,9 +304,10 @@ public final class TreeWalker extends AbstractFileSetCheck implements ExternalRe
                     .add(check);
         }
         else if (TokenUtil.isCommentType(tokenId)) {
-            final String message = String.format(Locale.ROOT, "Check '%s' waits for comment type "
-                    + "token ('%s') and should override 'isCommentNodesRequired()' "
-                    + "method to return 'true'", check.getClass().getName(),
+            final String message = String.format(Locale.ROOT, """
+                    Check '%s' waits for comment type \
+                    token ('%s') and should override 'isCommentNodesRequired()' \
+                    method to return 'true'""", check.getClass().getName(),
                     TokenUtil.getTokenName(tokenId));
             throw new CheckstyleException(message);
         }

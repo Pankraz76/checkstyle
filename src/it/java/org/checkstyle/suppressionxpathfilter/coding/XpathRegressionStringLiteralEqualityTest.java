@@ -55,14 +55,16 @@ public class XpathRegressionStringLiteralEqualityTest extends AbstractXpathTestS
                     StringLiteralEqualityCheck.MSG_KEY, "=="),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT"
-                + "/CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityTrue']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]"
-                + "/SLIST/LITERAL_IF/EXPR",
-            "/COMPILATION_UNIT"
-                + "/CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityTrue']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]"
-                + "/SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='foo']]"
+            """
+            /COMPILATION_UNIT\
+            /CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityTrue']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]\
+            /SLIST/LITERAL_IF/EXPR""",
+            """
+            /COMPILATION_UNIT\
+            /CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityTrue']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]\
+            /SLIST/LITERAL_IF/EXPR/EQUAL[./IDENT[@text='foo']]"""
 
         );
 
@@ -81,14 +83,16 @@ public class XpathRegressionStringLiteralEqualityTest extends AbstractXpathTestS
                     StringLiteralEqualityCheck.MSG_KEY, "!="),
         };
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT"
-                + "/CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityFalse']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]"
-                + "/SLIST/LITERAL_WHILE/EXPR",
-            "/COMPILATION_UNIT"
-                + "/CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityFalse']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]"
-                + "/SLIST/LITERAL_WHILE/EXPR/NOT_EQUAL[./IDENT[@text='foo']]"
+            """
+            /COMPILATION_UNIT\
+            /CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityFalse']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]\
+            /SLIST/LITERAL_WHILE/EXPR""",
+            """
+            /COMPILATION_UNIT\
+            /CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityFalse']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]\
+            /SLIST/LITERAL_WHILE/EXPR/NOT_EQUAL[./IDENT[@text='foo']]"""
 
         );
 
@@ -107,11 +111,12 @@ public class XpathRegressionStringLiteralEqualityTest extends AbstractXpathTestS
                     StringLiteralEqualityCheck.MSG_KEY, "=="),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT"
-                + "/CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityExp']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='flag']]"
-                + "/ASSIGN/EXPR/EQUAL[./IDENT[@text='foo']]"
+            """
+            /COMPILATION_UNIT\
+            /CLASS_DEF[./IDENT[@text='InputXpathStringLiteralEqualityExp']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='myFunction']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='flag']]\
+            /ASSIGN/EXPR/EQUAL[./IDENT[@text='foo']]"""
 
         );
 

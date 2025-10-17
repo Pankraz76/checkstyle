@@ -305,8 +305,9 @@ public class SuppressionCommentFilterTest
         final Object tag = getTagsAfterExecutionOnDefaultFilter("//CHECKSTYLE:OFF").get(0);
         assertWithMessage("Invalid toString result")
             .that(tag.toString())
-            .isEqualTo("Tag[text='CHECKSTYLE:OFF', line=1, column=0, type=OFF,"
-                    + " tagCheckRegexp=.*, tagMessageRegexp=null, tagIdRegexp=null]");
+            .isEqualTo("""
+                    Tag[text='CHECKSTYLE:OFF', line=1, column=0, type=OFF,\
+                     tagCheckRegexp=.*, tagMessageRegexp=null, tagIdRegexp=null]""");
     }
 
     @Test
@@ -317,8 +318,9 @@ public class SuppressionCommentFilterTest
                 getTagsAfterExecution(filter, "filename", "//CHECKSTYLE:ON").get(0);
         assertWithMessage("Invalid toString result")
             .that(tag.toString())
-            .isEqualTo("Tag[text='CHECKSTYLE:ON', line=1, column=0, type=ON,"
-                + " tagCheckRegexp=.*, tagMessageRegexp=.*, tagIdRegexp=null]");
+            .isEqualTo("""
+                Tag[text='CHECKSTYLE:ON', line=1, column=0, type=ON,\
+                 tagCheckRegexp=.*, tagMessageRegexp=.*, tagIdRegexp=null]""");
     }
 
     @Test

@@ -57,10 +57,11 @@ public class XpathRegressionHiddenFieldTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathHiddenFieldLambdaExpInMethodCall']]/OBJBLOCK"
-                + "/INSTANCE_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/PARAMETERS"
-                + "/PARAMETER_DEF/IDENT[@text='value']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathHiddenFieldLambdaExpInMethodCall']]/OBJBLOCK\
+            /INSTANCE_INIT/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA/PARAMETERS\
+            /PARAMETER_DEF/IDENT[@text='value']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,10 +82,11 @@ public class XpathRegressionHiddenFieldTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathHiddenFieldMethodParam']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='method']]/PARAMETERS/PARAMETER_DEF"
-                + "/IDENT[@text='other']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathHiddenFieldMethodParam']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='method']]/PARAMETERS/PARAMETER_DEF\
+            /IDENT[@text='other']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

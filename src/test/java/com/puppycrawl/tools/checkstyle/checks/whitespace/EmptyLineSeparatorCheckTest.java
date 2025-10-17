@@ -44,8 +44,9 @@ public class EmptyLineSeparatorCheckTest
     @Test
     public void testGetRequiredTokens() {
         final EmptyLineSeparatorCheck checkObj = new EmptyLineSeparatorCheck();
-        assertWithMessage("EmptyLineSeparatorCheck#getRequiredTokens should return empty array "
-                + "by default")
+        assertWithMessage("""
+                EmptyLineSeparatorCheck#getRequiredTokens should return empty array \
+                by default""")
             .that(checkObj.getRequiredTokens())
             .isEqualTo(CommonUtil.EMPTY_INT_ARRAY);
     }

@@ -57,14 +57,16 @@ public class XpathRegressionModifierOrderTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathModifierOrderMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/MODIFIERS"
-                        + "/ANNOTATION[./IDENT[@text='MethodAnnotation']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathModifierOrderMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/MODIFIERS"
-                        + "/ANNOTATION[./IDENT[@text='MethodAnnotation']]/AT");
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathModifierOrderMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/MODIFIERS\
+                /ANNOTATION[./IDENT[@text='MethodAnnotation']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathModifierOrderMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/MODIFIERS\
+                /ANNOTATION[./IDENT[@text='MethodAnnotation']]/AT""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -82,9 +84,10 @@ public class XpathRegressionModifierOrderTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathModifierOrderVariable']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='var']]/MODIFIERS/LITERAL_PRIVATE");
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathModifierOrderVariable']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='var']]/MODIFIERS/LITERAL_PRIVATE""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -102,12 +105,14 @@ public class XpathRegressionModifierOrderTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/ANNOTATION_DEF[./IDENT"
-                        + "[@text='InputXpathModifierOrderAnnotation']]"
-                        + "/MODIFIERS/ANNOTATION[./IDENT[@text='InterfaceAnnotation']]",
-                "/COMPILATION_UNIT/ANNOTATION_DEF[./IDENT"
-                        + "[@text='InputXpathModifierOrderAnnotation']]"
-                        + "/MODIFIERS/ANNOTATION[./IDENT[@text='InterfaceAnnotation']]/AT");
+                """
+                /COMPILATION_UNIT/ANNOTATION_DEF[./IDENT\
+                [@text='InputXpathModifierOrderAnnotation']]\
+                /MODIFIERS/ANNOTATION[./IDENT[@text='InterfaceAnnotation']]""",
+                """
+                /COMPILATION_UNIT/ANNOTATION_DEF[./IDENT\
+                [@text='InputXpathModifierOrderAnnotation']]\
+                /MODIFIERS/ANNOTATION[./IDENT[@text='InterfaceAnnotation']]/AT""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }

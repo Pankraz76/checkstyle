@@ -59,14 +59,16 @@ public class XpathRegressionMultipleStringLiteralsTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMultipleStringLiteralsDefault']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]"
-                    + "/ASSIGN/EXPR[./STRING_LITERAL[@text='StringContents']]",
-                 "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathMultipleStringLiteralsDefault']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]"
-                + "/ASSIGN/EXPR/STRING_LITERAL[@text='StringContents']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMultipleStringLiteralsDefault']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]\
+                /ASSIGN/EXPR[./STRING_LITERAL[@text='StringContents']]""",
+                 """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMultipleStringLiteralsDefault']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]\
+                /ASSIGN/EXPR/STRING_LITERAL[@text='StringContents']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -87,11 +89,12 @@ public class XpathRegressionMultipleStringLiteralsTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathMultipleStringLiteralsAllowDuplicates']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest']]/SLIST/VARIABLE_DEF"
-                + "[./IDENT[@text='a5']]/ASSIGN/EXPR/PLUS[./STRING_LITERAL[@text=', ']]"
-                + "/PLUS/STRING_LITERAL[@text=', ']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMultipleStringLiteralsAllowDuplicates']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest']]/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='a5']]/ASSIGN/EXPR/PLUS[./STRING_LITERAL[@text=', ']]\
+                /PLUS/STRING_LITERAL[@text=', ']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -112,10 +115,11 @@ public class XpathRegressionMultipleStringLiteralsTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathMultipleStringLiteralsIgnoreRegexp']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest']]/SLIST/VARIABLE_DEF"
-                + "[./IDENT[@text='a3']]/ASSIGN/EXPR/PLUS/STRING_LITERAL[@text='DoubleString']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMultipleStringLiteralsIgnoreRegexp']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='myTest']]/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='a3']]/ASSIGN/EXPR/PLUS/STRING_LITERAL[@text='DoubleString']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -137,14 +141,16 @@ public class XpathRegressionMultipleStringLiteralsTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-               "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-               + "'InputXpathMultipleStringLiteralsIgnoreOccurrenceContext']]"
-               + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a1']]"
-               + "/ASSIGN/EXPR[./STRING_LITERAL[@text='unchecked']]",
-               "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-               + "'InputXpathMultipleStringLiteralsIgnoreOccurrenceContext']]"
-               + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a1']]"
-               + "/ASSIGN/EXPR/STRING_LITERAL[@text='unchecked']"
+               """
+               /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+               'InputXpathMultipleStringLiteralsIgnoreOccurrenceContext']]\
+               /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a1']]\
+               /ASSIGN/EXPR[./STRING_LITERAL[@text='unchecked']]""",
+               """
+               /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+               'InputXpathMultipleStringLiteralsIgnoreOccurrenceContext']]\
+               /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a1']]\
+               /ASSIGN/EXPR/STRING_LITERAL[@text='unchecked']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);

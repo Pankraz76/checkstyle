@@ -56,9 +56,10 @@ public class XpathRegressionPatternVariableAssignmentTest extends AbstractXpathT
                     "s"),
         };
 
-        final List<String> expectedXpathQueries = List.of("/COMPILATION_UNIT/CLASS_DEF["
-            + "./IDENT[@text='InputXpathPatternVariableAssignmentMethod']]/OBJBLOCK/METHOD_DEF["
-            + "./IDENT[@text='test']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN/IDENT[@text='s']");
+        final List<String> expectedXpathQueries = List.of("""
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathPatternVariableAssignmentMethod']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='test']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN/IDENT[@text='s']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -79,10 +80,11 @@ public class XpathRegressionPatternVariableAssignmentTest extends AbstractXpathT
                     "x"),
         };
 
-        final List<String> expectedXpathQueries = List.of("/COMPILATION_UNIT/CLASS_DEF["
-            + "./IDENT[@text='InputXpathPatternVariableAssignmentLambda']]/OBJBLOCK/METHOD_DEF["
-            + "./IDENT[@text='foo']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA["
-            + "./IDENT[@text='item']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN/IDENT[@text='x']");
+        final List<String> expectedXpathQueries = List.of("""
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathPatternVariableAssignmentLambda']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='foo']]/SLIST/EXPR/METHOD_CALL/ELIST/LAMBDA[\
+            ./IDENT[@text='item']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN/IDENT[@text='x']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -103,11 +105,12 @@ public class XpathRegressionPatternVariableAssignmentTest extends AbstractXpathT
                     "x"),
         };
 
-        final List<String> expectedXpathQueries = List.of("/COMPILATION_UNIT/CLASS_DEF["
-            + "./IDENT[@text='InputXpathPatternVariableAssignmentClass']]/OBJBLOCK/METHOD_DEF["
-            + "./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[./IDENT[@text='annClass']]/ASSIGN/EXPR/"
-            + "LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK/METHOD_DEF["
-            + "./IDENT[@text='test']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN/IDENT[@text='x']");
+        final List<String> expectedXpathQueries = List.of("""
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathPatternVariableAssignmentClass']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[./IDENT[@text='annClass']]/ASSIGN/EXPR/\
+            LITERAL_NEW[./IDENT[@text='AnonymousClass']]/OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='test']]/SLIST/LITERAL_IF/SLIST/EXPR/ASSIGN/IDENT[@text='x']""");
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

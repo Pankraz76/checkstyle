@@ -58,11 +58,12 @@ public class XpathRegressionGenericWhitespaceTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathGenericWhitespaceEnd']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='bad']]"
-                + "/PARAMETERS/PARAMETER_DEF[./IDENT[@text='cls']]"
-                + "/TYPE[./IDENT[@text='Class']]/TYPE_ARGUMENTS/GENERIC_END"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathGenericWhitespaceEnd']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='bad']]\
+            /PARAMETERS/PARAMETER_DEF[./IDENT[@text='cls']]\
+            /TYPE[./IDENT[@text='Class']]/TYPE_ARGUMENTS/GENERIC_END"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -83,11 +84,12 @@ public class XpathRegressionGenericWhitespaceTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathGenericWhitespaceNestedOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS"
-                + "/TYPE_PARAMETER[./IDENT[@text='E']]"
-                + "/TYPE_UPPER_BOUNDS[./IDENT[@text='Enum']]/TYPE_ARGUMENTS/GENERIC_END"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathGenericWhitespaceNestedOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS\
+            /TYPE_PARAMETER[./IDENT[@text='E']]\
+            /TYPE_UPPER_BOUNDS[./IDENT[@text='Enum']]/TYPE_ARGUMENTS/GENERIC_END"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -108,11 +110,12 @@ public class XpathRegressionGenericWhitespaceTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathGenericWhitespaceNestedTwo']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS"
-                + "/TYPE_PARAMETER[./IDENT[@text='E']]"
-                + "/TYPE_UPPER_BOUNDS[./IDENT[@text='Enum']]/TYPE_ARGUMENTS/GENERIC_END"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathGenericWhitespaceNestedTwo']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS\
+            /TYPE_PARAMETER[./IDENT[@text='E']]\
+            /TYPE_UPPER_BOUNDS[./IDENT[@text='Enum']]/TYPE_ARGUMENTS/GENERIC_END"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -133,11 +136,12 @@ public class XpathRegressionGenericWhitespaceTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathGenericWhitespaceNestedThree']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS"
-                + "/TYPE_PARAMETER[./IDENT[@text='E']]"
-                + "/TYPE_UPPER_BOUNDS[./IDENT[@text='Enum']]/TYPE_ARGUMENTS/GENERIC_END"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathGenericWhitespaceNestedThree']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS\
+            /TYPE_PARAMETER[./IDENT[@text='E']]\
+            /TYPE_UPPER_BOUNDS[./IDENT[@text='Enum']]/TYPE_ARGUMENTS/GENERIC_END"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -158,11 +162,12 @@ public class XpathRegressionGenericWhitespaceTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathGenericWhitespaceSingleOne']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/METHOD_CALL"
-                + "/DOT[./IDENT[@text='Collections']]"
-                + "/TYPE_ARGUMENTS/GENERIC_END"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathGenericWhitespaceSingleOne']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='bad']]/ASSIGN/EXPR/METHOD_CALL\
+            /DOT[./IDENT[@text='Collections']]\
+            /TYPE_ARGUMENTS/GENERIC_END"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -183,9 +188,10 @@ public class XpathRegressionGenericWhitespaceTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                + "@text='InputXpathGenericWhitespaceSingleTwo']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS/GENERIC_END"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathGenericWhitespaceSingleTwo']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS/GENERIC_END"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -206,12 +212,14 @@ public class XpathRegressionGenericWhitespaceTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathGenericWhitespaceStartOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathGenericWhitespaceStartOne']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS/GENERIC_START"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathGenericWhitespaceStartOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathGenericWhitespaceStartOne']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS/GENERIC_START"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -232,16 +240,18 @@ public class XpathRegressionGenericWhitespaceTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathGenericWhitespaceStartTwo']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/PARAMETERS"
-                + "/PARAMETER_DEF[./IDENT[@text='consumer']]"
-                + "/TYPE[./IDENT[@text='Consumer']]/TYPE_ARGUMENTS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathGenericWhitespaceStartTwo']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/PARAMETERS"
-                + "/PARAMETER_DEF[./IDENT[@text='consumer']]"
-                + "/TYPE[./IDENT[@text='Consumer']]/TYPE_ARGUMENTS/GENERIC_START"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathGenericWhitespaceStartTwo']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/PARAMETERS\
+            /PARAMETER_DEF[./IDENT[@text='consumer']]\
+            /TYPE[./IDENT[@text='Consumer']]/TYPE_ARGUMENTS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathGenericWhitespaceStartTwo']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/PARAMETERS\
+            /PARAMETER_DEF[./IDENT[@text='consumer']]\
+            /TYPE[./IDENT[@text='Consumer']]/TYPE_ARGUMENTS/GENERIC_START"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -262,18 +272,22 @@ public class XpathRegressionGenericWhitespaceTest extends AbstractXpathTestSuppo
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathGenericWhitespaceStartThree']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathGenericWhitespaceStartThree']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathGenericWhitespaceStartThree']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathGenericWhitespaceStartThree']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS/GENERIC_START"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathGenericWhitespaceStartThree']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathGenericWhitespaceStartThree']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathGenericWhitespaceStartThree']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathGenericWhitespaceStartThree']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='bad']]/TYPE_PARAMETERS/GENERIC_START"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

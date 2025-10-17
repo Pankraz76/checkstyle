@@ -56,11 +56,12 @@ public class XpathRegressionBooleanExpressionComplexityTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathBooleanExpressionComplexityCatchBlock']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]/SLIST"
-                        + "/LITERAL_TRY/LITERAL_CATCH/SLIST/VARIABLE_DEF"
-                        + "[./IDENT[@text='d']]/ASSIGN"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathBooleanExpressionComplexityCatchBlock']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]/SLIST\
+                /LITERAL_TRY/LITERAL_CATCH/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='d']]/ASSIGN"""
         );
 
         runVerifications(moduleConfig, fileToProcess,
@@ -81,10 +82,11 @@ public class XpathRegressionBooleanExpressionComplexityTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathBooleanExpressionComplexityClassFields']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodTwo']]/SLIST/VARIABLE_DEF"
-                        + "[./IDENT[@text='d']]/ASSIGN"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathBooleanExpressionComplexityClassFields']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodTwo']]/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='d']]/ASSIGN"""
         );
 
         runVerifications(moduleConfig, fileToProcess,
@@ -105,9 +107,10 @@ public class XpathRegressionBooleanExpressionComplexityTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathBooleanExpressionComplexityConditionals']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodThree']]/SLIST/LITERAL_IF"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathBooleanExpressionComplexityConditionals']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodThree']]/SLIST/LITERAL_IF"""
         );
 
         runVerifications(moduleConfig, fileToProcess,

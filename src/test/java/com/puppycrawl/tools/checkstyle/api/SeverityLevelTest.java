@@ -61,8 +61,9 @@ public class SeverityLevelTest {
         catch (IllegalArgumentException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("No enum constant "
-                    + "com.puppycrawl.tools.checkstyle.api.SeverityLevel.UNKNOWN");
+                .isEqualTo("""
+                    No enum constant \
+                    com.puppycrawl.tools.checkstyle.api.SeverityLevel.UNKNOWN""");
         }
     }
 

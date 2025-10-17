@@ -57,19 +57,22 @@ public class XpathRegressionConstructorsDeclarationGroupingTest extends Abstract
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingClass']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingClass']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingClass']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingClass']]"
-                        + "/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingClass']]"
-                        + "/OBJBLOCK/CTOR_DEF/IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingClass']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathConstructorsDeclarationGroupingClass']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathConstructorsDeclarationGroupingClass']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathConstructorsDeclarationGroupingClass']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathConstructorsDeclarationGroupingClass']]\
+                /MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathConstructorsDeclarationGroupingClass']]\
+                /OBJBLOCK/CTOR_DEF/IDENT\
+                [@text='InputXpathConstructorsDeclarationGroupingClass']"""
 
         );
 
@@ -89,21 +92,24 @@ public class XpathRegressionConstructorsDeclarationGroupingTest extends Abstract
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingEnum']]"
-                        + "/OBJBLOCK/CTOR_DEF"
-                        + "[./IDENT[@text='InputXpathConstructorsDeclarationGroupingEnum']]",
+                """
+                /COMPILATION_UNIT/ENUM_DEF[./IDENT\
+                [@text='InputXpathConstructorsDeclarationGroupingEnum']]\
+                /OBJBLOCK/CTOR_DEF\
+                [./IDENT[@text='InputXpathConstructorsDeclarationGroupingEnum']]""",
 
-                "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingEnum']]"
-                        + "/OBJBLOCK/CTOR_DEF"
-                        + "[./IDENT[@text='InputXpathConstructorsDeclarationGroupingEnum']]"
-                        + "/MODIFIERS",
+                """
+/COMPILATION_UNIT/ENUM_DEF[./IDENT\
+[@text='InputXpathConstructorsDeclarationGroupingEnum']]\
+/OBJBLOCK/CTOR_DEF\
+[./IDENT[@text='InputXpathConstructorsDeclarationGroupingEnum']]\
+/MODIFIERS""",
 
-                "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingEnum']]"
-                        + "/OBJBLOCK/CTOR_DEF/IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingEnum']"
+                """
+/COMPILATION_UNIT/ENUM_DEF[./IDENT\
+[@text='InputXpathConstructorsDeclarationGroupingEnum']]\
+/OBJBLOCK/CTOR_DEF/IDENT\
+[@text='InputXpathConstructorsDeclarationGroupingEnum']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -122,21 +128,24 @@ public class XpathRegressionConstructorsDeclarationGroupingTest extends Abstract
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingRecords']]"
-                        + "/OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]"
-                        + "/OBJBLOCK/COMPACT_CTOR_DEF[./IDENT[@text='MyRecord']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathConstructorsDeclarationGroupingRecords']]\
+                /OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]\
+                /OBJBLOCK/COMPACT_CTOR_DEF[./IDENT[@text='MyRecord']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingRecords']]"
-                        + "/OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]"
-                        + "/OBJBLOCK/COMPACT_CTOR_DEF[./IDENT[@text='MyRecord']]/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathConstructorsDeclarationGroupingRecords']]\
+/OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]\
+/OBJBLOCK/COMPACT_CTOR_DEF[./IDENT[@text='MyRecord']]/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathConstructorsDeclarationGroupingRecords']]"
-                        + "/OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]"
-                        + "/OBJBLOCK/COMPACT_CTOR_DEF[./IDENT[@text='MyRecord']]"
-                        + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathConstructorsDeclarationGroupingRecords']]\
+/OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]\
+/OBJBLOCK/COMPACT_CTOR_DEF[./IDENT[@text='MyRecord']]\
+/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

@@ -57,22 +57,25 @@ public class XpathRegressionMissingJavadocMethodTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathMissingJavadocMethodCtor']]"
-                    + "/OBJBLOCK/CTOR_DEF[."
-                    + "/IDENT[@text='InputXpathMissingJavadocMethodCtor']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMissingJavadocMethodCtor']]\
+                /OBJBLOCK/CTOR_DEF[.\
+                /IDENT[@text='InputXpathMissingJavadocMethodCtor']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMissingJavadocMethodCtor']]"
-                    + "/OBJBLOCK/CTOR_DEF[."
-                    + "/IDENT[@text='InputXpathMissingJavadocMethodCtor']]"
-                    + "/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathMissingJavadocMethodCtor']]\
+/OBJBLOCK/CTOR_DEF[.\
+/IDENT[@text='InputXpathMissingJavadocMethodCtor']]\
+/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMissingJavadocMethodCtor']]"
-                    + "/OBJBLOCK/CTOR_DEF[."
-                    + "/IDENT[@text='InputXpathMissingJavadocMethodCtor']]"
-                    + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathMissingJavadocMethodCtor']]\
+/OBJBLOCK/CTOR_DEF[.\
+/IDENT[@text='InputXpathMissingJavadocMethodCtor']]\
+/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -94,19 +97,22 @@ public class XpathRegressionMissingJavadocMethodTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMissingJavadocMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMissingJavadocMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMissingJavadocMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                    + "/MODIFIERS",
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathMissingJavadocMethod']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+/MODIFIERS""",
 
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMissingJavadocMethod']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]"
-                    + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+/COMPILATION_UNIT/CLASS_DEF\
+[./IDENT[@text='InputXpathMissingJavadocMethod']]\
+/OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]\
+/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

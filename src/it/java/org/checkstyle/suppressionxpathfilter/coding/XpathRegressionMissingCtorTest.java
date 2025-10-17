@@ -57,12 +57,15 @@ public class XpathRegressionMissingCtorTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMissingCtor']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathMissingCtor']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathMissingCtor']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMissingCtor']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMissingCtor']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathMissingCtor']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -83,15 +86,18 @@ public class XpathRegressionMissingCtorTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathMissingCtorInner']]"
-                    + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathMissingCtorInner']]"
-                    + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                    + "@text='InputXpathMissingCtorInner']]"
-                    + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/LITERAL_CLASS"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathMissingCtorInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathMissingCtorInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathMissingCtorInner']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]/LITERAL_CLASS"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

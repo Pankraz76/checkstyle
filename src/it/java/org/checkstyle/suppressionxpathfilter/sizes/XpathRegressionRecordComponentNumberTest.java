@@ -59,10 +59,12 @@ public class XpathRegressionRecordComponentNumberTest extends AbstractXpathTestS
 
         final List<String> expectedXpathQueries = Arrays.asList(
             "/COMPILATION_UNIT/RECORD_DEF[./IDENT[@text='InputXpathRecordComponentNumberDefault']]",
-            "/COMPILATION_UNIT/RECORD_DEF[./IDENT[@text='InputXpathRecordComponentNumberDefault']]"
-                    + "/MODIFIERS",
-            "/COMPILATION_UNIT/RECORD_DEF[./IDENT[@text='InputXpathRecordComponentNumberDefault']]"
-                    + "/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/RECORD_DEF[./IDENT[@text='InputXpathRecordComponentNumberDefault']]\
+            /MODIFIERS""",
+            """
+            /COMPILATION_UNIT/RECORD_DEF[./IDENT[@text='InputXpathRecordComponentNumberDefault']]\
+            /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -85,13 +87,16 @@ public class XpathRegressionRecordComponentNumberTest extends AbstractXpathTestS
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathRecordComponentNumberCustomMax']]"
-                    + "/OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathRecordComponentNumberCustomMax']]"
-                    + "/OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathRecordComponentNumberCustomMax']]"
-                    + "/OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]/MODIFIERS"
-                    + "/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathRecordComponentNumberCustomMax']]\
+            /OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathRecordComponentNumberCustomMax']]\
+            /OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathRecordComponentNumberCustomMax']]\
+            /OBJBLOCK/RECORD_DEF[./IDENT[@text='MyRecord']]/MODIFIERS\
+            /LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

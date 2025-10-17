@@ -52,15 +52,18 @@ public class XpathRegressionUncommentedMainTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathUncommentedMainDefault']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathUncommentedMainDefault']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathUncommentedMainDefault']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathUncommentedMainDefault']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathUncommentedMainDefault']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathUncommentedMainDefault']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,18 +84,21 @@ public class XpathRegressionUncommentedMainTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathUncommentedMainInStaticClass']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Launcher']"
-                        + "]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathUncommentedMainInStaticClass']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Launcher']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathUncommentedMainInStaticClass']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Launcher']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathUncommentedMainInStaticClass']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Launcher']\
+                ]/OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathUncommentedMainInStaticClass']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Launcher']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathUncommentedMainInStaticClass']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Launcher']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='main']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

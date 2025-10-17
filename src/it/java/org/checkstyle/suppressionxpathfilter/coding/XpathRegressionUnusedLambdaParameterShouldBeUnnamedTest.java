@@ -61,28 +61,33 @@ public class XpathRegressionUnusedLambdaParameterShouldBeUnnamedTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF["
-                + "./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT["
-                + "@text='f']]/ASSIGN/LAMBDA/PARAMETERS",
-            "/COMPILATION_UNIT/CLASS_DEF["
-                + "./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF["
-                + "./IDENT[@text='f']]/ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF[./IDENT[@text='x']]",
-            "/COMPILATION_UNIT/CLASS_DEF["
-                + "./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT"
-                + "[@text='f']]/ASSIGN/LAMBDA/PARAMETERS"
-                + "/PARAMETER_DEF[./IDENT[@text='x']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF["
-                + "./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT"
-                + "[@text='f']]/ASSIGN/LAMBDA/PARAMETERS/"
-                + "PARAMETER_DEF[./IDENT[@text='x']]/TYPE",
-            "/COMPILATION_UNIT/CLASS_DEF["
-                + "./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT"
-                + "[@text='f']]/ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF/IDENT[@text='x']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT[\
+            @text='f']]/ASSIGN/LAMBDA/PARAMETERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[\
+            ./IDENT[@text='f']]/ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF[./IDENT[@text='x']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT\
+            [@text='f']]/ASSIGN/LAMBDA/PARAMETERS\
+            /PARAMETER_DEF[./IDENT[@text='x']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT\
+            [@text='f']]/ASSIGN/LAMBDA/PARAMETERS/\
+            PARAMETER_DEF[./IDENT[@text='x']]/TYPE""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedSimple']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT\
+            [@text='f']]/ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF/IDENT[@text='x']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -105,31 +110,36 @@ public class XpathRegressionUnusedLambdaParameterShouldBeUnnamedTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT"
-                + "[@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF[./IDENT[@text='f']]"
-                + "/ASSIGN/LAMBDA/PARAMETERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT"
-                + "[@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF[./IDENT[@text='f']]"
-                + "/ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF[./IDENT[@text='y']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT"
-                + "[@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF[./IDENT[@text='f']]"
-                + "/ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF[./IDENT[@text='y']]/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT"
-                + "[@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF[./IDENT[@text='f']]/ASSIGN"
-                + "/LAMBDA/PARAMETERS/PARAMETER_DEF[./IDENT[@text='y']]/TYPE",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF["
-                + "./IDENT[@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF["
-                + "./IDENT[@text='f']]/ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF/IDENT[@text='y']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT\
+            [@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF[./IDENT[@text='f']]\
+            /ASSIGN/LAMBDA/PARAMETERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT\
+            [@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF[./IDENT[@text='f']]\
+            /ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF[./IDENT[@text='y']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT\
+            [@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF[./IDENT[@text='f']]\
+            /ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF[./IDENT[@text='y']]/MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[./IDENT\
+            [@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF[./IDENT[@text='f']]/ASSIGN\
+            /LAMBDA/PARAMETERS/PARAMETER_DEF[./IDENT[@text='y']]/TYPE""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathUnusedLambdaParameterShouldBeUnnamedNested']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF[\
+            ./IDENT[@text='f1']]/ASSIGN/LAMBDA/SLIST/VARIABLE_DEF[\
+            ./IDENT[@text='f']]/ASSIGN/LAMBDA/PARAMETERS/PARAMETER_DEF/IDENT[@text='y']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

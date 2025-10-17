@@ -61,18 +61,20 @@ public class XpathRegressionInterfaceTypeParameterNameTest extends AbstractXpath
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceTypeParameterNameInsideClass']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT"
-                + "[@text='SecondInterface']]"
-                + "/TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT"
-                + "[@text='t']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInterfaceTypeParameterNameInsideClass']]\
+                /OBJBLOCK/INTERFACE_DEF[./IDENT\
+                [@text='SecondInterface']]\
+                /TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT\
+                [@text='t']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceTypeParameterNameInsideClass']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT"
-                + "[@text='SecondInterface']]"
-                + "/TYPE_PARAMETERS/TYPE_PARAMETER/IDENT[@text='t']"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathInterfaceTypeParameterNameInsideClass']]\
+/OBJBLOCK/INTERFACE_DEF[./IDENT\
+[@text='SecondInterface']]\
+/TYPE_PARAMETERS/TYPE_PARAMETER/IDENT[@text='t']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -95,21 +97,23 @@ public class XpathRegressionInterfaceTypeParameterNameTest extends AbstractXpath
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceTypeParameterNameInsideInnerClass']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT"
-                + "[@text='InnerClass']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT"
-                + "[@text='InnerInterface']]"
-                + "/TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT[@text='t']]",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInterfaceTypeParameterNameInsideInnerClass']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT\
+                [@text='InnerClass']]\
+                /OBJBLOCK/INTERFACE_DEF[./IDENT\
+                [@text='InnerInterface']]\
+                /TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT[@text='t']]""",
 
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceTypeParameterNameInsideInnerClass']]"
-                + "/OBJBLOCK/CLASS_DEF[./IDENT"
-                + "[@text='InnerClass']]"
-                + "/OBJBLOCK/INTERFACE_DEF[./IDENT"
-                + "[@text='InnerInterface']]"
-                + "/TYPE_PARAMETERS/TYPE_PARAMETER/IDENT[@text='t']"
+                """
+/COMPILATION_UNIT/CLASS_DEF[./IDENT\
+[@text='InputXpathInterfaceTypeParameterNameInsideInnerClass']]\
+/OBJBLOCK/CLASS_DEF[./IDENT\
+[@text='InnerClass']]\
+/OBJBLOCK/INTERFACE_DEF[./IDENT\
+[@text='InnerInterface']]\
+/TYPE_PARAMETERS/TYPE_PARAMETER/IDENT[@text='t']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);
@@ -132,13 +136,15 @@ public class XpathRegressionInterfaceTypeParameterNameTest extends AbstractXpath
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceTypeParameterNameTopLevelPublic']]"
-                + "/TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT[@text='t']]",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+                [@text='InputXpathInterfaceTypeParameterNameTopLevelPublic']]\
+                /TYPE_PARAMETERS/TYPE_PARAMETER[./IDENT[@text='t']]""",
 
-                "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-                + "[@text='InputXpathInterfaceTypeParameterNameTopLevelPublic']]"
-                + "/TYPE_PARAMETERS/TYPE_PARAMETER/IDENT[@text='t']"
+                """
+/COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+[@text='InputXpathInterfaceTypeParameterNameTopLevelPublic']]\
+/TYPE_PARAMETERS/TYPE_PARAMETER/IDENT[@text='t']"""
         );
 
         runVerifications(configuration, fileToCheck, expectedViolations, expectedXpathQueries);

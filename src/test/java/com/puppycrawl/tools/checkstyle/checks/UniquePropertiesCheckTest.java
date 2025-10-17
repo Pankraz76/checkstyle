@@ -150,8 +150,9 @@ public class UniquePropertiesCheckTest extends AbstractModuleTestSupport {
     @Test
     public void testWrongKeyTypeInProperties() throws Exception {
         final Class<?> uniquePropertiesClass = Class
-                .forName("com.puppycrawl.tools.checkstyle.checks."
-                    + "UniquePropertiesCheck$UniqueProperties");
+                .forName("""
+                    com.puppycrawl.tools.checkstyle.checks.\
+                    UniquePropertiesCheck$UniqueProperties""");
         final Object uniqueProperties = TestUtil.instantiate(uniquePropertiesClass);
         final Object result = TestUtil.invokeMethod(uniqueProperties, "put", 1, "value");
         final Map<Object, Object> table = new HashMap<>();

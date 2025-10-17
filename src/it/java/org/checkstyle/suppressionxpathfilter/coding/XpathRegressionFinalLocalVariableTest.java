@@ -55,10 +55,11 @@ public class XpathRegressionFinalLocalVariableTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathFinalLocalVariableMethodDef']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]"
-                        + "/SLIST/VARIABLE_DEF/IDENT[@text='x']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathFinalLocalVariableMethodDef']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='testMethod']]\
+                /SLIST/VARIABLE_DEF/IDENT[@text='x']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -77,10 +78,11 @@ public class XpathRegressionFinalLocalVariableTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalLocalVariableForLoop']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method2']]/SLIST/"
-                    + "LITERAL_FOR/SLIST/VARIABLE_DEF/IDENT[@text='x']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathFinalLocalVariableForLoop']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='method2']]/SLIST/\
+            LITERAL_FOR/SLIST/VARIABLE_DEF/IDENT[@text='x']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -99,11 +101,12 @@ public class XpathRegressionFinalLocalVariableTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalLocalVariableSwitchCase']]"
-                    + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/"
-                    + "LITERAL_SWITCH/CASE_GROUP/SLIST/VARIABLE_DEF/IDENT[@text='foo']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathFinalLocalVariableSwitchCase']]\
+            /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]/SLIST/\
+            LITERAL_SWITCH/CASE_GROUP/SLIST/VARIABLE_DEF/IDENT[@text='foo']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -122,11 +125,12 @@ public class XpathRegressionFinalLocalVariableTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalLocalVariableInnerClass']]"
-                    + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test1']]"
-                    + "/SLIST/VARIABLE_DEF/IDENT[@text='shouldBeFinal']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathFinalLocalVariableInnerClass']]\
+            /OBJBLOCK/CLASS_DEF[./IDENT[@text='InnerClass']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test1']]\
+            /SLIST/VARIABLE_DEF/IDENT[@text='shouldBeFinal']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -146,10 +150,11 @@ public class XpathRegressionFinalLocalVariableTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalLocalVariableParameterDef']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]"
-                    + "/PARAMETERS/PARAMETER_DEF/IDENT[@text='aArg']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathFinalLocalVariableParameterDef']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='method']]\
+            /PARAMETERS/PARAMETER_DEF/IDENT[@text='aArg']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -169,10 +174,11 @@ public class XpathRegressionFinalLocalVariableTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathFinalLocalVariableEnhancedFor']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='method1']]"
-                    + "/SLIST/LITERAL_FOR/FOR_EACH_CLAUSE/VARIABLE_DEF/IDENT[@text='a']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathFinalLocalVariableEnhancedFor']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='method1']]\
+            /SLIST/LITERAL_FOR/FOR_EACH_CLAUSE/VARIABLE_DEF/IDENT[@text='a']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -192,11 +198,12 @@ public class XpathRegressionFinalLocalVariableTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathFinalLocalVariableCtor']]"
-                    + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                    + "[@text='InputXpathFinalLocalVariableCtor']]"
-                    + "/PARAMETERS/PARAMETER_DEF/IDENT[@text='a']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathFinalLocalVariableCtor']]\
+            /OBJBLOCK/CTOR_DEF[./IDENT\
+            [@text='InputXpathFinalLocalVariableCtor']]\
+            /PARAMETERS/PARAMETER_DEF/IDENT[@text='a']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -215,10 +222,11 @@ public class XpathRegressionFinalLocalVariableTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathFinalLocalVariableTryBlock']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='checkCodeBlock']]"
-                    + "/SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF/IDENT[@text='start']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathFinalLocalVariableTryBlock']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='checkCodeBlock']]\
+            /SLIST/LITERAL_TRY/SLIST/VARIABLE_DEF/IDENT[@text='start']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -237,11 +245,12 @@ public class XpathRegressionFinalLocalVariableTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathFinalLocalVariableConditionals']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='checkCodeBlock']]/SLIST/LITERAL_TRY"
-                    + "/SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF"
-                    + "/SLIST/VARIABLE_DEF/IDENT[@text='body']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathFinalLocalVariableConditionals']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='checkCodeBlock']]/SLIST/LITERAL_TRY\
+            /SLIST/LITERAL_IF/LITERAL_ELSE/LITERAL_IF\
+            /SLIST/VARIABLE_DEF/IDENT[@text='body']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

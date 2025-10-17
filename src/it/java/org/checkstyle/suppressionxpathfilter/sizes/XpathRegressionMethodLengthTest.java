@@ -59,19 +59,22 @@ public class XpathRegressionMethodLengthTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthSimple']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthSimple']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthSimple']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthSimple']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthSimple']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthSimple']]"
-                        + "/MODIFIERS/LITERAL_PROTECTED"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMethodLengthSimple']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathMethodLengthSimple']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMethodLengthSimple']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathMethodLengthSimple']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMethodLengthSimple']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathMethodLengthSimple']]\
+                /MODIFIERS/LITERAL_PROTECTED"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -92,16 +95,19 @@ public class XpathRegressionMethodLengthTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthNoEmptyLines']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthNoEmptyLines']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthNoEmptyLines']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]"
-                        + "/MODIFIERS/LITERAL_PROTECTED"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMethodLengthNoEmptyLines']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMethodLengthNoEmptyLines']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMethodLengthNoEmptyLines']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]\
+                /MODIFIERS/LITERAL_PROTECTED"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -121,22 +127,25 @@ public class XpathRegressionMethodLengthTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthSingleToken']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/LITERAL_NEW"
-                        + "[./IDENT[@text='InputXpathMethodLengthSingleToken']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthSingleToken']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/LITERAL_NEW"
-                        + "[./IDENT[@text='InputXpathMethodLengthSingleToken']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMethodLengthSingleToken']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/LITERAL_NEW"
-                        + "[./IDENT[@text='InputXpathMethodLengthSingleToken']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]"
-                        + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMethodLengthSingleToken']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/LITERAL_NEW\
+                [./IDENT[@text='InputXpathMethodLengthSingleToken']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMethodLengthSingleToken']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/LITERAL_NEW\
+                [./IDENT[@text='InputXpathMethodLengthSingleToken']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMethodLengthSingleToken']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a']]/ASSIGN/EXPR/LITERAL_NEW\
+                [./IDENT[@text='InputXpathMethodLengthSingleToken']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='methodOne']]\
+                /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);

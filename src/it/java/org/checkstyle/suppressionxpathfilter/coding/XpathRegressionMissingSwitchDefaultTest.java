@@ -55,10 +55,11 @@ public class XpathRegressionMissingSwitchDefaultTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMissingSwitchDefaultSimple']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test1']]"
-                        + "/SLIST/LITERAL_SWITCH"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMissingSwitchDefaultSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test1']]\
+                /SLIST/LITERAL_SWITCH"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -76,15 +77,17 @@ public class XpathRegressionMissingSwitchDefaultTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMissingSwitchDefaultNested']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]"
-                        + "/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathMissingSwitchDefaultNested']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]"
-                        + "/SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/"
-                        + "LITERAL_SWITCH"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMissingSwitchDefaultNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathMissingSwitchDefaultNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test2']]\
+                /SLIST/LITERAL_SWITCH/CASE_GROUP/SLIST/\
+                LITERAL_SWITCH"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

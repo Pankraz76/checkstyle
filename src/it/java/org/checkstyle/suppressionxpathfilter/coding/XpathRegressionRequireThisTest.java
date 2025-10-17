@@ -58,10 +58,11 @@ public class XpathRegressionRequireThisTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathRequireThisOne']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='changeAge']]/SLIST/EXPR/ASSIGN"
-                + "/IDENT[@text='age']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathRequireThisOne']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='changeAge']]/SLIST/EXPR/ASSIGN\
+            /IDENT[@text='age']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -83,10 +84,11 @@ public class XpathRegressionRequireThisTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathRequireThisTwo']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='method2']]/SLIST/EXPR"
-                + "/METHOD_CALL/IDENT[@text='method1']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathRequireThisTwo']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='method2']]/SLIST/EXPR\
+            /METHOD_CALL/IDENT[@text='method1']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

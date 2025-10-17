@@ -55,10 +55,11 @@ public class XpathRegressionEmptyBlockTest extends AbstractXpathTestSupport {
                 EmptyBlockCheck.MSG_KEY_BLOCK_EMPTY, "for"),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                    + "/CLASS_DEF[./IDENT[@text='InputXpathEmptyBlockEmpty']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='emptyLoop']]"
-                    + "/SLIST/LITERAL_FOR/SLIST"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathEmptyBlockEmpty']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='emptyLoop']]\
+                /SLIST/LITERAL_FOR/SLIST"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);
@@ -75,10 +76,11 @@ public class XpathRegressionEmptyBlockTest extends AbstractXpathTestSupport {
                 EmptyBlockCheck.MSG_KEY_BLOCK_NO_STATEMENT),
         };
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT"
-                        + "/CLASS_DEF[./IDENT[@text='InputXpathEmptyBlockEmpty']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='emptyLoop']]"
-                        + "/SLIST/LITERAL_FOR/SLIST"
+                """
+                /COMPILATION_UNIT\
+                /CLASS_DEF[./IDENT[@text='InputXpathEmptyBlockEmpty']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='emptyLoop']]\
+                /SLIST/LITERAL_FOR/SLIST"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
                 expectedXpathQueries);

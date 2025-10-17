@@ -59,10 +59,12 @@ public class XpathRegressionLeftCurlyTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathLeftCurlyOne']]/OBJBLOCK",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathLeftCurlyOne']]/OBJBLOCK/LCURLY"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathLeftCurlyOne']]/OBJBLOCK""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathLeftCurlyOne']]/OBJBLOCK/LCURLY"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -84,10 +86,12 @@ public class XpathRegressionLeftCurlyTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathLeftCurlyTwo']]/OBJBLOCK",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathLeftCurlyTwo']]/OBJBLOCK/LCURLY"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathLeftCurlyTwo']]/OBJBLOCK""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathLeftCurlyTwo']]/OBJBLOCK/LCURLY"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -108,9 +112,10 @@ public class XpathRegressionLeftCurlyTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathLeftCurlyThree']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='sample']]/SLIST/LITERAL_IF/SLIST"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathLeftCurlyThree']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='sample']]/SLIST/LITERAL_IF/SLIST"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

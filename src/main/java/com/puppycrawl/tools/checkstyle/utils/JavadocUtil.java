@@ -62,8 +62,9 @@ public final class JavadocUtil {
     private static final Map<Integer, String> TOKEN_VALUE_TO_NAME;
 
     /** Exception message for unknown JavaDoc token id. */
-    private static final String UNKNOWN_JAVADOC_TOKEN_ID_EXCEPTION_MESSAGE = "Unknown javadoc"
-            + " token id. Given id: ";
+    private static final String UNKNOWN_JAVADOC_TOKEN_ID_EXCEPTION_MESSAGE = """
+            Unknown javadoc\
+             token id. Given id: """;
 
     /** Newline pattern. */
     private static final Pattern NEWLINE = Pattern.compile("\n");

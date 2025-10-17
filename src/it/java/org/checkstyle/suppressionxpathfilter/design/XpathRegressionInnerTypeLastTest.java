@@ -57,20 +57,23 @@ public class XpathRegressionInnerTypeLastTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastOne']]"
-                        + "/OBJBLOCK/CTOR_DEF"
-                        + "[./IDENT[@text='InputXpathInnerTypeLastOne']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastOne']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastOne']]"
-                        + "/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastOne']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastOne']]"
-                        + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastOne']]\
+                /OBJBLOCK/CTOR_DEF\
+                [./IDENT[@text='InputXpathInnerTypeLastOne']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastOne']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastOne']]\
+                /MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastOne']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastOne']]\
+                /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations,
@@ -90,20 +93,23 @@ public class XpathRegressionInnerTypeLastTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastTwo']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='innerMethod']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastTwo']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT"
-                        + "[@text='innerMethod']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastTwo']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT"
-                        + "[@text='innerMethod']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastTwo']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='innerMethod']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastTwo']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT\
+                [@text='innerMethod']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastTwo']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text='Inner']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT\
+                [@text='innerMethod']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations,
@@ -124,20 +130,23 @@ public class XpathRegressionInnerTypeLastTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastThree']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastThree']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastThree']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastThree']]"
-                        + "/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastThree']]"
-                        + "/OBJBLOCK/CTOR_DEF[./IDENT"
-                        + "[@text='InputXpathInnerTypeLastThree']]"
-                        + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastThree']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastThree']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastThree']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastThree']]\
+                /MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastThree']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT\
+                [@text='InputXpathInnerTypeLastThree']]\
+                /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations,

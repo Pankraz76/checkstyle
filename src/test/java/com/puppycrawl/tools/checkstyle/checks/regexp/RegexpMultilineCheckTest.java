@@ -61,7 +61,9 @@ public class RegexpMultilineCheckTest extends AbstractModuleTestSupport {
     public void testMessageProperty()
             throws Exception {
         final String[] expected = {
-            "79: " + "Bad line :(",
+            """
+            79: \
+            Bad line :(""",
         };
         verifyWithInlineConfigParser(
                 getPath("InputRegexpMultilineSemantic2.java"), expected);

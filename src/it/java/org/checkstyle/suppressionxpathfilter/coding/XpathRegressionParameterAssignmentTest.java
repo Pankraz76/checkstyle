@@ -57,14 +57,16 @@ public class XpathRegressionParameterAssignmentTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-            + "@text='InputXpathParameterAssignmentMethods']]"
-            + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='Test1']]/SLIST/EXPR"
-            + "[./PLUS_ASSIGN/IDENT[@text='field']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-            + "@text='InputXpathParameterAssignmentMethods']]"
-            + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='Test1']]"
-            + "/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='field']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathParameterAssignmentMethods']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='Test1']]/SLIST/EXPR\
+            [./PLUS_ASSIGN/IDENT[@text='field']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathParameterAssignmentMethods']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='Test1']]\
+            /SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='field']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -85,14 +87,16 @@ public class XpathRegressionParameterAssignmentTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-            + "@text='InputXpathParameterAssignmentLambdas']]"
-            + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='obj1']]"
-            + "/ASSIGN/LAMBDA[./IDENT[@text='q']]/EXPR",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-            + "@text='InputXpathParameterAssignmentLambdas']]"
-            + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='obj1']]/ASSIGN/LAMBDA[./IDENT["
-            + "@text='q']]/EXPR/POST_INC[./IDENT[@text='q']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathParameterAssignmentLambdas']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='obj1']]\
+            /ASSIGN/LAMBDA[./IDENT[@text='q']]/EXPR""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathParameterAssignmentLambdas']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='obj1']]/ASSIGN/LAMBDA[./IDENT[\
+            @text='q']]/EXPR/POST_INC[./IDENT[@text='q']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);
@@ -112,16 +116,18 @@ public class XpathRegressionParameterAssignmentTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-            + "@text='InputXpathParameterAssignmentCtor']]"
-            + "/OBJBLOCK/CTOR_DEF[./IDENT["
-            + "@text='InputXpathParameterAssignmentCtor']]"
-            + "/SLIST/EXPR[./PLUS_ASSIGN/IDENT[@text='field']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-            + "@text='InputXpathParameterAssignmentCtor']]"
-            + "/OBJBLOCK/CTOR_DEF[./IDENT["
-            + "@text='InputXpathParameterAssignmentCtor']]"
-            + "/SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='field']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathParameterAssignmentCtor']]\
+            /OBJBLOCK/CTOR_DEF[./IDENT[\
+            @text='InputXpathParameterAssignmentCtor']]\
+            /SLIST/EXPR[./PLUS_ASSIGN/IDENT[@text='field']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+            @text='InputXpathParameterAssignmentCtor']]\
+            /OBJBLOCK/CTOR_DEF[./IDENT[\
+            @text='InputXpathParameterAssignmentCtor']]\
+            /SLIST/EXPR/PLUS_ASSIGN[./IDENT[@text='field']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations, expectedXpathQueries);

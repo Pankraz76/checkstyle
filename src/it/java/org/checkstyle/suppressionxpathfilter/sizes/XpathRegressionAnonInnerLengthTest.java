@@ -57,16 +57,18 @@ public class XpathRegressionAnonInnerLengthTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathAnonInnerLengthDefault']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='runnable']]"
-                + "/ASSIGN/EXPR",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathAnonInnerLengthDefault']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='runnable']]"
-                + "/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathAnonInnerLengthDefault']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='runnable']]\
+            /ASSIGN/EXPR""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathAnonInnerLengthDefault']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='runnable']]\
+            /ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Runnable']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -89,15 +91,17 @@ public class XpathRegressionAnonInnerLengthTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnonInnerLength']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='compare']]/SLIST"
-                        + "/VARIABLE_DEF[./IDENT[@text='comp']]/ASSIGN/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnonInnerLength']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='compare']]/SLIST"
-                        + "/VARIABLE_DEF[./IDENT[@text='comp']]/ASSIGN/EXPR"
-                        + "/LITERAL_NEW[./IDENT[@text='Comparator']]"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnonInnerLength']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='compare']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='comp']]/ASSIGN/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnonInnerLength']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='compare']]/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='comp']]/ASSIGN/EXPR\
+                /LITERAL_NEW[./IDENT[@text='Comparator']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

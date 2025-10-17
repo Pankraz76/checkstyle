@@ -57,10 +57,11 @@ public class XpathRegressionNoArrayTrailingCommaTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathNoArrayTrailingCommaOne']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='t1']]/ASSIGN/EXPR"
-                    + "/LITERAL_NEW/ARRAY_INIT/COMMA[4]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathNoArrayTrailingCommaOne']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='t1']]/ASSIGN/EXPR\
+            /LITERAL_NEW/ARRAY_INIT/COMMA[4]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,10 +82,11 @@ public class XpathRegressionNoArrayTrailingCommaTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathNoArrayTrailingCommaTwo']]"
-                    + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='t4']]"
-                    + "/ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/COMMA"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathNoArrayTrailingCommaTwo']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='t4']]\
+            /ASSIGN/EXPR/LITERAL_NEW/ARRAY_INIT/COMMA"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

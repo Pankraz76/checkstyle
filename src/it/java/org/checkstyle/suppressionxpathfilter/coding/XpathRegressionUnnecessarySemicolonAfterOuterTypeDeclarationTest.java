@@ -42,8 +42,9 @@ public class XpathRegressionUnnecessarySemicolonAfterOuterTypeDeclarationTest
 
     @Override
     protected String getPackageLocation() {
-        return "org/checkstyle/suppressionxpathfilter/coding/"
-            + "unnecessarysemicolonafteroutertypedeclaration";
+        return """
+            org/checkstyle/suppressionxpathfilter/coding/\
+            unnecessarysemicolonafteroutertypedeclaration""";
     }
 
     @Test
@@ -65,8 +66,9 @@ public class XpathRegressionUnnecessarySemicolonAfterOuterTypeDeclarationTest
     @Test
     public void testInnerTypes() throws Exception {
         final File fileToProcess = new File(getPath(
-            "InputXpathUnnecessarySemicolonAfterOuterTypeDeclarationInnerTypes"
-                    + ".java"));
+            """
+            InputXpathUnnecessarySemicolonAfterOuterTypeDeclarationInnerTypes\
+            .java"""));
         final DefaultConfiguration moduleConfig = createModuleConfig(CLASS);
         final String[] expectedViolation = {
             "21:2: " + getCheckMessage(CLASS,

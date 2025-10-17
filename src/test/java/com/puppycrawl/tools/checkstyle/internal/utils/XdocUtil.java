@@ -192,8 +192,9 @@ public final class XdocUtil {
             throws IOException {
         final List<Path> roots = List.of(
                 Path.of("src/xdocs-examples/resources/com/puppycrawl/tools/checkstyle/checks"),
-                Path.of("src/xdocs-examples/resources-noncompilable/"
-                        + "com/puppycrawl/tools/checkstyle/checks")
+                Path.of("""
+                        src/xdocs-examples/resources-noncompilable/\
+                        com/puppycrawl/tools/checkstyle/checks""")
         );
 
         final Map<String, Set<String>> checkToProperties = new HashMap<>();

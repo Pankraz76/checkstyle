@@ -57,10 +57,11 @@ public class XpathRegressionIllegalThrowsTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathIllegalThrowsRuntimeException']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='sayHello']]/LITERAL_THROWS"
-                + "/IDENT[@text='RuntimeException']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIllegalThrowsRuntimeException']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='sayHello']]/LITERAL_THROWS\
+            /IDENT[@text='RuntimeException']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -81,10 +82,11 @@ public class XpathRegressionIllegalThrowsTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathIllegalThrowsError']]/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='methodTwo']]/LITERAL_THROWS"
-                + "/DOT[./IDENT[@text='Error']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathIllegalThrowsError']]/OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='methodTwo']]/LITERAL_THROWS\
+            /DOT[./IDENT[@text='Error']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

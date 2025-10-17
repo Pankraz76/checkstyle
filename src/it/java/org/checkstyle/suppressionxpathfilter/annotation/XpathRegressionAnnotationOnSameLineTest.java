@@ -53,10 +53,11 @@ public class XpathRegressionAnnotationOnSameLineTest extends AbstractXpathTestSu
                 createModuleConfig(AnnotationOnSameLineCheck.class);
 
         moduleConfig.addProperty("tokens",
-                "CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, "
-                + "CTOR_DEF, VARIABLE_DEF, PARAMETER_DEF, ANNOTATION_DEF, TYPECAST, "
-                + "LITERAL_THROWS, IMPLEMENTS_CLAUSE, TYPE_ARGUMENT, LITERAL_NEW, DOT, "
-                + "ANNOTATION_FIELD_DEF");
+                """
+                CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, \
+                CTOR_DEF, VARIABLE_DEF, PARAMETER_DEF, ANNOTATION_DEF, TYPECAST, \
+                LITERAL_THROWS, IMPLEMENTS_CLAUSE, TYPE_ARGUMENT, LITERAL_NEW, DOT, \
+                ANNOTATION_FIELD_DEF""");
 
         final String[] expectedViolation = {
             "6:5: " + getCheckMessage(AnnotationOnSameLineCheck.class,
@@ -65,20 +66,24 @@ public class XpathRegressionAnnotationOnSameLineTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationOnSameLineMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='getX']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationOnSameLineMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='getX']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationOnSameLineMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='getX']]/MODIFIERS"
-                        + "/ANNOTATION[./IDENT[@text='Deprecated']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationOnSameLineMethod']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='getX']]"
-                        + "/MODIFIERS/ANNOTATION[./IDENT[@text='Deprecated']]/AT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationOnSameLineMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='getX']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationOnSameLineMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='getX']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationOnSameLineMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='getX']]/MODIFIERS\
+                /ANNOTATION[./IDENT[@text='Deprecated']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationOnSameLineMethod']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='getX']]\
+                /MODIFIERS/ANNOTATION[./IDENT[@text='Deprecated']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -101,20 +106,24 @@ public class XpathRegressionAnnotationOnSameLineTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationOnSameLineField']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='names']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationOnSameLineField']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='names']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationOnSameLineField']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='names']]/MODIFIERS"
-                        + "/ANNOTATION[./IDENT[@text='Deprecated']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathAnnotationOnSameLineField']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='names']]/MODIFIERS"
-                        + "/ANNOTATION[./IDENT[@text='Deprecated']]/AT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationOnSameLineField']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='names']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationOnSameLineField']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='names']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationOnSameLineField']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='names']]/MODIFIERS\
+                /ANNOTATION[./IDENT[@text='Deprecated']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathAnnotationOnSameLineField']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='names']]/MODIFIERS\
+                /ANNOTATION[./IDENT[@text='Deprecated']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -129,10 +138,11 @@ public class XpathRegressionAnnotationOnSameLineTest extends AbstractXpathTestSu
 
         final DefaultConfiguration moduleConfig =
                 createModuleConfig(AnnotationOnSameLineCheck.class);
-        moduleConfig.addProperty("tokens", "CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, "
-                + "CTOR_DEF, VARIABLE_DEF, PARAMETER_DEF, ANNOTATION_DEF, TYPECAST, "
-                + "LITERAL_THROWS, IMPLEMENTS_CLAUSE, TYPE_ARGUMENT, LITERAL_NEW, DOT, "
-                + "ANNOTATION_FIELD_DEF");
+        moduleConfig.addProperty("tokens", """
+                CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, \
+                CTOR_DEF, VARIABLE_DEF, PARAMETER_DEF, ANNOTATION_DEF, TYPECAST, \
+                LITERAL_THROWS, IMPLEMENTS_CLAUSE, TYPE_ARGUMENT, LITERAL_NEW, DOT, \
+                ANNOTATION_FIELD_DEF""");
 
         final String[] expectedViolation = {
             "3:1: " + getCheckMessage(AnnotationOnSameLineCheck.class,
@@ -141,17 +151,21 @@ public class XpathRegressionAnnotationOnSameLineTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/INTERFACE_DEF["
-                        + "./IDENT[@text='InputXpathAnnotationOnSameLineInterface']]",
-                "/COMPILATION_UNIT/INTERFACE_DEF["
-                        + "./IDENT[@text='InputXpathAnnotationOnSameLineInterface']]"
-                        + "/MODIFIERS",
-                "/COMPILATION_UNIT/INTERFACE_DEF["
-                        + "./IDENT[@text='InputXpathAnnotationOnSameLineInterface']]"
-                        + "/MODIFIERS/ANNOTATION[./IDENT[@text='Deprecated']]",
-                "/COMPILATION_UNIT/INTERFACE_DEF["
-                        + "./IDENT[@text='InputXpathAnnotationOnSameLineInterface']]"
-                        + "/MODIFIERS/ANNOTATION[./IDENT[@text='Deprecated']]/AT"
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[\
+                ./IDENT[@text='InputXpathAnnotationOnSameLineInterface']]""",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[\
+                ./IDENT[@text='InputXpathAnnotationOnSameLineInterface']]\
+                /MODIFIERS""",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[\
+                ./IDENT[@text='InputXpathAnnotationOnSameLineInterface']]\
+                /MODIFIERS/ANNOTATION[./IDENT[@text='Deprecated']]""",
+                """
+                /COMPILATION_UNIT/INTERFACE_DEF[\
+                ./IDENT[@text='InputXpathAnnotationOnSameLineInterface']]\
+                /MODIFIERS/ANNOTATION[./IDENT[@text='Deprecated']]/AT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

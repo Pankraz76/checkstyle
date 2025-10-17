@@ -57,15 +57,18 @@ public class XpathRegressionDeclarationOrderTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathDeclarationOrderNonStatic']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='name']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathDeclarationOrderNonStatic']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='name']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathDeclarationOrderNonStatic']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='name']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathDeclarationOrderNonStatic']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='name']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathDeclarationOrderNonStatic']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='name']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathDeclarationOrderNonStatic']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='name']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -86,15 +89,18 @@ public class XpathRegressionDeclarationOrderTest extends AbstractXpathTestSuppor
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathDeclarationOrderStatic']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='MAX']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathDeclarationOrderStatic']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='MAX']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathDeclarationOrderStatic']]"
-                        + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='MAX']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathDeclarationOrderStatic']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='MAX']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathDeclarationOrderStatic']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='MAX']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathDeclarationOrderStatic']]\
+                /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='MAX']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

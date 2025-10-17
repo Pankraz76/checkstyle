@@ -68,14 +68,17 @@ public class XpathRegressionClassDataAbstractionCouplingTest extends AbstractXpa
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-            + "[@text='InputXpathClassDataAbstractionCouplingClass']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-            + "[@text='InputXpathClassDataAbstractionCouplingClass']]"
-            + "/MODIFIERS",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-            + "[@text='InputXpathClassDataAbstractionCouplingClass']]"
-            + "/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathClassDataAbstractionCouplingClass']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathClassDataAbstractionCouplingClass']]\
+            /MODIFIERS""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathClassDataAbstractionCouplingClass']]\
+            /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(configuration, classPath, expectedViolations,
@@ -107,14 +110,17 @@ public class XpathRegressionClassDataAbstractionCouplingTest extends AbstractXpa
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-            + "[@text='InputXpathClassDataAbstractionCouplingEnum']]",
-            "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-            + "[@text='InputXpathClassDataAbstractionCouplingEnum']]"
-            + "/MODIFIERS",
-            "/COMPILATION_UNIT/ENUM_DEF[./IDENT"
-            + "[@text='InputXpathClassDataAbstractionCouplingEnum']]"
-            + "/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/ENUM_DEF[./IDENT\
+            [@text='InputXpathClassDataAbstractionCouplingEnum']]""",
+            """
+            /COMPILATION_UNIT/ENUM_DEF[./IDENT\
+            [@text='InputXpathClassDataAbstractionCouplingEnum']]\
+            /MODIFIERS""",
+            """
+            /COMPILATION_UNIT/ENUM_DEF[./IDENT\
+            [@text='InputXpathClassDataAbstractionCouplingEnum']]\
+            /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(configuration, classPath, expectedViolations,
@@ -146,14 +152,17 @@ public class XpathRegressionClassDataAbstractionCouplingTest extends AbstractXpa
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-            + "[@text='InputXpathClassDataAbstractionCouplingInterface']]",
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-            + "[@text='InputXpathClassDataAbstractionCouplingInterface']]"
-            + "/MODIFIERS",
-            "/COMPILATION_UNIT/INTERFACE_DEF[./IDENT"
-            + "[@text='InputXpathClassDataAbstractionCouplingInterface']]"
-            + "/MODIFIERS/LITERAL_PUBLIC"
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+            [@text='InputXpathClassDataAbstractionCouplingInterface']]""",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+            [@text='InputXpathClassDataAbstractionCouplingInterface']]\
+            /MODIFIERS""",
+            """
+            /COMPILATION_UNIT/INTERFACE_DEF[./IDENT\
+            [@text='InputXpathClassDataAbstractionCouplingInterface']]\
+            /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(configuration, classPath, expectedViolations,

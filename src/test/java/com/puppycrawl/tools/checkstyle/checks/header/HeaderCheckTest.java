@@ -95,9 +95,10 @@ public class HeaderCheckTest extends AbstractModuleTestSupport {
         assertWithMessage("Invalid exception message")
                 .that(ex)
                 .hasMessageThat()
-                        .startsWith("cannot initialize module"
-                            + " com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck"
-                            + " - illegal value ");
+                        .startsWith("""
+                            cannot initialize module\
+                             com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck\
+                             - illegal value """);
         assertWithMessage("Invalid cause exception message")
                 .that(ex)
                 .hasCauseThat()
@@ -117,9 +118,10 @@ public class HeaderCheckTest extends AbstractModuleTestSupport {
         assertWithMessage("Invalid exception message")
                 .that(ex)
                 .hasMessageThat()
-                        .isEqualTo("cannot initialize module"
-                                + " com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck"
-                                + " - Cannot set property 'charset' to 'XSO-8859-1'");
+                        .isEqualTo("""
+                                cannot initialize module\
+                                 com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck\
+                                 - Cannot set property 'charset' to 'XSO-8859-1'""");
         assertWithMessage("Invalid cause exception message")
                 .that(ex)
                 .hasCauseThat()
@@ -138,17 +140,19 @@ public class HeaderCheckTest extends AbstractModuleTestSupport {
         assertWithMessage("Invalid exception message")
                 .that(ex)
                 .hasMessageThat()
-                        .isEqualTo("cannot initialize module"
-                                + " com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck"
-                                + " - Cannot set property 'headerFile' to ''");
+                        .isEqualTo("""
+                                cannot initialize module\
+                                 com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck\
+                                 - Cannot set property 'headerFile' to ''""");
         assertWithMessage("Invalid cause exception message")
                 .that(ex)
                 .hasCauseThat()
                 .hasCauseThat()
                 .hasCauseThat()
                 .hasMessageThat()
-                        .isEqualTo("property 'headerFile' is missing or invalid in module"
-                                + " com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck");
+                        .isEqualTo("""
+                                property 'headerFile' is missing or invalid in module\
+                                 com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck""");
     }
 
     @Test
@@ -160,9 +164,10 @@ public class HeaderCheckTest extends AbstractModuleTestSupport {
         assertWithMessage("Invalid exception message")
                 .that(ex)
                 .hasMessageThat()
-                        .isEqualTo("cannot initialize module"
-                                + " com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck"
-                                + " - Cannot set property 'headerFile' to 'null'");
+                        .isEqualTo("""
+                                cannot initialize module\
+                                 com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck\
+                                 - Cannot set property 'headerFile' to 'null'""");
     }
 
     @Test
@@ -199,8 +204,9 @@ public class HeaderCheckTest extends AbstractModuleTestSupport {
         assertWithMessage("Invalid exception message")
                 .that(ex)
                 .hasMessageThat()
-                        .isEqualTo("header has already been set - "
-                                + "set either header or headerFile, not both");
+                        .isEqualTo("""
+                                header has already been set - \
+                                set either header or headerFile, not both""");
     }
 
     @Test
@@ -277,8 +283,9 @@ public class HeaderCheckTest extends AbstractModuleTestSupport {
                 .that(ex)
                 .hasCauseThat()
                         .hasMessageThat()
-                                .isEqualTo("header has already been set - "
-                                    + "set either header or headerFile, not both");
+                                .isEqualTo("""
+                                    header has already been set - \
+                                    set either header or headerFile, not both""");
     }
 
     @Test

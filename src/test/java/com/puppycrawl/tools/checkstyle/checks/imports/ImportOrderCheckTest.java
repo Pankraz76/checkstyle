@@ -236,10 +236,11 @@ public class ImportOrderCheckTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                        + "cannot initialize module com.puppycrawl.tools.checkstyle.checks"
-                        + ".imports.ImportOrderCheck - "
-                        + "Cannot set property 'option' to 'invalid_option'");
+                .isEqualTo("""
+                        cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                        cannot initialize module com.puppycrawl.tools.checkstyle.checks\
+                        .imports.ImportOrderCheck - \
+                        Cannot set property 'option' to 'invalid_option'""");
         }
     }
 
@@ -552,10 +553,11 @@ public class ImportOrderCheckTest extends AbstractModuleTestSupport {
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                        + "cannot initialize module com.puppycrawl.tools.checkstyle.checks"
-                        + ".imports.ImportOrderCheck - "
-                        + "Cannot set property 'groups' to '/^javax'");
+                .isEqualTo("""
+                        cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                        cannot initialize module com.puppycrawl.tools.checkstyle.checks\
+                        .imports.ImportOrderCheck - \
+                        Cannot set property 'groups' to '/^javax'""");
             assertWithMessage("Invalid exception message")
                 .that(exc.getCause().getCause().getCause().getCause().getMessage())
                 .isEqualTo("Invalid group: /^javax");

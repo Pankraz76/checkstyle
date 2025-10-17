@@ -50,8 +50,9 @@ public class CliOptionsXdocsSyncTest {
         final Node cmdUsageSection = sections.item(2);
         final Map<String, String> cmdOptions = getOptions(cmdUsageSection);
 
-        final Class<?> cliOptions = Class.forName("com.puppycrawl.tools.checkstyle"
-                + ".Main$CliOptions");
+        final Class<?> cliOptions = Class.forName("""
+                com.puppycrawl.tools.checkstyle\
+                .Main$CliOptions""");
         final CommandLine commandLine = new CommandLine(cliOptions);
         final List<OptionSpec> optionSpecList = commandLine.getCommandSpec().options();
 
@@ -67,8 +68,9 @@ public class CliOptionsXdocsSyncTest {
                     + "Main.java but not documented in cmdline.xml.vm")
                     .that(descXdoc)
                     .isNotNull();
-            assertWithMessage("CLI options descriptions in xdoc: "
-                    + " should match that of in Main.java")
+            assertWithMessage("""
+                    CLI options descriptions in xdoc: \
+                     should match that of in Main.java""")
                     .that(descMain)
                     .isEqualTo(descXdoc);
             cmdOptions.remove(option);
@@ -88,8 +90,9 @@ public class CliOptionsXdocsSyncTest {
         final Set<String> shortParamsXdoc = getParameters(usageText, "-[a-zA-CE-X]\\b");
         final Set<String> longParamsXdoc = getParameters(usageText, "-(-\\w+)+");
 
-        final Class<?> cliOptions = Class.forName("com.puppycrawl.tools.checkstyle"
-                + ".Main$CliOptions");
+        final Class<?> cliOptions = Class.forName("""
+                com.puppycrawl.tools.checkstyle\
+                .Main$CliOptions""");
         final CommandLine commandLine = new CommandLine(cliOptions);
         final Set<String> shortParamsMain = commandLine.getCommandSpec().options()
                         .stream()
@@ -101,12 +104,14 @@ public class CliOptionsXdocsSyncTest {
                         .filter(names -> names.length() != 2)
                         .collect(Collectors.toUnmodifiableSet());
 
-        assertWithMessage("Short parameters in Main.java and cmdline"
-                + ".xml.vm should match")
+        assertWithMessage("""
+                Short parameters in Main.java and cmdline\
+                .xml.vm should match""")
             .that(shortParamsMain)
             .isEqualTo(shortParamsXdoc);
-        assertWithMessage("Long parameters in Main.java and cmdline"
-                + ".xml.vm should match")
+        assertWithMessage("""
+                Long parameters in Main.java and cmdline\
+                .xml.vm should match""")
             .that(longParamsMain)
             .isEqualTo(longParamsXdoc);
     }

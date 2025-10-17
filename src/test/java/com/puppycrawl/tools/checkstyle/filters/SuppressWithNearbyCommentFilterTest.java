@@ -345,8 +345,9 @@ public class SuppressWithNearbyCommentFilterTest
                     MSG_INVALID_PATTERN, "E8", "^[a-z][a-zA-Z0-9]*$"),
         };
         verifySuppressedWithParser(
-            getPath("InputSuppressWithNearbyCommentFilterVariableCheckOnVariableNumberOfLines"
-                        + ".java"),
+            getPath("""
+                        InputSuppressWithNearbyCommentFilterVariableCheckOnVariableNumberOfLines\
+                        .java"""),
             suppressed);
     }
 
@@ -397,8 +398,9 @@ public class SuppressWithNearbyCommentFilterTest
                 .that(exc)
                 .hasCauseThat()
                 .hasMessageThat()
-                .isEqualTo("unable to parse influence"
-                        + " from 'SUPPRESS CHECKSTYLE MemberNameCheck' using a");
+                .isEqualTo("""
+                        unable to parse influence\
+                         from 'SUPPRESS CHECKSTYLE MemberNameCheck' using a""");
         }
     }
 
@@ -492,8 +494,9 @@ public class SuppressWithNearbyCommentFilterTest
                 getTagsAfterExecution(filter, "filename", "//SUPPRESS CHECKSTYLE ignore").get(0);
         assertWithMessage("Invalid toString result")
             .that(tag.toString())
-            .isEqualTo("Tag[text='SUPPRESS CHECKSTYLE ignore', firstLine=1, lastLine=1, "
-                    + "tagCheckRegexp=.*, tagMessageRegexp=null, tagIdRegexp=null]");
+            .isEqualTo("""
+                    Tag[text='SUPPRESS CHECKSTYLE ignore', firstLine=1, lastLine=1, \
+                    tagCheckRegexp=.*, tagMessageRegexp=null, tagIdRegexp=null]""");
     }
 
     @Test
@@ -504,8 +507,9 @@ public class SuppressWithNearbyCommentFilterTest
                 getTagsAfterExecution(filter, "filename", "//SUPPRESS CHECKSTYLE ignore").get(0);
         assertWithMessage("Invalid toString result")
             .that(tag.toString())
-            .isEqualTo("Tag[text='SUPPRESS CHECKSTYLE ignore', firstLine=1, lastLine=1, "
-                    + "tagCheckRegexp=.*, tagMessageRegexp=null, tagIdRegexp=.*]");
+            .isEqualTo("""
+                    Tag[text='SUPPRESS CHECKSTYLE ignore', firstLine=1, lastLine=1, \
+                    tagCheckRegexp=.*, tagMessageRegexp=null, tagIdRegexp=.*]""");
     }
 
     @Test

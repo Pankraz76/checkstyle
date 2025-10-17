@@ -59,8 +59,9 @@ public class XpathRegressionRecordComponentNameTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/RECORD_DEF[./IDENT[@text='InputXpathRecordComponentNameDefault']]"
-                + "/RECORD_COMPONENTS/RECORD_COMPONENT_DEF/IDENT[@text='_value']"
+            """
+            /COMPILATION_UNIT/RECORD_DEF[./IDENT[@text='InputXpathRecordComponentNameDefault']]\
+            /RECORD_COMPONENTS/RECORD_COMPONENT_DEF/IDENT[@text='_value']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -83,10 +84,11 @@ public class XpathRegressionRecordComponentNameTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathRecordComponentNameFormat']]/OBJBLOCK"
-                + "/RECORD_DEF[./IDENT[@text='MyRecord']]"
-                + "/RECORD_COMPONENTS/RECORD_COMPONENT_DEF/IDENT[@text='otherValue']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathRecordComponentNameFormat']]/OBJBLOCK\
+            /RECORD_DEF[./IDENT[@text='MyRecord']]\
+            /RECORD_COMPONENTS/RECORD_COMPONENT_DEF/IDENT[@text='otherValue']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

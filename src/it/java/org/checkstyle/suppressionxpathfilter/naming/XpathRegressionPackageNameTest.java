@@ -63,11 +63,12 @@ public class XpathRegressionPackageNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/PACKAGE_DEF/DOT"
-                        + "[./IDENT[@text='packagename']]/DOT"
-                        + "[./IDENT[@text='naming']]/DOT"
-                        + "[./IDENT[@text='suppressionxpathfilter']]"
-                        + "/DOT/IDENT[@text='org']"
+                """
+                /COMPILATION_UNIT/PACKAGE_DEF/DOT\
+                [./IDENT[@text='packagename']]/DOT\
+                [./IDENT[@text='naming']]/DOT\
+                [./IDENT[@text='suppressionxpathfilter']]\
+                /DOT/IDENT[@text='org']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -91,10 +92,11 @@ public class XpathRegressionPackageNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/PACKAGE_DEF/DOT[./IDENT"
-                        + "[@text='PACKAGENAME']]/DOT[./IDENT"
-                        + "[@text='suppressionxpathfilter']]"
-                        + "/DOT/IDENT[@text='org']"
+                """
+                /COMPILATION_UNIT/PACKAGE_DEF/DOT[./IDENT\
+                [@text='PACKAGENAME']]/DOT[./IDENT\
+                [@text='suppressionxpathfilter']]\
+                /DOT/IDENT[@text='org']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolations,
@@ -119,11 +121,12 @@ public class XpathRegressionPackageNameTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/PACKAGE_DEF/DOT"
-                        + "[./IDENT[@text='packagename']]/DOT"
-                        + "[./IDENT[@text='naming']]/DOT"
-                        + "[./IDENT[@text='suppressionxpathfilter']]"
-                        + "/DOT/IDENT[@text='org']"
+                """
+                /COMPILATION_UNIT/PACKAGE_DEF/DOT\
+                [./IDENT[@text='packagename']]/DOT\
+                [./IDENT[@text='naming']]/DOT\
+                [./IDENT[@text='suppressionxpathfilter']]\
+                /DOT/IDENT[@text='org']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

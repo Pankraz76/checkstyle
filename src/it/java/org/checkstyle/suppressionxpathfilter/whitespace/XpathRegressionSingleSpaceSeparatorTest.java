@@ -57,9 +57,10 @@ public class XpathRegressionSingleSpaceSeparatorTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathSingleSpaceSeparator']]/OBJBLOCK"
-                + "/VARIABLE_DEF/IDENT[@text='bad']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathSingleSpaceSeparator']]/OBJBLOCK\
+            /VARIABLE_DEF/IDENT[@text='bad']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -82,10 +83,11 @@ public class XpathRegressionSingleSpaceSeparatorTest extends AbstractXpathTestSu
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[."
-                + "/IDENT[@text='InputXpathSingleSpaceSeparatorValidateComments']]"
-                + "/OBJBLOCK/SINGLE_LINE_COMMENT[./COMMENT_CONTENT"
-                + "[@text=' an invalid comment // warn\\n']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[.\
+            /IDENT[@text='InputXpathSingleSpaceSeparatorValidateComments']]\
+            /OBJBLOCK/SINGLE_LINE_COMMENT[./COMMENT_CONTENT\
+            [@text=' an invalid comment // warn\\n']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

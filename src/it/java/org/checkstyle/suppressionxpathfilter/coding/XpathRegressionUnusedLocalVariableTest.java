@@ -56,21 +56,25 @@ public class XpathRegressionUnusedLocalVariableTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathUnusedLocalVariableOne']]/OBJBLOCK/"
-                        + "METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[./IDENT[@text='a']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathUnusedLocalVariableOne']]/OBJBLOCK/"
-                        + "METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF["
-                        + "./IDENT[@text='a']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathUnusedLocalVariableOne']]/OBJBLOCK/"
-                        + "METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF["
-                        + "./IDENT[@text='a']]/TYPE",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathUnusedLocalVariableOne']]/OBJBLOCK/"
-                        + "METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF["
-                        + "./IDENT[@text='a']]/TYPE/LITERAL_INT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathUnusedLocalVariableOne']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[./IDENT[@text='a']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathUnusedLocalVariableOne']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[\
+                ./IDENT[@text='a']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathUnusedLocalVariableOne']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[\
+                ./IDENT[@text='a']]/TYPE""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathUnusedLocalVariableOne']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[\
+                ./IDENT[@text='a']]/TYPE/LITERAL_INT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -92,20 +96,24 @@ public class XpathRegressionUnusedLocalVariableTest extends AbstractXpathTestSup
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathUnusedLocalVariableTwo']]/OBJBLOCK/"
-                        + "METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[./IDENT[@text='b']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathUnusedLocalVariableTwo']]/OBJBLOCK/"
-                        + "METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF["
-                        + "./IDENT[@text='b']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT["
-                        + "@text='InputXpathUnusedLocalVariableTwo']]/OBJBLOCK/"
-                        + "METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF["
-                        + "./IDENT[@text='b']]/TYPE", "/COMPILATION_UNIT/CLASS_DEF["
-                        + "./IDENT[@text='InputXpathUnusedLocalVariableTwo']]/"
-                        + "OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF["
-                        + "./IDENT[@text='b']]/TYPE/LITERAL_INT"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathUnusedLocalVariableTwo']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[./IDENT[@text='b']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathUnusedLocalVariableTwo']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[\
+                ./IDENT[@text='b']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[\
+                @text='InputXpathUnusedLocalVariableTwo']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[\
+                ./IDENT[@text='b']]/TYPE""", """
+                        /COMPILATION_UNIT/CLASS_DEF[\
+                        ./IDENT[@text='InputXpathUnusedLocalVariableTwo']]/\
+                        OBJBLOCK/METHOD_DEF[./IDENT[@text='foo']]/SLIST/VARIABLE_DEF[\
+                        ./IDENT[@text='b']]/TYPE/LITERAL_INT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

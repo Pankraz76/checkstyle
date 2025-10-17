@@ -59,11 +59,12 @@ public class XpathRegressionAvoidNoArgumentSuperConstructorCallTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathAvoidNoArgumentSuperConstructorCallDefault']]"
-                    + "/OBJBLOCK/CTOR_DEF[./IDENT["
-                    + "@text='InputXpathAvoidNoArgumentSuperConstructorCallDefault']]"
-                    + "/SLIST/SUPER_CTOR_CALL"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathAvoidNoArgumentSuperConstructorCallDefault']]\
+                /OBJBLOCK/CTOR_DEF[./IDENT[\
+                @text='InputXpathAvoidNoArgumentSuperConstructorCallDefault']]\
+                /SLIST/SUPER_CTOR_CALL"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -84,12 +85,13 @@ public class XpathRegressionAvoidNoArgumentSuperConstructorCallTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                + "'InputXpathAvoidNoArgumentSuperConstructorCallInnerClass']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]"
-                + "/SLIST/CLASS_DEF[./IDENT[@text='Inner']]"
-                + "/OBJBLOCK/CTOR_DEF[./IDENT[@text='Inner']]"
-                + "/SLIST/SUPER_CTOR_CALL"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+            'InputXpathAvoidNoArgumentSuperConstructorCallInnerClass']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]\
+            /SLIST/CLASS_DEF[./IDENT[@text='Inner']]\
+            /OBJBLOCK/CTOR_DEF[./IDENT[@text='Inner']]\
+            /SLIST/SUPER_CTOR_CALL"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

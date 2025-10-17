@@ -243,9 +243,10 @@ public class IllegalInstantiationCheckTest
         final DefaultConfiguration checkConfig =
                 createModuleConfig(IllegalInstantiationCheck.class);
         checkConfig.addProperty("classes",
-                "java.lang.Boolean,com.puppycrawl.tools.checkstyle.checks.coding."
-                        + "illegalinstantiation.InputIllegalInstantiationBeginTree2."
-                        + "InputModifier");
+                """
+                java.lang.Boolean,com.puppycrawl.tools.checkstyle.checks.coding.\
+                illegalinstantiation.InputIllegalInstantiationBeginTree2.\
+                InputModifier""");
         final String file1 = getPath(
                 "InputIllegalInstantiationBeginTree1.java");
         final String file2 = getPath(

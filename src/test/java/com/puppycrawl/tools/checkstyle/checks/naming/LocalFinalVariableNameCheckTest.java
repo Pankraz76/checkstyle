@@ -40,8 +40,9 @@ public class LocalFinalVariableNameCheckTest
     public void testGetRequiredTokens() {
         final LocalFinalVariableNameCheck checkObj =
             new LocalFinalVariableNameCheck();
-        assertWithMessage("LocalFinalVariableNameCheck#getRequiredTokens should return empty array "
-                + "by default")
+        assertWithMessage("""
+                LocalFinalVariableNameCheck#getRequiredTokens should return empty array \
+                by default""")
             .that(checkObj.getRequiredTokens())
             .isEqualTo(CommonUtil.EMPTY_INT_ARRAY);
     }

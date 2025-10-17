@@ -33,8 +33,9 @@ public class JavadocMissingWhitespaceAfterAsteriskCheckTest
 
     @Override
     protected String getPackageLocation() {
-        return "com/puppycrawl/tools/checkstyle/checks/javadoc"
-                + "/javadocmissingwhitespaceafterasterisk";
+        return """
+                com/puppycrawl/tools/checkstyle/checks/javadoc\
+                /javadocmissingwhitespaceafterasterisk""";
     }
 
     @Test

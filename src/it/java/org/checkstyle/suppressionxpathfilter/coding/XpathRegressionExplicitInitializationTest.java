@@ -57,9 +57,10 @@ public class XpathRegressionExplicitInitializationTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathExplicitInitializationPrimitiveType']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='a']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathExplicitInitializationPrimitiveType']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='a']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -80,9 +81,10 @@ public class XpathRegressionExplicitInitializationTest extends AbstractXpathTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathExplicitInitializationObjectType']]"
-                        + "/OBJBLOCK/VARIABLE_DEF/IDENT[@text='bar']"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathExplicitInitializationObjectType']]\
+                /OBJBLOCK/VARIABLE_DEF/IDENT[@text='bar']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

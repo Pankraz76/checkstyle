@@ -58,14 +58,16 @@ public class XpathRegressionArrayTrailingCommaTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathArrayTrailingCommaLinear']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a2']]/ASSIGN/EXPR/LITERAL_NEW"
-                + "/ARRAY_INIT/EXPR[./NUM_INT[@text='3']]",
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathArrayTrailingCommaLinear']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a2']]/ASSIGN/EXPR/LITERAL_NEW"
-                + "/ARRAY_INIT/EXPR/NUM_INT[@text='3']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathArrayTrailingCommaLinear']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a2']]/ASSIGN/EXPR/LITERAL_NEW\
+            /ARRAY_INIT/EXPR[./NUM_INT[@text='3']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathArrayTrailingCommaLinear']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='a2']]/ASSIGN/EXPR/LITERAL_NEW\
+            /ARRAY_INIT/EXPR/NUM_INT[@text='3']"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -86,10 +88,11 @@ public class XpathRegressionArrayTrailingCommaTest extends AbstractXpathTestSupp
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathArrayTrailingCommaMatrix']]"
-                + "/OBJBLOCK/VARIABLE_DEF[./IDENT[@text='d2']]/ASSIGN/EXPR/LITERAL_NEW"
-                + "/ARRAY_INIT/ARRAY_INIT[./EXPR/NUM_INT[@text='5']]"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathArrayTrailingCommaMatrix']]\
+            /OBJBLOCK/VARIABLE_DEF[./IDENT[@text='d2']]/ASSIGN/EXPR/LITERAL_NEW\
+            /ARRAY_INIT/ARRAY_INIT[./EXPR/NUM_INT[@text='5']]"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

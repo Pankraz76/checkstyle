@@ -1222,8 +1222,9 @@ public class XdocsPagesTest {
                         fileName, sectionName, propertyName)
                 .that(columns.get(1).getTextContent().trim())
                 .isNotEmpty();
-        assertWithMessage("%s section '%s' should have a description for %s"
-                        + " that starts with uppercase character",
+        assertWithMessage("""
+                        %s section '%s' should have a description for %s\
+                         that starts with uppercase character""",
                         fileName, sectionName, propertyName)
                 .that(Character.isUpperCase(columns.get(1).getTextContent().trim().charAt(0)))
                 .isTrue();
@@ -1391,8 +1392,9 @@ public class XdocsPagesTest {
                 result = "UTF-8";
             }
             else if ("charset".equals(propertyName)) {
-                result = "the charset property of the parent"
-                    + " <a href=\"https://checkstyle.org/config.html#Checker\">Checker</a> module";
+                result = """
+                    the charset property of the parent\
+                     <a href="https://checkstyle.org/config.html#Checker">Checker</a> module""";
             }
             else if ("PropertyCacheFile".equals(fieldClass.getSimpleName())) {
                 result = "null (no cache file)";
@@ -1758,8 +1760,9 @@ public class XdocsPagesTest {
                         .contains(sectionName);
             }
             else if ("Checkstyle's Import Control Config".equals(linkText)) {
-                expectedUrl = "https://github.com/checkstyle/checkstyle/blob/master/config/"
-                    + "import-control.xml";
+                expectedUrl = """
+                    https://github.com/checkstyle/checkstyle/blob/master/config/\
+                    import-control.xml""";
             }
 
             assertWithMessage(fileName + " section '" + sectionName
@@ -2160,8 +2163,9 @@ public class XdocsPagesTest {
             assertWithMessage("google_style.xml rule '" + ruleName + "' rule '"
                     + "' should have matching sample url")
                     .that(inputFolderUrl)
-                    .startsWith("https://github.com/checkstyle/checkstyle/"
-                            + "tree/master/src/it/resources/com/google/checkstyle/test/");
+                    .startsWith("""
+                            https://github.com/checkstyle/checkstyle/\
+                            tree/master/src/it/resources/com/google/checkstyle/test/""");
 
             assertWithMessage("google_style.xml rule '" + ruleName
                     + "' should have matching sample url")

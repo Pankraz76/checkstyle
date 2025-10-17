@@ -163,8 +163,9 @@ public class HideUtilityClassConstructorCheckTest
             "9:1: " + getCheckMessage(MSG_KEY),
         };
         verifyWithInlineConfigParser(
-                getPath("InputHideUtilityClassConstructor"
-                        + "IgnoreAnnotationByFullyQualifiedName.java"),
+                getPath("""
+                        InputHideUtilityClassConstructor\
+                        IgnoreAnnotationByFullyQualifiedName.java"""),
                 expected
         );
     }

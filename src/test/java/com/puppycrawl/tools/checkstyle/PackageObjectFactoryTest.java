@@ -409,8 +409,9 @@ public class PackageObjectFactoryTest {
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("Unable to instantiate com.puppycrawl.tools.checkstyle."
-                    + "PackageObjectFactoryTest$FailConstructorFileSet");
+                .isEqualTo("""
+                    Unable to instantiate com.puppycrawl.tools.checkstyle.\
+                    PackageObjectFactoryTest$FailConstructorFileSet""");
             assertWithMessage("Invalid exception cause class")
                 .that(exc.getCause().getClass().getSimpleName())
                 .isEqualTo("IllegalAccessException");
@@ -511,8 +512,9 @@ public class PackageObjectFactoryTest {
         try (MockedStatic<ModuleReflectionUtil> utilities =
                      mockStatic(ModuleReflectionUtil.class)) {
             utilities.when(() -> ModuleReflectionUtil.getCheckstyleModules(packages, classLoader))
-                    .thenThrow(new IllegalStateException("creation of objects by fully qualified"
-                            + " class names should not result in search of modules in classpath"));
+                    .thenThrow(new IllegalStateException("""
+                            creation of objects by fully qualified\
+                             class names should not result in search of modules in classpath"""));
 
             final String fullyQualifiedName = MockClass.class.getName();
             assertWithMessage("class name is not in expected format")
@@ -538,11 +540,12 @@ public class PackageObjectFactoryTest {
         assertWithMessage("Invalid exception message")
             .that(ex.getMessage())
             .startsWith(
-                "Unable to instantiate 'PackageObjectFactoryTest$MockClass' class, it is also "
-                    + "not possible to instantiate it as "
-                    + "com.puppycrawl.tools.checkstyle.PackageObjectFactoryTest$MockClass, "
-                    + "PackageObjectFactoryTest$MockClassCheck, "
-                    + "com.puppycrawl.tools.checkstyle.PackageObjectFactoryTest$MockClassCheck"
+                """
+                Unable to instantiate 'PackageObjectFactoryTest$MockClass' class, it is also \
+                not possible to instantiate it as \
+                com.puppycrawl.tools.checkstyle.PackageObjectFactoryTest$MockClass, \
+                PackageObjectFactoryTest$MockClassCheck, \
+                com.puppycrawl.tools.checkstyle.PackageObjectFactoryTest$MockClassCheck"""
             );
 
     }

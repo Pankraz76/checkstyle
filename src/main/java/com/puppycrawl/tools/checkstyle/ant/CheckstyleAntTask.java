@@ -404,8 +404,9 @@ public class CheckstyleAntTask extends Task {
             rootModule.configure(configuration);
         }
         catch (final CheckstyleException exc) {
-            throw new BuildException(String.format(Locale.ROOT, "Unable to create Root Module: "
-                    + "config {%s}.", config), exc);
+            throw new BuildException(String.format(Locale.ROOT, """
+                    Unable to create Root Module: \
+                    config {%s}.""", config), exc);
         }
         return rootModule;
     }
@@ -473,8 +474,9 @@ public class CheckstyleAntTask extends Task {
             }
         }
         catch (IOException exc) {
-            throw new BuildException(String.format(Locale.ROOT, "Unable to create listeners: "
-                    + "formatters {%s}.", formatters), exc);
+            throw new BuildException(String.format(Locale.ROOT, """
+                    Unable to create listeners: \
+                    formatters {%s}.""", formatters), exc);
         }
         return listeners;
     }

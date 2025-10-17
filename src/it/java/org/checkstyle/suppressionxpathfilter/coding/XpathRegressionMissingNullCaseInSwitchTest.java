@@ -57,9 +57,10 @@ public class XpathRegressionMissingNullCaseInSwitchTest
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMissingNullCaseInSwitchSimple']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMissingNullCaseInSwitchSimple']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -77,17 +78,19 @@ public class XpathRegressionMissingNullCaseInSwitchTest
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMissingNullCaseInSwitchNested']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF"
-                        + "[./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_SWITCH/SWITCH_RULE/SLIST"
-                        + "/VARIABLE_DEF[./IDENT[@text='y']]/ASSIGN/EXPR",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathMissingNullCaseInSwitchNested']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF"
-                        + "[./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_SWITCH"
-                        + "/SWITCH_RULE/SLIST/VARIABLE_DEF"
-                        + "[./IDENT[@text='y']]/ASSIGN/EXPR/LITERAL_SWITCH"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMissingNullCaseInSwitchNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_SWITCH/SWITCH_RULE/SLIST\
+                /VARIABLE_DEF[./IDENT[@text='y']]/ASSIGN/EXPR""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathMissingNullCaseInSwitchNested']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='test']]/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='x']]/ASSIGN/EXPR/LITERAL_SWITCH\
+                /SWITCH_RULE/SLIST/VARIABLE_DEF\
+                [./IDENT[@text='y']]/ASSIGN/EXPR/LITERAL_SWITCH"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }

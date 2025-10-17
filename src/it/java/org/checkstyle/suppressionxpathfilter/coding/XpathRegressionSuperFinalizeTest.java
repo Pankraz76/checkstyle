@@ -55,9 +55,10 @@ public class XpathRegressionSuperFinalizeTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathSuperFinalizeNoFinalize']]"
-                + "/OBJBLOCK/METHOD_DEF/IDENT[@text='finalize']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathSuperFinalizeNoFinalize']]\
+            /OBJBLOCK/METHOD_DEF/IDENT[@text='finalize']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -74,9 +75,10 @@ public class XpathRegressionSuperFinalizeTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathSuperFinalizeInnerClass']]"
-                + "/OBJBLOCK/METHOD_DEF/IDENT[@text='finalize']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathSuperFinalizeInnerClass']]\
+            /OBJBLOCK/METHOD_DEF/IDENT[@text='finalize']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }
@@ -93,12 +95,13 @@ public class XpathRegressionSuperFinalizeTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Collections.singletonList(
-            "/COMPILATION_UNIT/CLASS_DEF"
-                + "[./IDENT[@text='InputXpathSuperFinalizeAnonymousClass']]"
-                + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='createAnonymousClass']]"
-                + "/SLIST/VARIABLE_DEF[./IDENT[@text='anonymousClassObject']]"
-                + "/ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Object']]"
-                + "/OBJBLOCK/METHOD_DEF/IDENT[@text='finalize']"
+            """
+            /COMPILATION_UNIT/CLASS_DEF\
+            [./IDENT[@text='InputXpathSuperFinalizeAnonymousClass']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT[@text='createAnonymousClass']]\
+            /SLIST/VARIABLE_DEF[./IDENT[@text='anonymousClassObject']]\
+            /ASSIGN/EXPR/LITERAL_NEW[./IDENT[@text='Object']]\
+            /OBJBLOCK/METHOD_DEF/IDENT[@text='finalize']"""
         );
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
     }

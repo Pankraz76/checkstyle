@@ -56,15 +56,18 @@ public class XpathRegressionNoCloneTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathNoCloneMethod']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='clone']]",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathNoCloneMethod']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='clone']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF"
-                    + "[./IDENT[@text='InputXpathNoCloneMethod']]/OBJBLOCK"
-                    + "/METHOD_DEF[./IDENT[@text='clone']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoCloneMethod']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='clone']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoCloneMethod']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='clone']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathNoCloneMethod']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='clone']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -84,18 +87,21 @@ public class XpathRegressionNoCloneTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathNoCloneInnerClass']]"
-                        + "/OBJBLOCK"
-                        + "/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK"
-                        + "/METHOD_DEF[./IDENT[@text='clone']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathNoCloneInnerClass']]"
-                        + "/OBJBLOCK"
-                        + "/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/"
-                        + "METHOD_DEF[./IDENT[@text='clone']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathNoCloneInnerClass']]"
-                        + "/OBJBLOCK"
-                        + "/CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK"
-                        + "/METHOD_DEF[./IDENT[@text='clone']]/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathNoCloneInnerClass']]\
+                /OBJBLOCK\
+                /CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='clone']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathNoCloneInnerClass']]\
+                /OBJBLOCK\
+                /CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK/\
+                METHOD_DEF[./IDENT[@text='clone']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathNoCloneInnerClass']]\
+                /OBJBLOCK\
+                /CLASS_DEF[./IDENT[@text='InnerClass']]/OBJBLOCK\
+                /METHOD_DEF[./IDENT[@text='clone']]/MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

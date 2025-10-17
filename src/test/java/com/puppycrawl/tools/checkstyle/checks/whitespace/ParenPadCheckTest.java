@@ -329,10 +329,11 @@ public class ParenPadCheckTest
         catch (CheckstyleException exc) {
             assertWithMessage("Invalid exception message")
                 .that(exc.getMessage())
-                .isEqualTo("cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - "
-                    + "cannot initialize module com.puppycrawl.tools.checkstyle.checks."
-                    + "whitespace.ParenPadCheck - "
-                    + "Cannot set property 'option' to 'invalid_option'");
+                .isEqualTo("""
+                    cannot initialize module com.puppycrawl.tools.checkstyle.TreeWalker - \
+                    cannot initialize module com.puppycrawl.tools.checkstyle.checks.\
+                    whitespace.ParenPadCheck - \
+                    Cannot set property 'option' to 'invalid_option'""");
         }
     }
 
@@ -556,8 +557,9 @@ public class ParenPadCheckTest
     public void testIsAcceptableToken() throws Exception {
         final ParenPadCheck check = new ParenPadCheck();
         final DetailAstImpl ast = new DetailAstImpl();
-        final String message = "Expected that all acceptable tokens will pass isAcceptableToken "
-            + "method, but some token don't: ";
+        final String message = """
+            Expected that all acceptable tokens will pass isAcceptableToken \
+            method, but some token don't: """;
 
         for (int token : check.getAcceptableTokens()) {
             ast.setType(token);

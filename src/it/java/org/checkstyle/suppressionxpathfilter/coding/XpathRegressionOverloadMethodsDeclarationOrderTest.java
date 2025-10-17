@@ -57,16 +57,19 @@ public class XpathRegressionOverloadMethodsDeclarationOrderTest extends Abstract
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathOverloadMethodsDeclarationOrderDefault']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathOverloadMethodsDeclarationOrderDefault']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                        + "[@text='InputXpathOverloadMethodsDeclarationOrderDefault']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]"
-                        + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathOverloadMethodsDeclarationOrderDefault']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathOverloadMethodsDeclarationOrderDefault']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+                [@text='InputXpathOverloadMethodsDeclarationOrderDefault']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]\
+                /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);
@@ -85,22 +88,25 @@ public class XpathRegressionOverloadMethodsDeclarationOrderTest extends Abstract
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                        + "'InputXpathOverloadMethodsDeclarationOrderAnonymous']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text="
-                        + "'MyInputXpathOverloadMethodsDeclarationOrderAnonymous']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                        + "'InputXpathOverloadMethodsDeclarationOrderAnonymous']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text="
-                        + "'MyInputXpathOverloadMethodsDeclarationOrderAnonymous']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]/MODIFIERS",
-                "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text="
-                        + "'InputXpathOverloadMethodsDeclarationOrderAnonymous']]"
-                        + "/OBJBLOCK/CLASS_DEF[./IDENT[@text="
-                        + "'MyInputXpathOverloadMethodsDeclarationOrderAnonymous']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]"
-                        + "/MODIFIERS/LITERAL_PUBLIC"
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+                'InputXpathOverloadMethodsDeclarationOrderAnonymous']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text=\
+                'MyInputXpathOverloadMethodsDeclarationOrderAnonymous']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+                'InputXpathOverloadMethodsDeclarationOrderAnonymous']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text=\
+                'MyInputXpathOverloadMethodsDeclarationOrderAnonymous']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]/MODIFIERS""",
+                """
+                /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text=\
+                'InputXpathOverloadMethodsDeclarationOrderAnonymous']]\
+                /OBJBLOCK/CLASS_DEF[./IDENT[@text=\
+                'MyInputXpathOverloadMethodsDeclarationOrderAnonymous']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT[@text='overloadMethod']]\
+                /MODIFIERS/LITERAL_PUBLIC"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation, expectedXpathQueries);

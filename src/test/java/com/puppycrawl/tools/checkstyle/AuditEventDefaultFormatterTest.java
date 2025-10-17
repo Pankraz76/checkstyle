@@ -37,8 +37,9 @@ public class AuditEventDefaultFormatterTest {
         final AuditEvent event = new AuditEvent("", "InputMockFile.java", violation);
         final AuditEventFormatter formatter = new AuditEventDefaultFormatter();
 
-        final String expected = "[WARN] InputMockFile.java:1:1: Mocked violation. "
-                + "[AuditEventDefaultFormatterTest$TestModule]";
+        final String expected = """
+                [WARN] InputMockFile.java:1:1: Mocked violation. \
+                [AuditEventDefaultFormatterTest$TestModule]""";
 
         assertWithMessage("Invalid format")
                 .that(formatter.format(event))
@@ -52,8 +53,9 @@ public class AuditEventDefaultFormatterTest {
         final AuditEvent event = new AuditEvent("", "InputMockFile.java", violation);
         final AuditEventFormatter formatter = new AuditEventDefaultFormatter();
 
-        final String expected = "[WARN] InputMockFile.java:1:1: Mocked violation. "
-                + "[AuditEventDefaultFormatterTest$TestModule]";
+        final String expected = """
+                [WARN] InputMockFile.java:1:1: Mocked violation. \
+                [AuditEventDefaultFormatterTest$TestModule]""";
 
         assertWithMessage("Invalid format")
                 .that(formatter.format(event))

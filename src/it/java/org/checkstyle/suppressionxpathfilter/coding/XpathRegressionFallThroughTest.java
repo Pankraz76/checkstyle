@@ -57,13 +57,15 @@ public class XpathRegressionFallThroughTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathFallThrough']]"
-                + "/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP["
-                + "./LITERAL_CASE/EXPR/NUM_INT[@text='2']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathFallThrough']]"
-                + "/OBJBLOCK"
-                + "/METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathFallThrough']]\
+            /OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP[\
+            ./LITERAL_CASE/EXPR/NUM_INT[@text='2']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathFallThrough']]\
+            /OBJBLOCK\
+            /METHOD_DEF[./IDENT[@text='test']]/SLIST/LITERAL_SWITCH/CASE_GROUP/LITERAL_CASE"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,
@@ -85,14 +87,16 @@ public class XpathRegressionFallThroughTest extends AbstractXpathTestSupport {
         };
 
         final List<String> expectedXpathQueries = Arrays.asList(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathFallThroughDefaultCase']]"
-                + "/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='methodFallThruCustomWords']]/SLIST/LITERAL_WHILE/SLIST"
-                + "/LITERAL_SWITCH/CASE_GROUP[./SLIST/EXPR/POST_INC/IDENT[@text='i']]",
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathFallThroughDefaultCase']]"
-                + "/OBJBLOCK/METHOD_DEF["
-                + "./IDENT[@text='methodFallThruCustomWords']]/SLIST/LITERAL_WHILE/SLIST"
-                + "/LITERAL_SWITCH/CASE_GROUP/LITERAL_DEFAULT"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathFallThroughDefaultCase']]\
+            /OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='methodFallThruCustomWords']]/SLIST/LITERAL_WHILE/SLIST\
+            /LITERAL_SWITCH/CASE_GROUP[./SLIST/EXPR/POST_INC/IDENT[@text='i']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT[@text='InputXpathFallThroughDefaultCase']]\
+            /OBJBLOCK/METHOD_DEF[\
+            ./IDENT[@text='methodFallThruCustomWords']]/SLIST/LITERAL_WHILE/SLIST\
+            /LITERAL_SWITCH/CASE_GROUP/LITERAL_DEFAULT"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expectedViolation,

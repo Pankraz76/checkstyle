@@ -55,10 +55,11 @@ public class XpathRegressionDescendantTokenTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF[./IDENT"
-                    + "[@text='InputXpathDescendantTokenSwitchNoDefault']]"
-                    + "/OBJBLOCK/METHOD_DEF[./IDENT"
-                    + "[@text='testMethod1']]/SLIST/LITERAL_SWITCH"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[./IDENT\
+            [@text='InputXpathDescendantTokenSwitchNoDefault']]\
+            /OBJBLOCK/METHOD_DEF[./IDENT\
+            [@text='testMethod1']]/SLIST/LITERAL_SWITCH"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
@@ -83,11 +84,12 @@ public class XpathRegressionDescendantTokenTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = List.of(
-                "/COMPILATION_UNIT/CLASS_DEF"
-                        + "[./IDENT[@text='InputXpathDescendantTokenSwitchTooManyCases']]"
-                        + "/OBJBLOCK/METHOD_DEF[./IDENT"
-                        + "[@text='testMethod1']]/SLIST/VARIABLE_DEF[./IDENT[@text='switchLogic']]"
-                        + "/ASSIGN/LAMBDA/SLIST/LITERAL_SWITCH"
+                """
+                /COMPILATION_UNIT/CLASS_DEF\
+                [./IDENT[@text='InputXpathDescendantTokenSwitchTooManyCases']]\
+                /OBJBLOCK/METHOD_DEF[./IDENT\
+                [@text='testMethod1']]/SLIST/VARIABLE_DEF[./IDENT[@text='switchLogic']]\
+                /ASSIGN/LAMBDA/SLIST/LITERAL_SWITCH"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
@@ -112,14 +114,16 @@ public class XpathRegressionDescendantTokenTest extends AbstractXpathTestSupport
         };
 
         final List<String> expectedXpathQueries = List.of(
-            "/COMPILATION_UNIT/CLASS_DEF["
-                + "./IDENT[@text='InputXpathDescendantTokenNestedSwitch']]/OBJBLOCK/"
-                + "METHOD_DEF[./IDENT[@text='testMethod1']]/SLIST/LITERAL_SWITCH/"
-                + "CASE_GROUP[./LITERAL_CASE/EXPR/NUM_INT[@text='2']]",
-            "/COMPILATION_UNIT/CLASS_DEF["
-                + "./IDENT[@text='InputXpathDescendantTokenNestedSwitch']]/OBJBLOCK/"
-                + "METHOD_DEF[./IDENT[@text='testMethod1']]/SLIST/LITERAL_SWITCH/"
-                + "CASE_GROUP/LITERAL_CASE"
+            """
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathDescendantTokenNestedSwitch']]/OBJBLOCK/\
+            METHOD_DEF[./IDENT[@text='testMethod1']]/SLIST/LITERAL_SWITCH/\
+            CASE_GROUP[./LITERAL_CASE/EXPR/NUM_INT[@text='2']]""",
+            """
+            /COMPILATION_UNIT/CLASS_DEF[\
+            ./IDENT[@text='InputXpathDescendantTokenNestedSwitch']]/OBJBLOCK/\
+            METHOD_DEF[./IDENT[@text='testMethod1']]/SLIST/LITERAL_SWITCH/\
+            CASE_GROUP/LITERAL_CASE"""
         );
 
         runVerifications(moduleConfig, fileToProcess, expected, expectedXpathQueries);
