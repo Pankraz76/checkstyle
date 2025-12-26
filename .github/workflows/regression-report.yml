@@ -503,7 +503,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Print config.xml
+      - name: Print config.xml 🖨️
         run: |
           echo "Contents of config.xml:"
           echo "-------------------------"
@@ -514,7 +514,7 @@ jobs:
           fi
           echo "-------------------------"
 
-      - name: Print projects file
+      - name: Print projects file 🖨️
         run: |
           if [ -f .ci-temp/projects.yml ]; then
             echo "Contents of projects.yml:"
@@ -530,7 +530,7 @@ jobs:
             echo "No projects file found"
           fi
 
-      - name: Print patch_config.xml
+      - name: Print patch_config.xml 🖨️
         run: |
           echo "Contents of patch_config.xml:"
           echo "-----------------------------"
@@ -541,7 +541,7 @@ jobs:
           fi
           echo "-----------------------------"
 
-      - name: Print new_module_config.xml
+      - name: Print new_module_config.xml 🖨️
         run: |
           echo "Contents of new_module_config.xml:"
           echo "-----------------------------------"

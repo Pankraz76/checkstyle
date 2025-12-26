@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   printInputs:
-    name: Print Input
+    name: Print Input 🖨️
     runs-on: ubuntu-latest
     steps:
       - run: |
