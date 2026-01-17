@@ -253,9 +253,11 @@
       -Xep:FormatStringConcatenation:ERROR
       -Xep:IdentityConversion:ERROR
       -Xep:ImmutablesSortedSetComparator:ERROR
+      -Xep:InvalidParam:ERROR
       -Xep:IsInstanceLambdaUsage:ERROR
       -Xep:LexicographicalAnnotationAttributeListing:ERROR
       -Xep:LexicographicalAnnotationListing:ERROR
+      -Xep:LoopOverCharArray:ERROR
       -Xep:MockitoMockClassReference:ERROR
       -Xep:MockitoStubbing:ERROR
       -Xep:NestedOptionals:ERROR
@@ -272,11 +274,14 @@
       -Xep:TruthAssertExpected:ERROR
       -Xep:TypeParameterUnusedInFormals:ERROR
       -Xep:UnusedMethod:ERROR
+      -Xep:NullArgumentForNonNullParameter:ERROR
       -Xep:VoidUsed:ERROR
       -Xep:FormatStringShouldUsePlaceholders:ERROR
       -Xep:StatementSwitchToExpressionSwitch:ERROR
       -Xep:StringSplitter:ERROR
       -Xep:JdkObsolete:ERROR
+      -Xep:PatternMatchingInstanceof:ERROR
+      -Xep:UnnecessaryLambda:WARN
       <!-- Reason at https://github.com/checkstyle/checkstyle/issues/17988. -->
       -Xep:InlineFormatString:OFF
       <!-- Reason at https://github.com/checkstyle/checkstyle/issues/17988. -->
@@ -639,7 +644,7 @@
         <plugin>
           <groupId>org.openrewrite.maven</groupId>
           <artifactId>rewrite-maven-plugin</artifactId>
-          <version>6.27.0</version>
+          <version>6.27.1</version>
           <configuration>
             <configLocation>config/rewrite.yml</configLocation>
             <exportDatatables>true</exportDatatables>
@@ -747,7 +752,7 @@
               <plugin>
                 <groupId>com.mebigfatguy.sb-contrib</groupId>
                 <artifactId>sb-contrib</artifactId>
-                <version>7.7.2</version>
+                <version>7.7.3</version>
               </plugin>
             </plugins>
           </configuration>
@@ -2683,19 +2688,9 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>${maven.compiler.plugin.version}</version>
             <executions>
-              <!-- Skip the default-compile execution as we don't want to execute the compile goal twice -->
+              <!-- sneak into the default execution as we don't want to execute the compile goal twice -->
               <execution>
                 <id>default-compile</id>
-                <phase>compile</phase>
-                <goals>
-                  <goal>compile</goal>
-                </goals>
-                <configuration>
-                  <skipMain>true</skipMain>
-                </configuration>
-              </execution>
-              <execution>
-                <id>error-prone-compile</id>
                 <phase>compile</phase>
                 <goals>
                   <goal>compile</goal>
@@ -2740,19 +2735,9 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>${maven.compiler.plugin.version}</version>
             <executions>
-              <!-- Skip the default-testCompile execution as we don't want to execute the testCompile goal twice -->
+              <!-- sneak into the default execution as we don't want to execute the compile goal twice -->
               <execution>
                 <id>default-testCompile</id>
-                <phase>test-compile</phase>
-                <goals>
-                  <goal>testCompile</goal>
-                </goals>
-                <configuration>
-                  <skip>true</skip>
-                </configuration>
-              </execution>
-              <execution>
-                <id>error-prone-test-compile</id>
                 <phase>test-compile</phase>
                 <goals>
                   <goal>testCompile</goal>
