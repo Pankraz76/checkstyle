@@ -4,7 +4,7 @@ name: org.checkstyle.AllAutoFixes
 displayName: Auto Fixes
 description: List of auto fixes from different providers.
 recipeList:
-#  - org.checkstyle.autofix.CheckstyleAutoFix:
+#  - org.checkstyle.autofix.CheckstyleAutoFix: # CommonStaticAnalysis
 #      violationReportPath: target/cs_errors.xml
 #      configurationPath: config/checkstyle-checks.xml
 #      propertiesPath: config/openrewrite-recipes-checkstyle.properties
@@ -29,7 +29,6 @@ recipeList:
   - org.openrewrite.maven.BestPractices
   - org.openrewrite.staticanalysis.BufferedWriterCreationRecipes
   - org.openrewrite.staticanalysis.ChainStringBuilderAppendCalls
-  - org.openrewrite.staticanalysis.CommonStaticAnalysis
   - org.openrewrite.staticanalysis.CustomImportOrder
   - org.openrewrite.staticanalysis.DefaultComesLast
   - org.openrewrite.staticanalysis.EmptyBlock
