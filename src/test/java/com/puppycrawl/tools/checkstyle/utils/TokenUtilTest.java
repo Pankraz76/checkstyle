@@ -291,7 +291,7 @@ public class TokenUtilTest {
             ast -> "second".equals(ast.getText()));
 
         assertWithMessage("Invalid second sibling")
-            .that(result.orElseThrow())
+            .that(result.orElse(null))
             .isEqualTo(secondSibling);
     }
 

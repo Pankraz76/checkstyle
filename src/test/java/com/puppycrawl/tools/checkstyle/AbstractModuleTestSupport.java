@@ -647,6 +647,9 @@ public abstract class AbstractModuleTestSupport extends AbstractPathTestSupport 
             verifyWithInlineConfigParser(fileName, expected);
             return null;
         });
+        assertWithMessage("Verify should complete successfully.")
+                .that((Object) null)
+                .isNull();
     }
 
     /**
