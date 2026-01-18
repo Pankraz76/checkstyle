@@ -60,10 +60,8 @@ recipeList:
   - tech.picnic.errorprone.refasterrules.TimeRulesRecipes
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: org.openrewrite.staticanalysis.CodeCleanup
+name: org.checkstyle.CodeCleanup
 displayName: Code cleanup
-description: |
-  Automatically cleanup code, e.g. remove unnecessary parentheses, simplify expressions.
 recipeList:
   - org.openrewrite.staticanalysis.DefaultComesLast
   - org.openrewrite.staticanalysis.EmptyBlock
@@ -71,8 +69,8 @@ recipeList:
   - org.openrewrite.staticanalysis.ForLoopControlVariablePostfixOperators
   - org.openrewrite.staticanalysis.FinalizePrivateFields
   - org.openrewrite.java.format.MethodParamPad
-  # - org.openrewrite.java.format.NoWhitespaceAfter
-  # - org.openrewrite.java.format.NoWhitespaceBefore
+  # - org.openrewrite.java.format.NoWhitespaceAfter # incompatible
+  # - org.openrewrite.java.format.NoWhitespaceBefore # incompatible
   - org.openrewrite.java.format.PadEmptyForLoopComponents
   - org.openrewrite.staticanalysis.TypecastParenPad
   - org.openrewrite.staticanalysis.EqualsAvoidsNull
