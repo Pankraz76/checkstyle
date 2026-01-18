@@ -4,7 +4,7 @@ name: org.checkstyle.AllAutoFixes
 displayName: Auto Fixes
 description: List of auto fixes from different providers.
 recipeList:
-  - org.checkstyle.CodeCleanup:
+  - org.checkstyle.CodeCleanup
   - org.checkstyle.autofix.CheckstyleAutoFix:
       violationReportPath: target/cs_errors.xml
       configurationPath: config/checkstyle-checks.xml
