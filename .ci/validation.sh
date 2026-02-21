@@ -1463,13 +1463,6 @@ openrewrite-refaster-rules-1)
   PROJECT_ROOT="$(pwd)"
   export MAVEN_OPTS="-Xmx4g -Xms2g"
 
-  cd /tmp
-  git clone https://github.com/checkstyle/checkstyle-openrewrite-recipes.git
-  cd checkstyle-openrewrite-recipes
-  ./mvnw -e --no-transfer-progress clean install -DskipTests
-
-  cd "$PROJECT_ROOT"
-
   echo "Running RefasterRules Part 1 recipes..."
   rm -rf /tmp/checkstyle-openrewrite-recipes
   ./mvnw -e --no-transfer-progress rewrite:dryRun \
@@ -1482,13 +1475,6 @@ openrewrite-refaster-rules-2)
   PROJECT_ROOT="$(pwd)"
   export MAVEN_OPTS="-Xmx4g -Xms2g"
 
-  cd /tmp
-  git clone https://github.com/checkstyle/checkstyle-openrewrite-recipes.git
-  cd checkstyle-openrewrite-recipes
-  ./mvnw -e --no-transfer-progress clean install -DskipTests
-
-  cd "$PROJECT_ROOT"
-
   echo "Running RefasterRules Part 2 recipes..."
   rm -rf /tmp/checkstyle-openrewrite-recipes
   ./mvnw -e --no-transfer-progress rewrite:dryRun \
@@ -1500,13 +1486,6 @@ openrewrite-static-analysis)
   echo "Cloning and building OpenRewrite recipes..."
   PROJECT_ROOT="$(pwd)"
   export MAVEN_OPTS="-Xmx4g -Xms2g"
-
-  cd /tmp
-  git clone https://github.com/checkstyle/checkstyle-openrewrite-recipes.git
-  cd checkstyle-openrewrite-recipes
-  ./mvnw -e --no-transfer-progress clean install -DskipTests
-
-  cd "$PROJECT_ROOT"
 
   echo "Running StaticAnalysis recipes..."
   rm -rf /tmp/checkstyle-openrewrite-recipes
