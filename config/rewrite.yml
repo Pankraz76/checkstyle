@@ -109,6 +109,8 @@ recipeList:
         - org.openrewrite.staticanalysis.LambdaBlockToExpression
   # individual recipes
   - org.openrewrite.java.RemoveUnusedImports
+  - org.openrewrite.staticanalysis.maven.MavenJavadocNonAsciiRecipe
+  - org.openrewrite.staticanalysis.java.MoveFieldAnnotationToType
   - org.openrewrite.java.format.NormalizeFormat
   - org.openrewrite.java.format.NormalizeLineBreaks
   - org.openrewrite.java.format.RemoveTrailingWhitespace
