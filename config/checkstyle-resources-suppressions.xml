@@ -81,6 +81,14 @@
     files="uncommentedmain[\\/]InputUncommentedMainBeginTreePackage2\.java"/>
 
   <!-- intentional problem for testing -->
+  <suppress checks="PackageDeclarationCheck"
+    files="rule41packagenames[\\/]InputBadPackageName2\.java"/>
+  <suppress checks="PackageDeclarationCheck"
+    files="rule41packagenames[\\/]InputPackageBadName3\.java"/>
+  <suppress checks="PackageDeclarationCheck"
+    files="rule41packagenames[\\/]InputPackageNameBad\.java"/>
+
+  <!-- intentional problem for testing -->
   <suppress checks="RegexpSingleline"
     files="javadoctype[\\/]InputJavadocTypeWithBlockComment\.java"/>
 
@@ -107,6 +115,8 @@
     files="[\\/]InputRegexpTrailingComment10\.java"/>
   <suppress id="noTrailingWhitespace"
     files="[\\/]InputRegexpSinglelineJavaTrailingComment10\.java"/>
+  <suppress id="noTrailingWhitespace"
+    files="[\\/]InputTextBlockGoogleStyleFormatting10\.java"/>
   <suppress id="noTrailingWhitespace"
             files="[\\/]javadocstyle[\\/]InputJavadocStyleTrailingSpace\.java"/>
   <suppress id="noTrailingWhitespace"

@@ -136,6 +136,7 @@ buildkite
 Bunsubscribe
 bw
 BXOR
+bytebuddy
 bytecode
 Cacheable
 cachefile
@@ -267,6 +268,7 @@ Ddry
 DEADBEEF
 DECCHARS
 declarationorder
+declarationrightbeforefirstusage
 declaredwhenneeded
 Deconstruction
 defau
@@ -309,6 +311,7 @@ Dmaven
 dnd
 Dnew
 doccheck
+doccomments
 Dockter
 doclet
 doclint
@@ -410,6 +413,7 @@ fd
 FDCF
 Fdesign
 FDF
+Fdoc
 FEF
 fenum
 ffc
@@ -592,6 +596,7 @@ importcontrolloader
 importcontroltest
 importorder
 importrule
+importstatements
 imprt
 Incompatabilities
 indentcontinuationlines
@@ -1005,6 +1010,7 @@ optionalbracesusage
 OQ
 orderedproperties
 orderingandspacing
+orderoftags
 orekit
 ORELSEGET
 orm
@@ -1067,6 +1073,7 @@ php
 picocli
 pid
 pinentry
+pipefail
 PIPESTATUS
 pitest
 pkgextra
@@ -1154,6 +1161,7 @@ requireemptylinebeforeblocktaggroup
 requirethis
 resourceleak
 Rethrown
+Rethrows
 returncount
 returnsreceiver
 reviewdog
@@ -1418,6 +1426,7 @@ unusedcatchparametershouldbeunnamed
 unusedimports
 unusedlambdaparametershouldbeunnamed
 unusedlocalvariable
+unusedtryresourceshouldbeunnamed
 upperell
 urandom
 uri
@@ -1492,6 +1501,7 @@ wq
 wrappinglines
 writetag
 writingchecks
+writingdoccomments
 writingfilefilters
 writingfilters
 writingjavadocchecks
