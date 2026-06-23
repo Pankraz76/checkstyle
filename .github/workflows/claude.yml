@@ -1,0 +1,24 @@
+# .github/workflows/checkstyle.yml
+name: Checkstyle with Claude Validation
+
+on: [push]
+
+jobs:
+  checkstyle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+      - name: Validate CLAUDE.md
+        run: |
+          if [ ! -f "CLAUDE.md" ]; then
+            echo "CLAUDE.md is required"
+            exit 1
+          fi
+          # Check for required sections
+          grep -q "## Project Structure" CLAUDE.md || exit 1
+          grep -q "## Key Configuration Rules" CLAUDE.md || exit 1
+      - name: Run Checkstyle
+        run: ./gradlew checkstyleMain
